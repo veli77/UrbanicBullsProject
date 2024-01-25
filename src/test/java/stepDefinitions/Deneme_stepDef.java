@@ -125,6 +125,10 @@ public class Deneme_stepDef {
     public void step_definition_icinde_user_and_password() {
 
     }
+    @Given("Enum kullanarak")
+    public void enum_kullanarak() {
+
+    }
 
 
 
