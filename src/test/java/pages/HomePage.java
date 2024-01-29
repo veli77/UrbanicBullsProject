@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends CommonPage {
 
-    @FindBy(xpath = "//button[@class='abcd']")
+    @FindBy(xpath = "//button[@class='abcde']")
     public WebElement denemeElement;
 
 
