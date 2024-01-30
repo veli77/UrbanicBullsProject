@@ -14,4 +14,8 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//input[@name='selamlar']" )
     public WebElement firstDeneme;
+
+    @FindBy(xpath = "//li/a[.='contact us'][@href='/contact-us']")
+    public WebElement ContactUsBtnAtBotton;
+
 }
