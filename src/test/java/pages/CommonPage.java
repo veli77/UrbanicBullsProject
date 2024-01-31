@@ -12,6 +12,53 @@ public abstract class CommonPage {
 
     private HomePage homePage;
 
+    private ContactUsPage contactUsPage;
+
+    private LoginPage loginPage;
+
+    private RegisterPage registerPage;
+
+    private SellShareTradePage sellShareTradePage;
+
+    private AccountPage accountPage;
+
+    public AccountPage getAccountPage() {
+        if (accountPage == null) {
+            accountPage = new AccountPage();
+        }
+        return accountPage;
+    }
+
+    public SellShareTradePage getSellShareTradePage() {
+        if (sellShareTradePage == null) {
+            sellShareTradePage = new SellShareTradePage();
+        }
+
+        return sellShareTradePage;
+    }
+
+    public RegisterPage getRegisterPage() {
+        if (registerPage == null) {
+            registerPage = new RegisterPage();
+        }
+
+        return registerPage;
+    }
+
+    public LoginPage getLoginPage() {
+        if (loginPage == null) {
+            loginPage = new LoginPage();
+        }
+
+        return loginPage;
+    }
+
+    public ContactUsPage getContactUsPage() {
+        if (contactUsPage == null) {
+            contactUsPage = new ContactUsPage();
+        }
+        return contactUsPage;
+    }
 
     public HomePage getHomePage() {
         if (homePage == null) {
