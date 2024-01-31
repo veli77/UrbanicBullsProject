@@ -14,6 +14,8 @@ public abstract class CommonPage {
 
     private ContactUsPage contactUsPage;
 
+    private Register_Page registerPage;
+
     public ContactUsPage getContactUsPage() {
         if (contactUsPage == null) {
             contactUsPage = new ContactUsPage();
@@ -26,5 +28,13 @@ public abstract class CommonPage {
             homePage = new HomePage();
         }
         return homePage;
+    }
+
+    public Register_Page getRegisterPage() {
+        if (registerPage== null) {
+            registerPage = new Register_Page();
+        }
+
+        return registerPage;
     }
 }
