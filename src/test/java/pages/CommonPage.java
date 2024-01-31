@@ -12,6 +12,14 @@ public abstract class CommonPage {
 
     private HomePage homePage;
 
+    private ContactUsPage contactUsPage;
+
+    public ContactUsPage getContactUsPage() {
+        if (contactUsPage == null) {
+            contactUsPage = new ContactUsPage();
+        }
+        return contactUsPage;
+    }
 
     public HomePage getHomePage() {
         if (homePage == null) {
