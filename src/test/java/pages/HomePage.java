@@ -14,4 +14,15 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//input[@name='selamlar']" )
     public WebElement firstDeneme;
+
+
+    @FindBy(css = "[href='/terms-of-service']" )
+    public WebElement TermOfService;
+@FindBy(xpath = "//*[@class='text-center mb-5']" )
+    public WebElement TermOfServiceIsDiplayed;
+
+
+
+
+
 }

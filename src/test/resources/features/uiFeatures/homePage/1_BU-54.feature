@@ -1,4 +1,5 @@
 @BU-55
+	@UI
 Feature: Test Execution Of_US_026 
 
 	#Terms Of Service should be clickable and relevant page should be visible
