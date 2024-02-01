@@ -33,7 +33,7 @@ public abstract class CommonPage {
             localSellerSearchPage = new LocalSellerSearchPage();
         }
         return localSellerSearchPage;
-
+    }
     private AboutUsPage aboutUsPage;
 
     private FarmerMarketPage farmerMarketPage;
