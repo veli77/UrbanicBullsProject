@@ -18,7 +18,7 @@ public class US32 extends CommonPage {
        getRegisterPage().registerByGoogleA.click();
         ReusableMethods.waitFor(1);
         //getRegisterPage().sendEmail.sendKeys(ConfigurationReader.getProperty("user1_email"));
-        getRegisterPage().sendEmail.sendKeys("oiseaubleu791@gmail.com");
+        getRegisterPage().sendEmail.sendKeys("alhttn.smsk@gmail.com");
         ReusableMethods.waitFor(1);
         getRegisterPage().nextButton.click();
 
