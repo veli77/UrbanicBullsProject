@@ -1,10 +1,15 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends CommonPage {
+
+    @FindBy(xpath = "//button[@class='abcde']")
+    public WebElement denemeElement;
+
+    @FindBy(xpath = "//input[@name='selamlar']" )
+    public WebElement firstDeneme;
 
     @FindBy(xpath = "//li/a[.='contact us'][@href='/contact-us']")
     public WebElement ContactUsBtnAtBotton;
@@ -18,20 +23,19 @@ public class HomePage extends CommonPage {
     @FindBy(css = ".section-7_btn2__2lv_r")
     public WebElement Post_Your_GoodsButton;
 
-
-
-    @FindBy(xpath = "//input[@name='selamlar']" )
-    public WebElement firstDeneme;
-
-
     @FindBy(css = "[href='/terms-of-service']" )
     public WebElement TermOfService;
-  
+
     @FindBy(xpath = "//*[@class='text-center mb-5']" )
     public WebElement TermOfServiceIsDiplayed;
 
+    @FindBy(xpath = "//div/a[@href='/account/weekly-order']")
+    public WebElement FarmerMarketBtnAtButton;
 
+    @FindBy(xpath = "//div/a[@href='/explore']")
+    public WebElement ExploreBtnAtButton;
 
+    @FindBy(xpath = "//div/a[@href='/about']")
+    public WebElement AboutUsBtnAtButton;
 
-   
 }
