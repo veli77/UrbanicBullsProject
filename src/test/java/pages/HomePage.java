@@ -31,5 +31,7 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//div/a[@href='/about']")
     public WebElement AboutUsBtnAtButton;
+   @FindBy(xpath = "//a[@class='d-block']")
+    public WebElement AdressButton27;
 
 }
