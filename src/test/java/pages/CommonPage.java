@@ -22,6 +22,18 @@ public abstract class CommonPage {
 
     private AccountPage accountPage;
 
+    private LocalSellerSearchPage localSellerSearchPage;
+
+
+
+    public LocalSellerSearchPage getLocalSellerSearchPage() {
+
+        if (localSellerSearchPage == null) {
+            localSellerSearchPage = new LocalSellerSearchPage();
+        }
+        return localSellerSearchPage;
+    }
+
     public AccountPage getAccountPage() {
         if (accountPage == null) {
             accountPage = new AccountPage();
