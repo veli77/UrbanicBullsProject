@@ -25,8 +25,8 @@ public class US_024_ContactUsBtn extends CommonPage {
         getHomePage().ContactUsBtnAtBotton.click();
     }
 
-    @Then("User should be able to see relevant page")
-    public void userShouldBeAbleToSeeRelevantPage() {
+    @Then("User should be able to see Contact Us page")
+    public void userShouldBeAbleToSeeContactUsPage() {
         ReusableMethods.waitForPageToLoad(5);
         Assert.assertEquals("https://test.urbanicfarm.com/contact-us",driver.getCurrentUrl());
         Assert.assertTrue(getContactUsPage().getInTouchText.isDisplayed());
