@@ -26,6 +26,12 @@ public abstract class CommonPage {
     private LocalSellerSearchPage localSellerSearchPage;
 
 
+    private AboutUsPage aboutUsPage;
+
+    private FarmerMarketPage farmerMarketPage;
+
+    private ExplorePage explorePage;
+
 
     public LocalSellerSearchPage getLocalSellerSearchPage() {
 
@@ -33,12 +39,7 @@ public abstract class CommonPage {
             localSellerSearchPage = new LocalSellerSearchPage();
         }
         return localSellerSearchPage;
-
-    private AboutUsPage aboutUsPage;
-
-    private FarmerMarketPage farmerMarketPage;
-
-    private ExplorePage explorePage;
+    }
 
 
 

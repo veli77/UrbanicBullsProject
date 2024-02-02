@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.LocalSellerSearchPage_5;
+package stepDefinitions.UI_StepDefs.LocalSellerSearchPage;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
