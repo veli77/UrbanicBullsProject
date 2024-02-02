@@ -13,7 +13,7 @@ public abstract class CommonPage {
     private HomePage homePage;
 
     private ContactUsPage contactUsPage;
-
+  
     private LoginPage loginPage;
 
     private RegisterPage registerPage;
@@ -110,5 +110,13 @@ public abstract class CommonPage {
             homePage = new HomePage();
         }
         return homePage;
+    }
+
+    public Register_Page getRegisterPage() {
+        if (registerPage== null) {
+            registerPage = new Register_Page();
+        }
+
+        return registerPage;
     }
 }
