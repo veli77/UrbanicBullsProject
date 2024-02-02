@@ -1,4 +1,5 @@
 package utilities;
+import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
 import org.apache.commons.io.FileUtils;
@@ -55,9 +56,9 @@ public class ReusableMethods {
         return null;
     }
 
-    //========Hover Over=====//
+    //========Hover Over(ScrollDown)=====//
     public static void hover(WebElement element) {
-        Actions actions = new Actions(Driver.getDriver());
+  //      Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
