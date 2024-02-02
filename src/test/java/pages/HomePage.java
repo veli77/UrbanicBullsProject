@@ -3,19 +3,21 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class HomePage extends CommonPage {
-
-    @FindBy(xpath = "//button[@class='abcde']")
-    public WebElement denemeElement;
-
-    @FindBy(xpath = "//input[@name='selamlar']" )
-    public WebElement firstDeneme;
 
     @FindBy(xpath = "//li/a[.='contact us'][@href='/contact-us']")
     public WebElement ContactUsBtnAtBotton;
 
     @FindBy(css = ".mr-4+[href='/auth/login']")
     public WebElement loginSegment;
+
+    @FindBy(css = ".section-7_right__16a5T button")
+    public List<WebElement> reduceWasteStrengthYourCommunityTab;
+
+    @FindBy(xpath = "//div[@class='section-7_right__16a5T']/p")
+    public WebElement reduceWasteStrength;
 
     @FindBy(css = ".section-7_btn1__YvVpM")
     public WebElement Whats_Near_YouButton;
@@ -37,6 +39,8 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//div/a[@href='/about']")
     public WebElement AboutUsBtnAtButton;
+   @FindBy(xpath = "//a[@class='d-block']")
+    public WebElement AdressButton27;
 
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
     public WebElement GoWefunder;
