@@ -1,5 +1,5 @@
 @wip
-Feature: Botton Bar Explore btn feature
+Feature: Button Bar Explore btn feature
 
   @UI
   Scenario: User should be able to perform various operations on homepage
