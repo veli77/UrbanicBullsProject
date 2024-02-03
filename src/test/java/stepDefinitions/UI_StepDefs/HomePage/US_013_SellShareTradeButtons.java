@@ -2,10 +2,8 @@ package stepDefinitions.UI_StepDefs.HomePage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import utilities.JSUtils;
-import utilities.ReusableMethods;
 
 public class US_013_SellShareTradeButtons extends CommonPage {
     @Then("User is able to click on Sell button under Sell Your Products")
