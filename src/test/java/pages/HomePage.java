@@ -78,6 +78,9 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
     public WebElement GoWefunder;
 
+    @FindBy(xpath = "//div/a[@href='/auth/login']")
+    public WebElement LoginBtnAtButton;
+
     @FindBy(xpath = "//span[.='+1 (669) 696-5906']")
     public WebElement PhoneNumber;
 
