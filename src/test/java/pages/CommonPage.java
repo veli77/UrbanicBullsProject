@@ -20,6 +20,17 @@ public class CommonPage {
     private AboutUsPage aboutUsPage;
     private FarmerMarketPage farmerMarketPage;
     private ExplorePage explorePage;
+    private WefunderPage wefunderPage;
+
+
+
+
+    public WefunderPage getWefunderPage() {
+        if (wefunderPage == null) {
+            wefunderPage = new WefunderPage();
+        }
+        return wefunderPage;
+    }
 
 
 

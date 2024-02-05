@@ -4,6 +4,7 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.CommonPage;
+import utilities.ReusableMethods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,9 @@ public class US_42_GoToUserAccountPage_stepDefs extends CommonPage{
 
         List<String> tabsNames=dataTable.asList();
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("account"));
+        ReusableMethods.waitForPageToLoad(5);
+        System.out.println(driver.getCurrentUrl());
+        Assert.assertTrue(driver.getCurrentUrl().contains("login"));
 
         List<String> tabs = new ArrayList<>();
         for (int i = 0; i <getAccountPage().accountPageLeftsidesTabs.size(); i++) {

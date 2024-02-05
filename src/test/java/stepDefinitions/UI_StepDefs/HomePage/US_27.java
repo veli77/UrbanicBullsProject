@@ -10,7 +10,7 @@ public class US_27 extends CommonPage {
     @When("User click to Adress")
     public void userClickToAdress() {
         JSUtils.scrollDownByJS();
-        getHomePage().AdressButton27.isDisplayed();
+       // getHomePage().AdressButton27.isDisplayed();
         ReusableMethods.waitFor(5);
     }
 

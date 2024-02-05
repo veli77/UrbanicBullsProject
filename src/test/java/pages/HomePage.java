@@ -10,6 +10,36 @@ import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
 
+    @FindBy(xpath = "//a[text()='Discover Local Sellers Near You']")
+    public WebElement DiscoverLocalSellers;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[4]/div[4]/div/div[1]/div[1]/ul/li[3]/a")
+    public WebElement GetTheApp;
+
+    @FindBy(xpath = "//p[text()='Sell Your Products']")
+    public WebElement SellYourProducts;
+
+    @FindBy(xpath = "//button[text()='sell']")
+    public WebElement SellButton;
+
+    @FindBy(xpath = "//button[text()='share']")
+    public WebElement Sharebutton;
+
+    @FindBy(xpath = "//button[text()='trade']")
+    public WebElement TradeButton;
+
+    @FindBy(xpath = "//*[@id='Urban\\u0131cFarm']")
+    public WebElement UrbanicFarmLink;
+
+    @FindBy(xpath = "//p[text()='Backyard ']")
+    public WebElement BackyardGardeners;
+
+    @FindBy(xpath = "//button[@class='Section11_shopButton__WbZY9']")
+    public WebElement RegisterNowButton;
+
+    @FindBy(xpath = "//button[@class='section-2_shopButton__17T04']")
+    public WebElement GetFreshProduce;
+
     @FindBy(xpath = "//li/a[.='contact us'][@href='/contact-us']")
     public WebElement ContactUsBtnAtBotton;
 
@@ -47,6 +77,9 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
     public WebElement GoWefunder;
+
+    @FindBy(xpath = "//div/a[@href='/auth/login']")
+    public WebElement LoginBtnAtButton;
 
     @FindBy(xpath = "//span[.='+1 (669) 696-5906']")
     public WebElement PhoneNumber;
