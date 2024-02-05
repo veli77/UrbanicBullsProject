@@ -125,4 +125,12 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(LinkedInBtn);
     }
 
+// US_036 sukru
+    @FindBy(css="input[type='text']")
+    private WebElement inputZipCode;
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeButton;
+
+
+
 }
