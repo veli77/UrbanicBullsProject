@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
 
         glue = "stepDefinitions",
-        tags = "@"
+        tags = "@TEST_BU-95"
 
 
 

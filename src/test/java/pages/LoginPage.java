@@ -11,7 +11,7 @@ import static stepDefinitions.Hooks.driver;
 
 public class LoginPage extends CommonPage{
 
-    @FindBy(xpath = "//input[@name='email']")
+    @FindBy(xpath = "(//input[@name='email']")
     public WebElement input_email;
     @FindBy(xpath = "//input[@name='password']")
     public WebElement input_password;
@@ -35,11 +35,9 @@ public class LoginPage extends CommonPage{
 
     public void validCredential(){
         driver.get(LOGIN_URL.getLink());
-        input_email.sendKeys(USERCREDENTIAL.USER1.getUsername());
-        input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
+        LoginEmail.sendKeys("urbanicfarm2@yopmail.com");
+        input_password.sendKeys("Urbanicfarm2/");
         submit_button.click();
-
-
 
     }
 
