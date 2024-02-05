@@ -5,7 +5,7 @@ import pages.CommonPage;
 
 public class US_50AccountPage extends CommonPage {
     @Given("user goes to Login Page")
-    public void userGoesToLoginPage() {
+    public void userGoesToLoginPage() throws InterruptedException {
        getLoginPage().validCredential();
     }
 }
