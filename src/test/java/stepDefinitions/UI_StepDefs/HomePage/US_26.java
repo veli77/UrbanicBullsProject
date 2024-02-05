@@ -13,13 +13,8 @@ import static stepDefinitions.Hooks.driver;
 
 public class US_26 extends CommonPage {
 
-//    @Given("User goes to homepage")
-//    public void userGoesToHomepage() throws InterruptedException {
-//   driver.get("https://test.urbanicfarm.com/");
-//   Thread.sleep(5);
-//    }
 
-    @When("User click to Terms Of Service")
+
     public void userClickToTermsOfService() {
         JSUtils.scrollDownByJS();
         getHomePage().TermOfService.isDisplayed();

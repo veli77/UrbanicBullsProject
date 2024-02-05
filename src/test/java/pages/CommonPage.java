@@ -11,19 +11,26 @@ public abstract class CommonPage {
     }
 
     private HomePage homePage;
-
     private ContactUsPage contactUsPage;
-
     private LoginPage loginPage;
-
     private RegisterPage registerPage;
-
     private SellShareTradePage sellShareTradePage;
-
     private AccountPage accountPage;
-
-
     private LocalSellerSearchPage localSellerSearchPage;
+    private AboutUsPage aboutUsPage;
+    private FarmerMarketPage farmerMarketPage;
+    private ExplorePage explorePage;
+    private WefunderPage wefunderPage;
+
+
+
+
+    public WefunderPage getWefunderPage() {
+        if (wefunderPage == null) {
+            wefunderPage = new WefunderPage();
+        }
+        return wefunderPage;
+    }
 
 
 
@@ -34,13 +41,6 @@ public abstract class CommonPage {
         }
         return localSellerSearchPage;
     }
-    private AboutUsPage aboutUsPage;
-
-    private FarmerMarketPage farmerMarketPage;
-
-    private ExplorePage explorePage;
-
-
 
 
     public FarmerMarketPage getFarmerMarketPage() {
@@ -82,13 +82,6 @@ public abstract class CommonPage {
         return sellShareTradePage;
     }
 
-    public RegisterPage getRegisterPage() {
-        if (registerPage == null) {
-            registerPage = new RegisterPage();
-        }
-
-        return registerPage;
-    }
 
     public LoginPage getLoginPage() {
         if (loginPage == null) {
@@ -110,5 +103,13 @@ public abstract class CommonPage {
             homePage = new HomePage();
         }
         return homePage;
+    }
+
+    public RegisterPage getRegisterPage() {
+        if (registerPage== null) {
+            registerPage = new RegisterPage();
+        }
+
+        return registerPage;
     }
 }
