@@ -11,16 +11,61 @@ public abstract class CommonPage {
     }
 
     private HomePage homePage;
-
     private ContactUsPage contactUsPage;
-
     private LoginPage loginPage;
-
     private RegisterPage registerPage;
-
     private SellShareTradePage sellShareTradePage;
-
     private AccountPage accountPage;
+    private LocalSellerSearchPage localSellerSearchPage;
+    private AboutUsPage aboutUsPage;
+    private FarmerMarketPage farmerMarketPage;
+    private ExplorePage explorePage;
+    private WefunderPage wefunderPage;
+
+
+
+
+    public WefunderPage getWefunderPage() {
+        if (wefunderPage == null) {
+            wefunderPage = new WefunderPage();
+        }
+        return wefunderPage;
+    }
+
+
+
+    public LocalSellerSearchPage getLocalSellerSearchPage() {
+
+        if (localSellerSearchPage == null) {
+            localSellerSearchPage = new LocalSellerSearchPage();
+        }
+        return localSellerSearchPage;
+    }
+
+
+    public FarmerMarketPage getFarmerMarketPage() {
+        if (farmerMarketPage == null) {
+            farmerMarketPage = new FarmerMarketPage();
+        }
+        return farmerMarketPage;
+    }
+
+
+    public ExplorePage getExplorePage() {
+        if (explorePage == null) {
+            explorePage = new ExplorePage();
+        }
+        return explorePage;
+    }
+
+
+    public AboutUsPage getAboutUsPage(){
+        if (aboutUsPage == null) {
+            aboutUsPage = new AboutUsPage();
+        }
+        return aboutUsPage;
+
+    }
 
     public AccountPage getAccountPage() {
         if (accountPage == null) {
@@ -37,13 +82,6 @@ public abstract class CommonPage {
         return sellShareTradePage;
     }
 
-    public RegisterPage getRegisterPage() {
-        if (registerPage == null) {
-            registerPage = new RegisterPage();
-        }
-
-        return registerPage;
-    }
 
     public LoginPage getLoginPage() {
         if (loginPage == null) {
@@ -65,5 +103,13 @@ public abstract class CommonPage {
             homePage = new HomePage();
         }
         return homePage;
+    }
+
+    public RegisterPage getRegisterPage() {
+        if (registerPage== null) {
+            registerPage = new RegisterPage();
+        }
+
+        return registerPage;
     }
 }
