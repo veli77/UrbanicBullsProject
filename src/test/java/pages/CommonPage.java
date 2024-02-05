@@ -14,27 +14,108 @@ public abstract class CommonPage {
 
     private ContactUsPage contactUsPage;
 
-    private Register_Page registerPage;
+    private LoginPage loginPage;
 
-    public ContactUsPage getContactUsPage() {
-        if (contactUsPage == null) {
-            contactUsPage = new ContactUsPage();
+    private RegisterPage registerPage;
+
+    private SellShareTradePage sellShareTradePage;
+
+    private AccountPage accountPage;
+
+
+    private LocalSellerSearchPage localSellerSearchPage;
+
+
+    public LocalSellerSearchPage getLocalSellerSearchPage() {
+
+        if (localSellerSearchPage == null) {
+            localSellerSearchPage = new LocalSellerSearchPage();
         }
-        return contactUsPage;
-    }
+        return localSellerSearchPage;
 
-    public HomePage getHomePage() {
-        if (homePage == null) {
-            homePage = new HomePage();
+        private AboutUsPage aboutUsPage;
+
+        private FarmerMarketPage farmerMarketPage;
+
+        private ExplorePage explorePage;
+
+
+        public FarmerMarketPage getFarmerMarketPage () {
+            if (farmerMarketPage == null) {
+                farmerMarketPage = new FarmerMarketPage();
+            }
+            return farmerMarketPage;
+
         }
-        return homePage;
-    }
 
-    public Register_Page getRegisterPage() {
-        if (registerPage== null) {
-            registerPage = new Register_Page();
+
+        public ExplorePage getExplorePage () {
+            if (explorePage == null) {
+                explorePage = new ExplorePage();
+            }
+            return explorePage;
         }
 
-        return registerPage;
+
+        public AboutUsPage getAboutUsPage () {
+            if (aboutUsPage == null) {
+                aboutUsPage = new AboutUsPage();
+            }
+            return aboutUsPage;
+
+        }
+
+        public AccountPage getAccountPage () {
+            if (accountPage == null) {
+                accountPage = new AccountPage();
+            }
+            return accountPage;
+        }
+
+        public SellShareTradePage getSellShareTradePage () {
+            if (sellShareTradePage == null) {
+                sellShareTradePage = new SellShareTradePage();
+            }
+
+            return sellShareTradePage;
+        }
+
+        public RegisterPage getRegisterPage () {
+            if (registerPage == null) {
+                registerPage = new RegisterPage();
+            }
+
+            return registerPage;
+        }
+
+        public LoginPage getLoginPage () {
+            if (loginPage == null) {
+                loginPage = new LoginPage();
+            }
+
+            return loginPage;
+        }
+
+        public ContactUsPage getContactUsPage () {
+            if (contactUsPage == null) {
+                contactUsPage = new ContactUsPage();
+            }
+            return contactUsPage;
+        }
+
+        public HomePage getHomePage () {
+            if (homePage == null) {
+                homePage = new HomePage();
+            }
+            return homePage;
+        }
+
+        public Register_Page getRegisterPage () {
+            if (registerPage == null) {
+                registerPage = new Register_Page();
+            }
+
+            return registerPage;
+        }
     }
 }
