@@ -1,6 +1,6 @@
 
 Feature: Button Bar Notification btn feature
-
+  @TEST_BU-115
   @UI
   Scenario:As a user, after entering valid information, I should be able to perform various operations on the Sale-Pay-Trade page.
     Given User goes to homepage
