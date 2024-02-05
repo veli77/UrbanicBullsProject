@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import utilities.ReusableMethods;
 
 import static enums.URLOGIN.LOGIN_URL;
+
 import static stepDefinitions.Hooks.driver;
 
 public class LoginPage extends CommonPage{
@@ -35,8 +36,8 @@ public class LoginPage extends CommonPage{
 
     public void validCredential(){
         driver.get(LOGIN_URL.getLink());
-        LoginEmail.sendKeys("urbanicfarm2@yopmail.com");
-        input_password.sendKeys("Urbanicfarm2/");
+        LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
+        input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
         submit_button.click();
 
     }
