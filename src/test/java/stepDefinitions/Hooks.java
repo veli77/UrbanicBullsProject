@@ -64,11 +64,11 @@ public class Hooks extends CommonPage{
         //loginPage=new LoginPage();
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
-       // getAccountPage().zipCodeBoxCloseButton.click();
+        getAccountPage().zipCodeBoxCloseButton.click();
 
 
 
