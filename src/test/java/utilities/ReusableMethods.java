@@ -314,6 +314,33 @@ public class ReusableMethods {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,document.body.scrollHeight)");
         waitFor(2);
     }
-    
+
+    public static void sendText(WebElement element, String text) {
+        try{
+            waitForClickablility(element, 15).sendKeys(text);
+        }catch (ElementNotInteractableException e){
+            scrollToElement(element);
+            sendText(element,text);
+        }
+    }
+
+    public static void waitAndClickElement(WebElement element, int seconds) {
+        for (int i = 0; i < seconds; i++) {
+            try {
+                element.click();
+                break;
+            } catch (Exception e) {
+                waitFor(1);
+            }
+        }
+    }
+
+    public static String getElementText(WebElement element) {
+        waitForVisibility(element, 5);
+        return element.getText();
+    }
+
+
+
 }
 

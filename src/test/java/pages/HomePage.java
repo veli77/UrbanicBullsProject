@@ -1,7 +1,9 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -128,10 +130,30 @@ public class HomePage extends CommonPage {
     }
 
 
+
+// US_036 sukru
+    @FindBy(css="input[type='text']")
+    private WebElement inputZipCode;
+
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeButton;
+
+    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    public void clickMainButton(String btnName){
+        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
+                btnName + "')]"));
+        element.click();
+    }
+
+
+
     //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
     public void clickPrivacyPolicyBtn(){
         ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
         PrivacyPolicyBtnAtBotton.click();
     }
+
 
 }
