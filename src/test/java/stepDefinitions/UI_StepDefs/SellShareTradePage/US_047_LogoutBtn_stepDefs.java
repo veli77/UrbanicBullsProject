@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 public class US_047_LogoutBtn_stepDefs extends CommonPage {
 
-    @When("User clicks on Login module")
+  /*  @When("User clicks on Login module")
     public void userClicksOnLoginModule() {
         JSUtils.clickElementByJS(getHomePage().LoginBtnAtButton);
     }
@@ -19,7 +19,7 @@ public class US_047_LogoutBtn_stepDefs extends CommonPage {
     public void userLogsIn() {
 
         getLoginPage().login();
-    }
+    } */
 
 
     @When("User clicks on Sell-Share-Trade module")
