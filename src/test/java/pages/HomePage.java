@@ -1,8 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.JSUtils;
+import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -59,10 +61,10 @@ public class HomePage extends CommonPage {
     @FindBy(css = ".section-7_btn2__2lv_r")
     public WebElement Post_Your_GoodsButton;
 
-    @FindBy(css = "[href='/terms-of-service']")
+    @FindBy(css = "[href='/terms-of-service']" )
     public WebElement TermOfService;
 
-    @FindBy(xpath = "//*[@class='text-center mb-5']")
+    @FindBy(xpath = "//*[@class='text-center mb-5']" )
     public WebElement TermOfServiceIsDiplayed;
 
     @FindBy(xpath = "//div/a[@href='/account/weekly-order']")
@@ -73,8 +75,7 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//div/a[@href='/about']")
     public WebElement AboutUsBtnAtButton;
-
-    @FindBy(xpath = "//a[@class='d-block']")
+   @FindBy(xpath = "//a[@class='d-block']")
     public WebElement AdressButton27;
 
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
@@ -89,15 +90,35 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M0 6.658h4.448v13.676H0zM16.565 6.818c-.047-.015-.092-.031-.142-.045s-.119-.025-.18-.035a3.986 3.986 0 00-.8-.081 6.181 6.181 0 00-4.78 2.615V6.658H6.216v13.676h4.448v-7.459s3.362-4.682 4.78-1.243v8.7h4.447v-9.229a4.435 4.435 0 00-3.326-4.285z']")
     public WebElement LinkedInBtn;
 
+
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
     @FindBy(css = "div[class='section-5_btn__2qFR0'] button")
     public WebElement registerNowButtonUnderContributiontotheEnvironmentandSociety;
 
+    @FindBy(xpath = "//div[.='Join the Movement!']")
+    public WebElement JoinTheMovementText;
+
+    @FindBy(xpath = "//a[contains(text(),'local food')]")
+    public WebElement SupportLocalFoodModule;
+
+    @FindBy(xpath = "//div[@class='Navbar_linkContainer__2jWIM']//a")
+    public List<WebElement> NavbarModules;
+
+    @FindBy(xpath = "(//a[.='Blog'])[1]")
+    public WebElement BlogLink;
+
+    @FindBy(xpath = "//div[@class='row g-4']//img")
+    public List<WebElement> BlogContents;
+
+
+    @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
+    public WebElement PrivacyPolicyBtnAtBotton;
+
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
-    public void goesToTestUrbanicFarmHomePage() {
+    public void goesToTestUrbanicFarmHomePage(){
         driver.get("https://test.urbanicfarm.com/");
         ReusableMethods.waitForPageToLoad(5);
     }
@@ -116,7 +137,7 @@ public class HomePage extends CommonPage {
 
 
     //Butona tıkladıktan sonra gelen sayfanın title ile doğrulanmasını (contains) sağlar, T yada F döner
-    public boolean amIinRightPage(String title) {
+    public boolean amIinRightPage(String title){
         ReusableMethods.switchToWindow(1);
         return driver.getTitle().contains(title);
     }
@@ -127,10 +148,38 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(LinkedInBtn);
     }
 
+
+    // US_036 sukru
+    @FindBy(css="input[type='text']")
+    private WebElement inputZipCode;
+
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeButton;
+
+    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    public void clickMainButton(String btnName){
+        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
+                btnName + "')]"));
+        element.click();
+    }
+
+
+
+    //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
+    public void clickPrivacyPolicyBtn(){
+        ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
+        PrivacyPolicyBtnAtBotton.click();
+    }
+
+
+
+
+
     // Contribution to the Environment and Society text'i altindaki Register Now butonu vasitasiyla register sayfasina gitmek icin
     public void goToRegisterPage(){
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
 }
-
