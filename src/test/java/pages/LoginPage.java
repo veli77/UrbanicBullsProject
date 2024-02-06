@@ -22,7 +22,8 @@ public class LoginPage extends CommonPage{
     public WebElement input_password;
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement submit_button;
-
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement alert_message;
 
     @FindBy(xpath = "(//input[@class='form-control mb-1 shadow-input validation_validation__iLr7O'])[1]")
     public WebElement LoginEmail;
