@@ -1,17 +1,14 @@
 package pages;
 
-import enums.URLOGIN;
 import enums.USERCREDENTIAL;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
 
-import static enums.URLOGIN.LOGIN_URL;
+import static enums.URL_LINKS.LOGIN_URL;
 import static stepDefinitions.Hooks.driver;
 
 public class LoginPage extends CommonPage{
