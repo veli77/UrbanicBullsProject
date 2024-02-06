@@ -13,11 +13,12 @@ import org.junit.runner.RunWith;
                 "junit:target/reports/xml/xml-report/cucumber.xml",
                 "rerun:target/reports/rerun.txt",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+
         },
         features = "src/test/resources/features",
 
         glue = "stepDefinitions",
-        tags = "@"
+        tags = "@wip"
 
 
 
