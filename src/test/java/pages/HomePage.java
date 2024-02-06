@@ -93,8 +93,26 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
+
+    @FindBy(xpath = "//div[.='Join the Movement!']")
+    public WebElement JoinTheMovementText;
+
+    @FindBy(xpath = "//a[contains(text(),'local food')]")
+    public WebElement SupportLocalFoodModule;
+
+    @FindBy(xpath = "//div[@class='Navbar_linkContainer__2jWIM']//a")
+    public List<WebElement> NavbarModules;
+
+    @FindBy(xpath = "(//a[.='Blog'])[1]")
+    public WebElement BlogLink;
+
+    @FindBy(xpath = "//div[@class='row g-4']//img")
+    public List<WebElement> BlogContents;
+
+
     @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
     public WebElement PrivacyPolicyBtnAtBotton;
+
 
 
 

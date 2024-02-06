@@ -315,6 +315,17 @@ public class ReusableMethods {
         waitFor(2);
     }
 
+
+    /*
+   This method accepts a String "expectedTitle" and Asserts if it is true
+    */
+    public static void verifyTitle(String expectedTitle){
+
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+
+    }
+    
+
     public static void sendText(WebElement element, String text) {
         try{
             waitForClickablility(element, 15).sendKeys(text);
@@ -339,6 +350,7 @@ public class ReusableMethods {
         waitForVisibility(element, 5);
         return element.getText();
     }
+
 
 
 
