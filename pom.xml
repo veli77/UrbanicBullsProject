@@ -64,7 +64,12 @@
             <artifactId>manifold-ext-rt</artifactId>
             <version>${manifold.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+            <scope>test</scope>
+        </dependency>
 
 
     </dependencies>
