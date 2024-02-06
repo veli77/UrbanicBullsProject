@@ -32,7 +32,8 @@ public class US_047_LogoutBtn_stepDefs extends CommonPage {
 
     @When("User clicks on Logout module")
     public void user_clicks_on_logout_module() {
-         ReusableMethods.waitForClickablility(getSellShareTradePage().LogoutBtn_SellShareTradePage,3).click();
+         ReusableMethods.hover(getSellShareTradePage().LogoutBtn_SellShareTradePage);
+         getSellShareTradePage().LogoutBtn_SellShareTradePage.click();
     }
 
     @Then("Verifies that the user has returned to the home page")

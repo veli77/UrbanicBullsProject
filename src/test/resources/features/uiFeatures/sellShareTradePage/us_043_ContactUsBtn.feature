@@ -1,4 +1,4 @@
-@wip
+
 Feature: Button Bar Contact Us btn feature
 
   @UI
