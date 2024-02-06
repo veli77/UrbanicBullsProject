@@ -9,6 +9,8 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
+import static stepDefinitions.Hooks.driver;
+
 public class RegisterPage extends CommonPage{
 
     @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al mr-2']")
@@ -24,6 +26,11 @@ public class RegisterPage extends CommonPage{
     @FindBy(xpath = "//div[@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
     public WebElement sussecsfullyMessage;
 
+
+// Register sayfasinda olundugunun kontrolü
+    public void registerPageCheck(){
+        Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("register"));
+    }
 
     // US_037 sukru
 
@@ -64,7 +71,6 @@ public class RegisterPage extends CommonPage{
         String alertMessage = "Welcome!";
         Assert.assertEquals(alertMessage, ReusableMethods.getElementText(registerApproveMsg));
     }
-
 
 
 }

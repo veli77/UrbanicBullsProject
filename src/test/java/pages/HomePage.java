@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
@@ -93,6 +94,8 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
+    @FindBy(css = "div[class='section-5_btn__2qFR0'] button")
+    public WebElement registerNowButtonUnderContributiontotheEnvironmentandSociety;
 
     @FindBy(xpath = "//div[.='Join the Movement!']")
     public WebElement JoinTheMovementText;
@@ -112,8 +115,6 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
     public WebElement PrivacyPolicyBtnAtBotton;
-
-
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -148,8 +149,7 @@ public class HomePage extends CommonPage {
     }
 
 
-
-// US_036 sukru
+    // US_036 sukru
     @FindBy(css="input[type='text']")
     private WebElement inputZipCode;
 
@@ -174,4 +174,12 @@ public class HomePage extends CommonPage {
     }
 
 
+
+
+
+    // Contribution to the Environment and Society text'i altindaki Register Now butonu vasitasiyla register sayfasina gitmek icin
+    public void goToRegisterPage(){
+        ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+        JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+    }
 }
