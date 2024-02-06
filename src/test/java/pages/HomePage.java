@@ -93,6 +93,8 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
+    @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
+    public WebElement PrivacyPolicyBtnAtBotton;
 
 
 
@@ -128,6 +130,7 @@ public class HomePage extends CommonPage {
     }
 
 
+
 // US_036 sukru
     @FindBy(css="input[type='text']")
     private WebElement inputZipCode;
@@ -142,6 +145,14 @@ public class HomePage extends CommonPage {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
         element.click();
+    }
+
+
+
+    //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
+    public void clickPrivacyPolicyBtn(){
+        ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
+        PrivacyPolicyBtnAtBotton.click();
     }
 
 
