@@ -7,4 +7,4 @@ Feature: Botton Bar Contact US btn feature
   Scenario: User should be able to perform various operations on homepage
     Given User goes to homepage
     When User click to Contact US btn at the botton
-    Then User should be able to see Contact Us page
+    Then User should be able to see relevant page
