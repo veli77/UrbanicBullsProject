@@ -18,11 +18,10 @@ public enum USERCREDENTIAL {
     }
     public String getUsername(){
         return getUsername();
-
     }
 
     public String getPassword(){
-     return getPassword();
+        return getPassword();
     }
 
 

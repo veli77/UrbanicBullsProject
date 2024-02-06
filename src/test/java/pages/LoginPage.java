@@ -1,13 +1,9 @@
 package pages;
 
-import enums.URLOGIN;
 import enums.USERCREDENTIAL;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.ReusableMethods;
-
-import static enums.URLOGIN.LOGIN_URL;
-import static stepDefinitions.Hooks.driver;
 
 public class LoginPage extends CommonPage{
 
@@ -35,8 +31,7 @@ public class LoginPage extends CommonPage{
     }
 
     public void validCredential(){
-        driver.get(LOGIN_URL.getLink());
-        input_email.sendKeys(USERCREDENTIAL.USER1.getUsername());
+        LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
         input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
         submit_button.click();
 

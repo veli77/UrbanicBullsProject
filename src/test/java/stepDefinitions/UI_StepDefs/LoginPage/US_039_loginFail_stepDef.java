@@ -22,9 +22,9 @@ import static stepDefinitions.Hooks.driver;
 public class US_039_loginFail_stepDef extends CommonPage{
     @Given("User goes to login page")
     public void user_goes_to_loginpage(){
-//        driver.get("https://test.urbanicfarm.com/auth/login");
-//        ReusableMethods.waitForPageToLoad(5);
-       driver.get(LOGIN_URL.getLink());
+        driver.get("https://test.urbanicfarm.com/auth/login");
+        ReusableMethods.waitForPageToLoad(5);
+//       driver.get(LOGIN_URL.getLink());
     }
 
     @When("the Email address and password button is functional")

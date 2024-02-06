@@ -22,7 +22,10 @@ public class SellShareTradePage extends CommonPage{
 
     @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
     public WebElement Cart_SellShareTradePage;
-
+    @FindBy(className ="Event_eventBarText__2R8Yg")
+    public WebElement eventsBtn;
+    @FindBy(xpath = "//a[@title='My Account']")
+    public WebElement usernameBtn;
 
 
     public void verifyHomePage() {
@@ -41,6 +44,10 @@ public class SellShareTradePage extends CommonPage{
         String actualUrl = driver.getCurrentUrl();
         System.out.println("actual="+actualUrl);
         Assert.assertEquals(expectedUrl,actualUrl);
+    }
+
+    public void userNameBtnClick(){
+        usernameBtn.click();
     }
 
 
