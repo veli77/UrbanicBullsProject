@@ -100,6 +100,12 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//div[@class='Navbar_linkContainer__2jWIM']//a")
     public List<WebElement> NavbarModules;
 
+    @FindBy(xpath = "(//a[.='Blog'])[1]")
+    public WebElement BlogLink;
+
+    @FindBy(xpath = "//div[@class='row g-4']//img")
+    public List<WebElement> BlogContents;
+
 
 
 
