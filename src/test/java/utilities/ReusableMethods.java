@@ -309,11 +309,14 @@ public class ReusableMethods {
             element.sendKeys(text);
         }else System.err.println("Null is not allowed for this method");
     }
-    
-    public static void scrollToBottom() {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,document.body.scrollHeight)");
-        waitFor(2);
+
+    public static void sendText(WebElement element, String text) {
+        try{
+            waitForClickablility(element, 15).sendKeys(text);
+        }catch (ElementNotInteractableException e){
+            scrollToElement(element);
+            sendText(element,text);
+        }
     }
-    
 }
 

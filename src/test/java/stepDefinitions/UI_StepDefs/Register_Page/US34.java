@@ -1,14 +1,19 @@
 package stepDefinitions.UI_StepDefs.Register_Page;
 
 import com.github.javafaker.Faker;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.Keys;
 import pages.CommonPage;
+import pages.RegisterPage;
 import utilities.ReusableMethods;
 
-import static org.junit.Assert.assertEquals;
+import java.util.List;
 
-public class US34 extends CommonPage {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+public class US34 extends RegisterPage {
 
     Faker faker = new Faker();
     @Then("First name information is entered as a letter")
@@ -40,7 +45,35 @@ public class US34 extends CommonPage {
       assertEquals(string, "Welcome");
 
     }
+    RegisterPage rp = new RegisterPage();
 
+    @And("Click the {string} button on the main Page")
+    public void clickTheButtonOnTheMainPage(String text) {
+        rp.clickMainButton(text);
+    }
 
+    @Then("Verify that first name entries match the expected result")
+    public void verifyThatFirstNameEntriesMatchTheExpectedResult(DataTable dataTable) {
+        List<List<String>> listItems = dataTable.asLists(String.class);
+        rp.verifyFirstNames(listItems);
+    }
+
+    @Then("Verify that middle name entries match the expected result")
+    public void verifyThatMiddleNameEntriesMatchTheExpectedResult(DataTable dataTable) {
+        List<List<String>> listItems = dataTable.asLists(String.class);
+        rp.verifyMiddleNames(listItems);
+    }
+
+    @Then("verify that last name entries match the expected result")
+    public void verifyThatLastNameEntriesMatchTheExpectedResult(DataTable dataTable) {
+        List<List<String>> listItems = dataTable.asLists(String.class);
+        rp.verifyLastNames(listItems);
+    }
+
+    @Then("Verify that email entries match the expected result")
+    public void verifyThatEmailEntriesMatchTheExpectedResult(DataTable dataTable) {
+        List<List<String>> listItems = dataTable.asLists(String.class);
+        rp.verifyEmails(listItems);
+    }
 
 }
