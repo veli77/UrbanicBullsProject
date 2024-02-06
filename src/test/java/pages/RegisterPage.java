@@ -1,7 +1,10 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static stepDefinitions.Hooks.driver;
 
 public class RegisterPage extends CommonPage{
 
@@ -17,6 +20,12 @@ public class RegisterPage extends CommonPage{
 
     @FindBy(xpath = "//div[@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
     public WebElement sussecsfullyMessage;
+
+
+// Register sayfasinda olundugunun kontrolü
+    public void registerPageCheck(){
+        Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("register"));
+    }
 
 
 
