@@ -9,4 +9,7 @@ public class AccountPage extends CommonPage{
 
     @FindBy(css = "div[class*='px-0 m-0 mt-2'] a")
     public List<WebElement> accountPageLeftsidesTabs;
+
+    @FindBy(css = "div[class='CheckDistrictModal_x-btn__sVOij']")
+    public WebElement zipCodeBoxCloseButton;
 }
