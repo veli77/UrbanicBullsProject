@@ -315,6 +315,7 @@ public class ReusableMethods {
         waitFor(2);
     }
 
+
     /*
    This method accepts a String "expectedTitle" and Asserts if it is true
     */
@@ -324,5 +325,34 @@ public class ReusableMethods {
 
     }
     
+
+    public static void sendText(WebElement element, String text) {
+        try{
+            waitForClickablility(element, 15).sendKeys(text);
+        }catch (ElementNotInteractableException e){
+            scrollToElement(element);
+            sendText(element,text);
+        }
+    }
+
+    public static void waitAndClickElement(WebElement element, int seconds) {
+        for (int i = 0; i < seconds; i++) {
+            try {
+                element.click();
+                break;
+            } catch (Exception e) {
+                waitFor(1);
+            }
+        }
+    }
+
+    public static String getElementText(WebElement element) {
+        waitForVisibility(element, 5);
+        return element.getText();
+    }
+
+
+
+
 }
 

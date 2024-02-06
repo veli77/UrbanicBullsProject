@@ -4,7 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import static stepDefinitions.Hooks.driver;
 
-public abstract class CommonPage {
+public class CommonPage {
 
     public CommonPage() {
         PageFactory.initElements(driver, this);
@@ -21,9 +21,16 @@ public abstract class CommonPage {
     private FarmerMarketPage farmerMarketPage;
     private ExplorePage explorePage;
     private WefunderPage wefunderPage;
+    private PrivacyPolicyPage privacyPolicyPage;
 
 
 
+    public PrivacyPolicyPage getPrivacyPolicyPage() {
+        if (privacyPolicyPage == null) {
+            privacyPolicyPage = new PrivacyPolicyPage();
+        }
+        return privacyPolicyPage;
+    }
 
     public WefunderPage getWefunderPage() {
         if (wefunderPage == null) {
@@ -31,7 +38,6 @@ public abstract class CommonPage {
         }
         return wefunderPage;
     }
-
 
 
     public LocalSellerSearchPage getLocalSellerSearchPage() {
