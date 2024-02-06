@@ -23,6 +23,9 @@ public class SellShareTradePage extends CommonPage{
     @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
     public WebElement Cart_SellShareTradePage;
 
+    @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al mr-4 ml-1']")
+    public WebElement ContactUsBtn_SellShareTread;
+
 
 
     public void verifyHomePage() {

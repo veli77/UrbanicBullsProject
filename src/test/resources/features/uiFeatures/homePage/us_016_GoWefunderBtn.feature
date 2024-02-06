@@ -1,4 +1,4 @@
-@wip
+
 Feature: Button Bar Go Wefunder btn feature
 
   @UI
