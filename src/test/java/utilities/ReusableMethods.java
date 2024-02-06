@@ -314,6 +314,15 @@ public class ReusableMethods {
         ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,document.body.scrollHeight)");
         waitFor(2);
     }
+
+    /*
+   This method accepts a String "expectedTitle" and Asserts if it is true
+    */
+    public static void verifyTitle(String expectedTitle){
+
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+
+    }
     
 }
 
