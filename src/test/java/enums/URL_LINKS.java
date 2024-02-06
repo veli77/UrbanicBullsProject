@@ -1,6 +1,6 @@
 package enums;
 
-public enum URLOGIN {
+public enum URL_LINKS {
     HOMEPAGE("https://test.urbanicfarm.com/"),
 
 
@@ -10,7 +10,7 @@ public enum URLOGIN {
 
     private final String getLink;
 
-  URLOGIN(String getLink) {
+  URL_LINKS(String getLink) {
         this.getLink = getLink;
     }
 
