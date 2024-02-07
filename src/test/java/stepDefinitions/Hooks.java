@@ -1,5 +1,7 @@
 package stepDefinitions;
 
+import enums.URL_LINKS;
+import enums.USERCREDENTIAL;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -8,14 +10,18 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
+import pages.LoginPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
-public class Hooks {
+public class Hooks extends CommonPage{
+
 
     public static WebDriver driver;
     public static CommonPage commonPage;
     public static Actions actions;
+   // public static LoginPage loginPage;
 
     public static boolean isHeadless = false;
     public static String browserType = "chrome";
@@ -23,6 +29,8 @@ public class Hooks {
     public static boolean isFullScreen = true;
     public static int width;
     public static int height;
+
+
 
     @Before(value = "@headless", order = 0)
     public void setIsHeadless() {
@@ -49,6 +57,21 @@ public class Hooks {
         commonPage = new CommonPage() {
         };
         actions = new Actions(driver);
+    }
+
+    @Before(value = "@Login")
+    public void login() {
+        //loginPage=new LoginPage();
+
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountPage().zipCodeBoxCloseButton.click();
+
+
+
     }
 
     @After(value = "@UI")

@@ -21,9 +21,16 @@ public class CommonPage {
     private FarmerMarketPage farmerMarketPage;
     private ExplorePage explorePage;
     private WefunderPage wefunderPage;
+    private PrivacyPolicyPage privacyPolicyPage;
 
 
 
+    public PrivacyPolicyPage getPrivacyPolicyPage() {
+        if (privacyPolicyPage == null) {
+            privacyPolicyPage = new PrivacyPolicyPage();
+        }
+        return privacyPolicyPage;
+    }
 
     public WefunderPage getWefunderPage() {
         if (wefunderPage == null) {
@@ -33,7 +40,6 @@ public class CommonPage {
     }
 
 
-
     public LocalSellerSearchPage getLocalSellerSearchPage() {
 
         if (localSellerSearchPage == null) {
@@ -41,7 +47,6 @@ public class CommonPage {
         }
         return localSellerSearchPage;
     }
-
 
 
     public FarmerMarketPage getFarmerMarketPage() {

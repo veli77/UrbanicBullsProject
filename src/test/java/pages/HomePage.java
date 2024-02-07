@@ -1,7 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
+import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -94,7 +97,27 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
+    @FindBy(css = "div[class='section-5_btn__2qFR0'] button")
+    public WebElement registerNowButtonUnderContributiontotheEnvironmentandSociety;
 
+    @FindBy(xpath = "//div[.='Join the Movement!']")
+    public WebElement JoinTheMovementText;
+
+    @FindBy(xpath = "//a[contains(text(),'local food')]")
+    public WebElement SupportLocalFoodModule;
+
+    @FindBy(xpath = "//div[@class='Navbar_linkContainer__2jWIM']//a")
+    public List<WebElement> NavbarModules;
+
+    @FindBy(xpath = "(//a[.='Blog'])[1]")
+    public WebElement BlogLink;
+
+    @FindBy(xpath = "//div[@class='row g-4']//img")
+    public List<WebElement> BlogContents;
+
+
+    @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
+    public WebElement PrivacyPolicyBtnAtBotton;
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -128,4 +151,38 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(LinkedInBtn);
     }
 
+
+    // US_036 sukru
+    @FindBy(css="input[type='text']")
+    private WebElement inputZipCode;
+
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeButton;
+
+    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    public void clickMainButton(String btnName){
+        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
+                btnName + "')]"));
+        element.click();
+    }
+
+
+
+    //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
+    public void clickPrivacyPolicyBtn(){
+        ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
+        PrivacyPolicyBtnAtBotton.click();
+    }
+
+
+
+
+
+    // Contribution to the Environment and Society text'i altindaki Register Now butonu vasitasiyla register sayfasina gitmek icin
+    public void goToRegisterPage(){
+        ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+        JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+    }
 }
