@@ -9,20 +9,20 @@ public enum USERCREDENTIAL {
 
 
 
-    private final String username;
-    private final String password;
+    private final String getUsername;
+    private final String getPassword;
 
     USERCREDENTIAL(String username, String password) {
-        this.username = username;
-        this.password=password;
+        this.getUsername = username;
+        this.getPassword=password;
     }
     public String getUsername(){
-        return getUsername();
+        return getUsername;
 
     }
 
     public String getPassword(){
-     return getPassword();
+     return getPassword;
     }
 
 

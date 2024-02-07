@@ -1,7 +1,10 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
+import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -9,6 +12,39 @@ import java.util.List;
 import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
+
+    @FindBy(xpath = "//a[text()='Register']")
+    public WebElement RegisterButton;
+
+    @FindBy(xpath = "//a[text()='Discover Local Sellers Near You']")
+    public WebElement DiscoverLocalSellers;
+
+    @FindBy(xpath = "//*[@id=\"__next\"]/div[4]/div[4]/div/div[1]/div[1]/ul/li[3]/a")
+    public WebElement GetTheApp;
+
+    @FindBy(xpath = "//p[text()='Sell Your Products']")
+    public WebElement SellYourProducts;
+
+    @FindBy(xpath = "//button[text()='sell']")
+    public WebElement SellButton;
+
+    @FindBy(xpath = "//button[text()='share']")
+    public WebElement Sharebutton;
+
+    @FindBy(xpath = "//button[text()='trade']")
+    public WebElement TradeButton;
+
+    @FindBy(xpath = "//*[@id='Urban\\u0131cFarm']")
+    public WebElement UrbanicFarmLink;
+
+    @FindBy(xpath = "//p[text()='Backyard ']")
+    public WebElement BackyardGardeners;
+
+    @FindBy(xpath = "//button[@class='Section11_shopButton__WbZY9']")
+    public WebElement RegisterNowButton;
+
+    @FindBy(xpath = "//button[@class='section-2_shopButton__17T04']")
+    public WebElement GetFreshProduce;
 
     @FindBy(xpath = "//li/a[.='contact us'][@href='/contact-us']")
     public WebElement ContactUsBtnAtBotton;
@@ -48,6 +84,9 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
     public WebElement GoWefunder;
 
+    @FindBy(xpath = "//div/a[@href='/auth/login']")
+    public WebElement LoginBtnAtButton;
+
     @FindBy(xpath = "//span[.='+1 (669) 696-5906']")
     public WebElement PhoneNumber;
 
@@ -58,7 +97,27 @@ public class HomePage extends CommonPage {
     @FindBy(css = "[d='M6.194 6.813V4.336A1.239 1.239 0 017.432 3.1h1.239V0H6.194a3.716 3.716 0 00-3.716 3.716v3.1H0v3.1h2.477v9.91h3.716V9.91H8.67l1.239-3.1z']")
     public WebElement FacebookBtn;
 
+    @FindBy(css = "div[class='section-5_btn__2qFR0'] button")
+    public WebElement registerNowButtonUnderContributiontotheEnvironmentandSociety;
 
+    @FindBy(xpath = "//div[.='Join the Movement!']")
+    public WebElement JoinTheMovementText;
+
+    @FindBy(xpath = "//a[contains(text(),'local food')]")
+    public WebElement SupportLocalFoodModule;
+
+    @FindBy(xpath = "//div[@class='Navbar_linkContainer__2jWIM']//a")
+    public List<WebElement> NavbarModules;
+
+    @FindBy(xpath = "(//a[.='Blog'])[1]")
+    public WebElement BlogLink;
+
+    @FindBy(xpath = "//div[@class='row g-4']//img")
+    public List<WebElement> BlogContents;
+
+
+    @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
+    public WebElement PrivacyPolicyBtnAtBotton;
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -92,4 +151,46 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(LinkedInBtn);
     }
 
+
+// US_036 sukru
+    @FindBy(css="input[type='text']")
+    private WebElement inputZipCode;
+
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeBtn;
+
+    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    @FindBy(xpath = "//span[contains(text(), 'Change ZIP code')]")
+    private WebElement changeZIPCodeBtn;
+
+    public void clickMainButton(String btnName){
+        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
+                btnName + "')]"));
+        element.click();
+    }
+
+    public void addZipCode(String zipCode){
+        ReusableMethods.sendText(inputZipCode, zipCode);
+        zipCodeBtn.click();
+    }
+
+
+
+    //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
+    public void clickPrivacyPolicyBtn(){
+        ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
+        PrivacyPolicyBtnAtBotton.click();
+    }
+
+
+
+
+
+    // Contribution to the Environment and Society text'i altindaki Register Now butonu vasitasiyla register sayfasina gitmek icin
+    public void goToRegisterPage(){
+        ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+        JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
+    }
 }
