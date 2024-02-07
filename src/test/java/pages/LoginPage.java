@@ -1,6 +1,5 @@
 package pages;
 
-import enums.URLOGIN;
 import enums.USERCREDENTIAL;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +10,7 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
-import static enums.URLOGIN.LOGIN_URL;
+import static enums.URL_LINKS.LOGIN_URL;
 import static stepDefinitions.Hooks.driver;
 
 public class LoginPage extends CommonPage{
@@ -25,7 +24,8 @@ public class LoginPage extends CommonPage{
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement alert_message;
 
-    @FindBy(xpath = "(//input[@class='form-control mb-1 shadow-input validation_validation__iLr7O'])[1]")
+
+    @FindBy(xpath = "//input[@name='email']")
     public WebElement LoginEmail;
 
     @FindBy(xpath = "//button[@class='btn alazea-btn']")

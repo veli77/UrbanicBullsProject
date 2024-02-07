@@ -309,11 +309,6 @@ public class ReusableMethods {
             element.sendKeys(text);
         }else System.err.println("Null is not allowed for this method");
     }
-    
-    public static void scrollToBottom() {
-        ((JavascriptExecutor) Driver.getDriver()).executeScript("window.scrollBy(0,document.body.scrollHeight)");
-        waitFor(2);
-    }
 
     public static void sendText(WebElement element, String text) {
         try{
@@ -322,6 +317,15 @@ public class ReusableMethods {
             scrollToElement(element);
             sendText(element,text);
         }
+    }
+
+    /*
+   This method accepts a String "expectedTitle" and Asserts if it is true
+    */
+    public static void verifyTitle(String expectedTitle){
+
+        Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
+
     }
 
     public static void waitAndClickElement(WebElement element, int seconds) {
@@ -339,8 +343,6 @@ public class ReusableMethods {
         waitForVisibility(element, 5);
         return element.getText();
     }
-
-
 
 }
 
