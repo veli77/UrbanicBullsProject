@@ -3,6 +3,7 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
@@ -22,6 +23,10 @@ public class SellShareTradePage extends CommonPage{
 
     @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
     public WebElement Cart_SellShareTradePage;
+
+    @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al mr-4 ml-1']")
+    public WebElement ContactUsBtn_SellShareTread;
+
     @FindBy(className ="Event_eventBarText__2R8Yg")
     public WebElement eventsBtn;
     @FindBy(xpath = "//a[@title='My Account']")
@@ -50,7 +55,33 @@ public class SellShareTradePage extends CommonPage{
         usernameBtn.click();
     }
 
+    // US_044 sukru
+
+    @FindBy (xpath = "//a[.='Scheduled Delivery']")
+    private WebElement scheduled_Delivery_Btn;
+
+    @FindBy (xpath = "//p[contains(text(), 'Locally grown, finest varieties of vegetables and microgreens delivered')]")
+    private WebElement scheduled_Delivery_Page_Title;
+
+    @FindBy(xpath = "//span[.='Sell-Share-Trade']")
+    private WebElement sellShareTradeBtn;
 
 
+    public void clickSellShareTradeBtn(){
+        sellShareTradeBtn.click();
+    }
 
+    public void verifyScheduledDeliveryLink(){
+        verifyScheduledDeliveryBtn();
+        verifyScheduledDeliveryPage();
+    }
+
+    public void verifyScheduledDeliveryBtn(){
+        Assert.assertTrue(scheduled_Delivery_Btn.isEnabled());
+        scheduled_Delivery_Btn.click();
+    }
+
+    public void verifyScheduledDeliveryPage(){
+        Assert.assertTrue(scheduled_Delivery_Page_Title.isEnabled());
+    }
 }
