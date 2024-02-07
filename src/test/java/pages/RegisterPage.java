@@ -14,6 +14,11 @@ import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.driver;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static stepDefinitions.Hooks.driver;
+
 public class RegisterPage extends CommonPage{
 
 
@@ -179,14 +184,38 @@ public class RegisterPage extends CommonPage{
         String alertMessage = "Welcome!";
         assertEquals(alertMessage, ReusableMethods.getElementText(registerApproveMsg));
     }
+    //US_035 Gokhan
+    @FindBy(xpath = "//input[@name='firstName']")
+    public WebElement FirstName;
+
+    @FindBy(xpath = "//input[@name='lastName']")
+    public WebElement LastName;
+
+    @FindBy(xpath = "//input[@name='email']")
+    public WebElement Email;
+
+    @FindBy(xpath = "//input[@name='plainPassword']")
+    public WebElement Password;
+
+    @FindBy(xpath = "//input[@name='confirmPassword']")
+    public WebElement ConfirmPassword;
+
+    @FindBy(xpath = "//div[text()='Welcome!']")
+    public WebElement WelcomeMessage;
+
+    @FindBy(xpath = "//button[@class='btn alazea-btn']")
+    public WebElement RegisterButtonBottomofPage;
 
 
+    // JavaScript kodunu çalıştır
+    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    public boolean validity = (boolean) jsExecutor.executeScript("var element = document.querySelector(\"input[name='plainPassword']\");" +
+            "return element.validity.valid;");
 
+    // JavaScript kodunu çalıştır
+    JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
+    public boolean validity2 = (boolean) jsExecutor2.executeScript("var element = document.querySelector(\"input[name='confirmPassword']\");" +
+            "return element.validity.valid;");
 
+    }
 
-
-
-
-
-
-}

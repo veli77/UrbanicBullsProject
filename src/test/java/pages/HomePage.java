@@ -13,6 +13,9 @@ import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
 
+    @FindBy(xpath = "//a[text()='Register']")
+    public WebElement RegisterButton;
+
     @FindBy(xpath = "//a[text()='Discover Local Sellers Near You']")
     public WebElement DiscoverLocalSellers;
 
