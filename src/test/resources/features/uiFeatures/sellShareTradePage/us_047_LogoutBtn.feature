@@ -1,4 +1,4 @@
-@wip
+
 Feature: Button Bar Logout btn feature
 
   @UI @Login
