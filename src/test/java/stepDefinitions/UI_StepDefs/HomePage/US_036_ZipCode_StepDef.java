@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.RegisterPage;
+import utilities.ReusableMethods;
 
 import java.util.List;
 
@@ -14,11 +15,11 @@ public class US_036_ZipCode_StepDef {
     HomePage homePage = new HomePage();
     LoginPage loginPage = new LoginPage();
 
-    @And("Login with credentials")
-    public void loginWithCredentials(DataTable dataTable) {
+    @And("Login with credential as")
+    public void loginWithCredentialAs(DataTable dataTable) {
         List<List<String>> listItems = dataTable.asLists(String.class);
         loginPage.loginWithCredentials(listItems.get(0).get(0), listItems.get(0).get(1));
-
+        ReusableMethods.waitFor(10);
     }
 
     @Then("Verify that zipCode entries match the expected result")

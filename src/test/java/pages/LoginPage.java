@@ -20,8 +20,7 @@ public class LoginPage extends CommonPage{
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement submit_button;
 
-
-    @FindBy(xpath = "(//input[@class='form-control mb-1 shadow-input validation_validation__iLr7O'])[1]")
+    @FindBy(xpath = "//input[@name='email']")
     public WebElement LoginEmail;
 
     @FindBy(xpath = "//button[@class='btn alazea-btn']")

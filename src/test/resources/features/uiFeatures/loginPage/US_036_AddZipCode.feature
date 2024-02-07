@@ -5,7 +5,7 @@ Feature: US_036
 
     Given User goes to HomePage
     And Click the "Login" button on the main Page
-    And Login with credentials
+    And Login with credential as
       | testuser@deneme.com | Testuser1/. |
 
     Then Verify that zipCode entries match the expected result
