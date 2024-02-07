@@ -21,7 +21,7 @@ public class Hooks extends CommonPage{
     public static WebDriver driver;
     public static CommonPage commonPage;
     public static Actions actions;
-   // public static LoginPage loginPage;
+   //public static LoginPage loginPage;
 
     public static boolean isHeadless = false;
     public static String browserType = "chrome";

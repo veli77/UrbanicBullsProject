@@ -64,6 +64,10 @@ public class LoginPage extends CommonPage{
     WebElement registeredZipCode;
 
 
+
+
+
+
     public void loginWithCredentials(String email, String password){
         ReusableMethods.sendText(input_email, email);
         ReusableMethods.sendText(input_password, password);
