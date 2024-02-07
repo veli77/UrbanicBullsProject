@@ -152,20 +152,28 @@ public class HomePage extends CommonPage {
     }
 
 
-    // US_036 sukru
+// US_036 sukru
     @FindBy(css="input[type='text']")
     private WebElement inputZipCode;
 
     @FindBy(xpath = "//button[contains(text(), 'go')]")
-    private WebElement zipCodeButton;
+    private WebElement zipCodeBtn;
 
     @FindBy (xpath = "//button[contains(text(), 'Register')]")
     private WebElement registerBtn;
+
+    @FindBy(xpath = "//span[contains(text(), 'Change ZIP code')]")
+    private WebElement changeZIPCodeBtn;
 
     public void clickMainButton(String btnName){
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
         element.click();
+    }
+
+    public void addZipCode(String zipCode){
+        ReusableMethods.sendText(inputZipCode, zipCode);
+        zipCodeBtn.click();
     }
 
 
