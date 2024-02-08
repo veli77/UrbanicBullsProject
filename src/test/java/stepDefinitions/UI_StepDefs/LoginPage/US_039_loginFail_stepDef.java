@@ -41,7 +41,7 @@ public class US_039_loginFail_stepDef extends CommonPage{
         try {
             System.out.println(getLoginPage().alert_message.getText());
         }
-        catch(Exception e) {}
+        catch(Exception ignored) {}
     }
 
 
