@@ -84,4 +84,7 @@ public class SellShareTradePage extends CommonPage{
     public void verifyScheduledDeliveryPage(){
         Assert.assertTrue(scheduled_Delivery_Page_Title.isEnabled());
     }
+    public void eventsBtnClik(){
+        eventsBtn.click();
+    }
 }
