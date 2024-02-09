@@ -63,6 +63,8 @@ public class Hooks extends CommonPage{
     public void login() {
         //loginPage=new LoginPage();
 
+        System.out.println("Login metodu calıstı");
+
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());

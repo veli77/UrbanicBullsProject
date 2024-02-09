@@ -135,6 +135,7 @@ public class Driver {
                     driverPool.get().manage().window().setSize(dimension);
                 }
                 driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+                System.out.println("İmplicitwait calısıyor");
             }
         }
         /*
