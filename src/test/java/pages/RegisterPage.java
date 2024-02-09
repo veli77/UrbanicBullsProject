@@ -217,5 +217,8 @@ public class RegisterPage extends CommonPage{
     public boolean validity2 = (boolean) jsExecutor2.executeScript("var element = document.querySelector(\"input[name='confirmPassword']\");" +
             "return element.validity.valid;");
 
+    //Gecersiz renk, first name, last name, password vs icin
+    public String expectedInvalidColor = "rgba(245, 110, 105, 1)";
+
     }
 

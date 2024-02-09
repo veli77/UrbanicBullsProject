@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.HomePage;
+package stepDefinitions.UI_StepDefs.LoginPage;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

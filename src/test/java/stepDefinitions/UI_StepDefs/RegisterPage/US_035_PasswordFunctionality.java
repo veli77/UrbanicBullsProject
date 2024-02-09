@@ -48,6 +48,8 @@ public class US_035_PasswordFunctionality extends CommonPage {
     public void anAlertWhichRequiresRelevantFormatShouldAppearOnTheScreen() {
         // Validity değerini kontrol et
         Assert.assertFalse(getRegisterPage().validity);
+        // Girilen passwordun rengini kontrol et, gecersiz ve gecerli password ler icin farkli renk degerleri var
+        Assert.assertEquals(getRegisterPage().expectedInvalidColor, getRegisterPage().Password.getCssValue("color"));
     }
 
 
@@ -63,6 +65,9 @@ public class US_035_PasswordFunctionality extends CommonPage {
     @Then("An alert appears to match the confirm password with the initial one")
     public void anAlertAppearsToMatchTheConfirmPasswordWithTheInitialOne() {
         Assert.assertFalse(getRegisterPage().validity2);
+        // Uyumsuz sifrenin renk ile kontrolu
+        Assert.assertEquals(getRegisterPage().expectedInvalidColor, getRegisterPage().ConfirmPassword.getCssValue("color"));
+
     }
 
     @When("User enters a confirm password which matches the initial password")
