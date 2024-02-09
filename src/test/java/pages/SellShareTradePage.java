@@ -27,6 +27,10 @@ public class SellShareTradePage extends CommonPage{
     @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al mr-4 ml-1']")
     public WebElement ContactUsBtn_SellShareTread;
 
+    @FindBy(className ="Event_eventBarText__2R8Yg")
+    public WebElement eventsBtn;
+    @FindBy(xpath = "//a[@title='My Account']")
+    public WebElement usernameBtn;
 
 
     public void verifyHomePage() {
@@ -45,6 +49,10 @@ public class SellShareTradePage extends CommonPage{
         String actualUrl = driver.getCurrentUrl();
         System.out.println("actual="+actualUrl);
         Assert.assertEquals(expectedUrl,actualUrl);
+    }
+
+    public void userNameBtnClick(){
+        usernameBtn.click();
     }
 
     // US_044 sukru
@@ -75,5 +83,8 @@ public class SellShareTradePage extends CommonPage{
 
     public void verifyScheduledDeliveryPage(){
         Assert.assertTrue(scheduled_Delivery_Page_Title.isEnabled());
+    }
+    public void eventsBtnClik(){
+        eventsBtn.click();
     }
 }
