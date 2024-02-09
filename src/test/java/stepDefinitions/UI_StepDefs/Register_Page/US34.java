@@ -47,10 +47,10 @@ public class US34 extends RegisterPage {
     }
     RegisterPage rp = new RegisterPage();
 
-    @And("Click the {string} button on the main Page")
+   /* @And("Click the {string} button on the main Page")
     public void clickTheButtonOnTheMainPage(String text) {
         rp.clickMainButton(text);
-    }
+    } */
 
     @Then("Verify that first name entries match the expected result")
     public void verifyThatFirstNameEntriesMatchTheExpectedResult(DataTable dataTable) {
