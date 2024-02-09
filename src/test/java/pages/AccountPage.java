@@ -12,4 +12,7 @@ public class AccountPage extends CommonPage{
 
     @FindBy(css = "div[class='CheckDistrictModal_x-btn__sVOij']")
     public WebElement zipCodeBoxCloseButton;
+
+    @FindBy (css="[href='/account/home'].align-items-center[title=\"My Account\"]")
+    public WebElement myAccountUs50;
 }
