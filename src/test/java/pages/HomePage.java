@@ -119,6 +119,9 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
     public WebElement PrivacyPolicyBtnAtBotton;
 
+    @FindBy(xpath = "//div[@class='Footer_footer__YNkH0']//a[.='Farmers Market']")
+    public WebElement FarmersMarketLinkInFooter;
+
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
     public void goesToTestUrbanicFarmHomePage(){
