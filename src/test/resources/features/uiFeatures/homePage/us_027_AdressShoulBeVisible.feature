@@ -1,3 +1,5 @@
+
+@UI
 Feature: US_27_AddressShouldBeVisible
 	@TEST_BU-86
 	Scenario: US_27_AddressShouldBeVisible

@@ -64,6 +64,10 @@ public class LoginPage extends CommonPage{
     WebElement registeredZipCode;
 
 
+
+
+
+
     public void loginWithCredentials(String email, String password){
         ReusableMethods.sendText(input_email, email);
         ReusableMethods.sendText(input_password, password);
@@ -91,5 +95,8 @@ public class LoginPage extends CommonPage{
             }
         }
     }
+
+    @FindBy(xpath = "(//a[@class='Navbar_textLink__f6_Al mr-4'])[6]")
+    public WebElement loginButton;
 
 }
