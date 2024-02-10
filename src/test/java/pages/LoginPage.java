@@ -96,4 +96,7 @@ public class LoginPage extends CommonPage{
         }
     }
 
+    @FindBy(xpath = "(//a[@class='Navbar_textLink__f6_Al mr-4'])[6]")
+    public WebElement loginButton;
+
 }
