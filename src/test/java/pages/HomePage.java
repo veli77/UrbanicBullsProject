@@ -3,8 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.JSUtils;
 import utilities.Driver;
+import utilities.JSUtils;
+
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -173,6 +174,10 @@ public class HomePage extends CommonPage {
                 btnName + "')]"));
         element.click();
     }
+
+
+
+
 
     public void addZipCode(String zipCode){
         ReusableMethods.sendText(inputZipCode, zipCode);

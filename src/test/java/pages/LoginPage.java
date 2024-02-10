@@ -39,6 +39,8 @@ public class LoginPage extends CommonPage{
 
     }
 
+
+
     public void validCredential(){
         driver.get(LOGIN_URL.getLink());
         LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
