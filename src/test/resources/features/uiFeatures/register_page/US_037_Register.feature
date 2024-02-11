@@ -6,5 +6,5 @@ Feature: US_037
     And Click the "Register" button on the main Page
     Then Send valid information to register
 #     | First Name | Last Name | Eamil               | Password    |
-      | Test       | User      | testuser@deneme.com | Testuser1/. |
+      | Test       | User      | testuser3@deneme.com | Testuser1/. |
     Then Verify registration completed successfully

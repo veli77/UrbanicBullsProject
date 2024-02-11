@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.RegisterPage;
+package stepDefinitions.UI_StepDefs.Register_Page;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -36,7 +36,8 @@ public class US_035_PasswordFunctionality extends CommonPage {
     @Then("An alert appears to fill out the password section")
     public void anAlertAppearsToFillOutThePasswordSection() {
         // Validity değerini kontrol et
-        Assert.assertFalse(getRegisterPage().validity);
+      //  Assert.assertFalse(getRegisterPage().validity2);
+        Assert.assertEquals(getRegisterPage().expectedInvalidColor, getRegisterPage().Password.getCssValue("color"));
     }
 
     @When("User enters an invalid password {string} which is not in line with requirements")
@@ -47,7 +48,9 @@ public class US_035_PasswordFunctionality extends CommonPage {
     @Then("An alert which requires a relevant format should appear on the screen")
     public void anAlertWhichRequiresRelevantFormatShouldAppearOnTheScreen() {
         // Validity değerini kontrol et
-        Assert.assertFalse(getRegisterPage().validity);
+     //  Assert.assertFalse(getRegisterPage().validity2);
+        // Girilen passwordun rengini kontrol et, gecersiz ve gecerli password ler icin farkli renk degerleri var
+        Assert.assertEquals(getRegisterPage().expectedInvalidColor, getRegisterPage().Password.getCssValue("color"));
     }
 
 
@@ -62,7 +65,10 @@ public class US_035_PasswordFunctionality extends CommonPage {
     }
     @Then("An alert appears to match the confirm password with the initial one")
     public void anAlertAppearsToMatchTheConfirmPasswordWithTheInitialOne() {
-        Assert.assertFalse(getRegisterPage().validity2);
+     //  Assert.assertFalse(getRegisterPage().validity3);
+        // Uyumsuz sifrenin renk ile kontrolu
+        Assert.assertEquals(getRegisterPage().expectedInvalidColor, getRegisterPage().ConfirmPassword.getCssValue("color"));
+
     }
 
     @When("User enters a confirm password which matches the initial password")

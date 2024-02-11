@@ -8,10 +8,10 @@ import utilities.ReusableMethods;
 
 import static org.junit.Assert.assertTrue;
 
-public class US32 extends RegisterPage {
+public class US32 extends CommonPage {
     @When("User click the register button")
     public void user_click_the_register_button() {
-        getRegisterPage().registerButtonK.click();
+        getHomePage().RegisterButton.click();
         ReusableMethods.waitForPageToLoad(1);
     }
     @When("User click to sign in with google")

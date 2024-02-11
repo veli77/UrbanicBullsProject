@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.Driver;
+import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -71,7 +72,7 @@ public class RegisterPage extends CommonPage{
 
             nameForRegister.clear();
             nameForRegister.sendKeys(text);   //elemente scroll yapılma ihtiyacı için ara metod eklendi
-            registerBtn.click();  //her saniye click denemesi yapılması için eklendi
+            JSUtils.clickElementByJS(registerBtn);  //her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", nameForRegister);
@@ -91,7 +92,7 @@ public class RegisterPage extends CommonPage{
 
             middlenameForRegister.clear();
             middlenameForRegister.sendKeys(text);  // elemente scroll yapılma ihtiyacı için eklendi
-            registerBtn.click();  // her saniye click denemesi yapılması için eklendi
+            JSUtils.clickElementByJS(registerBtn);  // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", middlenameForRegister);
@@ -111,7 +112,7 @@ public class RegisterPage extends CommonPage{
 
             lastNameForRegister.clear();
             ReusableMethods.sendText(lastNameForRegister,text);   // elemente scroll yapılma ihtiyacı için eklendi
-            registerBtn.click();  // her saniye click denemesi yapılması için eklendi
+            JSUtils.clickElementByJS(registerBtn);  // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", lastNameForRegister);
@@ -132,7 +133,7 @@ public class RegisterPage extends CommonPage{
 
             emailForRegister.clear();
             ReusableMethods.sendText(emailForRegister, text);   // elemente scroll yapılma ihtiyacı için ara metod eklendi
-            registerBtn.click();   // her saniye click denemesi yapılması için eklendi
+            JSUtils.clickElementByJS(registerBtn);   // her saniye click denemesi yapılması için eklendi
 
             JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
             isValid = (Boolean) js.executeScript("return arguments[0].validity.valid", emailForRegister);
@@ -208,14 +209,17 @@ public class RegisterPage extends CommonPage{
 
 
     // JavaScript kodunu çalıştır
-    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-    public boolean validity = (boolean) jsExecutor.executeScript("var element = document.querySelector(\"input[name='plainPassword']\");" +
-            "return element.validity.valid;");
+    //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    //public boolean validity2 = (boolean) jsExecutor.executeScript("var element = document.querySelector(\"input[name='plainPassword']\");" +
+      //      "return element.validity.valid;");
 
     // JavaScript kodunu çalıştır
-    JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
-    public boolean validity2 = (boolean) jsExecutor2.executeScript("var element = document.querySelector(\"input[name='confirmPassword']\");" +
-            "return element.validity.valid;");
+    //JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
+    //public boolean validity3 = (boolean) jsExecutor2.executeScript("var element = document.querySelector(\"input[name='confirmPassword']\");" +
+      //      "return element.validity.valid;");
+
+    //Gecersiz renk, first name, last name, password vs icin
+    public String expectedInvalidColor = "rgba(245, 110, 105, 1)";
 
     }
 
