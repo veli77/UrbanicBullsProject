@@ -3,8 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.JSUtils;
 import utilities.Driver;
+import utilities.JSUtils;
+
 import utilities.ReusableMethods;
 
 import java.util.List;
@@ -119,8 +120,13 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
     public WebElement PrivacyPolicyBtnAtBotton;
 
+
     @FindBy(xpath = "//a[@href='/explore'][.='Sell-Share-Trade']")
     public WebElement SellShareTradeBtnAtButon;
+
+    @FindBy(xpath = "//div[@class='Footer_footer__YNkH0']//a[.='Farmers Market']")
+    public WebElement FarmersMarketLinkInFooter;
+
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -174,7 +180,11 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
+
     public void addZipCode(String zipCode) {
+
+
+
         ReusableMethods.sendText(inputZipCode, zipCode);
         zipCodeBtn.click();
     }

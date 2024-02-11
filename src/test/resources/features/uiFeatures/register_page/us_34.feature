@@ -38,38 +38,21 @@ Feature: As a user, I should be able to check valid and invalid name, surname, e
 
     Then Verify that email entries match the expected result
 #     | Email                 | Expected |
-      |                       | false    |
-      | @                     | false    |
-      | mehmetemin.com        | false    |
-      | mehmet.emin@          | false    |
-      | mehmet emin@demir.com | false    |
-      | mehmet.emin@demir.com | true     |
+      |                       | false |
+      | @                     | false |
+      | mehmetemin.com        | false |
+      | mehmet.emin@          | false |
+      | mehmet emin@demir.com | false |
+      | mehmet.emin@demir.com | true  |
 
 
+@UI
+  Scenario Outline: An error message should be received if the name information is invalid or left blank.
+   Then firstname is entered in unexpected format "<firstname>","<status>","<middlename>","<status>","<lastname>",<status>","<password>","<status>","<cnfrmpass>","<status>", and error message is received
+    Then the error message is appears.
+  Examples:
+    | firstname | status | middlename | lastname | password | cnfrmpass |
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #Scenario Outline: An error message should be received if the name information is invalid or left blank.
-   # Then firstname is entered in unexpected format "<firstname>","<middlename>","<lastname>","<email>","<password>","<cnfrmpass>" and error message is received
-    #Then the error message is appears.
-   # Examples:
-      #| firstname | middlename | lastname | email        | password | cnfrmpass |
-      #| Ay123     | Derya      | Ak       | ak@gmail.com | 12345D.d | 12345D.d  |
-      #| 12345     | Derya      | Ak       | ak@gmail.com | 12345D.d | 12345D.d  |
-      #| 123!?h    | Derya      | Ak       | ak@gmail.com | 12345D.d | 12345D.d  |
-      #|           | Derya      | Ak       | ak@gmail.com | 12345D.d | 12345D.d  |
 
 
 

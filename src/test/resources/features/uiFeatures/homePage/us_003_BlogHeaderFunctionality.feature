@@ -1,4 +1,4 @@
-@BU-2
+@BU-3
 @UI
 Feature: Blog Header Verification
   #User should be able to perform various operations on homepage
