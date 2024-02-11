@@ -64,10 +64,10 @@ public class HomePage extends CommonPage {
     @FindBy(css = ".section-7_btn2__2lv_r")
     public WebElement Post_Your_GoodsButton;
 
-    @FindBy(css = "[href='/terms-of-service']" )
+    @FindBy(css = "[href='/terms-of-service']")
     public WebElement TermOfService;
 
-    @FindBy(xpath = "//*[@class='text-center mb-5']" )
+    @FindBy(xpath = "//*[@class='text-center mb-5']")
     public WebElement TermOfServiceIsDiplayed;
 
     @FindBy(xpath = "//div/a[@href='/account/weekly-order']")
@@ -78,7 +78,7 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//div/a[@href='/about']")
     public WebElement AboutUsBtnAtButton;
-   @FindBy(xpath = "//a[@class='d-block']")
+    @FindBy(xpath = "//a[@class='d-block']")
     public WebElement AdressButton27;
 
     @FindBy(xpath = "//button[@class='section-9_gofunderButton__32gaj']")
@@ -119,9 +119,12 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//li/a[.='Privacy policy'][@href='/privacy-policy']")
     public WebElement PrivacyPolicyBtnAtBotton;
 
+    @FindBy(xpath = "//a[@href='/explore'][.='Sell-Share-Trade']")
+    public WebElement SellShareTradeBtnAtButon;
+
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
-    public void goesToTestUrbanicFarmHomePage(){
+    public void goesToTestUrbanicFarmHomePage() {
         driver.get("https://test.urbanicfarm.com/");
         ReusableMethods.waitForPageToLoad(5);
     }
@@ -140,7 +143,7 @@ public class HomePage extends CommonPage {
 
 
     //Butona tıkladıktan sonra gelen sayfanın title ile doğrulanmasını (contains) sağlar, T yada F döner
-    public boolean amIinRightPage(String title){
+    public boolean amIinRightPage(String title) {
         ReusableMethods.switchToWindow(1);
         return driver.getTitle().contains(title);
     }
@@ -152,45 +155,51 @@ public class HomePage extends CommonPage {
     }
 
 
-// US_036 sukru
-    @FindBy(css="input[type='text']")
+    // US_036 sukru
+    @FindBy(css = "input[type='text']")
     private WebElement inputZipCode;
 
     @FindBy(xpath = "//button[contains(text(), 'go')]")
     private WebElement zipCodeBtn;
 
-    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    @FindBy(xpath = "//button[contains(text(), 'Register')]")
     private WebElement registerBtn;
 
     @FindBy(xpath = "//span[contains(text(), 'Change ZIP code')]")
     private WebElement changeZIPCodeBtn;
 
-    public void clickMainButton(String btnName){
+    public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
         element.click();
     }
 
-    public void addZipCode(String zipCode){
+    public void addZipCode(String zipCode) {
         ReusableMethods.sendText(inputZipCode, zipCode);
         zipCodeBtn.click();
     }
 
 
-
     //HomePage sayfasının en altına gidip Privacy_policy butonuna tıklar
-    public void clickPrivacyPolicyBtn(){
+    public void clickPrivacyPolicyBtn() {
         ReusableMethods.hover(PrivacyPolicyBtnAtBotton);
         PrivacyPolicyBtnAtBotton.click();
     }
 
 
-
-
-
     // Contribution to the Environment and Society text'i altindaki Register Now butonu vasitasiyla register sayfasina gitmek icin
-    public void goToRegisterPage(){
+    public void goToRegisterPage() {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
+
+    //HomePage sayfasinin en altinda Explore bolumunun Blog buttonu
+
+    @FindBy(xpath = "//a[.='blog']")
+    public WebElement ExploreBlog;
+
+//HomePage sayfasinin en altinda Features bolumunun Scheduled Delivery buttonu
+
+    @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
+    public WebElement ScheduledDelivery;
 }
