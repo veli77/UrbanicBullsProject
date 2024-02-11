@@ -13,6 +13,7 @@ Feature: As a user I should be able to see the functionality of the register pag
       | plainPassword   |
       | confirmPassword |
 
+
   @UI @veli @033
   Scenario: Name should not be able to left blank
     Given User goes to homepage
