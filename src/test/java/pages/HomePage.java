@@ -212,4 +212,11 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
+
+    //En altta bulunan about us butonuna gider ve tıklar.
+    public void clickBottomAboutUs() {
+        ReusableMethods.hover(AboutUsBtnAtButton);
+        AboutUsBtnAtButton.click();
+    }
+
 }
