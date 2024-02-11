@@ -175,9 +175,13 @@ public class HomePage extends CommonPage {
     private WebElement changeZIPCodeBtn;
 
     public void clickMainButton(String btnName) {
-        WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
-                btnName + "')]"));
-        element.click();
+        WebElement element = Driver.getDriver().findElement(By
+                            .xpath("//div/a[contains(text(), '" + btnName + "')]"));
+        try {
+            element.click();
+        } catch (Exception e) {
+            clickSandwichBtn();
+        }
     }
 
 
@@ -212,4 +216,22 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
+
+    public void clickSandwichBtn(){
+        WebElement sandwichBtn = Driver.getDriver().findElement(By
+                .cssSelector("div[class^='Navbar_button']"));
+        try {
+            sandwichBtn.click();
+        } catch (Exception e) {
+            clickDownArrow();
+        }
+    }
+
+    public void clickDownArrow(){
+        WebElement downArrowBtn = Driver.getDriver().findElement(By
+                .cssSelector("svg[xmlns='http://www.w3.org/2000/svg']"));
+        downArrowBtn.click();
+    }
+
+
 }
