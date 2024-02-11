@@ -208,6 +208,109 @@ public class RegisterPage extends CommonPage{
     public WebElement RegisterButtonBottomofPage;
 
 
+    public boolean isEnabled(String partialElement){
+        WebElement element = Driver.getDriver().findElement(By.xpath("//input[@id='registration_form_"+
+                partialElement +"']"));
+        return element.isEnabled();
+    }
+
+
+    public boolean isNameBlankTestPass(List<String> credList){
+        nameForRegister.clear();
+        middlenameForRegister.clear();
+        lastNameForRegister.clear();
+        lastNameForRegister.sendKeys(credList.get(1));
+        emailForRegister.clear();
+        emailForRegister.sendKeys(credList.get(2));
+        passwordForRegister.clear();
+        passwordForRegister.sendKeys(credList.get(3));
+        confirmePasswordForRegister.clear();
+        confirmePasswordForRegister.sendKeys(credList.get(4));
+        registerBtn.click();
+        if(getRegisterPage().expectedInvalidColor.equals(getRegisterPage()
+                .nameForRegister.getCssValue("color"))){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isLastNameBlankTestPass(List<String> credList){
+        nameForRegister.clear();
+        nameForRegister.sendKeys(credList.get(0));
+        middlenameForRegister.clear();
+        lastNameForRegister.clear();
+        emailForRegister.clear();
+        emailForRegister.sendKeys(credList.get(2));
+        passwordForRegister.clear();
+        passwordForRegister.sendKeys(credList.get(3));
+        confirmePasswordForRegister.clear();
+        confirmePasswordForRegister.sendKeys(credList.get(4));
+        registerBtn.click();
+        if(getRegisterPage().expectedInvalidColor.equals(getRegisterPage()
+                .lastNameForRegister.getCssValue("color"))){
+            return true;
+        }
+        return false;
+    }
+    public boolean isEmailBlankTestPass(List<String> credList){
+        nameForRegister.clear();
+        nameForRegister.sendKeys(credList.get(0));
+        middlenameForRegister.clear();
+        lastNameForRegister.clear();
+        lastNameForRegister.sendKeys(credList.get(1));
+        emailForRegister.clear();
+
+        passwordForRegister.clear();
+        passwordForRegister.sendKeys(credList.get(3));
+        confirmePasswordForRegister.clear();
+        confirmePasswordForRegister.sendKeys(credList.get(4));
+        registerBtn.click();
+        if(getRegisterPage().expectedInvalidColor.equals(getRegisterPage()
+                .emailForRegister.getCssValue("color"))){
+            return true;
+        }
+        return false;
+    }
+    public boolean isPasswordBlankTestPass(List<String> credList){
+        nameForRegister.clear();
+        nameForRegister.sendKeys(credList.get(0));
+        middlenameForRegister.clear();
+        lastNameForRegister.clear();
+        lastNameForRegister.sendKeys(credList.get(1));
+        emailForRegister.clear();
+        emailForRegister.sendKeys(credList.get(2));
+        passwordForRegister.clear();
+
+        confirmePasswordForRegister.clear();
+        confirmePasswordForRegister.sendKeys(credList.get(4));
+        registerBtn.click();
+        if(getRegisterPage().expectedInvalidColor.equals(getRegisterPage()
+                .passwordForRegister.getCssValue("color"))){
+            return true;
+        }
+        return false;
+    }
+    public boolean isConfirmePasswordBlankTestPass(List<String> credList){
+        nameForRegister.clear();
+        nameForRegister.sendKeys(credList.get(0));
+        middlenameForRegister.clear();
+        lastNameForRegister.clear();
+        lastNameForRegister.sendKeys(credList.get(1));
+        emailForRegister.clear();
+        emailForRegister.sendKeys(credList.get(2));
+        passwordForRegister.clear();
+        passwordForRegister.sendKeys(credList.get(3));
+        confirmePasswordForRegister.clear();
+
+        registerBtn.click();
+        if(getRegisterPage().expectedInvalidColor.equals(getRegisterPage()
+                .confirmePasswordForRegister.getCssValue("color"))){
+            return true;
+        }
+        return false;
+    }
+
+
     // JavaScript kodunu çalıştır
     //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
     //public boolean validity2 = (boolean) jsExecutor.executeScript("var element = document.querySelector(\"input[name='plainPassword']\");" +
