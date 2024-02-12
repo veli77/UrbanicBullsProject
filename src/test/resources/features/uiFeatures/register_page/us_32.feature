@@ -1,4 +1,4 @@
-
+@Kubra
   Feature: Sign up with google account
 
     #Registration must be created with Sign in with Google and confirmation must be sent to the e-mail.
