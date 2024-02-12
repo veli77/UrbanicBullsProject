@@ -1,7 +1,9 @@
-Feature: As a user I should be able to see the functionality of the register page
+@BU-164 @veli
+Feature: TE_01 of US_33  Functionality of the register page
 
-  @UI @veli @033
-  Scenario: Name, Surname, Email, Password fields must be functional
+#AC_1 Name, Surname, Email, Password and Confirm Password enabled
+  @TEST_BU-155 @UI @033
+  Scenario: TC01 of US_033  Verify that Name, Surname, Email, Password and Confirm password enabled.
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that Name, Surname, Email, Password fields are enabled
@@ -13,21 +15,22 @@ Feature: As a user I should be able to see the functionality of the register pag
       | plainPassword   |
       | confirmPassword |
 
-
-  @UI @veli @033
-  Scenario: Name should not be able to left blank
+ #AC_2 User could not register with blank Name
+  @TEST_BU-159 @UI @033
+  Scenario: TC02 of US_033 User could not register with blank Name
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that Name should not be able to left blank
-#     | Fields          |
+		#     | Fields          |
       |                      |
       | Doe                  |
       | johndoe001@gmail.com |
       | 555pqX27_Re          |
       | 555pqX27_Re          |
 
-  @UI @veli @033
-  Scenario: Surname should not be able to left blank
+	#AC_3 User could not register with blank Surname
+  @TEST_BU-160 @UI @033
+  Scenario: TC03 of US_033 User could not register with blank Surname
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that surname should not be able to left blank
@@ -37,8 +40,9 @@ Feature: As a user I should be able to see the functionality of the register pag
       | 555pqX27_Re          |
       | 555pqX27_Re          |
 
-  @UI @veli @033
-  Scenario: Email should not be able to left blank
+	#AC_4 User could not register with blank Email
+  @TEST_BU-161 @UI @033
+  Scenario: TC04 of US_033 User could not register with blank Email
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that email should not be able to left blank
@@ -48,8 +52,9 @@ Feature: As a user I should be able to see the functionality of the register pag
       | 555pqX27_Re |
       | 555pqX27_Re |
 
-  @UI @veli @033
-  Scenario: Password should not be able to left blank
+	#AC_5 User could not register with blank Password
+  @TEST_BU-162 @UI @033
+  Scenario: TC05 of US_033 User could not register with blank Password
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that password should not be able to left blank
@@ -59,8 +64,9 @@ Feature: As a user I should be able to see the functionality of the register pag
       |                      |
       | 555pqX27_Re          |
 
-  @UI @veli @033
-  Scenario: Confirm password should not be able to left blank
+	#AC_6 User could not register with blank Confirm Password
+  @TEST_BU-163 @UI @033
+  Scenario: TC06 of US_033 User could not register with blank Confirm Password
     Given User goes to homepage
     And Click the "Register" button on the main Page
     Then Verify that verifypassword should not be able to left blank

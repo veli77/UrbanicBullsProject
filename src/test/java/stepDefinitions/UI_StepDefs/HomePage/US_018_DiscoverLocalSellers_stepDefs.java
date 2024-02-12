@@ -8,7 +8,7 @@ import utilities.JSUtils;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_018_DiscoverLocalSellers extends CommonPage {
+public class US_018_DiscoverLocalSellers_stepDefs extends CommonPage {
     @When("User clicks on the Discover Local Sellers Near You button")
     public void userClicksOnTheDiscoverLocalSellersNearYouButton() {
         JSUtils.scrollDownByJS();

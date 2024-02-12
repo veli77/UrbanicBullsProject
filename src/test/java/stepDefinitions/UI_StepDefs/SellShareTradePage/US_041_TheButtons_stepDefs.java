@@ -6,9 +6,8 @@ import utilities.ReusableMethods;
 
 
 import static org.junit.Assert.*;
-import static stepDefinitions.Hooks.driver;
 
-public class US_041_TheButtons extends CommonPage {
+public class US_041_TheButtons_stepDefs extends CommonPage {
 
     @Given("User logs in")
     public void user_logs_in() {

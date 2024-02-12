@@ -127,6 +127,29 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//div[@class='Footer_footer__YNkH0']//a[.='Farmers Market']")
     public WebElement FarmersMarketLinkInFooter;
 
+    // US_036 sukru
+    @FindBy(css = "input[type='text']")
+    private WebElement inputZipCode;
+
+    @FindBy(xpath = "//button[contains(text(), 'go')]")
+    private WebElement zipCodeBtn;
+
+    @FindBy(xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    @FindBy(xpath = "//span[contains(text(), 'Change ZIP code')]")
+    private WebElement changeZIPCodeBtn;
+
+    //HomePage sayfasinin en altinda Explore bolumunun Blog buttonu
+
+    @FindBy(xpath = "//a[.='blog']")
+    public WebElement ExploreBlog;
+
+//HomePage sayfasinin en altinda Features bolumunun Scheduled Delivery buttonu
+
+    @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
+    public WebElement ScheduledDelivery;
+
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -161,18 +184,7 @@ public class HomePage extends CommonPage {
     }
 
 
-    // US_036 sukru
-    @FindBy(css = "input[type='text']")
-    private WebElement inputZipCode;
 
-    @FindBy(xpath = "//button[contains(text(), 'go')]")
-    private WebElement zipCodeBtn;
-
-    @FindBy(xpath = "//button[contains(text(), 'Register')]")
-    private WebElement registerBtn;
-
-    @FindBy(xpath = "//span[contains(text(), 'Change ZIP code')]")
-    private WebElement changeZIPCodeBtn;
 
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
@@ -203,15 +215,7 @@ public class HomePage extends CommonPage {
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
 
-    //HomePage sayfasinin en altinda Explore bolumunun Blog buttonu
 
-    @FindBy(xpath = "//a[.='blog']")
-    public WebElement ExploreBlog;
-
-//HomePage sayfasinin en altinda Features bolumunun Scheduled Delivery buttonu
-
-    @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
-    public WebElement ScheduledDelivery;
 
     //En altta bulunan about us butonuna gider ve tıklar.
     public void clickBottomAboutUs() {

@@ -7,7 +7,7 @@ import pages.CommonPage;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_010_GetFreshProduce extends CommonPage {
+public class US_010_GetFreshProduce_stepDefs extends CommonPage {
     @When("User clicks on the Get Fresh Produce button")
     public void userClicksOnTheGetFreshProduceButton() {
 

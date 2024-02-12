@@ -22,11 +22,15 @@ import static stepDefinitions.Hooks.driver;
 
 public class RegisterPage extends CommonPage{
 
+    //Gecersiz renk, first name, last name, password vs icin
+    public String expectedInvalidColor = "rgba(245, 110, 105, 1)";
 
     @FindBy(xpath = "//div[@class='SocialLogins_login_btn__2b3rz']")
     public WebElement registerByGoogleA;
+
     @FindBy(xpath = "//input[@id='identifierId']")
     public WebElement sendEmail;
+
     @FindBy(xpath = "(//span[@jsname='V67aGc'])[2]")
     public WebElement nextButton;//send email den sonra gelen
 
@@ -35,24 +39,75 @@ public class RegisterPage extends CommonPage{
 
     @FindBy(xpath = "//input[@id='registration_form_firstname']")
     public WebElement nameForRegister;
+
     @FindBy(xpath = "//input[@id='registration_form_middlename']")
     public WebElement middlenameForRegister;
+
     @FindBy(xpath = "//input[@id='registration_form_lastname']")
     public WebElement lastNameForRegister;
+
     @FindBy(xpath = "//input[@id='registration_form_email']")
     public WebElement emailForRegister;
 
     @FindBy(xpath = "//input[@id='registration_form_plainPassword']")
     public WebElement passwordForRegister;
+
     @FindBy(xpath = "//input[@id='registration_form_confirmPassword']")
     public WebElement confirmePasswordForRegister;
+
     @FindBy(xpath = "//button[contains(text(), 'Register')]")
     public WebElement registerButtonK;
+
     @FindBy(xpath = "//div[@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
     public WebElement welcomeYazisi;
 
     @FindBy(xpath = "//input[@name='zipCode']")
     public WebElement zipKodK;
+
+    @FindBy (id ="registration_form_firstname")
+    private WebElement firstNameInput;
+
+    @FindBy (id ="registration_form_middlename")
+    private WebElement middleNameInput;
+
+    @FindBy(id="registration_form_lastname")
+    private WebElement lastNameInput;
+
+    @FindBy (id ="registration_form_email")
+    private WebElement eMailInput;
+
+    @FindBy (id ="registration_form_plainPassword")
+    private WebElement passwordInput;
+
+    @FindBy (id ="registration_form_confirmPassword")
+    private WebElement passwordConfirmInput;
+
+    @FindBy (xpath = "//button[contains(text(), 'Register')]")
+    private WebElement registerBtn;
+
+    @FindBy (xpath = "//div[@role='alert'][contains(text(), 'Welcome!')]")
+    private WebElement registerApproveMsg;
+
+    @FindBy(xpath = "//input[@name='firstName']")
+    public WebElement FirstName;
+
+    @FindBy(xpath = "//input[@name='lastName']")
+    public WebElement LastName;
+
+    @FindBy(xpath = "//input[@name='email']")
+    public WebElement Email;
+
+    @FindBy(xpath = "//input[@name='plainPassword']")
+    public WebElement Password;
+
+    @FindBy(xpath = "//input[@name='confirmPassword']")
+    public WebElement ConfirmPassword;
+
+    @FindBy(xpath = "//div[text()='Welcome!']")
+    public WebElement WelcomeMessage;
+
+    @FindBy(xpath = "//button[@class='btn alazea-btn']")
+    public WebElement RegisterButtonBottomofPage;
 
     public void clickMainButton(String btnName){
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
@@ -146,32 +201,6 @@ public class RegisterPage extends CommonPage{
         Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("register"));
     }
 
-    // US_037 sukru
-
-    @FindBy (id ="registration_form_firstname")
-    private WebElement firstNameInput;
-
-    @FindBy (id ="registration_form_middlename")
-    private WebElement middleNameInput;
-
-    @FindBy(id="registration_form_lastname")
-    private WebElement lastNameInput;
-
-    @FindBy (id ="registration_form_email")
-    private WebElement eMailInput;
-
-    @FindBy (id ="registration_form_plainPassword")
-    private WebElement passwordInput;
-
-    @FindBy (id ="registration_form_confirmPassword")
-    private WebElement passwordConfirmInput;
-
-    @FindBy (xpath = "//button[contains(text(), 'Register')]")
-    private WebElement registerBtn;
-
-    @FindBy (xpath = "//div[@role='alert'][contains(text(), 'Welcome!')]")
-    private WebElement registerApproveMsg;
-
     public void typeRegisterInf(List<List<String>> listItems){
         ReusableMethods.sendText(firstNameInput, listItems.get(0).get(0));
         ReusableMethods.sendText(lastNameInput, listItems.get(0).get(1));
@@ -185,35 +214,12 @@ public class RegisterPage extends CommonPage{
         String alertMessage = "Welcome!";
         assertEquals(alertMessage, ReusableMethods.getElementText(registerApproveMsg));
     }
-    //US_035 Gokhan
-    @FindBy(xpath = "//input[@name='firstName']")
-    public WebElement FirstName;
-
-    @FindBy(xpath = "//input[@name='lastName']")
-    public WebElement LastName;
-
-    @FindBy(xpath = "//input[@name='email']")
-    public WebElement Email;
-
-    @FindBy(xpath = "//input[@name='plainPassword']")
-    public WebElement Password;
-
-    @FindBy(xpath = "//input[@name='confirmPassword']")
-    public WebElement ConfirmPassword;
-
-    @FindBy(xpath = "//div[text()='Welcome!']")
-    public WebElement WelcomeMessage;
-
-    @FindBy(xpath = "//button[@class='btn alazea-btn']")
-    public WebElement RegisterButtonBottomofPage;
-
 
     public boolean isEnabled(String partialElement){
         WebElement element = Driver.getDriver().findElement(By.xpath("//input[@id='registration_form_"+
                 partialElement +"']"));
         return element.isEnabled();
     }
-
 
     public boolean isNameBlankTestPass(List<String> credList){
         nameForRegister.clear();
@@ -310,7 +316,6 @@ public class RegisterPage extends CommonPage{
         return false;
     }
 
-
     // JavaScript kodunu çalıştır
     //JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
     //public boolean validity2 = (boolean) jsExecutor.executeScript("var element = document.querySelector(\"input[name='plainPassword']\");" +
@@ -320,9 +325,6 @@ public class RegisterPage extends CommonPage{
     //JavascriptExecutor jsExecutor2 = (JavascriptExecutor) driver;
     //public boolean validity3 = (boolean) jsExecutor2.executeScript("var element = document.querySelector(\"input[name='confirmPassword']\");" +
       //      "return element.validity.valid;");
-
-    //Gecersiz renk, first name, last name, password vs icin
-    public String expectedInvalidColor = "rgba(245, 110, 105, 1)";
 
     }
 

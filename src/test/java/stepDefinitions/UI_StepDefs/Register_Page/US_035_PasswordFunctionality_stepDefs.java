@@ -6,14 +6,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 import pages.CommonPage;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
-import static stepDefinitions.Hooks.driver;
-
-public class US_035_PasswordFunctionality extends CommonPage {
+public class US_035_PasswordFunctionality_stepDefs extends CommonPage {
     public Faker faker = new Faker();
 
     @Then("User goes to Register Page")

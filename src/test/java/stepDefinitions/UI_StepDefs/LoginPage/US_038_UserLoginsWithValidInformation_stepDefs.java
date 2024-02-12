@@ -5,10 +5,9 @@ import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.CommonPage;
 
-import static stepDefinitions.Hooks.driver;
 import static utilities.ConfigurationReader.properties;
 
-public class US_038_UserLoginsWithValidInformation extends CommonPage {
+public class US_038_UserLoginsWithValidInformation_stepDefs extends CommonPage {
     @Then("User goes to login page")
     public void userGoesToLoginPage() {
         getHomePage().LoginBtnAtButton.click();

@@ -10,7 +10,7 @@ import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_024_ContactUsBtn extends CommonPage {
+public class US_024_ContactUsBtn_stepDefs extends CommonPage {
     @Given("User goes to homepage")
     public void userGoesToHomepage() {
         driver.get("https://test.urbanicfarm.com/");

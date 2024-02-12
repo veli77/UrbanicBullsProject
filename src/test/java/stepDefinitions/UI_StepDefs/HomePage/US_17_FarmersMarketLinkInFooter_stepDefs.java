@@ -6,7 +6,7 @@ import pages.CommonPage;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
-public class US_17_FarmersMarketLinkInFooter extends CommonPage {
+public class US_17_FarmersMarketLinkInFooter_stepDefs extends CommonPage {
     @When("the user scrolls to the bottom of the page")
     public void theUserScrollsToTheBottomOfThePage() {
         JSUtils.scrollDownByJS();

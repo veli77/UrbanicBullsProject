@@ -6,7 +6,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
 
-public class US_028_PhoneIsVisible extends CommonPage {
+public class US_028_PhoneIsVisible_stepDefs extends CommonPage {
     @Given("User goes to HomePage")
     public void userGoesToHomePage() {
         getHomePage().goesToTestUrbanicFarmHomePage();

@@ -14,11 +14,6 @@ public class US_33_RegisterPageFunctionality_StepDef extends CommonPage {
         }
     }
 
-
-
-
-
-
     @Then("Verify that Name should not be able to left blank")
     public void verifyThatNameShouldNotBeAbleToLeftBlank(List<String> credList) {
         Assert.assertTrue(getRegisterPage().isNameBlankTestPass(credList));

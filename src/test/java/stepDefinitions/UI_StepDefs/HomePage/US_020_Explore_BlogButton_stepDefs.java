@@ -11,7 +11,7 @@ import static utilities.ReusableMethods.*;
 
 
 
-public class US_020_Explore_BlogButton extends HomePage {
+public class US_020_Explore_BlogButton_stepDefs extends HomePage {
     @When("User clicks on the explore blog button")
     public void user_clicks_on_the_explore_blog_button() {
         waitFor(2);

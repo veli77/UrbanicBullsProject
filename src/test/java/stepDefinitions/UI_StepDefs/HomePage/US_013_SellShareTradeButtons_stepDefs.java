@@ -5,7 +5,7 @@ import io.cucumber.java.en.Then;
 import pages.CommonPage;
 import utilities.JSUtils;
 
-public class US_013_SellShareTradeButtons extends CommonPage {
+public class US_013_SellShareTradeButtons_stepDefs extends CommonPage {
     @Then("User is able to click on Sell button under Sell Your Products")
     public void userIsAbleToClickOnSellButtonUnderSellYourProducts() {
         getHomePage().SellButton.isEnabled();

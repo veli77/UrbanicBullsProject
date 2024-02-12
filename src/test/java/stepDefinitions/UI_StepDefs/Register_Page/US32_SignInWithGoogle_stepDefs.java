@@ -2,13 +2,11 @@ package stepDefinitions.UI_StepDefs.Register_Page;
 
 import io.cucumber.java.en.*;
 import pages.CommonPage;
-import pages.RegisterPage;
-import utilities.ConfigurationReader;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.assertTrue;
 
-public class US32 extends CommonPage {
+public class US32_SignInWithGoogle_stepDefs extends CommonPage {
     @When("User click the register button")
     public void user_click_the_register_button() {
         getHomePage().RegisterButton.click();

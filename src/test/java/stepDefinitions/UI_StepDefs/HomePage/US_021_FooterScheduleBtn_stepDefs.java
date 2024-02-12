@@ -4,13 +4,11 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import pages.CommonPage;
-import pages.HomePage;
-import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_021 extends CommonPage {
+public class US_021_FooterScheduleBtn_stepDefs extends CommonPage {
     @When("User clicks on the Features schedules delivery button")
     public void user_clicks_on_the_features_schedules_delivery_button() {
         ReusableMethods.hover(getHomePage().ScheduledDelivery);
