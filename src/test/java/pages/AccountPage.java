@@ -7,12 +7,10 @@ import java.util.List;
 
 public class AccountPage extends CommonPage{
 
-    @FindBy(css = "div[class*='px-0 m-0 mt-2'] a")
-    public List<WebElement> accountPageLeftsidesTabs;
-
-    @FindBy(css = "div[class='CheckDistrictModal_x-btn__sVOij']")
-    public WebElement zipCodeBoxCloseButton;
 
     @FindBy (css="[href='/account/home'].align-items-center[title=\"My Account\"]")
-    public WebElement myAccountUs50;
+    public WebElement profil_img_Account;
+
+
+
 }
