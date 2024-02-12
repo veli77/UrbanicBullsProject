@@ -22,8 +22,14 @@ public class CommonPage {
     private ExplorePage explorePage;
     private WefunderPage wefunderPage;
     private PrivacyPolicyPage privacyPolicyPage;
+    private AccountHomePage accountHomePage;
 
-
+    public AccountHomePage getAccountHomePage() {
+        if (accountHomePage == null) {
+            accountHomePage = new AccountHomePage();
+        }
+        return accountHomePage;
+    }
 
     public PrivacyPolicyPage getPrivacyPolicyPage() {
         if (privacyPolicyPage == null) {

@@ -81,7 +81,7 @@ public void recordStart(){
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
-        getAccountPage().zipCodeBoxCloseButton.click();
+        getAccountHomePage().zipCodeBoxCloseButton.click();
 
 
 

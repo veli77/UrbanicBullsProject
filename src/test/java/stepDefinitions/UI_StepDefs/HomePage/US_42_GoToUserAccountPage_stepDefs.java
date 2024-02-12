@@ -25,9 +25,9 @@ public class US_42_GoToUserAccountPage_stepDefs extends CommonPage{
        // Assert.assertTrue(driver.getCurrentUrl().contains("account"));
 
         List<String> tabs = new ArrayList<>();
-        for (int i = 0; i <getAccountPage().accountPageLeftsidesTabs.size(); i++) {
+        for (int i = 0; i <getAccountHomePage().accountPageLeftsidesTabs.size(); i++) {
 
-            tabs.add(getAccountPage().accountPageLeftsidesTabs.get(i).getText());
+            tabs.add(getAccountHomePage().accountPageLeftsidesTabs.get(i).getText());
         }
 
         for (String tab : tabsNames) {
