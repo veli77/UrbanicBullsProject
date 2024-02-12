@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.Keys;
-import pages.CommonPage;
 import pages.RegisterPage;
 import utilities.ReusableMethods;
 
@@ -13,7 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class US34 extends RegisterPage {
+public class US34_RegisterNameFunctionality_stepDefs extends RegisterPage {
 
     Faker faker = new Faker();
     @Then("First name information is entered as a letter")

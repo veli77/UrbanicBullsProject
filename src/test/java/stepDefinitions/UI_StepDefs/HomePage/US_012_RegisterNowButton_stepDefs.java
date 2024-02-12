@@ -8,7 +8,7 @@ import utilities.JSUtils;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_012_RegisterNowButton extends CommonPage {
+public class US_012_RegisterNowButton_stepDefs extends CommonPage {
     @Then("Backyard gardeners and farmers join the Movement For Free! is visible")
     public void backyardGardenersAndFarmersJoinTheMovementForFreeIsVisible() {
         Assert.assertTrue(getHomePage().BackyardGardeners.isDisplayed());

@@ -11,7 +11,7 @@ import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
-public class localSellerSearchPage_stepDefinitions extends CommonPage {
+public class localSellerSearchPage_stepDefinitions_stepDefs extends CommonPage {
 
     @When("User click to WhatsNearYou button")
     public void userClickToWhatsNearYouButton() throws InterruptedException {

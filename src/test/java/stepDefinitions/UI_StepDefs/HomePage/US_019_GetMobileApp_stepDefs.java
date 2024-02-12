@@ -8,7 +8,7 @@ import utilities.JSUtils;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_019_GetMobileApp extends CommonPage {
+public class US_019_GetMobileApp_stepDefs extends CommonPage {
     @When("User clicks on the Get The App button")
     public void userClicksOnTheGetTheAppButton() {
         JSUtils.scrollDownByJS();

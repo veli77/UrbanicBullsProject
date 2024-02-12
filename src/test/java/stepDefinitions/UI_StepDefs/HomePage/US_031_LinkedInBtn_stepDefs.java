@@ -5,7 +5,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
 
-public class US_031_LinkedInBtn extends CommonPage {
+public class US_031_LinkedInBtn_stepDefs extends CommonPage {
     @When("User click the LinkedIn")
     public void userClickTheLinkedIn() {
         getHomePage().clickLinkedInIcon();

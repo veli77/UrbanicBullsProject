@@ -12,7 +12,6 @@ public class PrivacyPolicyPage extends CommonPage{
     @FindBy(css = ".mb-5")
     public WebElement onlinePrivacyPolicyText;
 
-
     //Privacy Policy Page de olduğunuzu kanıtlar
     public void amIinPrivacyPolicyPage(){
         ReusableMethods.waitForPageToLoad(5);

@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.AccountPage;
+package stepDefinitions.UI_StepDefs.AccountHomePage;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -12,7 +12,7 @@ public class US_50_MyAccount extends CommonPage {
 
     @Given("the user clicks on the Account")
     public void theUserClicksOnTheAccount() {
-  getAccountPage().myAccountUs50.click();
+  getAccountPage().profil_img_Account.click();
 
     }
 

@@ -9,7 +9,7 @@ import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
-public class US_003_BlogHeaderVerification extends CommonPage {
+public class US_003_BlogHeaderVerification_stepDefs extends CommonPage {
     @When("the user clicks on the Blog header")
     public void theUserClicksOnTheBlogHeader() {
         getHomePage().BlogLink.click();

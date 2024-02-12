@@ -5,7 +5,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
 
-public class US_030_FacebookBtn extends CommonPage {
+public class US_030_FacebookBtn_stepDefs extends CommonPage {
 
 
 
