@@ -14,12 +14,12 @@ public class US_047_LogoutBtn_stepDefs extends CommonPage {
         JSUtils.clickElementByJS(getHomePage().LoginBtnAtButton);
     }
 
-
+/*
     @And("User logs in")
     public void userLogsIn() {
 
         getLoginPage().login();
-    }
+    } */
 
 
     @When("User clicks on Sell-Share-Trade module")

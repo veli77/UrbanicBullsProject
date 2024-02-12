@@ -39,6 +39,8 @@ public class LoginPage extends CommonPage{
 
     }
 
+
+
     public void validCredential(){
         driver.get(LOGIN_URL.getLink());
         LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
@@ -95,5 +97,8 @@ public class LoginPage extends CommonPage{
             }
         }
     }
+
+    @FindBy(xpath = "(//a[@class='Navbar_textLink__f6_Al mr-4'])[6]")
+    public WebElement loginButton;
 
 }
