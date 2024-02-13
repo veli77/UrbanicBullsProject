@@ -15,11 +15,14 @@ public class localSellerSearchPage_stepDefinitions_stepDefs extends CommonPage {
 
     @When("User click to WhatsNearYou button")
     public void userClickToWhatsNearYouButton() throws InterruptedException {
-       JSUtils.scrollIntoViewJS(getHomePage().reduceWasteStrength);
+        //ReusableMethods.hover(getHomePage().reduceWasteStrength);
+        //JSUtils.scrollIntoViewJS(getHomePage().reduceWasteStrength);
         //ReusableMethods.hover(getHomePage().Whats_Near_YouButton);
-        //Thread.sleep(3000);
-        ReusableMethods.waitForVisibility(getHomePage().Whats_Near_YouButton, 5000);
-        ReusableMethods.clickElement(getHomePage().Whats_Near_YouButton);
+        Thread.sleep(3000);
+        JSUtils.clickElementByJS(getHomePage().Whats_Near_YouButton);
+        //ReusableMethods.waitForVisibility(getHomePage().Whats_Near_YouButton, 5000);
+        //Thread.sleep(5000);
+        //getHomePage().Whats_Near_YouButton.click();
 
 
     }

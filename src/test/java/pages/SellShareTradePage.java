@@ -69,14 +69,15 @@ public class SellShareTradePage extends CommonPage{
         ReusableMethods.waitForPageToLoad(10);
     }
 
-    public void verifyScheduledDeliveryLink(){
+    public void verifyScheduledDeliveryLink()throws InterruptedException{
         verifyScheduledDeliveryBtn();
         verifyScheduledDeliveryPage();
 
 
     }
 
-    public void verifyScheduledDeliveryBtn(){
+    public void verifyScheduledDeliveryBtn() throws InterruptedException {
+        Thread.sleep(3000);
         Assert.assertTrue(scheduled_Delivery_Btn.isEnabled());
         scheduled_Delivery_Btn.click();
     }

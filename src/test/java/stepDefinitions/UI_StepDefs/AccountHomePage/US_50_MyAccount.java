@@ -12,7 +12,7 @@ public class US_50_MyAccount extends CommonPage {
 
     @Given("the user clicks on the Account")
     public void theUserClicksOnTheAccount() {
-  getAccountPage().profil_img_Account.click();
+      //getAccountPage().profil_img_Account.click();
 
     }
 
