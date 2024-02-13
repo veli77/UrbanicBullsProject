@@ -1,4 +1,4 @@
-
+@wip
 Feature: Botton Bar About Us btn feature
 
   @UI
