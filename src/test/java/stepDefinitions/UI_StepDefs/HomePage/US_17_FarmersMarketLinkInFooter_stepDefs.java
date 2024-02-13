@@ -9,8 +9,7 @@ import utilities.ReusableMethods;
 public class US_17_FarmersMarketLinkInFooter_stepDefs extends CommonPage {
     @When("the user scrolls to the bottom of the page")
     public void theUserScrollsToTheBottomOfThePage() {
-        JSUtils.scrollDownByJS();
-        JSUtils.scrollDownByJS();
+
     }
 
     @And("the user clicks on the Farmers Market link in the footer")
