@@ -107,7 +107,6 @@ public class CommonPage {
         return farmerMarketPage;
     }
 
-
     public ExplorePage getExplorePage() {
         if (explorePage == null) {
             explorePage = new ExplorePage();
