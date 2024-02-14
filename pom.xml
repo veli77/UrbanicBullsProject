@@ -16,6 +16,15 @@
     </properties>
 
     <dependencies>
+
+
+ <!--       <dependency>
+            <groupId>org.sikuli</groupId>
+            <artifactId>sikuli-api</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+-->
+
         <!-- Screen Recording için kullanılan dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.stephenc.monte/monte-screen-recorder -->
         <dependency>
