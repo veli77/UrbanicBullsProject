@@ -9,7 +9,7 @@ import utilities.ConfigurationReader;
 import java.util.List;
 import java.util.Map;
 
-public class Deneme_stepDef {
+public class OmerHoca_stepDef {
   private   String user1_email = "user1@gmail.com";
 
 
