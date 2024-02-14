@@ -52,7 +52,7 @@ public class LoginPage extends CommonPage{
     public WebElement loginButton;
 
     public void login(){
-        ReusableMethods.waitForClickablility(LoginEmail,5).sendKeys("urbanicfarm2@yopmail.com");
+        ReusableMethods.waitForClickablility(LoginEmail,5).sendKeys("urbanicfarm2@gmail.com");
         ReusableMethods.waitForClickablility(input_password,5).sendKeys("Urbanicfarm2/");
         ReusableMethods.waitForClickablility(LoginSubmitButton,7).click();
     }
