@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
-import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 public class US_057_BuyerPicksUpOnTheVine_StepDef extends CommonPage {
