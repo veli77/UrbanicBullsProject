@@ -19,7 +19,7 @@ public class US_044_SellShareTrade_04_StepDef {
     }
 
     @Then("Verify Scheduled Delivery module can be accessible")
-    public void verifyScheduledDeliveryModuleCanBeAccessible() {
+    public void verifyScheduledDeliveryModuleCanBeAccessible() throws InterruptedException {
         sellShareTradePage.verifyScheduledDeliveryLink();
     }
 

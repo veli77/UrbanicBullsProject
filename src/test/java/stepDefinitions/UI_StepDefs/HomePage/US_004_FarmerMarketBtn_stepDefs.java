@@ -11,7 +11,7 @@ public class US_004_FarmerMarketBtn_stepDefs extends CommonPage {
     @When("User clicks on the Farmer Market module")
     public void userClicksOnTheFarmerMarketModule() throws InterruptedException {
         JSUtils.clickElementByJS(getHomePage().FarmerMarketBtnAtButton);
-        Thread.sleep(3000);
+        Thread.sleep(5000);
 
     }
 

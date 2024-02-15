@@ -29,9 +29,18 @@ public class SellShareTradePage extends CommonPage{
 
     @FindBy(className ="Event_eventBarText__2R8Yg")
     public WebElement eventsBtn;
+
     @FindBy(xpath = "//a[@title='My Account']")
     public WebElement usernameBtn;
 
+    @FindBy (xpath = "//a[.='Scheduled Delivery']")
+    private WebElement scheduled_Delivery_Btn;
+
+    @FindBy (xpath = "//p[contains(text(), 'Locally grown, finest varieties of vegetables and microgreens delivered')]")
+    private WebElement scheduled_Delivery_Page_Title;
+
+    @FindBy(xpath = "//span[.='Sell-Share-Trade']")
+    private WebElement sellShareTradeBtn;
 
     public void verifyHomePage() {
         String expectedUrl = "https://test.urbanicfarm.com/";
@@ -55,28 +64,20 @@ public class SellShareTradePage extends CommonPage{
         usernameBtn.click();
     }
 
-    // US_044 sukru
-
-    @FindBy (xpath = "//a[.='Scheduled Delivery']")
-    private WebElement scheduled_Delivery_Btn;
-
-    @FindBy (xpath = "//p[contains(text(), 'Locally grown, finest varieties of vegetables and microgreens delivered')]")
-    private WebElement scheduled_Delivery_Page_Title;
-
-    @FindBy(xpath = "//span[.='Sell-Share-Trade']")
-    private WebElement sellShareTradeBtn;
-
-
     public void clickSellShareTradeBtn(){
         sellShareTradeBtn.click();
+        ReusableMethods.waitForPageToLoad(10);
     }
 
-    public void verifyScheduledDeliveryLink(){
+    public void verifyScheduledDeliveryLink()throws InterruptedException{
         verifyScheduledDeliveryBtn();
         verifyScheduledDeliveryPage();
+
+
     }
 
-    public void verifyScheduledDeliveryBtn(){
+    public void verifyScheduledDeliveryBtn() throws InterruptedException {
+        Thread.sleep(3000);
         Assert.assertTrue(scheduled_Delivery_Btn.isEnabled());
         scheduled_Delivery_Btn.click();
     }
@@ -84,7 +85,12 @@ public class SellShareTradePage extends CommonPage{
     public void verifyScheduledDeliveryPage(){
         Assert.assertTrue(scheduled_Delivery_Page_Title.isEnabled());
     }
+
+
+
     public void eventsBtnClik(){
         eventsBtn.click();
     }
+
+
 }
