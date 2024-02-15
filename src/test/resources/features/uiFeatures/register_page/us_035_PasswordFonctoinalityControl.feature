@@ -9,6 +9,7 @@ Feature: US_035 - Controlling the Functionality of Password under RegisterPage
     When User leaves the password blank and submits the registration form
     Then An alert appears to fill out the password section
 
+  @smoke
   Scenario Outline: US_035 - Invalid password should be alerted
     When User enters an invalid password "<password>" which is not in line with requirements
     And User submits the registration form
@@ -26,6 +27,7 @@ Feature: US_035 - Controlling the Functionality of Password under RegisterPage
     And User submits the registration form
     Then An alert appears to match the confirm password with the initial one
 
+  @smoke
   Scenario: US_035 - Confirm password and initial password matches and registration succesfully finishes
     When User enters a confirm password which matches the initial password
     And User submits the registration form

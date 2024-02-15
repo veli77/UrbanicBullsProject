@@ -1,4 +1,4 @@
-@BU-2
+@BU-2 @smoke
 @UI
   Feature: Home Page Headers Verification
       #Homepage should contain various headers from left to right:
