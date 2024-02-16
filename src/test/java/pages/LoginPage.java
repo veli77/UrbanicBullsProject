@@ -1,5 +1,6 @@
 package pages;
 
+import enums.URL_LINKS;
 import enums.USERCREDENTIAL;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import static enums.URL_LINKS.LOGIN_URL;
 import static stepDefinitions.Hooks.driver;
+import static utilities.ReusableMethods.waitForPageToLoad;
 
 public class LoginPage extends CommonPage{
 
@@ -55,6 +57,16 @@ public class LoginPage extends CommonPage{
         ReusableMethods.waitForClickablility(LoginEmail,5).sendKeys("urbanicfarm2@gmail.com");
         ReusableMethods.waitForClickablility(input_password,5).sendKeys("Urbanicfarm2/");
         ReusableMethods.waitForClickablility(LoginSubmitButton,7).click();
+    }
+
+    //Enum classını yazarak credentiallerinle login olabilirsin
+    public void login(USERCREDENTIAL usercredential){
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        waitForPageToLoad(10);
+        input_email.sendKeys(usercredential.getUsername());
+        input_password.sendKeys(usercredential.getPassword());
+        submit_button.click();
+        getAccountWeeklyOrderPage().zipCodeBoxCloseButton.click();
     }
 
     public void validCredential(){
