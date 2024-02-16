@@ -4,7 +4,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.CommonPage;
 
-public class YourProducts_Services_stepDefs extends CommonPage {
+public class US_063_YourProducts_Services_stepDefs extends CommonPage {
 
     @When("User click to YourProducts_Services btn at the button")
     public void user_click_to_your_products_services_btn_at_the_button() throws InterruptedException {

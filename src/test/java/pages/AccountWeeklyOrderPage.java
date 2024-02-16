@@ -17,6 +17,9 @@ public class AccountWeeklyOrderPage extends CommonPage{
     @FindBy(xpath = "(//a[@class='Sidebar_smFont__16-hW Sidebar_section_btn__1sp6i h6 '])[3]")
     public WebElement YourProducts_Services;
 
+    @FindBy(xpath = "//a[@href='/account/address']")
+    public WebElement AddressBtn;
+
     public void setYourProducts_ServicesBtnClick() throws InterruptedException {
         JSUtils.clickElementByJS(getAccountWeeklyOrderPage().YourProducts_Services);
         Thread.sleep(3000);
