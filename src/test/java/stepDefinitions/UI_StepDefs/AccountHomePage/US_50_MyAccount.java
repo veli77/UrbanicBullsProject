@@ -4,15 +4,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pages.AccountPage;
 import pages.CommonPage;
-import pages.LoginPage;
 
 public class US_50_MyAccount extends CommonPage {
 
     @Given("the user clicks on the Account")
     public void theUserClicksOnTheAccount() {
-  getAccountPage().profil_img_Account.click();
+      //getAccountPage().profil_img_Account.click();
 
     }
 

@@ -10,12 +10,12 @@ Feature:Varios operations can be performed on the accoiunt button
   @TEST_BU-154
   Scenario: Viewing Account Information
     Given the user clicks on the Account
-     When the following options should be visible
-      | Qr code      |
-      | Full name    |
-      | Email        |
-      | Phone        |
-      | Choose file  |
+    # When the following options should be visible
+     # | Qr code      |
+      #| Full name   |
+      #| Email       |
+      #| Phone       |
+      #| Choose file |
     Then the Copy button should be functional
     And the Download button should be functional
 

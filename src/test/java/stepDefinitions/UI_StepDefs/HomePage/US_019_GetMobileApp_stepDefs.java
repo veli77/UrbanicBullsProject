@@ -5,13 +5,15 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
 import utilities.JSUtils;
+import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
 public class US_019_GetMobileApp_stepDefs extends CommonPage {
     @When("User clicks on the Get The App button")
     public void userClicksOnTheGetTheAppButton() {
-        JSUtils.scrollDownByJS();
+        //JSUtils.scrollDownByJS();
+        ReusableMethods.hover(getHomePage().GetTheApp);
         getHomePage().GetTheApp.click();
     }
 

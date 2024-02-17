@@ -74,14 +74,29 @@ public void recordStart(){
     public void login() {
         //loginPage=new LoginPage();
 
+        System.out.println("Login metodu calıstı");
+
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
-        getAccountPage().zipCodeBoxCloseButton.click();
+        getAccountHomePage().zipCodeBoxCloseButton.click();
 
+    }
 
+    @Before(value = "@Login2")
+    public void login2() {
+        //loginPage=new LoginPage();
+
+        System.out.println("Login2 metodu calıstı");
+
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        //getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
 

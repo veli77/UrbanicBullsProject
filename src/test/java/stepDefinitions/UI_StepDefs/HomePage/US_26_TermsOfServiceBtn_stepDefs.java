@@ -24,7 +24,8 @@ public class US_26_TermsOfServiceBtn_stepDefs extends CommonPage {
 
     @When("User click to Terms Of Service")
     public void userClickToTermsOfService() {
-        JSUtils.scrollDownByJS();
+        //JSUtils.scrollDownByJS();
+        ReusableMethods.hover(getHomePage().TermOfService);
         getHomePage().TermOfService.isDisplayed();
         ReusableMethods.waitFor(5);
         getHomePage().TermOfService.click();

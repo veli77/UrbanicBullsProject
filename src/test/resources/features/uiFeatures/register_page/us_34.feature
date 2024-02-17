@@ -10,7 +10,7 @@ Feature: As a user, I should be able to check valid and invalid name, surname, e
      And Valid email information is entered with the @, <something>.<something> sign.
      Then the message 'Welcome' appears.
 
-  @UI @US34-TC02
+  @UI @US34-TC02 @smoke
   Scenario: As a user, I should be able to check valid and invalid name, surname, email.
     Given User goes to homepage
     And Click the "Register" button on the main Page

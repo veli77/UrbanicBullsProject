@@ -10,21 +10,72 @@ public class CommonPage {
         PageFactory.initElements(driver, this);
     }
 
+    private AccountAddressPage accountAddressPage;
     private HomePage homePage;
     private ContactUsPage contactUsPage;
     private LoginPage loginPage;
     private RegisterPage registerPage;
     private SellShareTradePage sellShareTradePage;
-    private AccountPage accountPage;
+    private AccountWeeklyOrderPage accountWeeklyOrderPage;
     private LocalSellerSearchPage localSellerSearchPage;
     private AboutUsPage aboutUsPage;
     private FarmerMarketPage farmerMarketPage;
     private ExplorePage explorePage;
     private WefunderPage wefunderPage;
     private PrivacyPolicyPage privacyPolicyPage;
+    private AccountHomePage accountHomePage;
+    private AccountDeliveryPage accountDeliveryPage;
+    private AccountHubPage accountHubPage;
+    private AccountOrdersPage accountOrdersPage;
+    private IconHomePage iconHomePage;
+    private AccountRequestedProductsPage accountRequestedProductsPage;
 
+    public AccountRequestedProductsPage getAccountRequestedProductsPage() {
+        if (accountRequestedProductsPage == null) {
+            accountRequestedProductsPage = new AccountRequestedProductsPage();
+        }
+        return accountRequestedProductsPage;
+    }
+    public IconHomePage getIconHomePage() {
+        if (iconHomePage == null) {
+            iconHomePage = new IconHomePage();
+        }
+        return iconHomePage;
+    }
+    public AccountOrdersPage getAccountOrdersPage() {
+        if (accountOrdersPage == null) {
+            accountOrdersPage = new AccountOrdersPage();
+        }
+        return accountOrdersPage;
+    }
 
+    public AccountHubPage getAccountHubPage() {
+        if (accountHubPage == null) {
+            accountHubPage = new AccountHubPage();
+        }
+        return accountHubPage;
+    }
 
+    public AccountDeliveryPage getAccountDeliveryPage() {
+        if (accountDeliveryPage == null) {
+            accountDeliveryPage = new AccountDeliveryPage();
+        }
+        return accountDeliveryPage;
+    }
+
+    public AccountHomePage getAccountHomePage() {
+        if (accountHomePage == null) {
+            accountHomePage = new AccountHomePage();
+        }
+        return accountHomePage;
+    }
+
+    public AccountAddressPage getAccountAddressPage() {
+        if (accountAddressPage == null) {
+            accountAddressPage = new AccountAddressPage();
+        }
+        return accountAddressPage;
+    }
     public PrivacyPolicyPage getPrivacyPolicyPage() {
         if (privacyPolicyPage == null) {
             privacyPolicyPage = new PrivacyPolicyPage();
@@ -56,7 +107,6 @@ public class CommonPage {
         return farmerMarketPage;
     }
 
-
     public ExplorePage getExplorePage() {
         if (explorePage == null) {
             explorePage = new ExplorePage();
@@ -73,11 +123,11 @@ public class CommonPage {
 
     }
 
-    public AccountPage getAccountPage() {
-        if (accountPage == null) {
-            accountPage = new AccountPage();
+    public AccountWeeklyOrderPage getAccountWeeklyOrderPage() {
+        if (accountWeeklyOrderPage == null) {
+            accountWeeklyOrderPage = new AccountWeeklyOrderPage();
         }
-        return accountPage;
+        return accountWeeklyOrderPage;
     }
 
     public SellShareTradePage getSellShareTradePage() {

@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.Register_Page;
+package stepDefinitions.UI_StepDefs.RegisterPage;
 
 import com.github.javafaker.Faker;
 import io.cucumber.datatable.DataTable;
