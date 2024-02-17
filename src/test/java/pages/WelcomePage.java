@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.JSUtils;
-import utilities.ReusableMethods;
 
 import java.util.List;
 import java.util.Random;
@@ -14,7 +13,7 @@ public class WelcomePage extends CommonPage{
     int randomIndex;
     String targetText;
 
-    @FindBy(xpath = "//a[@href='/home']")
+    @FindBy(css = "[class='Navbar_textLink__f6_Al cursor-pointer']")
     public WebElement WelcomePage;
 
     @FindBy(css = "[class*='p-1'] p")
@@ -32,7 +31,7 @@ public class WelcomePage extends CommonPage{
     @FindBy(css = "[class*='col-12 mt-2']")
     public List<WebElement> AddToCartButton;
 
-    @FindBy(xpath = "//div[contains(text(),'added to your basket')]")
+    @FindBy(css = "div[role='alert']")
     public WebElement AddedToYourBasketAlert;
 
     @FindBy(css = "[class*='Basket']")
@@ -41,11 +40,12 @@ public class WelcomePage extends CommonPage{
     @FindBy(css = "[class*='py-3 align-middle']")
     public List<WebElement> ProductsNamesInTheBasketList;
 
-    @FindBy(xpath = "//*[@style='cursor: pointer;']")
+    @FindBy(css = "[class*='text-end'] svg")
     public WebElement RemoveProductFromBasketButton;
+    //  //*[@style='cursor: pointer;']
 
-    @FindBy(xpath = "//*[text()='Yes']")
-    public WebElement YestoRemoveProductFromBasketButton;
+    @FindBy(css = "[class='btn btn-primary mr-4']")
+    public WebElement YesToRemoveProductFromBasketButton;
 
 
 public void ClickWelcomePage(){
@@ -55,7 +55,7 @@ public void ProductListAppears(){
     Assert.assertFalse(ProductsList.isEmpty());
     ProductsList.getFirst().isDisplayed();
 }
-public void ListofSellersAppears(){
+public void ListOfSellersAppears(){
     Assert.assertFalse(SellersList.isEmpty());
     SellersList.getFirst().isDisplayed();
 }
@@ -85,17 +85,15 @@ public void ProductAddedAlert(){
 }
 public boolean isProductAddedToTheBasket() {
     BasketIcon.click();
-    boolean containsProduct = ProductsNamesInTheBasketList.stream()
+        return ProductsNamesInTheBasketList.stream()
                 .map(WebElement::getText)
                 .anyMatch(text -> text.contains(targetText));
-    return containsProduct;
     }
 public void VerifyProductIsInTHeList(){
         Assert.assertTrue(isProductAddedToTheBasket());
     }
-
 public void RemoveProductsFromTheBasket(){
     getWelcomePage().RemoveProductFromBasketButton.click();
-    getWelcomePage().YestoRemoveProductFromBasketButton.click();
+    getWelcomePage().YesToRemoveProductFromBasketButton.click();
     }
 }

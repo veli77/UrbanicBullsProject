@@ -16,7 +16,7 @@ public class US_068_SellersListAddProductsToTheCart_stepDefs extends CommonPage 
 
     @Then("A list of sellers should appear under the heading Local sellers near you")
     public void aListOfSellersShouldAppearUnderTheHeadingLocalSellersNearYou() {
-        getWelcomePage().ListofSellersAppears();
+        getWelcomePage().ListOfSellersAppears();
     }
 
     @Then("User is able to click on any seller in the list")
