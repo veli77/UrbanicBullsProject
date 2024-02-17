@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
+import java.util.List;
+
 import static stepDefinitions.Hooks.driver;
 
 public class AccountAddressPage extends CommonPage{
@@ -30,10 +32,13 @@ public class AccountAddressPage extends CommonPage{
     @FindBy(xpath = "(//input[@id='isSellerAddress'])[2]")
     public WebElement MarkAsASalerAddressInput;
 
-    @FindBy(xpath = "(//button[@class='btn btn-outline-success ml-3'])[2]")
+    @FindBy(xpath = "(//button[@type='submit'])[2]")
     public WebElement MySalesAddressSubmitBtn;
 
-    @FindBy(xpath = "//div[@role='alert']")
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement MySalesAddressEditSubmitBtn;
+
+    @FindBy(xpath = "//div[@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
     public WebElement AlertYourAddresssuccessfullyAdded;
 
     @FindBy(xpath = "//button[@class='mr-2 btn btn-outline-warning']")
@@ -57,28 +62,28 @@ public class AccountAddressPage extends CommonPage{
     @FindBy(xpath = "//input[@id='addressTitle']")
     public WebElement AddressTitleInput;
 
-    @FindBy(xpath = "//div[@class='card']")
+    @FindBy(xpath = "//button[@class='address_accordionTab__116wZ address_accordionActive__2fQgS']")
     public WebElement MySalesAddressText;
 
+    @FindBy(xpath = "//button[@class='btn btn-primary mr-4']")
+    public List<WebElement> Yes_No_Btn;
+
+    public void areYouSureToDeleteYESorNO(String option){
+     WebElement element=driver.findElement(By.xpath("//button[text()='"+option+"']"));
+     JSUtils.clickElementByJS(element);
+    }
+
     public void sendKeysAddressTitle(){
-        ReusableMethods.sendText(getAccountAddressPage().AddressTitleInput,"Home Office");
+        getAccountAddressPage().AddressTitleInput.clear();
+        ReusableMethods.sendText(getAccountAddressPage().AddressTitleInput,"Emily's Home Office");
     }
 
     public void addressOptions() throws InterruptedException {
-        //driver.switchTo().frame("frame1");
         Thread.sleep(3000);
         System.out.println(driver.findElement(By.xpath("//ul[@class='list-group mt-2 autocomplete-dropdown-container']")).getText());
+        List<WebElement> list = driver.findElements(By.xpath("//ul[@class='list-group mt-2 autocomplete-dropdown-container']")).stream().toList();
+        list.getFirst().click();
         Thread.sleep(3000);
-        WebElement dropdownElement = driver.findElement(By.xpath("//ul[@class='list-group mt-2 autocomplete-dropdown-container']"));
-        Select dropDown=new Select(dropdownElement);
-        Thread.sleep(3000);
-        dropDown.selectByVisibleText("California, Pensilvanya, Amerika Birleşik Devletleri");
-        Thread.sleep(3000);
-        //dropDown.selectByIndex(3);
-        //dropDown.selectByValue("California");
-        //dropDown.getFirstSelectedOption();
-        //dropDown.selectByVisibleText("California");
-
     }
 
     public void sendKeysAddress() throws InterruptedException {
@@ -86,7 +91,7 @@ public class AccountAddressPage extends CommonPage{
         JSUtils.clickElementByJS(getAccountAddressPage().SearchPlacesInput);
         //JSUtils.setValueByJS(getAccountAddressPage().SearchPlacesInput,"California");
         //ReusableMethods.waitForClickablility(getAccountAddressPage().SearchPlacesInput,2).click();
-        ReusableMethods.sendText(getAccountAddressPage().SearchPlacesInput,"California, Amerika Birleşik Devletleri");
+        ReusableMethods.sendText(getAccountAddressPage().SearchPlacesInput,"California");
         getAccountAddressPage().SearchPlacesInput.click();
     }
 
@@ -98,9 +103,7 @@ public class AccountAddressPage extends CommonPage{
     }
 
     public void sendKeysPostaZipCode(){
-
         getAccountAddressPage().PostaZipCodeInput.sendKeys("95170");
-
     }
 
 
