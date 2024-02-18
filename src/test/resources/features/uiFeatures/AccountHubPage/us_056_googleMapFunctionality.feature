@@ -1,5 +1,7 @@
 Feature: US_056 TC_001 User should click map zoom buttons
 
+	@UI
+		@Login
 	@TEST_BU-199
 	Scenario: US_056 TC_001 User should click map zoom buttons
 		When User click to Address button, user can see related page

@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import utilities.ReusableMethods;
@@ -17,6 +18,8 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
         ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
         getAccountHubPage().goToAddressPage();
         System.out.println(driver.getCurrentUrl());
+        int size = driver.findElements(By.tagName("iframe")).size();
+        System.out.println("size:" + size);
      //  Assert.assertTrue(getAccountAddressPage().mapScreeninAddressPage.isDisplayed());
     }
 
