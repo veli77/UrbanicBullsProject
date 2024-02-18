@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import utilities.ReusableMethods;
 
+import java.awt.*;
+
 import static stepDefinitions.Hooks.driver;
 
 public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
@@ -16,16 +18,22 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     public void userClickToAddressButtonUserCanSeeRelatedPage() {
         ReusableMethods.waitForPageToLoad(5);
         ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
-        getAccountHubPage().goToAddressPage();
+        ReusableMethods.waitForClickablility(getAccountHomePage().accountPageLeftsidesTabs.get(1),5);
+        getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
+       // getAccountHubPage().goToAddressPage();
+        ReusableMethods.waitForPageToLoad(5);
         System.out.println(driver.getCurrentUrl());
         int size = driver.findElements(By.tagName("iframe")).size();
         System.out.println("size:" + size);
+       // driver.switchTo().frame(0);
      //  Assert.assertTrue(getAccountAddressPage().mapScreeninAddressPage.isDisplayed());
     }
 
     @And("Zoom buttons should be clickable.")
     public void zoomButtonsShouldBeClickable() {
+
         for (WebElement element: getAccountAddressPage().mapsZoomButtons) {
+
             ReusableMethods.hover(element);
             element.click(); }
     }
