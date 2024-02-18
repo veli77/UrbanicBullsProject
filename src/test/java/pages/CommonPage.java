@@ -76,6 +76,7 @@ public class CommonPage {
         }
         return accountAddressPage;
     }
+
     public PrivacyPolicyPage getPrivacyPolicyPage() {
         if (privacyPolicyPage == null) {
             privacyPolicyPage = new PrivacyPolicyPage();
