@@ -2,7 +2,6 @@ Feature: TC_001 [US_70_WElcome Page]Order statuses must be seen in mutual buyer-
 
 	Background:
 		Given User goes to homepage
-		And User logs in
 
 	#*US_70_As a user, after entering valid information, I should be able to perform various actions in the Welcome Page*
 	@UI @TEST_BU-219
@@ -15,4 +14,6 @@ Feature: TC_001 [US_70_WElcome Page]Order statuses must be seen in mutual buyer-
 		And Login as a seller
 		Then Seller sees buyer's orders
 		Then Seller sees the buyer's orders in the Notifications section
-		
+
+
+
