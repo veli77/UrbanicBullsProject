@@ -1,6 +1,7 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import static stepDefinitions.Hooks.driver;
 
@@ -14,12 +15,25 @@ public class AccountHubPage extends CommonPage{
         Assert.assertEquals(expectedUrl,actualUrl);
     }
 
-    public void goToPreviousPage() throws InterruptedException {
+    public void goToPreviousPage()  {
         System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());   //https://test.urbanicfarm.com/account/weekly-order   dönmeli
-        Thread.sleep(5000);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.navigate().back();
     }
 
+    public void goToAddressPage(){
 
+        for (WebElement element : getAccountHomePage().accountPageLeftsidesTabs){
+
+            if (element.getText().contains("Address")){
+
+                element.click();
+            }
+        }
+    }
 
 }
