@@ -2,6 +2,7 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
@@ -28,7 +29,10 @@ public class AccountHubPage extends CommonPage{
 
     public void goToAddressPage(){
 
-        getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
+        JSUtils.scrollIntoViewJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
+        JSUtils.clickElementByJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
+
+       // getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
 
     //    for (WebElement element : getAccountHomePage().accountPageLeftsidesTabs){
 //

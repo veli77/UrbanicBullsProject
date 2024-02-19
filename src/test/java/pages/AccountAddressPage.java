@@ -5,8 +5,11 @@ import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
+
 import java.util.List;
 
+import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
 
 
@@ -41,11 +44,13 @@ public class AccountAddressPage extends CommonPage{
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement successMsj;
 
-    @FindBy(css = "div#mapDiv")
-    public WebElement mapScreeninAddressPage;
+    @FindBy(css = "iframe[class='rounded address_iframe__2VuTl']")
+    public WebElement iframe;
 
     @FindBy(css = "div.google-maps-link a")
     public WebElement googleMapsLink;
+
+
 
     @FindBy(css = "div.gm-inset-map-impl")
     public WebElement googleMapsSatelliteButton;
@@ -168,6 +173,14 @@ public class AccountAddressPage extends CommonPage{
         removeYesBtn.click();
     }
 
+    public void goToMapPage() {
+
+        driver.switchTo().frame(iframe);
+        Assert.assertTrue(googleMapsLink.isEnabled());
+        JSUtils.scrollIntoViewJS(googleMapsLink);
+        JSUtils.clickElementByJS(googleMapsLink);
+
+    }
 
 
 
