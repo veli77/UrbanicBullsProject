@@ -24,4 +24,12 @@ public class AccountDeliveryPage extends CommonPage{
 
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement AlertText;
+
+    @FindBy(xpath = "//a[@href='/account/delivery']")
+    public WebElement DeliveryPickUpMenu;
+
+
+
+
+
 }
