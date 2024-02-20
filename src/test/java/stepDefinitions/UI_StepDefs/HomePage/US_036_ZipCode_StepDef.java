@@ -18,6 +18,7 @@ public class US_036_ZipCode_StepDef {
     @And("Login with credential as")
     public void loginWithCredentialAs(DataTable dataTable) {
         List<List<String>> listItems = dataTable.asLists(String.class);
+        ReusableMethods.waitFor(10);
         loginPage.loginWithCredentials(listItems.get(0).get(0), listItems.get(0).get(1));
         ReusableMethods.waitFor(10);
     }
