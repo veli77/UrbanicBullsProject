@@ -1,7 +1,9 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utilities.Driver;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
@@ -41,6 +43,21 @@ public class AccountHubPage extends CommonPage{
     //            element.click();
     //        }
     //    }
+    }
+
+    public By getByPanelButton(String btnName){
+        return By.xpath("//div/a[.='" + btnName + "']");
+    }
+
+    public void verifyLeftPanelButton(String btn    ){
+        WebElement element=Driver.getDriver().findElement(getByPanelButton(btn));
+        Assert.assertTrue(element.isEnabled());
+
+    }
+
+    public void clickAButtonInLeftPanel(String btnName){
+        WebElement element= Driver.getDriver().findElement(getByPanelButton(btnName));
+        element.click();
     }
 
 }
