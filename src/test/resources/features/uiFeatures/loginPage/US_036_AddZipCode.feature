@@ -1,6 +1,6 @@
 @UI
 Feature: US_036
-@headless
+  @headless
   Scenario: As a user I should be able to successfully add zipcode
 
     Given User goes to HomePage
