@@ -1,6 +1,7 @@
 @UI
+@headless
 Feature: US_037
-  @headless
+
   Scenario: User should be able to successfully complete the register after entering valid information
     Given User goes to homepage
     And Click the "Register" button on the main Page
