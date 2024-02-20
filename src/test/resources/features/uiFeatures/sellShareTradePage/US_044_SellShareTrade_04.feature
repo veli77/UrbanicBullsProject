@@ -1,5 +1,5 @@
 @UI
-
+@headless
   Feature: US_044 - User should be able to perform various operations on the Sale-Pay-Trade page after login
 
     Scenario: Scheduled delivery should be clickable and relevant page should be visible
