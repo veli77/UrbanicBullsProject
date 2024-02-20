@@ -86,8 +86,8 @@ public class Driver {
         edgeOptions.addArguments("use-fake-ui-for-media-stream");
 
 
+        synchronized (Driver.class) {
         if (driverPool.get() == null) {
-            synchronized (Driver.class) {
 
             /*
             We read our browser type from configuration.properties file using
