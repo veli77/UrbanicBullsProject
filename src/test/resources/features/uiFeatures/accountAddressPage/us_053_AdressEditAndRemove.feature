@@ -1,4 +1,4 @@
- @UI @BU-205 @Erdal
+@UI @BU-205 @Erdal
  Feature: TE of US_053 Adress Edit And Remove
 
    Background: Precondition of US_053 Login and goes Account Address Page then goes Others Section
