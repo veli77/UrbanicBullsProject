@@ -29,8 +29,8 @@ public class AccountHubPage extends CommonPage{
 
     public void goToAddressPage(){
 
-        JSUtils.scrollIntoViewJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
-        JSUtils.clickElementByJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
+        ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
+        JSUtils.clickElementByJS(getAccountHomePage().accountPageLeftsidesTabs.get(1));
 
        // getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
 

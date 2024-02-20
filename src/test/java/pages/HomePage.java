@@ -150,7 +150,7 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
 
-    @FindBy(xpath = "(//button[@class='VfPpkd-LgbsSe VfPpkd-LgbsSe-OWXEXe-k8QpJ VfPpkd-LgbsSe-OWXEXe-dgl2Hf nCP5yc AjY5Oe DuMIQc LQeN7 XWZjwc'])[1]")
+    @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]")
     public WebElement googleChromePermissionRejectButton;
 
 
