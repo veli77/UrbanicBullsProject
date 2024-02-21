@@ -1,6 +1,11 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import utilities.Driver;
+import utilities.JSUtils;
+import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
@@ -14,12 +19,50 @@ public class AccountHubPage extends CommonPage{
         Assert.assertEquals(expectedUrl,actualUrl);
     }
 
-    public void goToPreviousPage() throws InterruptedException {
-        System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());   //https://test.urbanicfarm.com/account/weekly-order   dönmeli
-        Thread.sleep(5000);
+    public void goToPreviousPage()  {
+        System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());
+        //https://test.urbanicfarm.com/account/weekly-order   dönmeli
+        ReusableMethods.waitForPageToLoad(5);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         driver.navigate().back();
     }
 
+    public void goToAddressPage(){
 
+        ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
+        JSUtils.clickElementByJS(getAccountHomePage().accountPageLeftsidesTabs.get(1));
+
+       // getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
+
+    //    for (WebElement element : getAccountHomePage().accountPageLeftsidesTabs){
+//
+    //        if (element.getText().contains("Address")){
+    //            ReusableMethods.hover(element);
+    //            element.click();
+    //        }
+    //    }
+    }
+
+    public By getByPanelButton(String btnName){
+        return By.xpath("//div/a[.='" + btnName + "']");
+    }
+
+    public void verifyLeftPanelButton(String btn){
+        WebElement element=driver.findElement(getByPanelButton(btn));
+        Assert.assertTrue(element.isEnabled());
+
+    }
+
+    public void clickAButtonInLeftPanel(String btnName){
+        WebElement element= driver.findElement(getByPanelButton(btnName));
+        ReusableMethods.hover(element);
+       // element= driver.findElement(getByPanelButton(btnName));
+       // JSUtils.scrollIntoViewJS(element);
+        JSUtils.clickElementByJS(element);
+    }
 
 }

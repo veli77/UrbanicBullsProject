@@ -99,7 +99,20 @@ public void recordStart(){
         getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
+    @Before(value = "@Login3")
+    public void login3() {
+        //loginPage=new LoginPage();
 
+        System.out.println("Login metodu calıstı");
+
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+
+    }
     @After(value = "@VideoRecorder")
     public void stopRecording() {
 

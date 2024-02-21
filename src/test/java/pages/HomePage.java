@@ -150,6 +150,9 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
 
+    @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]")
+    public WebElement googleChromePermissionRejectButton;
+
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
