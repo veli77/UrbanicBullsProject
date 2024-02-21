@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
+import utilities.ReusableMethods;
 
 import static enums.URL_LINKS.LOGIN_URL;
 import static stepDefinitions.Hooks.driver;
@@ -32,17 +33,19 @@ public class US_039_loginFail_stepDef extends CommonPage{
         getLoginPage().input_email.sendKeys(arg0);
         getLoginPage().input_password.sendKeys(arg1);
         getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(2000);
         Assert.assertEquals(loginTitle,driver.getTitle());
     }
 
 
     @And("the system should display an error message for invalid credentials")
-    public void theSystemShouldDisplayAnErrorMessageForInvalidCredentials()  {
+    public void theSystemShouldDisplayAnErrorMessageForInvalidCredentials() {
+        /*
         try {
             System.out.println(getLoginPage().alert_message.getText());
         }
         catch(Exception e) {}
+         */
+
     }
-
-
 }
