@@ -63,6 +63,13 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(id = "searchboxinput")
     public WebElement searchBoxInput;
 
+    @FindBy(xpath = "//div[@class='d-flex flex-column']")
+    public List<WebElement> quickOverviewContents;
+
+    @FindBy(xpath = "//img[@class='rounded']")
+    public List<WebElement> quickOverviewContentsPictures;
+
+
 
 
 
