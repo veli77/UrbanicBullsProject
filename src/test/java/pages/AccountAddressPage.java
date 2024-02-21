@@ -7,8 +7,11 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.JSUtils;
+
+
 import utilities.ReusableMethods;
 import java.util.List;
+
 import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
 
@@ -74,6 +77,19 @@ public class AccountAddressPage extends CommonPage{
     public WebElement AddressTitleInput;
     @FindBy(xpath = "//button[@class='address_accordionTab__116wZ address_accordionActive__2fQgS']")
     public WebElement MySalesAddressText;
+
+    @FindBy(css = "iframe[class='rounded address_iframe__2VuTl']")
+    public WebElement iframe;
+    @FindBy(css = "div.google-maps-link a")
+    public WebElement googleMapsLink;
+    @FindBy(css = "div.gm-inset-map-impl")
+    public WebElement googleMapsSatelliteButton;
+    @FindBy(css = "button.gm-control-active")
+    public List<WebElement> mapsZoomButtons;
+    @FindBy(xpath = "(//div[@class='gm-style']/div[contains(@style, 'cursor')])[1]")
+    public WebElement cursorOverTheMapNatureZones;
+
+
 
     //My Sales Address a tıklar ve bu kısmında adress kayıtlı mı kontrol eder, addres varsa true yoksa false döner
     public boolean clickMySalesAddressBtnAndControlTheAdress() {
@@ -219,5 +235,18 @@ public class AccountAddressPage extends CommonPage{
         waitForClickablility(removeYesBtn, 10);
         removeYesBtn.click();
     }
+
+    public void goToMapPage() {
+
+        driver.switchTo().frame(iframe);
+        Assert.assertTrue(googleMapsLink.isEnabled());
+        JSUtils.scrollIntoViewJS(googleMapsLink);
+        JSUtils.clickElementByJS(googleMapsLink);
+
+    }
+
+
+
+
 }
 
