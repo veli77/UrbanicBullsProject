@@ -1,5 +1,6 @@
 package pages;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -62,6 +63,29 @@ public class AccountOrdersPage extends CommonPage{
 
     @FindBy(id = "searchboxinput")
     public WebElement searchBoxInput;
+  
+    @FindBy(xpath = "(//div[@class='d-flex justify-content-center align-items-center'])[2]")
+    public WebElement card;//buyer sepet secenegi
+
+    @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
+    public WebElement sepeteTikla;
+  
+    @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[1]")
+    public WebElement plus; //siparis sayfasinda urun sayisini artirmak icin
+    @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[3]")
+    public WebElement plus2; //siparis sayfasinda urun sayisini artirmak icin
+    @FindBy(xpath = "(//button[@class='col-12 mt-2 w-75 btn btn-success FeaturedProductCard_addCartBtn__2QCpK'])[1]")
+    public WebElement addToCard;
+    @FindBy(xpath = "//button[@class='btn btn-block font-weight-bold Basket_checkOutBtn__1946L']")
+    public WebElement proceedToCheckout;//alisverise tamamla
+    @FindBy(xpath = "//button[@type='button']")
+    public WebElement nextButton;
+    @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
+    public WebElement goToPayment;
+    @FindBy(xpath = "//div[@class='col-lg-1 col-0']")
+    public WebElement bosluk;
+    @FindBy(xpath = "(//input[@class='FeaturedProductCard_number__16S1m'])[5]")
+    public WebElement plus3; //siparis sayfasinda urun sayisini artirmak icin
 
 
 
@@ -178,7 +202,6 @@ public void verifyCoordinate(){
     Assert.assertTrue(currentURL.toLowerCase().contains("maps"));
 
 }
-
 
 
 }
