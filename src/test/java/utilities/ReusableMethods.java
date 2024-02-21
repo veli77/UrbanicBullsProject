@@ -340,7 +340,7 @@ public class ReusableMethods {
     }
 
     public static String getElementText(WebElement element) {
-        waitForVisibility(element, 15);
+        waitForVisibility(element, 10);
         return element.getText();
     }
 
