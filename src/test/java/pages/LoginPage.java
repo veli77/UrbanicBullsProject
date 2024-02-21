@@ -71,8 +71,8 @@ public class LoginPage extends CommonPage{
 
 
     public void loginWithCredentials(String email, String password){
-        ReusableMethods.sendText(input_email, email);
-        ReusableMethods.sendText(input_password, password);
+        ReusableMethods.waitAndSendText(input_email, email);
+        ReusableMethods.waitAndSendText(input_password, password);
         ReusableMethods.waitAndClickElement(submit_button, 5);
     }
 
@@ -85,7 +85,7 @@ public class LoginPage extends CommonPage{
             text = ((listItems.get(i).get(0)) == null) ? text : listItems.get(i).get(0);
             isTrue = Boolean.parseBoolean(listItems.get(i).get(1));
 
-            ReusableMethods.sendText(zipCodeInput,text);
+            ReusableMethods.waitAndSendText(zipCodeInput,text);
             ReusableMethods.waitAndClickElement(zipCodeSubmit, 2);
             if (!isTrue) {
                 alertMessage = ReusableMethods.getElementText(zipCodeAlert);

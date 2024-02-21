@@ -1,6 +1,7 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.ReusableMethods;
@@ -77,6 +78,7 @@ public class SellShareTradePage extends CommonPage{
     }
 
     public void verifyScheduledDeliveryBtn(){
+        ReusableMethods.waitForPageToLoad(20);
         Assert.assertTrue(scheduled_Delivery_Btn.isEnabled());
         scheduled_Delivery_Btn.click();
     }

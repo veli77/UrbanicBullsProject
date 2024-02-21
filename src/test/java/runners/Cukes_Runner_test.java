@@ -18,7 +18,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
 
         glue = "stepDefinitions",
-        tags = "@UI"
+        tags = "@headless"
 
 
 
@@ -29,5 +29,5 @@ import org.junit.runner.RunWith;
 //        tags = "@omer"
 
 )
-public class CukesRunner {
+public class Cukes_Runner_test {
 }

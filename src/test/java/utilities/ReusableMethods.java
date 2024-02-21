@@ -340,8 +340,17 @@ public class ReusableMethods {
     }
 
     public static String getElementText(WebElement element) {
-        waitForVisibility(element, 5);
+        waitForVisibility(element, 15);
         return element.getText();
+    }
+
+    public static void waitAndSendText(WebElement element, String text) {
+        try{
+            waitForClickablility(element, 5).sendKeys(text);
+        }catch (Exception e){
+            scrollToElement(element);
+            waitAndSendText(element,text);
+        }
     }
 
 }
