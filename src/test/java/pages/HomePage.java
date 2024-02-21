@@ -192,6 +192,7 @@ public class HomePage extends CommonPage {
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
+        ReusableMethods.hover(element);
         element.click();
     }
 
