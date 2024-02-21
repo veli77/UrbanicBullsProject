@@ -1,5 +1,4 @@
 @UI
-@headless
 Feature: US_036
 
   Scenario: As a user I should be able to successfully add zipcode
