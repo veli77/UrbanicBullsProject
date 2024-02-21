@@ -21,6 +21,10 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement nextButton;
     @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
     public WebElement goToPayment;
+    @FindBy(xpath = "//div[@class='col-lg-1 col-0']")
+    public WebElement bosluk;
+    @FindBy(xpath = "(//input[@class='FeaturedProductCard_number__16S1m'])[5]")
+    public WebElement plus3; //siparis sayfasinda urun sayisini artirmak icin
 
 
 

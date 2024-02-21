@@ -2,10 +2,11 @@ package stepDefinitions.UI_StepDefs.AccountOrdersPage;
 
 import io.cucumber.java.en.*;
 import pages.CommonPage;
-import utilities.ConfigurationReader;
 import utilities.ReusableMethods;
 
+
 public class US_70_Orders_StepDefs extends CommonPage {
+
     @Given("User logs in as buyer")
     public void user_logs_in_as_buyer() throws InterruptedException {
         getLoginPage().loginButton.click();
@@ -18,43 +19,46 @@ public class US_70_Orders_StepDefs extends CommonPage {
     }
     @Given("User enters cart")
     public void user_enters_cart() throws InterruptedException {
+        Thread.sleep(2000);
         getAccountOrdersPage().sepeteTikla.click();
-        Thread.sleep(6000);
+
     }
     @Given("User adds order on cart page")
     public void user_adds_order_on_cart_page() throws InterruptedException {
+        for (int i = 0; i < 3; i++) {
+            getAccountOrdersPage().plus.click();
+            Thread.sleep(2000);
+        }
 
-        getAccountOrdersPage().plus.click();
-        Thread.sleep(2000);
-        getAccountOrdersPage().plus.click();
-        Thread.sleep(2000);
-        getAccountOrdersPage().plus.click();
-        Thread.sleep(2000);
+        /*
+        for (int i = 0; i < 3; i++) {
+            getAccountOrdersPage().plus2.click();
+            Thread.sleep(3000);
+        }
 
+        for (int i = 0; i < 3; i++) {
+            ReusableMethods.waitForVisibility(getAccountOrdersPage().plus3, 5);
+            //Thread.sleep(2000);
+            getAccountOrdersPage().plus3.sendKeys("3");
+
+        }
+
+         */
+        getAccountOrdersPage().addToCard.click();
 
     }
     @Given("User completes the purchase")
     public void user_completes_the_purchase() throws InterruptedException {
+        Thread.sleep(3000);
+        //getAccountOrdersPage().bosluk.click();
         getAccountOrdersPage().proceedToCheckout.click();
         Thread.sleep(2000);
-        for (int i = 0; i < 2; i++) {
-            getAccountOrdersPage().nextButton.click();
-            try {
-                Thread.sleep(2000); // 2 saniye bekleyin
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            getAccountOrdersPage().goToPayment.click();
-        }
-        /*
         getAccountOrdersPage().nextButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         getAccountOrdersPage().goToPayment.click();
+        Thread.sleep(3000);
         getAccountOrdersPage().nextButton.click();
-        Thread.sleep(2000);
         getAccountOrdersPage().goToPayment.click();
-
-         */
 
     }
     @Then("Order placed by the user is seen in the Orders section.")
