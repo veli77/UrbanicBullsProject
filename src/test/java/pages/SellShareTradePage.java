@@ -4,7 +4,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.ReusableMethods;
+
+import java.time.Duration;
 
 import static stepDefinitions.Hooks.driver;
 
@@ -78,9 +82,18 @@ public class SellShareTradePage extends CommonPage{
     }
 
     public void verifyScheduledDeliveryBtn(){
-        ReusableMethods.waitForPageToLoad(20);
-        Assert.assertTrue(scheduled_Delivery_Btn.isEnabled());
-        scheduled_Delivery_Btn.click();
+
+//        new WebDriverWait(driver, Duration.ofSeconds(10))
+//                .until(ExpectedConditions.elementToBeClickable(By
+//                        .xpath("//a[.='Scheduled Delivery']"))).click();
+//
+//        ReusableMethods.waitForPageToLoad(20);
+//        WebElement cheduled_Delivery_Btn = driver.findElement(ReusableMethods.handleStaleElement(by));
+        By by = By.xpath("//a[.='Scheduled Delivery']");
+        Assert.assertTrue(ReusableMethods.handleStaleElement(by).isEnabled());
+        (ReusableMethods.handleStaleElement(by)).click();
+
+//        cheduled_Delivery_Btn.click();
     }
 
     public void verifyScheduledDeliveryPage(){

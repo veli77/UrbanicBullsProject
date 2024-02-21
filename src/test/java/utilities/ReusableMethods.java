@@ -353,5 +353,23 @@ public class ReusableMethods {
         }
     }
 
+    public static WebElement handleStaleElement(By by) {
+        WebElement element = null;
+        for (int i = 0; i < 30; i++) {
+            try {
+                element = Driver.getDriver().findElement(by);
+                element.isEnabled();
+                break;
+            } catch (StaleElementReferenceException e) {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException ex) {
+                }
+            }
+        }
+        return element;
+    }
+
+
 }
 
