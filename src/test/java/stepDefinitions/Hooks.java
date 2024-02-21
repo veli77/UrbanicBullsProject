@@ -92,11 +92,11 @@ public void recordStart(){
         System.out.println("Login2 metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER3.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER3.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
-        //getAccountHomePage().zipCodeBoxCloseButton.click();
+        getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
 
