@@ -16,12 +16,19 @@ public class AccountAddressPage extends CommonPage{
 
     @FindBy(css = "button[name='sales']")
     public WebElement mySalesAddressBtn;
+    @FindBy(css = "button[name='delivery']")
+    public WebElement myDeliveryAddressBtn;
     @FindBy(css = "[class='alert alert-warning ']>span")
     public WebElement mySalesAddressAlert;
     @FindBy(css ="button[name='nonSelected']")
     public WebElement othersBtn;
     @FindBy(css = ".mr-2.btn.btn-outline-warning")
     public WebElement editBtn;
+    @FindBy(css = "h6[class='card-title']")
+    public WebElement cardTitle;
+    @FindBy(css = "p[class='card-text']")
+    public WebElement cardText;
+
     @FindBy(xpath = "//button[@class='btn btn-outline-danger'][.='Remove']")
     public WebElement removeBtn;
     @FindBy(xpath = "//button[.='No']")
@@ -134,6 +141,12 @@ public class AccountAddressPage extends CommonPage{
         othersBtn.click();
     }
 
+    public void clickDeliveryAddressSection() {
+        waitForClickablility(myDeliveryAddressBtn, 10);
+        myDeliveryAddressBtn.click();
+    }
+
+
     //others section da kayıtlı address yoksa address ekler ve tekrar others section a döner
     //daha önce ekli bir adress olmamalı!!
     public void areThereAnySavedAddressesInOdersSectionAndAdd(DataTable dataTable) {
@@ -170,6 +183,23 @@ public class AccountAddressPage extends CommonPage{
         Assert.assertTrue(removeBtn.isDisplayed());
         Assert.assertTrue(editBtn.isEnabled());
         Assert.assertTrue(removeBtn.isEnabled());
+    }
+
+    public void editAndRemoveBtnsCheck(){
+        hover(editBtn);
+        Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
+                removeBtn.isDisplayed() && removeBtn.isEnabled());
+    }
+
+    public void checkAddressesBeforeAndAfterClickEdit(){
+        System.out.println(cardTitle.getText());
+        System.out.println(cardText.getText());
+        waitForClickablility(editBtn,10);
+        editBtn.click();
+        waitForVisibility(AddressTitleInput,10);
+        System.out.println(AddressTitleInput.getAttribute("placeholder"));
+        System.out.println("yazıldı");
+
     }
 
     //Edit işlemi yapar, Dataları datatabledan alır

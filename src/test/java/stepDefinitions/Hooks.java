@@ -10,7 +10,6 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
-import pages.LoginPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 import utilities.MyScreenRecorder;
@@ -72,39 +71,30 @@ public void recordStart(){
 
     @Before(value = "@Login")
     public void login() {
-        //loginPage=new LoginPage();
-
         System.out.println("Login metodu calıstı");
-
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
-
     }
 
     @Before(value = "@Login2")
     public void login2() {
         //loginPage=new LoginPage();
-
         System.out.println("Login2 metodu calıstı");
-
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER3.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER3.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
-
     }
 
     @After(value = "@VideoRecorder")
     public void stopRecording() {
-
         System.out.println("Kayıt bitti");
-
         try {
             MyScreenRecorder.stopRecording();
         } catch (Exception e) {
@@ -114,18 +104,12 @@ public void recordStart(){
 
     @After(value = "@UI")
     public void tearDown(Scenario scenario) {
-
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-
-
         Driver.closeDriver();
-
-
     }
-
 
     @Before("@DB")
     public void setupDatabase() {
@@ -142,12 +126,8 @@ public void recordStart(){
     @Before("@user1")
     public void denemeLogin() {
         System.out.println(
-                "email : " + ConfigurationReader.getProperty("user1_email") +
-                        " password : " + ConfigurationReader.getProperty("user1_password")
+                "email : " + ConfigurationReader.getProperty("user1_email")
+                        +" password : " + ConfigurationReader.getProperty("user1_password")
         );
-
-
     }
-
-
 }
