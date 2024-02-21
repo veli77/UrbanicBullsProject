@@ -1,4 +1,4 @@
-
+@Kubra
 Feature: As a user, I should be able to check valid and invalid name, surname, email.
 
    @UI @US32-TC01
