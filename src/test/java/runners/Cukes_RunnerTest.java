@@ -29,5 +29,5 @@ import org.junit.runner.RunWith;
 //        tags = "@omer"
 
 )
-public class CukesRunnerTest {
+public class Cukes_RunnerTest {
 }
