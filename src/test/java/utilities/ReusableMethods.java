@@ -370,6 +370,21 @@ public class ReusableMethods {
         return element;
     }
 
+    public static void clickForStaleElement(By by) {
+        WebElement element = null;
+        for (int i = 0; i < 30; i++) {
+            try {
+                element = Driver.getDriver().findElement(by);
+                element.click();
+                break;
+            } catch (StaleElementReferenceException e) {
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException ex) {
+                }
+            }
+        }
+    }
 
 }
 

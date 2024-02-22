@@ -84,7 +84,7 @@ public class SellShareTradePage extends CommonPage{
     public void verifyScheduledDeliveryBtn(){
         By by = By.xpath("//a[.='Scheduled Delivery']");
         Assert.assertTrue(ReusableMethods.handleStaleElement(by).isEnabled());
-        (ReusableMethods.handleStaleElement(by)).click();
+        ReusableMethods.clickForStaleElement(by);
     }
 
     public void verifyScheduledDeliveryPage(){
