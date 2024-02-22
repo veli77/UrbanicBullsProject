@@ -93,6 +93,23 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//img[@class='rounded']")
     public List<WebElement> quickOverviewContentsPictures;
 
+    @FindBy(xpath = "//span[.='Rate the product']")
+    public List<WebElement> rateTheProductLinks;
+
+    @FindBy(xpath = "//span[.='How would you rate this product ?']")
+    public WebElement howWouldYouRateThisProductText;
+
+    @FindBy(xpath = "//div[@class='bg-info p-1 rounded mb-3']")
+    public WebElement ratingStars;
+
+    @FindBy(xpath = "//textarea[@placeholder='Your Comments']")
+    public WebElement commentArea;
+
+    @FindBy(xpath = "//button[.='Submit']")
+    public WebElement submitButton;
+
+
+
 
 
 

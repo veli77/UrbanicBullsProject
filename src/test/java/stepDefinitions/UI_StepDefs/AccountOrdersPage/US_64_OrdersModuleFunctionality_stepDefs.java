@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import pages.AccountOrdersPage;
 import pages.CommonPage;
+import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import static org.junit.Assert.assertTrue;
@@ -18,12 +19,11 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
         getLoginPage().login(USERCREDENTIAL.USERVEDAT);
     }
 
-    @Then("User should be able to click the {string} button on the left side bar in Account Page and verify that user is in the Orders Page")
-    public void userShouldBeAbleToClickTheButtonOnTheLeftSideBarInAccountPageAndVerifyThatUserIsInTheOrdersPage(String btnName) {
-        getAccountHubPage().verifyLeftPanelButton(btnName);
-        getAccountHubPage().clickAButtonInLeftPanel(btnName);
-        ReusableMethods.waitForPageToLoad(5);
-        getAccountOrdersPage().verifyOrdersPage();
+    @Then("User should be able to click the Orders button on the left side bar in Account Page and verify that user is in the Orders Page")
+    public void userShouldBeAbleToClickTheButtonOnTheLeftSideBarInAccountPageAndVerifyThatUserIsInTheOrdersPage() {
+        JSUtils.clickElementByJS(getAccountHomePage().leftSideOrdersButton);
+
+        Assert.assertTrue(getAccountOrdersPage().ordersPageText.isDisplayed());
 
     }
 
@@ -47,5 +47,21 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
 
         }
 
+    }
+
+    @And("User clicks Rate The Product linkText")
+    public void userClicksRateTheProductLinkText() {
+        for (WebElement rateTheProductLink : getAccountOrdersPage().rateTheProductLinks) {
+            Assert.assertTrue(rateTheProductLink.isDisplayed());
+        }
+        getAccountOrdersPage().rateTheProductLinks.getFirst().click();
+    }
+
+    @Then("User should be able to see rating pop-up and contents")
+    public void userShouldBeAbleToSeeRatingPopUpAndContents() {
+        Assert.assertTrue(getAccountOrdersPage().howWouldYouRateThisProductText.isDisplayed());
+        Assert.assertTrue(getAccountOrdersPage().ratingStars.isDisplayed());
+        Assert.assertTrue(getAccountOrdersPage().commentArea.isDisplayed());
+        Assert.assertTrue(getAccountOrdersPage().submitButton.isDisplayed());
     }
 }

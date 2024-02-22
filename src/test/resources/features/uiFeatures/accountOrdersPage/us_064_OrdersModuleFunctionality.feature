@@ -4,16 +4,14 @@
     @BU_226
     Scenario: Orders Section Functionality
       When User logs in as Vedat
-      Then User should be able to click the "Orders" button on the left side bar in Account Page and verify that user is in the Orders Page
+      Then User should be able to click the Orders button on the left side bar in Account Page and verify that user is in the Orders Page
       And User selects any order
       And User should be able to see Quick Overview Contents
+      And User clicks Rate The Product linkText
+      Then User should be able to see rating pop-up and contents
 
 
 
-    @TC_02
-    Scenario: Orders Section Rate the product icon Functionality
-      When User logs in as Vedat
-      Then User should be able to click the "Orders" button on the left side bar in Account Page and verify that user is in the Orders Page
 
 
 
