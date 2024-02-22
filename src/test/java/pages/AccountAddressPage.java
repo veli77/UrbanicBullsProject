@@ -11,6 +11,7 @@ import utilities.JSUtils;
 
 import utilities.ReusableMethods;
 import java.util.List;
+import java.util.Set;
 
 import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
@@ -82,7 +83,7 @@ public class AccountAddressPage extends CommonPage{
     public WebElement iframe;
     @FindBy(css = "div.google-maps-link a")
     public WebElement googleMapsLink;
-    @FindBy(css = "div.gm-inset-map-impl")
+    @FindBy(css = "button[class*='gm-inset-map gm-inset']")
     public WebElement googleMapsSatelliteButton;
     @FindBy(css = "button.gm-control-active")
     public List<WebElement> mapsZoomButtons;
@@ -238,10 +239,14 @@ public class AccountAddressPage extends CommonPage{
 
     public void goToMapPage() {
 
-        driver.switchTo().frame(iframe);
-        Assert.assertTrue(googleMapsLink.isEnabled());
+        if (!googleMapsLink.isEnabled()){
+        driver.switchTo().frame(iframe);}
         JSUtils.scrollIntoViewJS(googleMapsLink);
         JSUtils.clickElementByJS(googleMapsLink);
+        Set<String> windowsList=driver.getWindowHandles();
+        for (String window : windowsList){driver.switchTo().window(window);}
+        ReusableMethods.hover(getHomePage().googleChromePermissionRejectButton);
+        getHomePage().googleChromePermissionRejectButton.click();
 
     }
 

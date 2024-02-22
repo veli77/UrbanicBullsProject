@@ -116,7 +116,7 @@ public void recordStart(){
     @After(value = "@VideoRecorder")
     public void stopRecording() {
 
-        System.out.println("Kayıt bitti");
+        //System.out.println("Kayıt bitti");
 
         try {
             MyScreenRecorder.stopRecording();
