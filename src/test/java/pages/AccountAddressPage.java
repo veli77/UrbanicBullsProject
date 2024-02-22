@@ -51,8 +51,8 @@ public class AccountAddressPage extends CommonPage{
     public WebElement AddNewAddressBtn;
     @FindBy(xpath = "//input[@type='search']")
     public WebElement SearchPlacesInput;
-    @FindBy(xpath = "(//input[@id='postal'])[2]")
-    public WebElement PostaZipCodeInput;
+    @FindBy(xpath = "//input[@id='postal']")
+    public List<WebElement> PostaZipCodeInput;
     @FindBy(xpath = "(//input[@id='isSellerAddress'])[2]")
     public WebElement MarkAsASalerAddressInput;
     @FindBy(xpath = "(//button[@type='submit'])[2]")
@@ -88,7 +88,10 @@ public class AccountAddressPage extends CommonPage{
     public List<WebElement> mapsZoomButtons;
     @FindBy(xpath = "(//div[@class='gm-style']/div[contains(@style, 'cursor')])[1]")
     public WebElement cursorOverTheMapNatureZones;
-
+    @FindBy(xpath = "//button[.='Cancel']")
+    public List<WebElement> cancelButton;
+    @FindBy(css = ".card-text")
+    public List<WebElement> cardTexts;
 
 
     //My Sales Address a tıklar ve bu kısmında adress kayıtlı mı kontrol eder, addres varsa true yoksa false döner
@@ -141,7 +144,7 @@ public class AccountAddressPage extends CommonPage{
     }
 
     public void sendKeysPostaZipCode(){
-        getAccountAddressPage().PostaZipCodeInput.sendKeys("95170");
+        getAccountAddressPage().PostaZipCodeInput.getLast().sendKeys("95170");
     }
 
     //others section a tıklar
@@ -244,6 +247,27 @@ public class AccountAddressPage extends CommonPage{
         JSUtils.clickElementByJS(googleMapsLink);
 
     }
+//Adres eklerken islemi cancel etmek icin cancel butonuna ekler
+    public void clickAddAddressCancelBtn() {
+        getAccountAddressPage().cancelButton.getLast().click();
+    }
+
+public void verifyNotNewAddress(){
+    boolean flag = true;
+    try {
+        flag = editBtn.isDisplayed();
+    } catch (NoSuchElementException e) {
+        System.out.println("Ekli bir adres mevcut değil.");
+        flag=false;
+    }
+    if(flag==true){
+        Assert.assertFalse("new address is not added",getAccountAddressPage().cardTexts.getLast().getText().contains("95170"));
+    } else {
+        System.out.println("hic bir adres ekli degil");
+    }
+
+
+}
 
 
 
