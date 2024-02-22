@@ -24,7 +24,7 @@ public class Hooks extends CommonPage{
     public static Actions actions;
 
 
-    public static boolean isHeadless = true;
+    public static boolean isHeadless = false;
     public static String browserType = "chrome";
 
     public static boolean isFullScreen = true;
