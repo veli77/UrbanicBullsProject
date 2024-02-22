@@ -153,7 +153,7 @@ public class HomePage extends CommonPage {
     public WebElement accountName_navbar;
     @FindBy(css = "[href='/account/delivery']")
     public WebElement deliverySettings_sidebar;
-    @FindBy(css = "Toastify__toast-body")
+    @FindBy(css = ".Toastify__toast ")
     public WebElement toastMessage;
 
 

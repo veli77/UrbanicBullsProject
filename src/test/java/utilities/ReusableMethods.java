@@ -351,20 +351,21 @@ public class ReusableMethods {
     }
 
 
-    public static void clearAndSend(WebElement webElement, String str) {
+    public static void clearAndSend( WebElement webElement, String str) {
         webElement.clear();
         webElement.sendKeys(str);
+
     }
-    public static void selectByVisibleText(@This WebElement webElement,String text){
+    public static void selectByVisibleText( WebElement webElement,String text){
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }
-    public static void selectByValue(@This WebElement webElement,String value){
+    public static void selectByValue(WebElement webElement,String value){
         Select select = new Select(webElement);
         select.selectByValue(value);
 
     }
-    public static void selectByIndex(@This WebElement webElement, int index) {
+    public static void selectByIndex(WebElement webElement, int index) {
         Select select = new Select(webElement);
         select.selectByIndex(index);
 

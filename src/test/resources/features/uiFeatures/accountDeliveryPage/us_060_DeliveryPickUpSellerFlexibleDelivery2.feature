@@ -15,12 +15,10 @@
 
 @UI @BU-223
 #@buyerLogin
-Feature:
+Feature: TE of US_060 Delivery type-Seller flexible delivery input control
 
-  Scenario: checkBox
-#    Given User login as Seller
+  Scenario: TC_01 US_60 Delivery type-Seller flexible delivery Checkbox input control
     Given User logs in with Urbanic two credential
-#    And user send "95109" as zipcode
     When user clicks on Account button
     And user clicks on delivery and pickup settings
     And unselect all checkbox
@@ -41,9 +39,8 @@ Feature:
       | Saturday   | Monday   | Monday    | At the 1. line, The end time of order must be later than the start time of order | false |
       | Tuesday    | Thursday | Sunday    | Your delivery settings have been successfully updated                            | true  |
 
+  Scenario Template: TC_03 US_60 Delivery type-Seller flexible delivery time control
 
-  Scenario Template: TC003 - time day
-#    And user send "95109" as zipcode
     Given User logs in with Urbanic two credential
     When user clicks on Account button
     And user clicks on delivery and pickup settings
@@ -60,10 +57,11 @@ Feature:
     And user clicks on update button
     Then user verifies the toast message is "<toastMessage>"
     And local clear
+
     Scenarios:
       | orderBegin | beginTime | orderEnd | endTime | deliverBy | deliverTime | toastMessage                                                                     |
       | 6          | 0205pm    | 3        | 0306pm  | 2         | 0306pm      | At the 1. line, The end time of order must be later than the start time of order |
-      | 2          | 0205pm    | 3        | 0205am  | 2         | 0306pm      | At the 1. line, The end time of order must be later than the start time of order |
+      | 2          | 0205pm    | 3        | 0205am  | 2         | 0306pm      | Your delivery settings have been successfully updated                            |
       | 3          | 0205pm    | 6        | 0306pm  | 2         | 0306pm      | Your delivery settings have been successfully updated                            |
 
 

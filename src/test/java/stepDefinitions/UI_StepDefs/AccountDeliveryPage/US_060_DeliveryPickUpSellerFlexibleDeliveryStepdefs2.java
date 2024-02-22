@@ -7,6 +7,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import pages.CommonPage;
@@ -112,12 +114,8 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
             selectByVisibleText(getDeliveryAndPickupSettings().deliveryEndDay,orderEnd);
             selectByVisibleText(getDeliveryAndPickupSettings().orderByDay,delivery);
             getDeliveryAndPickupSettings().update.click();
-//            try {
-//                Thread.sleep(10000);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-            ReusableMethods.waitForClickablility(getHomePage().toastMessage, 10);
+            waitFor(2);
+            //ReusableMethods.waitForClickablility(getHomePage().toastMessage, 10);
 
             Assert.assertEquals(
                     errorMessage,
@@ -125,17 +123,18 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
             );
 
             if (isOK) {
+
                 Assert.assertEquals(
                         COLOR.GREEN.getRgba(),
                         getHomePage().toastMessage.getCssValue("background-color")
                 );
             } else {
+
                 Assert.assertEquals(
                         COLOR.RED.getRgba(),
                         getHomePage().toastMessage.getCssValue("background-color")
                 );
             }
-
 
             getHomePage().toastMessage.click();
 
@@ -190,15 +189,13 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 
     @Then("user verifies the toast message is {string}")
     public void userVerifiesTheToastMessageIs(String expectedToastMessage) {
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-        ReusableMethods.waitForClickablility(getHomePage().toastMessage, 10);
-
-        Assert.assertEquals(getHomePage().toastMessage.getText(),
-                expectedToastMessage);
+        waitFor(2);
+        //WebElement toastMessage= driver.findElement(By.cssSelector(".Toastify__toast-body"));
+        //ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
+        //System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
+        System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
+        Assert.assertEquals(getHomePage().toastMessage.getText(),expectedToastMessage);
+//        Assert.assertEquals(toastMessage.getText(),expectedToastMessage);
     }
 
     @And("local clear")
