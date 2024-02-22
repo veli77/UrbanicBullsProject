@@ -46,7 +46,7 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
         //ReusableMethods.hover(getAccountAddressPage().googleMapsLink);
         getAccountAddressPage().googleMapsLink.click();
         ReusableMethods.waitForPageToLoad(5);
-        JSUtils.scrollIntoViewJS(getHomePage().googleChromePermissionRejectButton);
+        ReusableMethods.hover(getHomePage().googleChromePermissionRejectButton);
         getHomePage().googleChromePermissionRejectButton.click();
         Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("maps"));
         getAccountHubPage().goToPreviousPage();

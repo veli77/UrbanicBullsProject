@@ -92,14 +92,27 @@ public void recordStart(){
         System.out.println("Login2 metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER1.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER3.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER3.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
-        //getAccountHomePage().zipCodeBoxCloseButton.click();
+        getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
+    @Before(value = "@Login3")
+    public void login3() {
+        //loginPage=new LoginPage();
 
+        System.out.println("Login metodu calıstı");
+
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+
+    }
     @After(value = "@VideoRecorder")
     public void stopRecording() {
 
@@ -121,7 +134,7 @@ public void recordStart(){
         }
 
 
-   //     Driver.closeDriver();
+        Driver.closeDriver();
 
 
     }

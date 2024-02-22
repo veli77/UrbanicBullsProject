@@ -20,7 +20,9 @@ public class US_035_PasswordFunctionality_stepDefs extends CommonPage {
 
     @Given("User enters a valid first name, last name, and email address")
     public void userEntersAValidFirstNameLastNameAndEmailAddress() {
+        ReusableMethods.hover(getRegisterPage().FirstName);
         getRegisterPage().FirstName.sendKeys(faker.name().firstName());
+        ReusableMethods.hover(getRegisterPage().LastName);
         getRegisterPage().LastName.sendKeys(faker.name().lastName());
         getRegisterPage().Email.sendKeys(faker.internet().emailAddress());
     }

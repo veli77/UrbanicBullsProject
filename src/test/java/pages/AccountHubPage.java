@@ -1,7 +1,9 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import utilities.Driver;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
@@ -18,7 +20,9 @@ public class AccountHubPage extends CommonPage{
     }
 
     public void goToPreviousPage()  {
-        System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());   //https://test.urbanicfarm.com/account/weekly-order   dönmeli
+        System.out.println("driver.getCurrentUrl() = " + driver.getCurrentUrl());
+        //https://test.urbanicfarm.com/account/weekly-order   dönmeli
+        ReusableMethods.waitForPageToLoad(5);
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
@@ -29,8 +33,8 @@ public class AccountHubPage extends CommonPage{
 
     public void goToAddressPage(){
 
-        JSUtils.scrollIntoViewJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
-        JSUtils.clickElementByJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
+        ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
+        JSUtils.clickElementByJS(getAccountHomePage().accountPageLeftsidesTabs.get(1));
 
 
 
@@ -41,6 +45,24 @@ public class AccountHubPage extends CommonPage{
     //            element.click();
     //        }
     //    }
+    }
+
+    public By getByPanelButton(String btnName){
+        return By.xpath("//div/a[.='" + btnName + "']");
+    }
+
+    public void verifyLeftPanelButton(String btn){
+        WebElement element=driver.findElement(getByPanelButton(btn));
+        Assert.assertTrue(element.isEnabled());
+
+    }
+
+    public void clickAButtonInLeftPanel(String btnName){
+        WebElement element= driver.findElement(getByPanelButton(btnName));
+        ReusableMethods.hover(element);
+       // element= driver.findElement(getByPanelButton(btnName));
+       // JSUtils.scrollIntoViewJS(element);
+        JSUtils.clickElementByJS(element);
     }
 
 }
