@@ -1,11 +1,15 @@
 package stepDefinitions.UI_StepDefs.SellShareTradePage;
 
+import freemarker.cache.WebappTemplateLoader;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import utilities.ReusableMethods;
 
 
 import static org.junit.Assert.*;
+import static stepDefinitions.Hooks.driver;
 
 public class US_041_TheButtons_stepDefs extends CommonPage {
 
@@ -19,9 +23,11 @@ public class US_041_TheButtons_stepDefs extends CommonPage {
     }
     @Then("The Contact Us button appears and is clicked and the page opens.")
     public void the_contact_us_button_appears_and_is_clicked_and_the_page_opens() {
-        assertTrue(getSellShareTradePage().ContactUsBtn_SellShareTread.isDisplayed());
+        WebElement ContactUsBtn_SellShareTread = driver.findElement(By.xpath("//a[@class='Navbar_textLink__f6_Al mr-4 ml-1']"));
+        assertTrue(ContactUsBtn_SellShareTread.isDisplayed());
+
         ReusableMethods.waitFor(2);
-        assertTrue(getSellShareTradePage().ContactUsBtn_SellShareTread.isEnabled());
+        assertTrue(ContactUsBtn_SellShareTread.isEnabled());
     }
     @Then("The User button appears and is clicked and the page opens.")
     public void the_user_button_appears_and_is_clicked_and_the_page_opens() {

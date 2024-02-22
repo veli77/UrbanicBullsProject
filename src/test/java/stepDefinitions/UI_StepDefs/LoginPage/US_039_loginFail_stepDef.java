@@ -30,8 +30,11 @@ public class US_039_loginFail_stepDef extends CommonPage{
     @Then("the user enters an invalid email as {string} and password as {string}")
     public void theUserEntersAnInvalidEmailAsAndPasswordAs(String arg0, String arg1){
         String loginTitle=driver.getTitle();
+        ReusableMethods.hover(getLoginPage().input_email);
         getLoginPage().input_email.sendKeys(arg0);
+        ReusableMethods.hover(getLoginPage().input_password);
         getLoginPage().input_password.sendKeys(arg1);
+        ReusableMethods.hover(getLoginPage().submit_button);
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(2000);
         Assert.assertEquals(loginTitle,driver.getTitle());
