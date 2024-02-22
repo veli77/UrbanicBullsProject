@@ -1,8 +1,16 @@
 package stepDefinitions.UI_StepDefs.AccountOrdersPage;
 
 import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WindowType;
 import pages.CommonPage;
+import utilities.ConfigurationReader;
 import utilities.ReusableMethods;
+
+import java.util.Set;
+
+import static org.junit.Assert.assertTrue;
+import static stepDefinitions.Hooks.driver;
 
 
 public class US_70_Orders_StepDefs extends CommonPage {
@@ -25,23 +33,24 @@ public class US_70_Orders_StepDefs extends CommonPage {
     }
     @Given("User adds order on cart page")
     public void user_adds_order_on_cart_page() throws InterruptedException {
+
+
         for (int i = 0; i < 3; i++) {
             getAccountOrdersPage().plus.click();
             Thread.sleep(2000);
         }
-
         /*
-        for (int i = 0; i < 3; i++) {
-            getAccountOrdersPage().plus2.click();
-            Thread.sleep(3000);
+        Thread.sleep(2000);
+        if (getAccountOrdersPage().xIsareti.isDisplayed()) {
+            getAccountOrdersPage().xIsareti.click();
+        } else {
+            for (int i = 0; i < 3; i++) {
+                getAccountOrdersPage().plus.click();
+                Thread.sleep(2000);
+            }
         }
 
-        for (int i = 0; i < 3; i++) {
-            ReusableMethods.waitForVisibility(getAccountOrdersPage().plus3, 5);
-            //Thread.sleep(2000);
-            getAccountOrdersPage().plus3.sendKeys("3");
-
-        }
+        Thread.sleep(2000);
 
          */
         getAccountOrdersPage().addToCard.click();
@@ -54,15 +63,22 @@ public class US_70_Orders_StepDefs extends CommonPage {
         getAccountOrdersPage().proceedToCheckout.click();
         Thread.sleep(2000);
         getAccountOrdersPage().nextButton.click();
-        Thread.sleep(1000);
-        getAccountOrdersPage().goToPayment.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         getAccountOrdersPage().nextButton.click();
         getAccountOrdersPage().goToPayment.click();
+        Thread.sleep(2000);
 
     }
     @Then("Order placed by the user is seen in the Orders section.")
-    public void order_placed_by_the_user_is_seen_in_the_orders_section() {
+    public void order_placed_by_the_user_is_seen_in_the_orders_section() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.switchTo().newWindow(WindowType.WINDOW);
+        getAccountOrdersPage().email_PAypal.sendKeys(ConfigurationReader.getProperty("paypalEmail"));
+        getAccountOrdersPage().passwrd_Paypal.sendKeys(ConfigurationReader.getProperty("NvR29+Ww"));
+        getAccountOrdersPage().loginPaypal.click();
+        getAccountOrdersPage().payPalSubmitBtn.click();
+        Thread.sleep(3000);
+        assertTrue(getAccountOrdersPage().paymentSuccesfullyMetni.isDisplayed());
 
     }
     @Then("Login as a seller")

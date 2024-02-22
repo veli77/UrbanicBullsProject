@@ -1,5 +1,5 @@
 @smoke
-Feature:As a user, after entering valid information, I should be able to see the Sell-Pay-Trade page.
+Feature:US_41 As a user, after entering valid information, I should be able to see the Sell-Pay-Trade page.
 
   Background:
     Given User goes to homepage
@@ -8,7 +8,7 @@ Feature:As a user, after entering valid information, I should be able to see the
 
 
     @UI @US_41_TC01
-    Scenario:Contact us--User-Logout-Notifications-Cart  sholuld be visible
+    Scenario:TC001 US_41 Contact us--User-Logout-Notifications-Cart  sholuld be visible
       Then The Contact Us button appears and is clicked and the page opens.
       Then The User button appears and is clicked and the page opens.
       Then Logout Button appears and is clicked and the page opens

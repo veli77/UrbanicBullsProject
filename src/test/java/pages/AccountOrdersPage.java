@@ -86,6 +86,18 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement bosluk;
     @FindBy(xpath = "(//input[@class='FeaturedProductCard_number__16S1m'])[5]")
     public WebElement plus3; //siparis sayfasinda urun sayisini artirmak icin
+    @FindBy(xpath = "//td[@class='py-3 align-middle text-end']")
+    public WebElement xIsareti;
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement email_PAypal;
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement passwrd_Paypal;
+    @FindBy(xpath = "//button[@id='btnLogin']")
+    public WebElement loginPaypal;
+    @FindBy(xpath = "//button[@id='payment-submit-btn']")
+    public WebElement payPalSubmitBtn;
+    @FindBy(xpath = "//p[@class='mt-2 font-weight-bold']")
+    public WebElement paymentSuccesfullyMetni;
 
 
 
