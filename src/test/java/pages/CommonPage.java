@@ -27,7 +27,7 @@ public class CommonPage {
     private AccountDeliveryPage accountDeliveryPage;
     private AccountHubPage accountHubPage;
     private AccountOrdersPage accountOrdersPage;
-    private IconHomePage iconHomePage;
+    private WelcomePage welcomePage;
     private AccountRequestedProductsPage accountRequestedProductsPage;
 
     public AccountRequestedProductsPage getAccountRequestedProductsPage() {
@@ -36,11 +36,11 @@ public class CommonPage {
         }
         return accountRequestedProductsPage;
     }
-    public IconHomePage getIconHomePage() {
-        if (iconHomePage == null) {
-            iconHomePage = new IconHomePage();
+    public WelcomePage getWelcomePage() {
+        if (welcomePage == null) {
+            welcomePage = new WelcomePage();
         }
-        return iconHomePage;
+        return welcomePage;
     }
     public AccountOrdersPage getAccountOrdersPage() {
         if (accountOrdersPage == null) {
@@ -76,6 +76,7 @@ public class CommonPage {
         }
         return accountAddressPage;
     }
+
     public PrivacyPolicyPage getPrivacyPolicyPage() {
         if (privacyPolicyPage == null) {
             privacyPolicyPage = new PrivacyPolicyPage();

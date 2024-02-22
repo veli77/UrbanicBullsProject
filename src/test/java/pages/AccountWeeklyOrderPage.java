@@ -13,9 +13,26 @@ public class AccountWeeklyOrderPage extends CommonPage{
 
     @FindBy (css="[href='/account/home'].align-items-center[title=\"My Account\"]")
     public WebElement profil_img_Account;
-
     @FindBy(xpath = "(//a[@class='Sidebar_smFont__16-hW Sidebar_section_btn__1sp6i h6 '])[3]")
     public WebElement YourProducts_Services;
+    @FindBy(css = "[href='/account/address']")
+    public WebElement accountAddressBtnAtTheLeftBar;
+    @FindBy(css = "div[class='CheckDistrictModal_x-btn__sVOij']")
+    public WebElement zipCodeBoxCloseButton;
+
+
+    //Sayfanın sag tafında bulunan ADDRESS btn'a tıklar, öncesinde implicit wait yapar
+    public void clickAddressBtnAtTheLeftBar(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        JSUtils.clickElementByJS(accountAddressBtnAtTheLeftBar);
+    }
+
+    @FindBy(xpath = "//a[@href='/account/address']")
+    public WebElement AddressBtn;
 
     public void setYourProducts_ServicesBtnClick() throws InterruptedException {
         JSUtils.clickElementByJS(getAccountWeeklyOrderPage().YourProducts_Services);

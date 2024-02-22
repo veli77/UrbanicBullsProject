@@ -1,4 +1,4 @@
-@BU-1
+@BU-1 @smoke
 @UI
 Feature: Home Page Accessibility
 
