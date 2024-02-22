@@ -1,4 +1,5 @@
 @UI
+  @friday
 Feature: US_036
 
   Scenario: As a user I should be able to successfully add zipcode

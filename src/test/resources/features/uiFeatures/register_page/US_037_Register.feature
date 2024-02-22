@@ -1,4 +1,5 @@
 @UI
+  @friday
 Feature: US_037
 
   Scenario: User should be able to successfully complete the register after entering valid information
