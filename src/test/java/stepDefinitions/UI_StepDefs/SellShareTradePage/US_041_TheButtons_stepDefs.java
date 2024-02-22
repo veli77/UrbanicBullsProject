@@ -1,11 +1,15 @@
 package stepDefinitions.UI_StepDefs.SellShareTradePage;
 
+import freemarker.cache.WebappTemplateLoader;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import utilities.ReusableMethods;
 
 
 import static org.junit.Assert.*;
+import static stepDefinitions.Hooks.driver;
 
 public class US_041_TheButtons_stepDefs extends CommonPage {
 
