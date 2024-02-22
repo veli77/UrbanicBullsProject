@@ -13,7 +13,7 @@ import pages.CommonPage;
 import pages.LoginPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
-import utilities.MyScreenRecorder;
+//import utilities.MyScreenRecorder;
 import utilities.ReusableMethods;
 
 public class Hooks extends CommonPage{
@@ -31,16 +31,16 @@ public class Hooks extends CommonPage{
     public static int width;
     public static int height;
 
-@Before(value="@VideoRecorder")
-public void recordStart(){
-
-    System.out.println("Kayıt basladı");
-    try {
-        MyScreenRecorder.startRecording("VideoRecord");
-    } catch (Exception e) {
-        throw new RuntimeException(e);
-    }
-}
+//@Before(value="@VideoRecorder")
+//public void recordStart(){
+//
+//    System.out.println("Kayıt basladı");
+//    try {
+//        MyScreenRecorder.startRecording("VideoRecord");
+//    } catch (Exception e) {
+//        throw new RuntimeException(e);
+//    }
+//}
 
 
     @Before(value = "@headless", order = 0)
@@ -85,17 +85,17 @@ public void recordStart(){
 
     }
 
-    @After(value = "@VideoRecorder")
-    public void stopRecording() {
-
-        System.out.println("Kayıt bitti");
-
-        try {
-            MyScreenRecorder.stopRecording();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @After(value = "@VideoRecorder")
+//    public void stopRecording() {
+//
+//        System.out.println("Kayıt bitti");
+//
+//        try {
+//            MyScreenRecorder.stopRecording();
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @After(value = "@UI")
     public void tearDown(Scenario scenario) {
