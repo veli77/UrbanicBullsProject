@@ -8,6 +8,7 @@ import utilities.JSUtils;
 
 import utilities.ReusableMethods;
 
+import java.awt.*;
 import java.util.List;
 
 import static stepDefinitions.Hooks.driver;
@@ -133,6 +134,18 @@ public class HomePage extends CommonPage {
     public void goesToTestUrbanicFarmHomePage() {
         driver.get("https://test.urbanicfarm.com/");
         ReusableMethods.waitForPageToLoad(5);
+
+
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+        // Ekran çözünürlüğü boyutunu alma
+        Dimension screenSize = toolkit.getScreenSize();
+
+        // Genişlik ve yükseklik değerlerini alarak ekran çözünürlüğünü yazdırma
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
+        System.out.println("Ekran Çözünürlüğü: " + width + "x" + height);
+
     }
 
     //HomePage sayfasındaysanız Facebook iconuna tıklamak için kullanabilirsiniz
