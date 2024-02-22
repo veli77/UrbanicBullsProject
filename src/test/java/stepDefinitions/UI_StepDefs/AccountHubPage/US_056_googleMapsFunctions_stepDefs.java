@@ -27,8 +27,8 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
         //int size = driver.findElements(By.tagName("iframe")).size();
         //System.out.println("size:" + size);
        // driver.switchTo().frame(0);
-     //  Assert.assertTrue(getAccountAddressPage().mapScreeninAddressPage.isDisplayed());
-        getAccountAddressPage().goToMapPage();
+        Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
+        // getAccountAddressPage().goToMapPage();
     }
 
     @And("Zoom buttons should be clickable.")

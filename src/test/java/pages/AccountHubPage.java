@@ -32,7 +32,7 @@ public class AccountHubPage extends CommonPage{
         JSUtils.scrollIntoViewJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
         JSUtils.clickElementByJS(getAccountWeeklyOrderPage().accountAddressBtnAtTheLeftBar);
 
-       // getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
+
 
     //    for (WebElement element : getAccountHomePage().accountPageLeftsidesTabs){
 //
