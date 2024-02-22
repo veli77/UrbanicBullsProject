@@ -33,6 +33,7 @@ public class AccountHubPage extends CommonPage{
 
     public void goToAddressPage(){
 
+
         ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
         JSUtils.clickElementByJS(getAccountHomePage().accountPageLeftsidesTabs.get(1));
 

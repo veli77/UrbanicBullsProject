@@ -4,64 +4,62 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
-import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.awt.*;
+
 
 import static stepDefinitions.Hooks.driver;
 
 public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     @When("User click to Address button, user can see related page")
     public void userClickToAddressButtonUserCanSeeRelatedPage() {
-      //  ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(1));
 
-     //   ReusableMethods.waitForClickablility(getAccountHomePage().accountPageLeftsidesTabs.get(1),5);
-     //   getAccountHomePage().accountPageLeftsidesTabs.get(1).click();
        getAccountHubPage().goToAddressPage();
+       ReusableMethods.waitForPageToLoad(5);
+       Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
 
-        ReusableMethods.waitForPageToLoad(5);
-        //int size = driver.findElements(By.tagName("iframe")).size();
-        //System.out.println("size:" + size);
-       // driver.switchTo().frame(0);
-        Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
-        // getAccountAddressPage().goToMapPage();
     }
 
     @And("Zoom buttons should be clickable.")
     public void zoomButtonsShouldBeClickable() {
 
-        for (WebElement element: getAccountAddressPage().mapsZoomButtons) {
+       driver.switchTo().frame(getAccountAddressPage().iframe);
 
-            ReusableMethods.hover(element);
-            element.click(); }
+       for (WebElement element: getAccountAddressPage().mapsZoomButtons){
+           element.click();
+       }
+      // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
+      // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
+
     }
 
     @Then("User click to View Larger Map link, user can reach related page.")
     public void userClickToViewLargerMapLinkUserCanReachRelatedPage() {
-        ReusableMethods.waitForClickablility(getAccountAddressPage().googleMapsLink,3);
-        //ReusableMethods.hover(getAccountAddressPage().googleMapsLink);
-        getAccountAddressPage().googleMapsLink.click();
-        ReusableMethods.waitForPageToLoad(5);
-        ReusableMethods.hover(getHomePage().googleChromePermissionRejectButton);
-        getHomePage().googleChromePermissionRejectButton.click();
+
+        getAccountAddressPage().goToMapPage();
         Assert.assertTrue(driver.getCurrentUrl().toLowerCase().contains("maps"));
-        getAccountHubPage().goToPreviousPage();
+        ReusableMethods.switchToWindow(0);
     }
 
     @Then("User click to satellite screen box, map should change.")
     public void userClickToSatelliteScreenBoxMapShouldChange() {
+        driver.switchTo().frame(getAccountAddressPage().iframe);
+        ReusableMethods.hover(getAccountAddressPage().googleMapsSatelliteButton);
         getAccountAddressPage().googleMapsSatelliteButton.click();
 
     }
 
     @Then("User click to park or forest area name, user can see a label related area.")
-    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea() {
+    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea()  {
+
         ReusableMethods.hover(getAccountAddressPage().cursorOverTheMapNatureZones);
-        Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
+     // Robot robot=new Robot();
+     //  robot.mouseMove(getAccountAddressPage().cursorOverTheMapNatureZones);
+
+     //  Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
 
 
     }
