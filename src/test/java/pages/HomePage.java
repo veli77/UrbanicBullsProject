@@ -149,7 +149,12 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
-
+    @FindBy(css = "nav>a[href^='/account/home']")
+    public WebElement accountName_navbar;
+    @FindBy(css = "[href='/account/delivery']")
+    public WebElement deliverySettings_sidebar;
+    @FindBy(css = "Toastify__toast-body")
+    public WebElement toastMessage;
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.

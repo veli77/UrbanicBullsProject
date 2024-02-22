@@ -2,6 +2,7 @@ package utilities;
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
+import manifold.ext.rt.api.This;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -58,7 +59,7 @@ public class ReusableMethods {
 
     //========Hover Over(ScrollDown)=====//
     public static void hover(WebElement element) {
-  //      Actions actions = new Actions(Driver.getDriver());
+        //      Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
@@ -104,6 +105,12 @@ public class ReusableMethods {
     public static WebElement waitForVisibility(By locator, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public static void waitForVisibility(WebElement webElement) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public static WebElement waitForClickablility(WebElement element, int timeout) {
@@ -298,31 +305,30 @@ public class ReusableMethods {
         }
     }
 
-    
 
     public static void clearValue(WebElement element, String text) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
     }
 
     public static void nullCheck(WebElement element, String text) {
-        if (text!=null) {
+        if (text != null) {
             element.sendKeys(text);
-        }else System.err.println("Null is not allowed for this method");
+        } else System.err.println("Null is not allowed for this method");
     }
 
     public static void sendText(WebElement element, String text) {
-        try{
+        try {
             waitForClickablility(element, 15).sendKeys(text);
-        }catch (ElementNotInteractableException e){
+        } catch (ElementNotInteractableException e) {
             scrollToElement(element);
-            sendText(element,text);
+            sendText(element, text);
         }
     }
 
     /*
    This method accepts a String "expectedTitle" and Asserts if it is true
     */
-    public static void verifyTitle(String expectedTitle){
+    public static void verifyTitle(String expectedTitle) {
 
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
 
@@ -344,5 +350,24 @@ public class ReusableMethods {
         return element.getText();
     }
 
+
+    public static void clearAndSend(WebElement webElement, String str) {
+        webElement.clear();
+        webElement.sendKeys(str);
+    }
+    public static void selectByVisibleText(@This WebElement webElement,String text){
+        Select select = new Select(webElement);
+        select.selectByVisibleText(text);
+    }
+    public static void selectByValue(@This WebElement webElement,String value){
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+
+    }
+    public static void selectByIndex(@This WebElement webElement, int index) {
+        Select select = new Select(webElement);
+        select.selectByIndex(index);
+
+    }
 }
 
