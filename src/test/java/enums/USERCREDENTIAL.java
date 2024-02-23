@@ -6,7 +6,8 @@ public enum USERCREDENTIAL {
     USER3("seller_urban@mailsac.com","VHt*zzt*wQNu6XS"),
     USER4("buyer_urban@mailsac.com","VHt*zzt*wQNu6XS"),
     USERERDAL("erdal@yopmail.com","nPfXAzs656Jw6*w"),
-    USERVEDAT("testuser@deneme.com","Testuser1/.");
+    USERVEDAT("testuser@deneme.com","Testuser1/."),
+    USERBUYER("peummonnemane-5141@yopmail.com","e*y7G2xhsTVAi5u");
 
 
 
