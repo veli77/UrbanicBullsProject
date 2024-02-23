@@ -10,10 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
-import utilities.ConfigurationReader;
-import utilities.Driver;
-import utilities.MyScreenRecorder;
-import utilities.ReusableMethods;
+import utilities.*;
 
 public class Hooks extends CommonPage{
 
@@ -71,6 +68,8 @@ public void recordStart(){
 
     @Before(value = "@Login")
     public void login() {
+        //loginPage=new LoginPage();
+
         System.out.println("Login metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
@@ -91,10 +90,25 @@ public void recordStart(){
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
     }
+    @Before(value = "@Login3")
+    public void login3() {
+        //loginPage=new LoginPage();
 
+        System.out.println("Login metodu calıstı");
+
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+
+    }
     @After(value = "@VideoRecorder")
     public void stopRecording() {
-        System.out.println("Kayıt bitti");
+
+        //System.out.println("Kayıt bitti");
+
         try {
             MyScreenRecorder.stopRecording();
         } catch (Exception e) {
@@ -113,21 +127,21 @@ public void recordStart(){
 
     @Before("@DB")
     public void setupDatabase() {
-        //    DatabaseUtilities.createConnection();
+            DBUtilities.createConnection();
 
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //   DatabaseUtilities.closeConnection();
+           DatabaseUtilities.closeConnection();
 
     }
 
     @Before("@user1")
     public void denemeLogin() {
         System.out.println(
-                "email : " + ConfigurationReader.getProperty("user1_email")
-                        +" password : " + ConfigurationReader.getProperty("user1_password")
+                "email : " + ConfigurationReader.getProperty("user1_email") +
+                        " password : " + ConfigurationReader.getProperty("user1_password")
         );
     }
 }
