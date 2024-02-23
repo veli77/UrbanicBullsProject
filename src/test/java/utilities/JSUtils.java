@@ -13,6 +13,16 @@ public class JSUtils {
         jsexecutor.executeScript("arguments[0].click();", element);
     }
 
+    /**
+     * Clicks on an element using JavaScript
+     *
+     * @param element
+     */
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
     //to get the page title with JS
     public static String getTitleByJS() {
         JavascriptExecutor jsexecutor = ((JavascriptExecutor) Driver.getDriver());
