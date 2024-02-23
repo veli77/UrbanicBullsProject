@@ -22,10 +22,13 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
 
     @Then("User should be able to click the {string} button on the left side bar in Account Page and verify that user is in the Orders Page")
     public void userShouldBeAbleToClickTheButtonOnTheLeftSideBarInAccountPageAndVerifyThatUserIsInTheOrdersPage(String btnName) {
-        getAccountHubPage().verifyLeftPanelButton(btnName);
+        //getAccountHubPage().verifyLeftPanelButton(btnName);
+        //ReusableMethods.waitForPageToLoad(5);
+        //getAccountHubPage().clickAButtonInLeftPanel(btnName);
         ReusableMethods.waitForPageToLoad(5);
-        getAccountHubPage().clickAButtonInLeftPanel(btnName);
-        ReusableMethods.waitForPageToLoad(5);
+        //getAccountHomePage().leftSideOrdersButton.click();
+        JSUtils.clickElementByJS(getAccountHomePage().leftSideOrdersButton);
+        //ReusableMethods.waitFor(5);
         getAccountOrdersPage().verifyOrdersPage();
 
     }
@@ -74,7 +77,34 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
     @And("User should be able to click Seller Page button in Order Details page and should be reach related page.")
     public void userShouldBeAbleToClickSellerPageButtonInOrderDetailsPageAndShouldBeReachRelatedPage() {
         ReusableMethods.waitForPageToLoad(5);
-        getAccountOrdersPage().clickSellerPageButtonAndVerifySellerPage();
+        //getAccountOrdersPage().clickSellerPageButtonAndVerifySellerPage();
+        getAccountOrdersPage().viewOrderDetailsLink.click();
+        ReusableMethods.waitFor(5);
+
+        Assert.assertTrue(getAccountOrdersPage().sellerNameText.isDisplayed());
+        System.out.println("sellerName = " + getAccountOrdersPage().sellerNameText.getText());
+
+        Assert.assertTrue(getAccountOrdersPage().sellerNameText.isDisplayed());
+        System.out.println("sellerEmail = " + getAccountOrdersPage().sellerEmailText.getText());
+
+        Assert.assertTrue(getAccountOrdersPage().rateTheSellerLinkText.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().callSellerLinkText.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().sellerPageLinkText.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().sellerAddressText.isDisplayed());
+
+        getAccountOrdersPage().rateTheSellerLinkText.click();
+
+        Assert.assertTrue(getAccountOrdersPage().rateTheSellerHowWouldYouRateThisProductText.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().ratingStars.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().commentArea.isDisplayed());
+
+        Assert.assertTrue(getAccountOrdersPage().submitButton.isDisplayed());
+
 
     }
 }

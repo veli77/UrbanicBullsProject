@@ -25,6 +25,9 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//article[@class='row']//a")
     public List<WebElement> viewOrderDetailsButtons;
 
+    @FindBy(linkText = "View order details")
+    public WebElement viewOrderDetailsLink;
+
     @FindBy(xpath = "//div[@class='mr-3']//span")
     public List<WebElement> orderSummaryList;
 
@@ -33,6 +36,21 @@ public class AccountOrdersPage extends CommonPage{
 
     @FindBy(xpath = "(//tbody//span)[1]")
     public WebElement sellerNameText;
+
+    @FindBy(xpath = "(//tbody//span)[2]")
+    public WebElement sellerEmailText;
+
+    @FindBy(xpath = "//a[.='rate the seller']")
+    public WebElement rateTheSellerLinkText;
+
+    @FindBy(linkText = "Call seller")
+    public WebElement callSellerLinkText;
+
+    @FindBy(linkText = "Seller page")
+    public WebElement sellerPageLinkText;
+
+    @FindBy(xpath = "//span[.='Seller address']")
+    public WebElement sellerAddressText;
 
     @FindBy(xpath = "//span[@class='h6']")
     public WebElement sellerFirstName;
@@ -99,6 +117,12 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//span[.='How would you rate this product ?']")
     public WebElement howWouldYouRateThisProductText;
 
+    /**
+     * rate the seller howWouldYouRateThisProductText
+     */
+    @FindBy(xpath = "//span[@class='text-center h4']")
+    public WebElement rateTheSellerHowWouldYouRateThisProductText;
+
     @FindBy(xpath = "//div[@class='bg-info p-1 rounded mb-3']")
     public WebElement ratingStars;
 
@@ -108,9 +132,9 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//button[.='Submit']")
     public WebElement submitButton;
 
-
     @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
     public WebElement closeTheRatingWindow;
+
 
 
 
