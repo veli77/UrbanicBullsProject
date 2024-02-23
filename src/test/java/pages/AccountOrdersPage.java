@@ -109,9 +109,8 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement submitButton;
 
 
-
-
-
+    @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
+    public WebElement closeTheRatingWindow;
 
 
 
@@ -161,10 +160,13 @@ public boolean verifySummaryText(String text){
 
 public void clickSellerPageButtonAndVerifySellerPage(){
 
+    ReusableMethods.waitForPageToLoad(5);
     ReusableMethods.hover(sellerNameText);
     sellerName=sellerNameText.getAttribute("textContent");
+    ReusableMethods.waitForPageToLoad(5);
     ReusableMethods.hover(sellerPageButton);
     sellerPageButton.click();
+    ReusableMethods.waitForPageToLoad(5);
     String currentUrl= driver.getCurrentUrl();
     Assert.assertTrue(sellerName.contains(sellerFirstName.getText()));
    // ReusableMethods.hover(sellerMapCoordinate);

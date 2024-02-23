@@ -19,11 +19,14 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
         getLoginPage().login(USERCREDENTIAL.USERVEDAT);
     }
 
-    @Then("User should be able to click the Orders button on the left side bar in Account Page and verify that user is in the Orders Page")
-    public void userShouldBeAbleToClickTheButtonOnTheLeftSideBarInAccountPageAndVerifyThatUserIsInTheOrdersPage() {
-        JSUtils.clickElementByJS(getAccountHomePage().leftSideOrdersButton);
 
-        Assert.assertTrue(getAccountOrdersPage().ordersPageText.isDisplayed());
+    @Then("User should be able to click the {string} button on the left side bar in Account Page and verify that user is in the Orders Page")
+    public void userShouldBeAbleToClickTheButtonOnTheLeftSideBarInAccountPageAndVerifyThatUserIsInTheOrdersPage(String btnName) {
+        getAccountHubPage().verifyLeftPanelButton(btnName);
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHubPage().clickAButtonInLeftPanel(btnName);
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountOrdersPage().verifyOrdersPage();
 
     }
 
@@ -63,5 +66,15 @@ public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
         Assert.assertTrue(getAccountOrdersPage().ratingStars.isDisplayed());
         Assert.assertTrue(getAccountOrdersPage().commentArea.isDisplayed());
         Assert.assertTrue(getAccountOrdersPage().submitButton.isDisplayed());
+        getAccountOrdersPage().closeTheRatingWindow.click();
+
+    }
+
+
+    @And("User should be able to click Seller Page button in Order Details page and should be reach related page.")
+    public void userShouldBeAbleToClickSellerPageButtonInOrderDetailsPageAndShouldBeReachRelatedPage() {
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountOrdersPage().clickSellerPageButtonAndVerifySellerPage();
+
     }
 }
