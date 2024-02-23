@@ -10,11 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
-import pages.LoginPage;
-import utilities.ConfigurationReader;
-import utilities.Driver;
-import utilities.MyScreenRecorder;
-import utilities.ReusableMethods;
+import utilities.*;
 
 public class Hooks extends CommonPage{
 
@@ -142,13 +138,13 @@ public void recordStart(){
 
     @Before("@DB")
     public void setupDatabase() {
-        //    DatabaseUtilities.createConnection();
+            DBUtilities.createConnection();
 
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //   DatabaseUtilities.closeConnection();
+           DBUtilities.closeConnection();
 
     }
 
