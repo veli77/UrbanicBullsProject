@@ -105,6 +105,11 @@ public class JSUtils {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
         js.executeScript("arguments[0].style.border='" + borderStyle + "'", element);
     }
+
+    public static void setRangeInputValue(WebElement element, int value) {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].value = arguments[1];", element, value);
+    }
 }
 
 
