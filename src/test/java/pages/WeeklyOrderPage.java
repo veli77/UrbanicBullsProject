@@ -13,7 +13,7 @@ public class WeeklyOrderPage extends CommonPage {
     public WebElement zipCode;
 
     public void sendZipcode(String zipcode) {
-        ReusableMethods.waitForVisibility(zipCode);
+        ReusableMethods.verifyElementDisplayed(zipCode);
         zipCode.sendKeys(zipcode);
         actions.sendKeys(Keys.ENTER).perform();
     }

@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
 
 import java.util.List;
 
@@ -47,23 +48,33 @@ public class DeliveryAndPickupSettings extends CommonPage {
     public List<WebElement> checkBoxList;
 
 
-    public void assertLabelWithWebelement(String expectedLabel,String webElementFor){
-        String actualLabel = driver.findElement(By.xpath("//label[@for='"+webElementFor+"']")).getText();
-        Assert.assertTrue("actual : " +actualLabel +" , expected "+expectedLabel,actualLabel.contains(expectedLabel));
+    public void assertLabelWithWebelement(String expectedLabel, String webElementFor) {
+        String actualLabel = driver.findElement(By.xpath("//label[@for='" + webElementFor + "']")).getText();
+        Assert.assertTrue("actual : " + actualLabel + " , expected " + expectedLabel, actualLabel.contains(expectedLabel));
+    }
+
+    public void assertInputWithWebelement(String webElementId) {
+        Assert.assertTrue(driver.findElement(By.xpath("//input[@id='" + webElementId + "']")).isDisplayed());
+//        try {
+//            Assert.assertTrue(driver.findElement(By.xpath("//input[@id='" + webElementId + "']")).isDisplayed());
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
     }
 
 
-    public void unCheckDeliverySettings(){
+    public void unCheckDeliverySettings() {
         checkBoxList
                 .stream()
-                .forEach(t->{
-                    if (t.isSelected()){
+                .forEach(t -> {
+                    if (t.isSelected()) {
                         t.click();
                     }
                 });
     }
 
-    public void printName(String str){
+    public void printName(String str) {
         System.out.println("str = " + str);
     }
 

@@ -13,7 +13,7 @@
 #Your delivery settings have been succesfully updated alert should appear
 
 
-@UI @BU-223
+@UI @BU-223 @BU-232 @BU-245
 #@buyerLogin
 Feature: TE of US_060 Delivery type-Seller flexible delivery input control
 
@@ -23,15 +23,22 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
     And user clicks on delivery and pickup settings
     And unselect all checkbox
     And user clicks on seller flexible
+    And enter some order times
 
-    Then user verifies web elements with following ids displays correct text
+    Given user verifies web elements with following ids displays correct text
       | freeFlexibleDeliveryRange    | Free Delivery Range (mile) :                |
       | minFreeFlexibleDeliveryOrder | Minimum Order Amount For Free Delivery($) : |
       | perMileCostFlex              | Per Mile Cost ($) :                         |
       | maxFlexibleDeliveryRange     | Maximum Delivery Range (mile) :             |
 
+    Then user verifies web elements with following ids input
+      | freeFlexibleDeliveryRange    |
+      | minFreeFlexibleDeliveryOrder |
+      | perMileCostFlex              |
+      | maxFlexibleDeliveryRange     |
+
     When user enter address fields
-    And enter some order times
+#    And enter some order times
     Then days should be appropriate
       | OrderBegin | OrderEnd | Delivery  | ErrorMessage                                                                     | isOK  |
       | Monday     | Tuesday  | Wednesday | Your delivery settings have been successfully updated                            | true  |
@@ -39,14 +46,26 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | Saturday   | Monday   | Monday    | At the 1. line, The end time of order must be later than the start time of order | false |
       | Tuesday    | Thursday | Sunday    | Your delivery settings have been successfully updated                            | true  |
 
+  Scenario: TC_02 US_60 Delivery type-Seller flexible delivery Checkbox input control
+
+#    Given User logs in with Urbanic two credential
+#    When user clicks on Account button
+#    And user clicks on delivery and pickup settings
+#    And unselect all checkbox
+#    And user clicks on seller flexible
+#    And enter some order times
+
+
+
+
   Scenario Template: TC_03 US_60 Delivery type-Seller flexible delivery time control
 
-    Given User logs in with Urbanic two credential
-    When user clicks on Account button
-    And user clicks on delivery and pickup settings
-    And unselect all checkbox
-    And user clicks on seller flexible
-    And enter some order times
+#    Given User logs in with Urbanic two credential
+#    When user clicks on Account button
+#    And user clicks on delivery and pickup settings
+#    And unselect all checkbox
+#    And user clicks on seller flexible
+#    And enter some order times
 
     When user selects "<orderBegin>" for orderBegin
     And user enters input to order begin "<beginTime>"

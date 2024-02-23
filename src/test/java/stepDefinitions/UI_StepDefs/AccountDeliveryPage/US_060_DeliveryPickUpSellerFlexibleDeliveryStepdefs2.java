@@ -4,6 +4,7 @@ package stepDefinitions.UI_StepDefs.AccountDeliveryPage;
 import enums.COLOR;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -49,7 +50,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         getDeliveryAndPickupSettings().seller_flexible.click();
     }
 
-    @Then("user verifies web elements with following ids displays correct text")
+    @Given("user verifies web elements with following ids displays correct text")
     public void userVerifiesWebElementsWithFollowingIdsDisplaysCorrectText(DataTable dataTable) {
         List<String> webElementFor = dataTable.column(0);
         List<String> labels = dataTable.column(1);
@@ -61,12 +62,19 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
             );
 
         }
-//        String name = "omer";
-//        String surName = "omer";
-//
-//        getDeliveryAndPickupSettings().printName(name);
-//        getDeliveryAndPickupSettings().printName(surName);
 
+    }
+    @Then("user verifies web elements with following ids input")
+    public void userVerifiesWebElementsWithFollowingIdsInput(DataTable dataTable) {
+        List<String> webElementInput = dataTable.column(0);
+
+        for (int i = 0; i < webElementInput.size(); i++) {
+
+//            assert driver.findElement(By.xpath("//input[@id='"+webElementInput+"']")).isDisplayed();
+//            ReusableMethods.verifyElementDisplayed(driver.findElement(By.xpath("//input[@id='"+webElementInput.get(i)+"']")));
+            getDeliveryAndPickupSettings().assertInputWithWebelement(webElementInput.get(i));
+            System.out.println(webElementInput.get(i));
+        }
     }
 
     @When("user enter address fields")
@@ -114,8 +122,8 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
             selectByVisibleText(getDeliveryAndPickupSettings().deliveryEndDay,orderEnd);
             selectByVisibleText(getDeliveryAndPickupSettings().orderByDay,delivery);
             getDeliveryAndPickupSettings().update.click();
-            waitFor(2);
-            //ReusableMethods.waitForClickablility(getHomePage().toastMessage, 10);
+            //waitFor(2);
+            ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
 
             Assert.assertEquals(
                     errorMessage,
@@ -189,9 +197,9 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 
     @Then("user verifies the toast message is {string}")
     public void userVerifiesTheToastMessageIs(String expectedToastMessage) {
-        waitFor(2);
+        //waitFor(2);
         //WebElement toastMessage= driver.findElement(By.cssSelector(".Toastify__toast-body"));
-        //ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
+        ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
         //System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
         System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
         Assert.assertEquals(getHomePage().toastMessage.getText(),expectedToastMessage);
@@ -206,6 +214,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         driver.navigate().refresh();
 
     }
+
 
 
 }
