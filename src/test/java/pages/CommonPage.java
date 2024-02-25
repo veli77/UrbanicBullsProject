@@ -29,6 +29,7 @@ public class CommonPage {
     private AccountOrdersPage accountOrdersPage;
     private WelcomePage welcomePage;
     private AccountRequestedProductsPage accountRequestedProductsPage;
+    private DeliveryAndPickupSettings deliveryAndPickupSettings;
 
     public AccountRequestedProductsPage getAccountRequestedProductsPage() {
         if (accountRequestedProductsPage == null) {
@@ -168,5 +169,12 @@ public class CommonPage {
         }
 
         return registerPage;
+    }
+
+    public DeliveryAndPickupSettings getDeliveryAndPickupSettings() {
+        if (deliveryAndPickupSettings == null) {
+            deliveryAndPickupSettings=new DeliveryAndPickupSettings();
+        }
+        return deliveryAndPickupSettings;
     }
 }
