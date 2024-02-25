@@ -100,12 +100,10 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement nextButton;
     @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
     public WebElement goToPayment;
-    @FindBy(xpath = "//div[@class='col-lg-1 col-0']")
-    public WebElement bosluk;
-    @FindBy(xpath = "(//input[@class='FeaturedProductCard_number__16S1m'])[5]")
-    public WebElement plus3; //siparis sayfasinda urun sayisini artirmak icin
     @FindBy(xpath = "//td[@class='py-3 align-middle text-end']")
     public WebElement xIsareti;
+    @FindBy(xpath = "//button[@class='btn btn-primary mr-4']")
+    public WebElement yes;//orders i silmeye emin misiniz
     @FindBy(xpath = "//input[@id='email']")
     public WebElement email_PAypal;
     @FindBy(xpath = "//input[@id='password']")
@@ -116,6 +114,27 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement payPalSubmitBtn;
     @FindBy(xpath = "//p[@class='mt-2 font-weight-bold']")
     public WebElement paymentSuccesfullyMetni;
+    @FindBy(xpath = "//button[text()='Log In']")
+    public WebElement loginPaypal1;
+    @FindBy(xpath = "//button[@class='css-ltr-1d5lazx-button-Button']")
+    public WebElement loginPaypal2;
+    @FindBy(xpath = "//button[@class='css-ltr-19jfsh6 css-ltr-11pvgxh-button_base-text_button_lg-btn_full_width']")
+    public WebElement accountPourPaypal;// hesap olustur paypal icin
+    @FindBy(xpath = "(//span[@class='Notifications_notificationIconContainer__2jS5E'])[1]")
+    public WebElement notification;
+    @FindBy(xpath = "(//a[@class='Notifications_infoCommonText__1SAdH'])[1]")
+    public WebElement orderMessage;
+    @FindBy(xpath = "(//span[@class='font-weight-bold'])[1]")
+    public WebElement orderDate;
+    @FindBy(xpath = "//a[@class='mt-2']")
+    public WebElement viewOrdersDetails;
+    @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al ml-2 mr-4']")
+    public WebElement logOut;
+    @FindBy(xpath = "(//th[@class='py-3 align-middle'])[2]")
+    public WebElement sepettekiUrun;
+    @FindBy(xpath = "(//button[@class='FeaturedProductCard_minus__3-VQa'])[1]")
+    public WebElement decrease;//siprais sayisini azaltma eksi isareti
+
 
     @FindBy(xpath = "//div[@class='d-flex flex-column']")
     public List<WebElement> quickOverviewContents;
