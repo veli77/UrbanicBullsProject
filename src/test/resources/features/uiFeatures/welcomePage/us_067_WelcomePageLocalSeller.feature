@@ -1,8 +1,8 @@
-
-Feature: US_067
-
+@BU-254
+Feature: TE of US_067 Welcome Page actions
+  @TEST_BU-252
   @US_067 @UI @Login
-  Scenario: US_067 - User should be able to perform various actions in the Welcome Page Local Seller
+  Scenario: TC01 Of US_067 I should be able to perform various actions in the Welcome Page
 
     Given User goes to the Welcome Page
     Then User should be able to click seller rating
