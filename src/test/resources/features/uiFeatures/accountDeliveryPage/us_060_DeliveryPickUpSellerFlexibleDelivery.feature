@@ -13,8 +13,8 @@
 #Your delivery settings have been succesfully updated alert should appear
 
 
-@UI @BU-223 @BU-232
-#@buyerLogin
+@UI @BU-257
+
 Feature: TE of US_060 Delivery type-Seller flexible delivery input control
 
   Background:
@@ -25,6 +25,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
     And user clicks on seller flexible
     And enter some order times
 
+  @TEST_BU-223 @TESTSET_BU-187
   Scenario: TC_01 US_60 Delivery type-Seller flexible delivery Checkbox input control
     Given user verifies web elements with following ids displays correct text
       | freeFlexibleDeliveryRange    | Free Delivery Range (mile) :                |
@@ -57,6 +58,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | Saturday   | Monday   | Monday    | At the 1. line, The end time of order must be later than the start time of order | false |
       | Tuesday    | Thursday | Sunday    | Your delivery settings have been successfully updated                            | true  |
 
+  @TEST_BU-232 @TESTSET_BU-187
   Scenario Template: TC_02 US_60 Delivery type-Seller flexible delivery time control
 
     When user selects "<orderBegin>" for orderBegin
@@ -74,6 +76,3 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | 6          | 0205pm    | 3        | 0306pm  | 2         | 0306pm      | At the 1. line, The end time of order must be later than the start time of order |
       | 2          | 0205pm    | 3        | 0205am  | 2         | 0306pm      | Your delivery settings have been successfully updated                            |
       | 3          | 0205pm    | 6        | 0306pm  | 2         | 0306pm      | Your delivery settings have been successfully updated                            |
-
-
-
