@@ -17,19 +17,13 @@
 
     <dependencies>
 
+        <!-- Chrome ile versiyon sorunu veriyor, lokalden SkiluX lib eklenmeli-->
         <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
-        <dependency>
-            <groupId>com.sikulix</groupId>
-            <artifactId>sikulixapi</artifactId>
-            <version>2.0.5</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
-        <dependency>
-            <groupId>com.sikulix</groupId>
-            <artifactId>sikulixapi</artifactId>
-            <version>2.0.5</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.sikulix</groupId>-->
+<!--            <artifactId>sikulixapi</artifactId>-->
+<!--            <version>2.0.5</version>-->
+<!--        </dependency>-->
 
         <!-- Screen Recording için kullanılan dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.stephenc.monte/monte-screen-recorder -->
