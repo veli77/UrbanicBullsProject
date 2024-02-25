@@ -17,7 +17,6 @@
 
     <dependencies>
 
-
         <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
         <dependency>
             <groupId>com.sikulix</groupId>
@@ -25,14 +24,12 @@
             <version>2.0.5</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/com.sikulix/sikulixapi -->
         <dependency>
             <groupId>com.sikulix</groupId>
             <artifactId>sikulixapi</artifactId>
             <version>2.0.5</version>
         </dependency>
-
 
         <!-- Screen Recording için kullanılan dependency -->
         <!-- https://mvnrepository.com/artifact/com.github.stephenc.monte/monte-screen-recorder -->
@@ -41,7 +38,6 @@
             <artifactId>monte-screen-recorder</artifactId>
             <version>0.7.7.0</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
@@ -96,7 +92,6 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
 
     </dependencies>
 
