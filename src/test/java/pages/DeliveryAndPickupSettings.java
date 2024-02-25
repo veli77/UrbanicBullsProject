@@ -63,7 +63,6 @@ public class DeliveryAndPickupSettings extends CommonPage {
 
     }
 
-
     public void unCheckDeliverySettings() {
         checkBoxList
                 .stream()

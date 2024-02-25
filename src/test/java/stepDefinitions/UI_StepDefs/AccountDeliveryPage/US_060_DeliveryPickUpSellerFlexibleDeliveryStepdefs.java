@@ -9,11 +9,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CommonPage;
+import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +37,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
         // way 2
         getWeeklyOrderPage().sendZipcode(zipcode);
     }
+
     @Given("User logs in with Urbanic two credential")
     public void userLogsInWithUrbanicTwoCredential() {
         getLoginPage().login(USERCREDENTIAL.USER2);
@@ -87,16 +94,25 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
 
     @Then("user should see alert messages out of range input Free Delivery Range")
     public void userShouldSeeAlertMessagesOutOfRangeInputFreeDeliveryRange(DataTable dataTable) {
-        List<String> inputs = dataTable.column(0);
-        List<String> messages=dataTable.column(1);
-        for (int i = 0; i < inputs.size() ; i++) {
-            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.clear();
-            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.click();
-            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.sendKeys(inputs.get(i));
-            String actualMessage=getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.getAttribute("validationMessage");
-//            System.out.println(actualMessage+" : " + messages.get(i));
-            Assert.assertEquals(messages.get(i),messages.get(i).contains(actualMessage));
+        List<String> elements = dataTable.column(0);
+        List<String> inputs = dataTable.column(1);
+        List<String> messages = dataTable.column(2);
+
+        for (int i = 0; i < elements.size(); i++) {
+
+            WebElement element = driver.findElement(By.cssSelector("#" + elements.get(i)));
+            element.clear();
+            element.click();
+            element.sendKeys(inputs.get(i));
+
+            String actualMessage = element.getAttribute("validationMessage");
+            System.out.println(actualMessage + " : " + messages.get(i));
+//Assert.assertEquals(messages.get(i),messages.get(i).contains(actualMessage));
+            Assert.assertEquals(messages.get(i),actualMessage);
+
+
         }
+
 
     }
 
@@ -104,14 +120,14 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
     @When("user enter address fields")
     public void userEnterAddressFields() {
         // way 1
-        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.clear();
-        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.sendKeys("10");
+//        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.clear();
+//        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.sendKeys("10");
 //        Actions actions = new Actions(driver);
 //        actions.sendKeys(Keys.ARROW_UP);
 //        String increasedValue = getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.getAttribute("value");
 //        Assert.assertEquals("10.01",increasedValue);
         // way 2 extention
-
+        clearAndSend(getDeliveryAndPickupSettings().freeFlexibleDeliveryRange,"10");
         clearAndSend(getDeliveryAndPickupSettings().minFreeFlexibleDeliveryOrder, "15");
         clearAndSend(getDeliveryAndPickupSettings().perMileCostFlex, "1");
         clearAndSend(getDeliveryAndPickupSettings().maxFlexibleDeliveryRange, "20");
