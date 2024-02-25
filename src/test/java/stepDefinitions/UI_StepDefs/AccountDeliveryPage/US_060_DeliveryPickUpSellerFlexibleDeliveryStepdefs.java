@@ -9,8 +9,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
 import pages.CommonPage;
@@ -23,7 +21,7 @@ import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
 
 
-public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends CommonPage {
+public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonPage {
 
     @And("user send {string} as zipcode")
     public void userSendAsZipcode(String zipcode) {
@@ -177,7 +175,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 
     }
 
-    @When("user selects {string} for orderBegin")
+    @Given("user selects {string} for orderBegin")
     public void userSelectsForOrderBegin(String value) {
         // way 3 utilities
         ReusableMethods.selectByValue(

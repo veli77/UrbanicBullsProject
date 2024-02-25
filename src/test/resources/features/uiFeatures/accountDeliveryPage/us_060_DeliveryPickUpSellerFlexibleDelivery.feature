@@ -50,7 +50,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | 1001  | Wert muss kleiner als oder gleich 1000 sein. Value must be less than or equal to 1000.  |
 
     When user enter address fields
-#    And enter some order times
+
     Then days should be appropriate
       | OrderBegin | OrderEnd | Delivery  | ErrorMessage                                                                     | isOK  |
       | Monday     | Tuesday  | Wednesday | Your delivery settings have been successfully updated                            | true  |
@@ -61,7 +61,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
   @TEST_BU-232 @TESTSET_BU-187
   Scenario Template: TC_02 US_60 Delivery type-Seller flexible delivery time control
 
-    When user selects "<orderBegin>" for orderBegin
+    Given user selects "<orderBegin>" for orderBegin
     And user enters input to order begin "<beginTime>"
     And user selects "<orderEnd>" for orderEnd
     And user enters input to order end "<endTime>"
