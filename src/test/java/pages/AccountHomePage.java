@@ -15,6 +15,9 @@ public class AccountHomePage extends CommonPage{
     @FindBy(css = "a[class*='Sidebar_active__1HCV5']")
     public WebElement addressButton;
 
+    @FindBy(linkText = "Orders")
+    public WebElement leftSideOrdersButton;
+
 
 
 }

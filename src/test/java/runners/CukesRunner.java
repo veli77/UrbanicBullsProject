@@ -18,13 +18,14 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
 
         glue = "stepDefinitions",
-        tags = ""
+        tags = "@US_067"
+        //dryRun = true
 
 
 
 
 //        ,
-//        dryRun = false
+//
 //        ,
 //        tags = "@omer"
 
