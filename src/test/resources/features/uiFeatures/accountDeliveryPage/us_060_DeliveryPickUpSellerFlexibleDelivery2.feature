@@ -13,11 +13,11 @@
 #Your delivery settings have been succesfully updated alert should appear
 
 
-@UI @BU-223 @BU-232 @BU-245
+@UI @BU-223 @BU-232
 #@buyerLogin
 Feature: TE of US_060 Delivery type-Seller flexible delivery input control
 
-  Scenario: TC_01 US_60 Delivery type-Seller flexible delivery Checkbox input control
+  Background:
     Given User logs in with Urbanic two credential
     When user clicks on Account button
     And user clicks on delivery and pickup settings
@@ -25,6 +25,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
     And user clicks on seller flexible
     And enter some order times
 
+  Scenario: TC_01 US_60 Delivery type-Seller flexible delivery Checkbox input control
     Given user verifies web elements with following ids displays correct text
       | freeFlexibleDeliveryRange    | Free Delivery Range (mile) :                |
       | minFreeFlexibleDeliveryOrder | Minimum Order Amount For Free Delivery($) : |
@@ -37,6 +38,16 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | perMileCostFlex              |
       | maxFlexibleDeliveryRange     |
 
+    Then user should see alert messages out of range input Free Delivery Range
+      | -1    | Wert muss größer als oder gleich 0 sein. Value must be greater than or equal to 0.  |
+      | 1001  | Wert muss kleiner als oder gleich 1000 sein. Value must be less than or equal to 1000.  |
+      | -1    | Wert muss größer als oder gleich 0 sein. Value must be greater than or equal to 0.  |
+      | 10001 | Wert muss kleiner als oder gleich 1000 sein. Value must be less than or equal to 10000. |
+      | -1    | Wert muss größer als oder gleich 0 sein. Value must be greater than or equal to 0.  |
+      | 6     | Wert muss kleiner als oder gleich 5 sein. Value must be less than or equal to 5.     |
+      | -1    | Wert muss größer als oder gleich 0 sein. Value must be greater than or equal to 0.  |
+      | 1001  | Wert muss kleiner als oder gleich 1000 sein. Value must be less than or equal to 1000.  |
+
     When user enter address fields
 #    And enter some order times
     Then days should be appropriate
@@ -46,26 +57,7 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | Saturday   | Monday   | Monday    | At the 1. line, The end time of order must be later than the start time of order | false |
       | Tuesday    | Thursday | Sunday    | Your delivery settings have been successfully updated                            | true  |
 
-  Scenario: TC_02 US_60 Delivery type-Seller flexible delivery Checkbox input control
-
-#    Given User logs in with Urbanic two credential
-#    When user clicks on Account button
-#    And user clicks on delivery and pickup settings
-#    And unselect all checkbox
-#    And user clicks on seller flexible
-#    And enter some order times
-
-
-
-
-  Scenario Template: TC_03 US_60 Delivery type-Seller flexible delivery time control
-
-#    Given User logs in with Urbanic two credential
-#    When user clicks on Account button
-#    And user clicks on delivery and pickup settings
-#    And unselect all checkbox
-#    And user clicks on seller flexible
-#    And enter some order times
+  Scenario Template: TC_02 US_60 Delivery type-Seller flexible delivery time control
 
     When user selects "<orderBegin>" for orderBegin
     And user enters input to order begin "<beginTime>"

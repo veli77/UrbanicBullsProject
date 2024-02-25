@@ -2,6 +2,7 @@ package stepDefinitions.UI_StepDefs.AccountDeliveryPage;
 
 
 import enums.COLOR;
+import enums.USERCREDENTIAL;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,6 +18,7 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 import java.util.Map;
+
 import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
 
@@ -31,10 +33,17 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         // way 2
         getWeeklyOrderPage().sendZipcode(zipcode);
     }
+    @Given("User logs in with Urbanic two credential")
+    public void userLogsInWithUrbanicTwoCredential() {
+        getLoginPage().login(USERCREDENTIAL.USER2);
+
+    }
+
     @When("user clicks on Account button")
     public void userClicksOnAccountButton() {
         getHomePage().accountName_navbar.click();
     }
+
     @And("user clicks on delivery and pickup settings")
     public void userClicksOnDeliveryAndPickupSettings() {
         getHomePage().deliverySettings_sidebar.click();
@@ -64,6 +73,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         }
 
     }
+
     @Then("user verifies web elements with following ids input")
     public void userVerifiesWebElementsWithFollowingIdsInput(DataTable dataTable) {
         List<String> webElementInput = dataTable.column(0);
@@ -73,9 +83,25 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 //            assert driver.findElement(By.xpath("//input[@id='"+webElementInput+"']")).isDisplayed();
 //            ReusableMethods.verifyElementDisplayed(driver.findElement(By.xpath("//input[@id='"+webElementInput.get(i)+"']")));
             getDeliveryAndPickupSettings().assertInputWithWebelement(webElementInput.get(i));
-            System.out.println(webElementInput.get(i));
+//            System.out.println(webElementInput.get(i));
         }
     }
+
+    @Then("user should see alert messages out of range input Free Delivery Range")
+    public void userShouldSeeAlertMessagesOutOfRangeInputFreeDeliveryRange(DataTable dataTable) {
+        List<String> inputs = dataTable.column(0);
+        List<String> messages=dataTable.column(1);
+        for (int i = 0; i < inputs.size() ; i++) {
+            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.clear();
+            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.click();
+            getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.sendKeys(inputs.get(i));
+            String actualMessage=getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.getAttribute("validationMessage");
+//            System.out.println(actualMessage+" : " + messages.get(i));
+            Assert.assertEquals(messages.get(i),messages.get(i).contains(actualMessage));
+        }
+
+    }
+
 
     @When("user enter address fields")
     public void userEnterAddressFields() {
@@ -88,9 +114,9 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 //        Assert.assertEquals("10.01",increasedValue);
         // way 2 extention
 
-        clearAndSend(getDeliveryAndPickupSettings().minFreeFlexibleDeliveryOrder,"15");
-        clearAndSend(getDeliveryAndPickupSettings().perMileCostFlex,"1");
-        clearAndSend(getDeliveryAndPickupSettings().maxFlexibleDeliveryRange,"20");
+        clearAndSend(getDeliveryAndPickupSettings().minFreeFlexibleDeliveryOrder, "15");
+        clearAndSend(getDeliveryAndPickupSettings().perMileCostFlex, "1");
+        clearAndSend(getDeliveryAndPickupSettings().maxFlexibleDeliveryRange, "20");
 
     }
 
@@ -117,10 +143,10 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
             String errorMessage = maps.get(i).get("ErrorMessage");
             boolean isOK = Boolean.parseBoolean(maps.get(i).get("isOK"));
 
-            selectByVisibleText(getDeliveryAndPickupSettings().deliveryBeginDay,orderBegin);
+            selectByVisibleText(getDeliveryAndPickupSettings().deliveryBeginDay, orderBegin);
 
-            selectByVisibleText(getDeliveryAndPickupSettings().deliveryEndDay,orderEnd);
-            selectByVisibleText(getDeliveryAndPickupSettings().orderByDay,delivery);
+            selectByVisibleText(getDeliveryAndPickupSettings().deliveryEndDay, orderEnd);
+            selectByVisibleText(getDeliveryAndPickupSettings().orderByDay, delivery);
             getDeliveryAndPickupSettings().update.click();
             //waitFor(2);
             ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
@@ -171,7 +197,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 //        Select select = new Select(webElement);
 //        select.selectByValue(value);
         // way 2 extention
-        selectByValue(getDeliveryAndPickupSettings().deliveryEndDay,value);
+        selectByValue(getDeliveryAndPickupSettings().deliveryEndDay, value);
     }
 
     @And("user enters input to order end {string}")
@@ -181,7 +207,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
 
     @And("user selects {int} for deliverBy")
     public void userSelectsDeliverByForDeliverBy(int index) {
-        selectByIndex(getDeliveryAndPickupSettings().orderByDay,index);
+        selectByIndex(getDeliveryAndPickupSettings().orderByDay, index);
     }
 
 
@@ -201,8 +227,8 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         //WebElement toastMessage= driver.findElement(By.cssSelector(".Toastify__toast-body"));
         ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
         //System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
-        System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
-        Assert.assertEquals(getHomePage().toastMessage.getText(),expectedToastMessage);
+        //System.out.println("getHomePage().toastMessage.getText() = " + getHomePage().toastMessage.getText());
+        Assert.assertEquals(getHomePage().toastMessage.getText(), expectedToastMessage);
 //        Assert.assertEquals(toastMessage.getText(),expectedToastMessage);
     }
 
@@ -214,7 +240,6 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs2 extends Common
         driver.navigate().refresh();
 
     }
-
 
 
 }
