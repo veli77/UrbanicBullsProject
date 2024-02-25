@@ -19,12 +19,13 @@ import org.junit.runner.RunWith;
 
         glue = "stepDefinitions",
         tags = "@US_054"
+        //dryRun = true
 
 
 
 
 //        ,
-//        dryRun = false
+//
 //        ,
 //        tags = "@omer"
 

@@ -6,10 +6,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.ConfigurationReader;
 import utilities.JSUtils;
-
-
 import utilities.ReusableMethods;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -101,6 +102,38 @@ public class AccountAddressPage extends CommonPage{
     public WebElement DeliveryAndSalesRegisteredAddress;
     @FindBy(xpath = "//button[@name='delivery']")
     public WebElement MyDeliveryAddressBtn;
+
+    @FindBy(css = "input[id='addressTitle']")
+    public WebElement myAddressTitleInput;
+    @FindBy(css = "input[id='address']")
+    public WebElement myAddressInput;
+    @FindBy(css = "input[id='states']")
+    public WebElement myStatesInput;
+    @FindBy(css = "input[id='citiesDataIdAddAddress']")
+    public WebElement myCityInput;
+    @FindBy(css = "input[id='postal']")
+    public WebElement myPostalCode;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement mySubmitButton;
+    @FindBy(css = " [name='isDefault']")
+    public WebElement myDeliveryAdressCheckBox;
+
+    @FindBy(css = "h5[class = 'card-header']")
+    public WebElement myCurrentAddressTitle;
+    @FindBy(css = "h6[class = 'card-title']")
+    public WebElement myCurrentAddressStateCity;
+    @FindBy(css = "p[class = 'card-text']")
+    public WebElement myCurrentAddressOneRow;
+
+
+
+
+
+
+
+
+
+
 
     public void clickMarkAsDeliveryAndMarkAsDelivery(String option){
         WebElement element=driver.findElement(By.xpath("//input[@id='"+option+"']"));
@@ -249,21 +282,101 @@ public class AccountAddressPage extends CommonPage{
     }
 
     public void editAndRemoveBtnsCheck(){
-        hover(editBtn);
-        Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
-                removeBtn.isDisplayed() && removeBtn.isEnabled());
+        boolean flag = true;
+
+        try {
+            flag = editBtn.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("adres yok");
+            flag=false;
+        }
+
+        if (flag) {
+            hover(editBtn);
+            Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
+                    removeBtn.isDisplayed() && removeBtn.isEnabled());
+        }else {
+            addNewAddressBtn.click();
+            searchNewPlacesInput.sendKeys("Calif");
+            suggestedAddressList.getFirst().click();
+            myPostalCode.sendKeys("95170");
+            myDeliveryAdressCheckBox.click();
+            mySubmitButton.click();
+            flag = true;
+            try {
+                flag = editBtn.isDisplayed();
+            } catch (NoSuchElementException e) {
+                System.out.println("adres yok");
+                flag=false;
+            }
+            if(flag){
+                ReusableMethods.hover(editBtn);
+                Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
+                        removeBtn.isDisplayed() && removeBtn.isEnabled());
+
+            }else {
+                Assert.assertFalse(false);
+            }
+
+
+
+        }
     }
 
     public void checkAddressesBeforeAndAfterClickEdit(){
-        System.out.println(cardTitle.getText());
-        System.out.println(cardText.getText());
+        String[] originalAdress;
+        String[] tryAdress;
+        String[] editedAdress;
+        tryAdress = TakeCongigAddress();
+        System.out.println(Arrays.toString(tryAdress));
+        originalAdress = TakeCurrentAddress();
+        System.out.println(Arrays.toString(originalAdress));
+        EditAddressWith(tryAdress);
+        editedAdress = TakeCurrentAddress();
+        System.out.println(Arrays.toString(editedAdress));
+        EditAddressWith(originalAdress);
+        Assert.assertArrayEquals(editedAdress, tryAdress);
+    }
+    public void EditAddressWith(String[] addresses){
         waitForClickablility(editBtn,10);
         editBtn.click();
-        waitForVisibility(AddressTitleInput,10);
-        System.out.println(AddressTitleInput.getAttribute("placeholder"));
-        System.out.println("yazıldı");
+        ReusableMethods.waitForClickablility(myAddressInput,5);
+        myAddressTitleInput.clear();
+        myAddressTitleInput.sendKeys(addresses[0]);
+        myAddressInput.clear();
+        myAddressInput.sendKeys(addresses[1]);
+        myStatesInput.clear();
+        myStatesInput.sendKeys(addresses[2]);
+        myCityInput.clear();
+        myCityInput.sendKeys(addresses[3]);
+        myPostalCode.clear();
+        myPostalCode.sendKeys(addresses[4]);
+        mySubmitButton.click();
+        waitForClickablility(editBtn,10);
+        waitFor(1);
+    }
+    public String[] TakeCongigAddress(){
+        String [] adresses;
+        adresses = new String[5];
+        adresses[0] = ConfigurationReader.getProperty("AddressLine0");
+        adresses[1] = ConfigurationReader.getProperty("AddressLine1");
+        adresses[2] = ConfigurationReader.getProperty("AddressLine2");
+        adresses[3] = ConfigurationReader.getProperty("AddressLine3");
+        adresses[4] = ConfigurationReader.getProperty("AddressLine4");
+        return adresses;
+    }
+    public String [] TakeCurrentAddress(){
+        String[] adresses;
+        adresses = new String[5];
+        adresses[0] = myCurrentAddressTitle.getText().substring(0,4);
+        adresses[1] = myCurrentAddressOneRow.getText().substring(0,myCurrentAddressOneRow.getText().lastIndexOf(","));
+        adresses[2] = myCurrentAddressStateCity.getText().substring(0,myCurrentAddressStateCity.getText().indexOf(" "));
+        adresses[3] = myCurrentAddressStateCity.getText().substring(myCurrentAddressStateCity.getText().lastIndexOf(" ")+1);
+        adresses[4] = myCurrentAddressOneRow.getText().substring(myCurrentAddressOneRow.getText().lastIndexOf(" ")+1);
+        return adresses;
 
     }
+
 
     //Edit işlemi yapar, Dataları datatabledan alır
     public void editAnAddress(DataTable dataTable) {

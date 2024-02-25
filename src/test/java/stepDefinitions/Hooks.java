@@ -133,7 +133,7 @@ public void recordStart(){
 
     @After("@DB")
     public void closeDatabase() {
-           DatabaseUtilities.closeConnection();
+         //  DatabaseUtilities.closeConnection();
 
     }
 
