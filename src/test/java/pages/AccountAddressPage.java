@@ -40,6 +40,10 @@ public class AccountAddressPage extends CommonPage{
     public WebElement removeNoBtn;
     @FindBy(xpath = "//button[.='Yes']")
     public WebElement removeYesBtn;
+    @FindBy(css = "h5[class='text-center mb-4']")
+    public WebElement areYouSureMessage;
+
+
     @FindBy(css = "div.text-center.mb-2>button")
     public List<WebElement> removeApprovalBtns;
     @FindBy(xpath = "//button[.='Add New Address']")
@@ -376,6 +380,13 @@ public class AccountAddressPage extends CommonPage{
         return adresses;
 
     }
+    public void clickNoForCancel(){
+        ReusableMethods.waitForClickablility(removeNoBtn,5);
+        removeNoBtn.click();
+        waitForVisibility(editBtn,5);
+        Assert.assertTrue(editBtn.isDisplayed());
+    }
+
 
 
     //Edit işlemi yapar, Dataları datatabledan alır

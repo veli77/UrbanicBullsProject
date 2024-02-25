@@ -29,4 +29,9 @@ public class US_054_DeliveryAddressEditAndRemoveFunctionality extends CommonPage
     public void userShouldBeCheckAddressesAreSameBeforeAndAfterEditButtonClick() {
         getAccountAddressPage().checkAddressesBeforeAndAfterClickEdit();
     }
+
+    @Then("User Should be able to click No for cancel remove")
+    public void userShouldBeAbleToClickNoForCancelRemove() {
+        getAccountAddressPage().clickNoForCancel();
+    }
 }
