@@ -97,8 +97,8 @@ public void recordStart(){
         System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER4.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER4.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();

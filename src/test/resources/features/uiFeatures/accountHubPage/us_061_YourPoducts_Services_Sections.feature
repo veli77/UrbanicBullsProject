@@ -1,24 +1,41 @@
 @UI
-Feature: US_061_Your Products/Services Section
+@umit @US_061
+@Login3
+Feature: Your Products/Services Section
 
-  Scenario: Viewing Product Information
-    Given the user has entered valid information
-    When the user clicks on the Products/Services section
+    Background:
+    #    Given the user enters with buyer information
+    When user goes to Your products-services
+
+  Scenario: TC_01_View Products Group
     Then various products should be visible
-    And each product should display Product Name, Price, Stock, and Unit information
-    And options for Approved, Review, and Rejected should be visible for each product
-    And the user should be able to click on the product name to view details
-    And the user should be able to change product information
-    And the organic and Trade buttons should be functional
-    And the Update and Delete buttons should be visible
 
-  Scenario: Updating Product Information
-    Given the user is viewing product information
-    When the user makes necessary corrections and clicks the Update button
-    Then an alert should display confirming the update
+  Scenario: TC_02_Viewing Products List
+    Given the user clicks on  any group
+    When each product should display Product Name, Price and Stock information
+    Then options for Approved, Review, and Rejected should be visible for each product
 
-  Scenario: Adding Trade Description
+  Scenario: TC_03_Viewing Product Information
+    Given the user clicks on  any group
+    When the user click on the product name to view details
+    Then the user should be able to change product information on this page
+    Then the organic and Trade buttons should be functional
+    And the Update buttons should be visible
+    And the Delete buttons should be visible
+
+
+  Scenario: TC_04_Adding Trade Description
+    Given the user clicks on  any group
+    When the user click on the product name to view details
     Given the user is viewing product information
-    When the user clicks the Trade button
+    When the user clicks the Trade button If the trade description entry is not visible
     Then the Trade description input should be visible
-    And the user should be able to add information to the trade description
+    Then user sends Selam to Trade input  description
+    Then the user makes necessary corrections and clicks the Update button
+    And an alert should display confirming the update
+
+#  Scenario: TC_05_Updating Product Information
+#    Given the user clicks on  any group
+#    When the user click on the product name to view details
+#    Given the user is viewing product information
+#
