@@ -5,6 +5,7 @@ import enums.USERCREDENTIAL;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.response.Response;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class Hooks extends CommonPage{
     public static WebDriver driver;
     public static CommonPage commonPage;
     public static Actions actions;
+    public static Response response;
 
 
     public static boolean isHeadless = false;
