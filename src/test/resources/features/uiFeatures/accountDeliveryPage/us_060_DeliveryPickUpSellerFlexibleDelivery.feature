@@ -40,14 +40,14 @@ Feature: TE of US_060 Delivery type-Seller flexible delivery input control
       | maxFlexibleDeliveryRange     |
 
     Then user should see alert messages out of range input Free Delivery Range
-      | freeFlexibleDeliveryRange    | -1    | Wert muss größer als oder gleich 0 sein.     |
-      | freeFlexibleDeliveryRange    | 1001  | Wert muss kleiner als oder gleich 1000 sein. |
-      | minFreeFlexibleDeliveryOrder | -1    | Wert muss größer als oder gleich 0 sein.     |
+      | freeFlexibleDeliveryRange    | -1    | Wert muss größer als oder gleich 0 sein.      |
+      | freeFlexibleDeliveryRange    | 1001  | Wert muss kleiner als oder gleich 1000 sein.  |
+      | minFreeFlexibleDeliveryOrder | -1    | Wert muss größer als oder gleich 0 sein.      |
       | minFreeFlexibleDeliveryOrder | 10001 | Wert muss kleiner als oder gleich 10000 sein. |
-      | perMileCostFlex              | -1    | Wert muss größer als oder gleich 0 sein.     |
-      | perMileCostFlex              | 6     | Wert muss kleiner als oder gleich 5 sein.    |
-      | maxFlexibleDeliveryRange     | -1    | Wert muss größer als oder gleich 0 sein.     |
-      | maxFlexibleDeliveryRange     | 1001  | Wert muss kleiner als oder gleich 1000 sein. |
+      | perMileCostFlex              | -1    | Wert muss größer als oder gleich 0 sein.      |
+      | perMileCostFlex              | 6     | Wert muss kleiner als oder gleich 5 sein.     |
+      | maxFlexibleDeliveryRange     | -1    | Wert muss größer als oder gleich 0 sein.      |
+      | maxFlexibleDeliveryRange     | 1001  | Wert muss kleiner als oder gleich 1000 sein.  |
 
     When user enter address fields
 

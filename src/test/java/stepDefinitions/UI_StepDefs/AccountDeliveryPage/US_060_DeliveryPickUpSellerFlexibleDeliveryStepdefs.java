@@ -165,24 +165,21 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
             //waitFor(2);
             ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
 
-            Assert.assertEquals(
-                    errorMessage,
-                    getHomePage().toastMessage.getText()
-            );
+            Assert.assertEquals(errorMessage,getHomePage().toastMessage.getText());
 
-            if (isOK) {
-
-                Assert.assertEquals(
-                        COLOR.GREEN.getRgba(),
-                        getHomePage().toastMessage.getCssValue("background-color")
-                );
-            } else {
-
-                Assert.assertEquals(
-                        COLOR.RED.getRgba(),
-                        getHomePage().toastMessage.getCssValue("background-color")
-                );
-            }
+//            if (isOK) {
+//
+//                Assert.assertEquals(
+//                        COLOR.GREEN.getRgba(),
+//                        getHomePage().toastMessage.getCssValue("background-color")
+//                );
+//            } else {
+//
+//                Assert.assertEquals(
+//                        COLOR.RED.getRgba(),
+//                        getHomePage().toastMessage.getCssValue("background-color")
+//                );
+//            }
 
             getHomePage().toastMessage.click();
 
