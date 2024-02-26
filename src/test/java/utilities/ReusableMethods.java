@@ -21,6 +21,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -344,5 +346,15 @@ public class ReusableMethods {
         return element.getText();
     }
 
+    // Metinden sadece rakamları içeren bir liste döndüren fonksiyon
+    public static List<String> extractNumbers(String text) {
+        List<String> numbers = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\d+"); // \d ifadesi bir veya daha fazla rakamı temsil eder
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            numbers.add(matcher.group()); // Eşleşen rakamları listeye ekle
+        }
+        return numbers;
+    }
 }
 

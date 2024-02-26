@@ -60,6 +60,26 @@ public class MyScreenRecorder extends ScreenRecorder {
                 getDefaultScreenDevice()
                 .getDefaultConfiguration();
 
+        /* MyScreenRecorder adında bir sınıfın bir örneğini oluşturur.
+        *  new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI): Bu, kaydedilecek medyanın türünü ve dosya formatını belirtir.
+           Bu örnekte, AVI dosya formatı kullanılıyor.
+        * new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, ...):
+
+        # MediaTypeKey ve MediaType.VIDEO, medyanın türünü belirtir ve bu durumda video olduğunu belirtir.
+        # EncodingKey ve ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, video için kullanılacak olan kodlayıcıyı belirtir.
+          Bu, TechSmith'in ekran yakalama için özel bir kodlayıcı olabilir.
+        # FrameRateKey ve Rational.valueOf(15), video çerçeve hızını belirtir. Bu durumda, saniyede 15 kare olarak ayarlanmış gibi görünüyor.
+        # QualityKey ve 1.0f, video kalitesini belirtir. Bu durumda, maksimum kalite (1.0f) olarak ayarlanmış gibi görünüyor.
+        # KeyFrameIntervalKey ve 15 * 60, anahtar çerçeve aralığını belirtir.
+          Bu, her 15 dakikada bir anahtar çerçeve oluşturulması gerektiği anlamına gelir.
+        * new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)):
+          Bu, siyah bir ekranın kaydedilmesi durumunda kullanılacak olan formatı belirtir.
+          Bu, ekran kaydı başlamadan önce veya kayıt sırasında belirli bir süre boyunca görüntüyü siyahlaştırmak için kullanılabilir.
+
+        * null, file, methodName: Muhtemelen bu, ses kaydı için gereken parametreleri belirtir.
+          file, ses dosyasının kaydedileceği dosya yolunu belirtir ve methodName, kaydedilen ses dosyasının adını belirtir.
+
+         */
         screenRecorder = new MyScreenRecorder(gc, captureSize,
                 new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
                 new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,

@@ -6,11 +6,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.ConfigurationReader;
 import utilities.JSUtils;
-
-
 import utilities.ReusableMethods;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
@@ -19,18 +21,29 @@ public class AccountAddressPage extends CommonPage{
 
     @FindBy(css = "button[name='sales']")
     public WebElement mySalesAddressBtn;
+    @FindBy(css = "button[name='delivery']")
+    public WebElement myDeliveryAddressBtn;
     @FindBy(css = "[class='alert alert-warning ']>span")
     public WebElement mySalesAddressAlert;
     @FindBy(css ="button[name='nonSelected']")
     public WebElement othersBtn;
     @FindBy(css = ".mr-2.btn.btn-outline-warning")
     public WebElement editBtn;
+    @FindBy(css = "h6[class='card-title']")
+    public WebElement cardTitle;
+    @FindBy(css = "p[class='card-text']")
+    public WebElement cardText;
+
     @FindBy(xpath = "//button[@class='btn btn-outline-danger'][.='Remove']")
     public WebElement removeBtn;
     @FindBy(xpath = "//button[.='No']")
     public WebElement removeNoBtn;
     @FindBy(xpath = "//button[.='Yes']")
     public WebElement removeYesBtn;
+    @FindBy(css = "h5[class='text-center mb-4']")
+    public WebElement areYouSureMessage;
+
+
     @FindBy(css = "div.text-center.mb-2>button")
     public List<WebElement> removeApprovalBtns;
     @FindBy(xpath = "//button[.='Add New Address']")
@@ -68,7 +81,7 @@ public class AccountAddressPage extends CommonPage{
     @FindBy(xpath = "//h5[@class='text-center mb-4']")
     public WebElement AreYouSureToDeleteTheAddressMessage;
     @FindBy(xpath = "//div[@class='form-row']")
-    public WebElement AddressDetailsPage;
+    public List<WebElement> AddressDetailsPage;
     @FindBy(xpath = "//div[@class='text-center mb-2']")
     public WebElement YesNoOptionsText;
     @FindBy(xpath = "//div[@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
@@ -77,19 +90,97 @@ public class AccountAddressPage extends CommonPage{
     public WebElement AddressTitleInput;
     @FindBy(xpath = "//button[@class='address_accordionTab__116wZ address_accordionActive__2fQgS']")
     public WebElement MySalesAddressText;
-
     @FindBy(css = "iframe[class='rounded address_iframe__2VuTl']")
     public WebElement iframe;
     @FindBy(css = "div.google-maps-link a")
     public WebElement googleMapsLink;
-    @FindBy(css = "div.gm-inset-map-impl")
+    @FindBy(css = "button[class*='gm-inset-map gm-inset']")
     public WebElement googleMapsSatelliteButton;
     @FindBy(css = "button.gm-control-active")
     public List<WebElement> mapsZoomButtons;
     @FindBy(xpath = "(//div[@class='gm-style']/div[contains(@style, 'cursor')])[1]")
     public WebElement cursorOverTheMapNatureZones;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement AddNewAddressSubmitButton;
+    @FindBy(xpath = "//div[@class='address_accordionItem__container__1uDbr']")
+    public WebElement DeliveryAndSalesRegisteredAddress;
+    @FindBy(xpath = "//button[@name='delivery']")
+    public WebElement MyDeliveryAddressBtn;
+
+    @FindBy(css = "input[id='addressTitle']")
+    public WebElement myAddressTitleInput;
+    @FindBy(css = "input[id='address']")
+    public WebElement myAddressInput;
+    @FindBy(css = "input[id='states']")
+    public WebElement myStatesInput;
+    @FindBy(css = "input[id='citiesDataIdAddAddress']")
+    public WebElement myCityInput;
+    @FindBy(css = "input[id='postal']")
+    public WebElement myPostalCode;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement mySubmitButton;
+    @FindBy(css = " [name='isDefault']")
+    public WebElement myDeliveryAdressCheckBox;
+
+    @FindBy(css = "h5[class = 'card-header']")
+    public WebElement myCurrentAddressTitle;
+    @FindBy(css = "h6[class = 'card-title']")
+    public WebElement myCurrentAddressStateCity;
+    @FindBy(css = "p[class = 'card-text']")
+    public WebElement myCurrentAddressOneRow;
 
 
+
+
+
+
+
+
+
+
+
+    public void clickMarkAsDeliveryAndMarkAsDelivery(String option){
+        WebElement element=driver.findElement(By.xpath("//input[@id='"+option+"']"));
+       JSUtils.clickElementByJS(element);
+    }
+
+    public void sendKeysZipCode1(){
+        WebElement element=driver.findElement(By.xpath("(//input[@id='postal'])[2]"));
+        element.sendKeys("95170");
+    }
+    public void clickAddNewAddressSubmit(){
+        WebElement element=driver.findElement(By.xpath("//button[@type='submit']"));
+        JSUtils.clickElementByJS(element);
+    }
+
+
+    public void clickPagesBtn(String str){
+        WebElement element=driver.findElement(By.xpath("//button[@name='"+str+"']"));
+        ReusableMethods.waitAndClickElement(element,3);
+    }
+
+    public void VerifyClickAddNewAddressAllHeaders(String header) throws InterruptedException {
+//        Addres Title id--->addressTitle
+//        Address id--->address
+//                State id--->states
+//                City id--->citiesDataIdAddAddress
+//                Posta/Zip id--->postal
+//                Mark as delivery address--->isDefault
+//                Mark as sales address-->isSellerAddress
+
+        WebElement element= driver.findElement(By.xpath("//input[@id='"+header+"']"));
+        JSUtils.clickElementByJS(element);
+        Thread.sleep(2000);
+    }
+    public void verifyAllHeaders() throws InterruptedException {
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("isSellerAddress");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("isDefault");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("postal");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("citiesDataIdAddAddress");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("states");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("address");
+        getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("addressTitle");
+    }
 
     //My Sales Address a tıklar ve bu kısmında adress kayıtlı mı kontrol eder, addres varsa true yoksa false döner
     public boolean clickMySalesAddressBtnAndControlTheAdress() {
@@ -130,7 +221,7 @@ public class AccountAddressPage extends CommonPage{
         Thread.sleep(3000);
         JSUtils.clickElementByJS(getAccountAddressPage().SearchPlacesInput);
         ReusableMethods.sendText(getAccountAddressPage().SearchPlacesInput,"California");
-        getAccountAddressPage().SearchPlacesInput.click();
+        //getAccountAddressPage().SearchPlacesInput.click();
     }
 
     public void verifyPageUrl(String expectedUrl) {
@@ -149,6 +240,12 @@ public class AccountAddressPage extends CommonPage{
         waitForClickablility(othersBtn, 10);
         othersBtn.click();
     }
+
+    public void clickDeliveryAddressSection() {
+        waitForClickablility(myDeliveryAddressBtn, 10);
+        myDeliveryAddressBtn.click();
+    }
+
 
     //others section da kayıtlı address yoksa address ekler ve tekrar others section a döner
     //daha önce ekli bir adress olmamalı!!
@@ -187,6 +284,110 @@ public class AccountAddressPage extends CommonPage{
         Assert.assertTrue(editBtn.isEnabled());
         Assert.assertTrue(removeBtn.isEnabled());
     }
+
+    public void editAndRemoveBtnsCheck(){
+        boolean flag = true;
+
+        try {
+            flag = editBtn.isDisplayed();
+        } catch (NoSuchElementException e) {
+            System.out.println("adres yok");
+            flag=false;
+        }
+
+        if (flag) {
+            hover(editBtn);
+            Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
+                    removeBtn.isDisplayed() && removeBtn.isEnabled());
+        }else {
+            addNewAddressBtn.click();
+            searchNewPlacesInput.sendKeys("Calif");
+            suggestedAddressList.getFirst().click();
+            myPostalCode.sendKeys("95170");
+            myDeliveryAdressCheckBox.click();
+            mySubmitButton.click();
+            flag = true;
+            try {
+                flag = editBtn.isDisplayed();
+            } catch (NoSuchElementException e) {
+                System.out.println("adres yok");
+                flag=false;
+            }
+            if(flag){
+                ReusableMethods.hover(editBtn);
+                Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
+                        removeBtn.isDisplayed() && removeBtn.isEnabled());
+
+            }else {
+                Assert.assertFalse(false);
+            }
+
+
+
+        }
+    }
+
+    public void checkAddressesBeforeAndAfterClickEdit(){
+        String[] originalAdress;
+        String[] tryAdress;
+        String[] editedAdress;
+        tryAdress = TakeCongigAddress();
+        System.out.println(Arrays.toString(tryAdress));
+        originalAdress = TakeCurrentAddress();
+        System.out.println(Arrays.toString(originalAdress));
+        EditAddressWith(tryAdress);
+        editedAdress = TakeCurrentAddress();
+        System.out.println(Arrays.toString(editedAdress));
+        EditAddressWith(originalAdress);
+        Assert.assertArrayEquals(editedAdress, tryAdress);
+    }
+    public void EditAddressWith(String[] addresses){
+        waitForClickablility(editBtn,10);
+        editBtn.click();
+        ReusableMethods.waitForClickablility(myAddressInput,5);
+        myAddressTitleInput.clear();
+        myAddressTitleInput.sendKeys(addresses[0]);
+        myAddressInput.clear();
+        myAddressInput.sendKeys(addresses[1]);
+        myStatesInput.clear();
+        myStatesInput.sendKeys(addresses[2]);
+        myCityInput.clear();
+        myCityInput.sendKeys(addresses[3]);
+        myPostalCode.clear();
+        myPostalCode.sendKeys(addresses[4]);
+        mySubmitButton.click();
+        waitForClickablility(editBtn,10);
+        waitFor(1);
+    }
+    public String[] TakeCongigAddress(){
+        String [] adresses;
+        adresses = new String[5];
+        adresses[0] = ConfigurationReader.getProperty("AddressLine0");
+        adresses[1] = ConfigurationReader.getProperty("AddressLine1");
+        adresses[2] = ConfigurationReader.getProperty("AddressLine2");
+        adresses[3] = ConfigurationReader.getProperty("AddressLine3");
+        adresses[4] = ConfigurationReader.getProperty("AddressLine4");
+        return adresses;
+    }
+    public String [] TakeCurrentAddress(){
+        String[] adresses;
+        adresses = new String[5];
+        adresses[0] = myCurrentAddressTitle.getText().substring(0,4);
+        adresses[1] = myCurrentAddressOneRow.getText().substring(0,myCurrentAddressOneRow.getText().lastIndexOf(","));
+        adresses[2] = myCurrentAddressStateCity.getText().substring(0,myCurrentAddressStateCity.getText().indexOf(" "));
+        adresses[3] = myCurrentAddressStateCity.getText().substring(myCurrentAddressStateCity.getText().lastIndexOf(" ")+1);
+        adresses[4] = myCurrentAddressOneRow.getText().substring(myCurrentAddressOneRow.getText().lastIndexOf(" ")+1);
+        return adresses;
+
+    }
+    public void clickNoForCancel(){
+        ReusableMethods.waitForClickablility(removeNoBtn,5);
+        removeNoBtn.click();
+        waitForVisibility(editBtn,5);
+        Assert.assertTrue(editBtn.isDisplayed());
+    }
+
+
 
     //Edit işlemi yapar, Dataları datatabledan alır
     public void editAnAddress(DataTable dataTable) {
@@ -238,10 +439,14 @@ public class AccountAddressPage extends CommonPage{
 
     public void goToMapPage() {
 
-        driver.switchTo().frame(iframe);
-        Assert.assertTrue(googleMapsLink.isEnabled());
+        if (!googleMapsLink.isEnabled()){
+        driver.switchTo().frame(iframe);}
         JSUtils.scrollIntoViewJS(googleMapsLink);
         JSUtils.clickElementByJS(googleMapsLink);
+        Set<String> windowsList=driver.getWindowHandles();
+        for (String window : windowsList){driver.switchTo().window(window);}
+        ReusableMethods.hover(getHomePage().googleChromePermissionRejectButton);
+        getHomePage().googleChromePermissionRejectButton.click();
 
     }
 

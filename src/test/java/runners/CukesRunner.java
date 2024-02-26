@@ -16,17 +16,10 @@ import org.junit.runner.RunWith;
 
         },
         features = "src/test/resources/features",
-
         glue = "stepDefinitions",
-        tags = "@US_039"
+        tags = "@smoke"
 
-
-
-
-//        ,
-//        dryRun = false
-//        ,
-//        tags = "@omer"
+        //dryRun = true
 
 )
 public class CukesRunner {

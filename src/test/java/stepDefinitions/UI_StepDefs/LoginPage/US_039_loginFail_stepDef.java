@@ -17,6 +17,7 @@ public class US_039_loginFail_stepDef extends CommonPage{
     @Given("Users go to login page")
     public void usersGoeToLoginPage(){
        driver.get(LOGIN_URL.getLink());
+        ReusableMethods.waitForPageToLoad(2000);
     }
 
     @When("the Email address and password button is functional")
@@ -30,8 +31,12 @@ public class US_039_loginFail_stepDef extends CommonPage{
     @Then("the user enters an invalid email as {string} and password as {string}")
     public void theUserEntersAnInvalidEmailAsAndPasswordAs(String arg0, String arg1){
         String loginTitle=driver.getTitle();
+        ReusableMethods.waitFor(2000);
+        ReusableMethods.hover(getLoginPage().input_email);
         getLoginPage().input_email.sendKeys(arg0);
+        ReusableMethods.hover(getLoginPage().input_password);
         getLoginPage().input_password.sendKeys(arg1);
+        ReusableMethods.hover(getLoginPage().submit_button);
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(2000);
         Assert.assertEquals(loginTitle,driver.getTitle());

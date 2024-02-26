@@ -11,7 +11,7 @@ public class US_068_SellersListAddProductsToTheCart_stepDefs extends CommonPage 
 
     @Given("User goes to the Welcome Page")
     public void userGoesToTheIconHomeWelcomePage() {
-        getWelcomePage().ClickWelcomePage();
+        getWelcomePage().ClickWelcomePage2();
     }
 
     @Then("A list of sellers should appear under the heading Local sellers near you")

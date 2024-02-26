@@ -3,6 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -150,7 +153,7 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
 
-    @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]")
+    @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]//following-sibling::span")
     public WebElement googleChromePermissionRejectButton;
 
 
@@ -192,7 +195,20 @@ public class HomePage extends CommonPage {
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
+        ReusableMethods.hover(element);
         element.click();
+    }
+
+    public void screenshotClick(String screenShotPath){
+
+        Screen screen= new Screen();
+        Pattern pattern= new Pattern(screenShotPath);
+        try {
+            screen.click(pattern);
+
+        } catch (FindFailed e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
