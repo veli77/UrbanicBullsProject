@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +25,11 @@ public class WelcomePage extends CommonPage {
 
     @FindBy(css = "[class='Navbar_textLink__f6_Al cursor-pointer']")
     public WebElement WelcomePage;
+
+
+
+    @FindBy(xpath = "//*[@id=\"Urban\\u0131cFarm\"][1]")
+    public WebElement Logo;
 
     @FindBy(css = "[class*='p-1'] p")
     public List<WebElement> ProductsList;
@@ -67,6 +73,7 @@ public class WelcomePage extends CommonPage {
 
     @FindBy(css = ".col-11 [class*=\"ProductCard_productTitle\"]")
     public List<WebElement> ResultsProductList;
+
 
     @FindBy(xpath = "//*[text()='There are no hubs in this view.']")
     public WebElement NoHubsAlert;
@@ -113,6 +120,8 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = "#priceFilter")
     public WebElement PriceFilter;
 
+
+
     @FindBy(xpath = "//input[@name='deliveryFilter']")
     public List<WebElement> DeliveryTypeFilter;
 
@@ -157,8 +166,34 @@ public class WelcomePage extends CommonPage {
 
     @FindBy(xpath = "//*[text()='There is no local grower in this view.']")
     public WebElement NoResults;
+    @FindBy(css = "select[id='sellerRate']")
+    public WebElement sellerRateDropdown;
+    @FindBy(css = "select[id='productRate']")
+    public WebElement productRateDropdown;
 
+    public void SellerRatingClickableCheck() {
+        ReusableMethods.waitForClickablility(sellerRateDropdown,5);
+        Assert.assertTrue(sellerRateDropdown.isDisplayed() && sellerRateDropdown.isEnabled());
+    }
+    public void SellerRatingSelectAnOption() {
+        Select select = new Select(sellerRateDropdown);
+        select.selectByIndex(2);
+        ReusableMethods.waitFor(1);
+        Assert.assertEquals("3", select.getFirstSelectedOption().getText());
+    }
+    public void ProductRatingClickableCheck() {
+        ReusableMethods.waitForClickablility(productRateDropdown,5);
+        Assert.assertTrue(productRateDropdown.isDisplayed() && productRateDropdown.isEnabled());
+    }
+    public void ProductRatingSelectAnOption() {
+        Select select = new Select(productRateDropdown);
+        select.selectByVisibleText("2");
+        ReusableMethods.waitFor(1);
+        Assert.assertEquals("2", select.getFirstSelectedOption().getText());
+    }
     public void ClickWelcomePage() {
+        ReusableMethods.waitForPageToLoad(10);
+        ReusableMethods.waitForClickablility(WelcomePage,10);
         WelcomePage.click();
 
         //Welcome to the UrbanicFarm pop-up inin engellenmesi icin
@@ -166,6 +201,14 @@ public class WelcomePage extends CommonPage {
         LocalStorage localStorage = ((WebStorage) driver).getLocalStorage();
         localStorage.setItem("welcome-modal-shown", "false");
     }
+
+    public void ClickWelcomePage2() {
+        ReusableMethods.waitForPageToLoad(10);
+        ReusableMethods.waitForClickablility(Logo,10);
+        ReusableMethods.waitFor(2);
+        Logo.click();
+    }
+
 
     public void ProductListAppears() {
         Assert.assertFalse(ProductsList.isEmpty());

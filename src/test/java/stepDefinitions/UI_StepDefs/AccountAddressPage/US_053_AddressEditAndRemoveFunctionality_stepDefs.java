@@ -9,7 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
 
-public class US_053_AddressEditAndRemoveFunctionality extends CommonPage {
+public class US_053_AddressEditAndRemoveFunctionality_stepDefs extends CommonPage {
     @Given("User logins")
     public void userLogins() {
         getLoginPage().login(USERCREDENTIAL.USERERDAL);

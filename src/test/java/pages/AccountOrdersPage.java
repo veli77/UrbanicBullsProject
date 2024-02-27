@@ -25,6 +25,9 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//article[@class='row']//a")
     public List<WebElement> viewOrderDetailsButtons;
 
+    @FindBy(linkText = "View order details")
+    public WebElement viewOrderDetailsLink;
+
     @FindBy(xpath = "//div[@class='mr-3']//span")
     public List<WebElement> orderSummaryList;
 
@@ -33,6 +36,21 @@ public class AccountOrdersPage extends CommonPage{
 
     @FindBy(xpath = "(//tbody//span)[1]")
     public WebElement sellerNameText;
+
+    @FindBy(xpath = "(//tbody//span)[2]")
+    public WebElement sellerEmailText;
+
+    @FindBy(xpath = "//a[.='rate the seller']")
+    public WebElement rateTheSellerLinkText;
+
+    @FindBy(linkText = "Call seller")
+    public WebElement callSellerLinkText;
+
+    @FindBy(linkText = "Seller page")
+    public WebElement sellerPageLinkText;
+
+    @FindBy(xpath = "//span[.='Seller address']")
+    public WebElement sellerAddressText;
 
     @FindBy(xpath = "//span[@class='h6']")
     public WebElement sellerFirstName;
@@ -82,12 +100,10 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement nextButton;
     @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
     public WebElement goToPayment;
-    @FindBy(xpath = "//div[@class='col-lg-1 col-0']")
-    public WebElement bosluk;
-    @FindBy(xpath = "(//input[@class='FeaturedProductCard_number__16S1m'])[5]")
-    public WebElement plus3; //siparis sayfasinda urun sayisini artirmak icin
     @FindBy(xpath = "//td[@class='py-3 align-middle text-end']")
     public WebElement xIsareti;
+    @FindBy(xpath = "//button[@class='btn btn-primary mr-4']")
+    public WebElement yes;//orders i silmeye emin misiniz
     @FindBy(xpath = "//input[@id='email']")
     public WebElement email_PAypal;
     @FindBy(xpath = "//input[@id='password']")
@@ -98,7 +114,57 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement payPalSubmitBtn;
     @FindBy(xpath = "//p[@class='mt-2 font-weight-bold']")
     public WebElement paymentSuccesfullyMetni;
+    @FindBy(xpath = "//button[text()='Log In']")
+    public WebElement loginPaypal1;
+    @FindBy(xpath = "//button[@class='css-ltr-1d5lazx-button-Button']")
+    public WebElement loginPaypal2;
+    @FindBy(xpath = "//button[@class='css-ltr-19jfsh6 css-ltr-11pvgxh-button_base-text_button_lg-btn_full_width']")
+    public WebElement accountPourPaypal;// hesap olustur paypal icin
+    @FindBy(xpath = "(//span[@class='Notifications_notificationIconContainer__2jS5E'])[1]")
+    public WebElement notification;
+    @FindBy(xpath = "(//a[@class='Notifications_infoCommonText__1SAdH'])[1]")
+    public WebElement orderMessage;
+    @FindBy(xpath = "(//span[@class='font-weight-bold'])[1]")
+    public WebElement orderDate;
+    @FindBy(xpath = "//a[@class='mt-2']")
+    public WebElement viewOrdersDetails;
+    @FindBy(xpath = "//a[@class='Navbar_textLink__f6_Al ml-2 mr-4']")
+    public WebElement logOut;
+    @FindBy(xpath = "(//th[@class='py-3 align-middle'])[2]")
+    public WebElement sepettekiUrun;
+    @FindBy(xpath = "(//button[@class='FeaturedProductCard_minus__3-VQa'])[1]")
+    public WebElement decrease;//siprais sayisini azaltma eksi isareti
 
+
+    @FindBy(xpath = "//div[@class='d-flex flex-column']")
+    public List<WebElement> quickOverviewContents;
+
+    @FindBy(xpath = "//img[@class='rounded']")
+    public List<WebElement> quickOverviewContentsPictures;
+
+    @FindBy(xpath = "//span[.='Rate the product']")
+    public List<WebElement> rateTheProductLinks;
+
+    @FindBy(xpath = "//span[.='How would you rate this product ?']")
+    public WebElement howWouldYouRateThisProductText;
+
+    /**
+     * rate the seller howWouldYouRateThisProductText
+     */
+    @FindBy(xpath = "//span[@class='text-center h4']")
+    public WebElement rateTheSellerHowWouldYouRateThisProductText;
+
+    @FindBy(xpath = "//div[@class='bg-info p-1 rounded mb-3']")
+    public WebElement ratingStars;
+
+    @FindBy(xpath = "//textarea[@placeholder='Your Comments']")
+    public WebElement commentArea;
+
+    @FindBy(xpath = "//button[.='Submit']")
+    public WebElement submitButton;
+
+    @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
+    public WebElement closeTheRatingWindow;
 
 
 
@@ -149,10 +215,13 @@ public boolean verifySummaryText(String text){
 
 public void clickSellerPageButtonAndVerifySellerPage(){
 
+    ReusableMethods.waitForPageToLoad(5);
     ReusableMethods.hover(sellerNameText);
     sellerName=sellerNameText.getAttribute("textContent");
+    ReusableMethods.waitForPageToLoad(5);
     ReusableMethods.hover(sellerPageButton);
     sellerPageButton.click();
+    ReusableMethods.waitForPageToLoad(5);
     String currentUrl= driver.getCurrentUrl();
     Assert.assertTrue(sellerName.contains(sellerFirstName.getText()));
    // ReusableMethods.hover(sellerMapCoordinate);

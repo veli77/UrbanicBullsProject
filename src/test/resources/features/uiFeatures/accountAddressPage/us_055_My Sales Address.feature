@@ -1,4 +1,4 @@
-@wip2
+@wip4
 Feature:As a user, after entering valid information, I should be able to perform various actions in the Address section.
 
   Background:
@@ -56,7 +56,7 @@ Feature:As a user, after entering valid information, I should be able to perform
 
   @UI
     @Login2  #One of the Yes/No options should be selected(YES or NO btn)
-  Scenario Outline: User must verify that the address removal button is functional in the My Sales Address section(Yes Btn)# When User click to Address btn at the button
+  Scenario Outline: User must verify that the address removal button is functional in the My Sales Address section(Yes or No Btn)
     When User click to My Sales Address btn at the button
     When User clicks on Remove registered Address button
     And  Are you sure to delete the address? screen pops up
