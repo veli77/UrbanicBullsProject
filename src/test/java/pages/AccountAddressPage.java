@@ -64,11 +64,11 @@ public class AccountAddressPage extends CommonPage{
     public WebElement AddNewAddressBtn;
     @FindBy(xpath = "//input[@type='search']")
     public WebElement SearchPlacesInput;
-    @FindBy(xpath = "(//input[@id='postal'])[2]")
+    @FindBy(xpath = "//input[@id='postal']")
     public WebElement PostaZipCodeInput;
-    @FindBy(xpath = "(//input[@id='isSellerAddress'])[2]")
+    @FindBy(xpath = "//input[@id='isSellerAddress']")
     public WebElement MarkAsASalerAddressInput;
-    @FindBy(xpath = "(//button[@type='submit'])[2]")
+    @FindBy(xpath = "//button[@type='submit']")
     public WebElement MySalesAddressSubmitBtn;
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement MySalesAddressEditSubmitBtn;

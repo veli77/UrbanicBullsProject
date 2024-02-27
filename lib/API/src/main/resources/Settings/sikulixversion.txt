@@ -1,5 +1,0 @@
-sikulixvproject=${project.version}
-sikulixbuild=${timestamp}
-sikulixbuildnumber=${buildnumber}
-sikulixvjython=${sikulixjythonversion}
-sikulixvjruby=${sikulixjrubyversion}
