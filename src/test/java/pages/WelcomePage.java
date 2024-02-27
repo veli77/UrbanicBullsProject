@@ -26,8 +26,6 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = "[class='Navbar_textLink__f6_Al cursor-pointer']")
     public WebElement WelcomePage;
 
-
-
     @FindBy(xpath = "//*[@id=\"Urban\\u0131cFarm\"][1]")
     public WebElement Logo;
 
@@ -201,25 +199,20 @@ public class WelcomePage extends CommonPage {
         LocalStorage localStorage = ((WebStorage) driver).getLocalStorage();
         localStorage.setItem("welcome-modal-shown", "false");
     }
-
     public void ClickWelcomePage2() {
         ReusableMethods.waitForPageToLoad(10);
         ReusableMethods.waitForClickablility(Logo,10);
         ReusableMethods.waitFor(2);
         Logo.click();
     }
-
-
     public void ProductListAppears() {
         Assert.assertFalse(ProductsList.isEmpty());
         ProductsList.getFirst().isDisplayed();
     }
-
     public void ListOfSellersAppears() {
         Assert.assertFalse(SellersList.isEmpty());
         SellersList.getFirst().isDisplayed();
     }
-
     public void RandomSellerIsSelected() {
         // Rasgele bir indeks oluştur
         Random rand = new Random();
@@ -228,7 +221,6 @@ public class WelcomePage extends CommonPage {
         targetText = ProductsList.get(randomIndex).getText();
         System.out.println(targetText);
     }
-
     public void QuantityIconsFunctional() {
         JSUtils.clickElementByJS(IncreaseQuantityOfTheProductButton.get(randomIndex));
         JSUtils.clickElementByJS(IncreaseQuantityOfTheProductButton.get(randomIndex));
@@ -244,7 +236,6 @@ public class WelcomePage extends CommonPage {
         // Rasgele seçilen indeksteki öğeyi tıkla
         AddToCartButton.get(randomIndex).click();
     }
-
     public void ProductAddedAlert() {
         AddedToYourBasketAlert.isDisplayed();
     }
@@ -255,7 +246,6 @@ public class WelcomePage extends CommonPage {
                 .map(WebElement::getText)
                 .anyMatch(text -> text.contains(targetText));
     }
-
     public void VerifyProductIsInTHeList() {
         Assert.assertTrue(isProductAddedToTheBasket());
     }
@@ -264,7 +254,6 @@ public class WelcomePage extends CommonPage {
         getWelcomePage().RemoveProductFromBasketButton.click();
         getWelcomePage().YesToRemoveProductFromBasketButton.click();
     }
-
     public void searchAndVerifyProductInResults() {
         // Selecting a random product from the search list
         int randomIndex = new Random().nextInt(ProductNameList.size());
@@ -289,7 +278,6 @@ public class WelcomePage extends CommonPage {
         }
         SearchByProductName.clear();
     }
-
     public void selectProductByDistance(DataTable dataTable) {
         List<String> distances = dataTable.column(0);
 
@@ -300,7 +288,6 @@ public class WelcomePage extends CommonPage {
             SearchButton.click();
         }
     }
-
     public void SelectDistanceOptions() {
         for (int i = 0; i < SearchByDistanceOptions.size(); i++) {
             SearchByDistanceOptions.get(i).click();
@@ -308,7 +295,6 @@ public class WelcomePage extends CommonPage {
             SearchButton.click();
         }
     }
-
     public void searchProductByDistance(DataTable dataTable) {
             List<String> distances = dataTable.column(1);
             List<Integer> integerList = new ArrayList<>();
@@ -352,7 +338,6 @@ public class WelcomePage extends CommonPage {
             }
         }
     }
-
     public void searchAndVerifyProductByCategories() {
         // Selecting a random product from the search list
         int randomIndex = new Random().nextInt(SearchByCategoriesOptions.size());
@@ -386,7 +371,6 @@ public class WelcomePage extends CommonPage {
         SearchByCategories.sendKeys("Any");
         SearchButton.click();
     }
-
     public void searchAndVerifyProductByCategories2() {
         for (int i = 0; i < SearchByCategoriesOptions.size(); i++) {
             SearchByCategoriesOptions.get(i).click();
@@ -417,7 +401,6 @@ public class WelcomePage extends CommonPage {
         SearchByCategories.sendKeys("Any");
         SearchButton.click();
     }
-
     public void SearchForOnlyOrganicProducts() {
         JSUtils.clickElementByJS(SearchForOnlyOrganicProducts);
         ReusableMethods.waitFor(3);
@@ -425,7 +408,6 @@ public class WelcomePage extends CommonPage {
         ReusableMethods.waitFor(3);
         JSUtils.clickElementByJS(SearchForOnlyOrganicProducts);
     }
-
     public void FilterSearchByRandomPriceLevel() {
         SortByExpensive.click();
         ReusableMethods.waitFor(5);
@@ -446,7 +428,6 @@ public class WelcomePage extends CommonPage {
         System.out.println("Highest Price Level = " + HighestPriceValue);
         Assert.assertTrue(HighestPriceValue <= randomPriceLimit2);
     }
-
     public void FilterByPriceLevel(List<Integer> prices) {
         SortByExpensive.click();
         ReusableMethods.waitFor(5);
@@ -470,14 +451,12 @@ public class WelcomePage extends CommonPage {
             }
         }
     }
-
     public void SearchByDeliveryType() {
         performSearchAndAssertResults(DeliveryTypeBuyerPickupOnTheVine, ResultsByDeliveryTypeBuyersPickUpOnTheVine);
         performSearchAndAssertResults(DeliveryTypeBuyerPickup, ResultsByDeliveryTypeBuyersPickUp);
         performSearchAndAssertResults(DeliveryTypeSellerDelivery, ResultsByDeliveryTypeSellerDelivers);
         performSearchAndAssertResults(DeliveryTypeSellerFlexible, ResultsByDeliveryTypeFlexibleDelivery);
     }
-
     public void performSearchAndAssertResults(WebElement deliveryType, WebElement resultsElement) {
         ReusableMethods.waitFor(5);
         JSUtils.clickElementByJS(FilterButton);
@@ -499,7 +478,6 @@ public class WelcomePage extends CommonPage {
         ReusableMethods.waitFor(3);
         SearchButton.click();
     }
-
     public void SearchByUnitTypeRandomWay() {
         ReusableMethods.waitFor(5);
         JSUtils.clickElementByJS(FilterButton);
@@ -526,7 +504,6 @@ public class WelcomePage extends CommonPage {
         JSUtils.clickElementByJS(FilterButton);
 
     }
-
     public void SearchByUnitType() {
 
         ReusableMethods.waitFor(5);

@@ -3,9 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -199,7 +196,7 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
-    public void screenshotClick(String screenShotPath){
+  /*  public void screenshotClick(String screenShotPath){
 
         Screen screen= new Screen();
         Pattern pattern= new Pattern(screenShotPath);
@@ -209,7 +206,7 @@ public class HomePage extends CommonPage {
         } catch (FindFailed e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
     public void addZipCode(String zipCode) {
