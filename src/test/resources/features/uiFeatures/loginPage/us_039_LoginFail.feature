@@ -1,4 +1,4 @@
-@UI @US_039 @smoke
+@UI @US_039
 Feature: US_039
 
   Scenario Outline: Invalid Login
