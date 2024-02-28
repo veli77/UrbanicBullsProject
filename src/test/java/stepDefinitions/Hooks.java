@@ -82,6 +82,8 @@ public void recordStart(){
         System.out.println("Login metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
+       // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
+       // getHomePage().screenShotSendText("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
@@ -106,7 +108,7 @@ public void recordStart(){
         System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
+       getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
