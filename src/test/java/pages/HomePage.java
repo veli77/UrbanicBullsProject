@@ -1,5 +1,6 @@
 package pages;
 
+import enums.USERCREDENTIAL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -212,6 +213,15 @@ public class HomePage extends CommonPage {
     }
 
  */
+
+    public void screenShotSendText(String screenShotPath){
+
+        Screen screen =new Screen();
+        Pattern pattern=new Pattern(screenShotPath);
+
+        screen.type(USERCREDENTIAL.USER2.getUsername());
+
+    }
 
 
     public void addZipCode(String zipCode) {
