@@ -18,6 +18,8 @@ public class US_100_Login_StepDefs {
                 .body("{\"email\": \"erdal@yopmail.com\",\"password\": \"nPfXAzs656Jw6*w\"}")
                 .when()
                 .post("https://test.urbanicfarm.com/api/public/login");
+
+
     }
 
     @Then("user verifies status code {int}")

@@ -4,7 +4,8 @@ public enum URL_LINKS {
     HOMEPAGE("https://test.urbanicfarm.com/"),
 
 
-    LOGIN_URL("https://test.urbanicfarm.com/auth/login");
+    LOGIN_URL("https://test.urbanicfarm.com/auth/login"),
+    CONTACTUSPAGE_URL("https://test.urbanicfarm.com/api/public/contact");
 
 
 

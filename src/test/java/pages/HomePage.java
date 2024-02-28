@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -199,7 +202,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(element);
         element.click();
     }
-/*
+
     public void screenshotClick(String screenShotPath){
 
         Screen screen= new Screen();
@@ -212,7 +215,7 @@ public class HomePage extends CommonPage {
         }
     }
 
- */
+
 
     public void screenShotSendText(String screenShotPath){
 
