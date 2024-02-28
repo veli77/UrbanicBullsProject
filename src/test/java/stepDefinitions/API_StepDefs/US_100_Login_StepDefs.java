@@ -10,16 +10,13 @@ import static stepDefinitions.Hooks.response;
 
 public class US_100_Login_StepDefs {
 
-
     @Given("user connect to the {string}")
     public void user_connect_to_the(String endpoint) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"erdal@yopmail.com\",\"password\": \"nPfXAzs656Jw6*w\"}")
                 .when()
-                .post("https://test.urbanicfarm.com/api/public/login");
-
-
+                .post(endpoint);
     }
 
     @Then("user verifies status code {int}")
