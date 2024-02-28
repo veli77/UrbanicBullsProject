@@ -7,4 +7,8 @@ public class ContactUsPage extends CommonPage {
 
     @FindBy(xpath = "//h2[@class='ContactUs_title__elsQ3']")
     public WebElement getInTouchText;
+    @FindBy(css="div>[href=\"/contact-us\"]")
+    public WebElement contactUs;
+
+
 }
