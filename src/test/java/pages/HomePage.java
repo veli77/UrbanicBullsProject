@@ -157,6 +157,9 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "//div[@role='alert'][@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
 
     public WebElement toastMessage;
+    @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]")
+    public WebElement googleChromePermissionRejectButton;
+
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -191,6 +194,8 @@ public class HomePage extends CommonPage {
     }
 
 
+
+
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
@@ -199,6 +204,7 @@ public class HomePage extends CommonPage {
 
 
     public void addZipCode(String zipCode) {
+
 
 
         ReusableMethods.sendText(inputZipCode, zipCode);
@@ -218,6 +224,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
+
 
 
     //En altta bulunan about us butonuna gider ve tıklar.
