@@ -72,7 +72,6 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = ".col-11 [class*=\"ProductCard_productTitle\"]")
     public List<WebElement> ResultsProductList;
 
-
     @FindBy(xpath = "//*[text()='There are no hubs in this view.']")
     public WebElement NoHubsAlert;
 
@@ -117,8 +116,6 @@ public class WelcomePage extends CommonPage {
 
     @FindBy(css = "#priceFilter")
     public WebElement PriceFilter;
-
-
 
     @FindBy(xpath = "//input[@name='deliveryFilter']")
     public List<WebElement> DeliveryTypeFilter;
@@ -168,6 +165,14 @@ public class WelcomePage extends CommonPage {
     public WebElement sellerRateDropdown;
     @FindBy(css = "select[id='productRate']")
     public WebElement productRateDropdown;
+    @FindBy(css ="[href='/account/events-i-organize']")
+    public WebElement MyEventsBtnAtSideBar;
+
+
+    //Sağ barda bulunan My Events butonuna click yapar.
+    public void clickMyEvents() {
+        ReusableMethods.clickWithTimeOut(getWelcomePage().MyEventsBtnAtSideBar,10);
+    }
 
     public void SellerRatingClickableCheck() {
         ReusableMethods.waitForClickablility(sellerRateDropdown,5);
