@@ -8,8 +8,30 @@ import utilities.ReusableMethods;
 
 import java.util.List;
 
-public class MyEventsPage extends CommonPage {
 
+import static utilities.ReusableMethods.waitForClickablility;
+import static utilities.ReusableMethods.waitForVisibility;
+
+public class MyEventsPage extends CommonPage{
+
+    @FindBy(xpath = "//button[.='Create New Event']")
+    public WebElement CreateNewEventBtn;
+    @FindBy(xpath = "//button[@class='btn btn-outline-success mb-1'][.='Add']")
+    public WebElement AddBtnAtCreateEventFrom;
+    @FindBy(css = ".form-control.location-search-input")
+    public WebElement SearchPlacesInput;
+    @FindBy(css = ".autocomplete-dropdown-container>li")
+    public List<WebElement> suggestedAddressList;
+    @FindBy(xpath = "//input[@id='postal']")
+    public WebElement PostalInput;
+    @FindBy(xpath = "//input[@id='addressTitle']")
+    public WebElement AddressTitleInput;
+    @FindBy(xpath = "//input[@id='address']")
+    public WebElement AddressInput; //Add yapıldıktan sonra gelen address Input'u
+    @FindBy(css = ".btn.btn-outline-success.ml-3")
+    public WebElement SubmitBtnAtAddAdress;
+    @FindBy(xpath = "//div[@role='alert'][.='Your Address successfully added']")
+    public WebElement ToastMessage;
     @FindBy(xpath = "//*[text()='My Events']")
     public WebElement MyEventsPage;
     @FindBy(css = "button.events-i-organize_btnCreate__2AWbt")
@@ -48,26 +70,51 @@ public class MyEventsPage extends CommonPage {
     public WebElement SubmitNewEventButton;
     @FindBy(css = "div[role='alert']")
     public WebElement AlertEventCreated;
-    @FindBy(xpath = "//*[text()='NEW']")
-    public WebElement NewEventSign;
     @FindBy(css = ".text-center.text-warning.mt-3")
     public List<WebElement> CreatedEventTitle;
     @FindBy(xpath = "//*[@name='delete']")
     public List<WebElement> DeleteEvent;
     @FindBy(css = "div[style='visibility: visible;'] .mr-4")
     public WebElement YestoDeleteEventButton;
-    @FindBy(css = "[href='/account/address']")
-    public WebElement AddressPageButton;
-    @FindBy(xpath = "//*[text()='Remove']")
-    public List<WebElement> RemoveAddressButton;
-    @FindBy(xpath = "//*[text()='Yes']")
-    public WebElement YestoDeleteAddressButton;
 
+    //Create new Event butonuna tıklar
+    public void clickNewEvent(){
+        waitForClickablility(CreateNewEventBtn,10);
+        CreateNewEventBtn.click();
+    }
+
+    //Add butonuna tıklar yeni adress eklemek için
+    public void clickAddBtn(){
+        waitForClickablility(AddBtnAtCreateEventFrom,10);
+        AddBtnAtCreateEventFrom.click();
+    }
+
+    //adres şablonu oluşturması için bir şehir adı yazar ve önerilerde ilk çıkanı seçer
+    public void enterCityName(String city){
+        waitForVisibility(SearchPlacesInput,10);
+        SearchPlacesInput.sendKeys(city);
+        suggestedAddressList.getFirst().click();
+    }
+
+    public void addAnAddress(String addressTitle,String address, String postal) {
+        AddressTitleInput.clear();
+        AddressTitleInput.sendKeys(addressTitle);
+        AddressInput.clear();
+        AddressInput.sendKeys(address);
+        PostalInput.clear();
+        PostalInput.sendKeys(postal);
+        SubmitBtnAtAddAdress.click();
+    }
+
+    //Toast message kontrol eder
+    public void checkAddedAddress(String toastMessage){
+        waitForVisibility(ToastMessage,10);
+        Assert.assertEquals(toastMessage,ToastMessage.getText());
+    }
     public void MyEventsPageButton() {
         ReusableMethods.waitFor(3);
         JSUtils.clickElementByJS(MyEventsPage);
     }
-
     public void AddNewEventAddress() {
         JSUtils.clickElementByJS(AddAddressButton);
         JSUtils.clickElementByJS(SearchAddress);
@@ -76,7 +123,6 @@ public class MyEventsPage extends CommonPage {
         JSUtils.clickElementByJS(SubmitAddressButton);
         ReusableMethods.waitFor(5);
     }
-
     public void EnterValidInformationForNewEvent(List<List<String>> listItems) {
 
         ReusableMethods.sendText(Eventtitle, listItems.get(0).get(1));
