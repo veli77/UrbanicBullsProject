@@ -5,6 +5,8 @@ import enums.USERCREDENTIAL;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -13,6 +15,10 @@ import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 import utilities.*;
 
+import static enums.USERCREDENTIAL.USER3;
+import static io.restassured.RestAssured.given;
+
+
 public class Hooks extends CommonPage{
 
 
@@ -20,6 +26,7 @@ public class Hooks extends CommonPage{
     public static CommonPage commonPage;
     public static Actions actions;
     public static Response response;
+    public static String token;
 
 
     public static boolean isHeadless = false;
@@ -88,8 +95,8 @@ public void recordStart(){
         //loginPage=new LoginPage();
         System.out.println("Login2 metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER3.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER3.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USER3.getUsername());
+        getLoginPage().input_password.sendKeys(USER3.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
@@ -147,5 +154,24 @@ public void recordStart(){
                 "email : " + ConfigurationReader.getProperty("user1_email") +
                         " password : " + ConfigurationReader.getProperty("user1_password")
         );
+    }
+
+    public String getToken(USERCREDENTIAL usercredential){
+    response = given()
+            .contentType(ContentType.JSON)
+            .body("{\"email\": \""+usercredential.getUsername()+"\",\"password\": \""+usercredential.getPassword()+"\"}")
+            .when()
+            .post("https://test.urbanicfarm.com/api/public/login");
+
+        JsonPath jsonPath = response.jsonPath();
+        token = jsonPath.getString("token");
+
+        return token;
+    }
+
+    @Before("@user3token")
+    public void user3Token(){
+    getToken(USER3);
+
     }
 }
