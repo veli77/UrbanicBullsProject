@@ -19,7 +19,7 @@ public class US_058_DeliveryType_BuyerPicksUpStepdefs extends CommonPage {
     @When("User clicks Delivery Pick up settings menu")
     public void userClicksDeliveryPickUpSettingsMenu() {
         ReusableMethods.waitFor(2);
-        getHomePage().deliveryPickupSettings.click();
+        getDeliveryAndPickupSettings().deliveryPickupSettings.click();
     }
 
     @And("Deselect all checkboxes in the Delivery Type")

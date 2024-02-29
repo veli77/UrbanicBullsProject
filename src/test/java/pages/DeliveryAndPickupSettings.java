@@ -11,6 +11,9 @@ import static stepDefinitions.Hooks.driver;
 
 public class DeliveryAndPickupSettings extends CommonPage{
 
+    @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
+    public WebElement deliveryPickupSettings;
+
     @FindBy(css = "#BUYER_PICKUP")
     public WebElement buyerPicksUp;
 
