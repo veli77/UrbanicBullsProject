@@ -78,7 +78,7 @@ public class MyEventsPage extends CommonPage{
         Assert.assertEquals(toastMessage,ToastMessage.getText());
     }
 
-}
+
     @FindBy(xpath = "//a[text()='My Events']")
     public WebElement MyEventsUS_77Btn;
 
