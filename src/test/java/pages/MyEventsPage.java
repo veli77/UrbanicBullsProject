@@ -12,15 +12,6 @@ import java.util.List;
 import static utilities.ReusableMethods.waitForClickablility;
 import static utilities.ReusableMethods.waitForVisibility;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-import org.python.antlr.ast.Str;
-import utilities.JSUtils;
-import utilities.ReusableMethods;
 
 import static stepDefinitions.Hooks.driver;
 
@@ -162,30 +153,13 @@ public class MyEventsPage extends CommonPage{
         JSUtils.clickElementByJS(DeleteEvent.getLast());
         YestoDeleteEventButton.click();
     }
-}
-    @FindBy(xpath = "//a[text()='My Events']")
-    public WebElement MyEventsUS_77Btn;
 
-    @FindBy(xpath = "//button[text()='Create New Event']")
-    public WebElement CreateNewEventUS_77Btn;
 
-    @FindBy(xpath = "//input[@id='title']")
-    public WebElement CreateEventTitleUS_77Btn;
-
-    @FindBy(xpath = "//input[@id='address2']")
-    public WebElement CreateEventAddressUS_77Btn;
-
-    @FindBy(xpath = "//input[@id='date']")
-    public WebElement CreateEventDateUS_77Btn;
-
-    @FindBy(xpath = "//input[@id='time']")
-    public WebElement CreateEventTimeUS_77Btn;
-
-    @FindBy(xpath = "//input[@id='attendeeLimit']")
-    public WebElement CreateEventAttendeeUS_77Btn;
-
-    @FindBy(xpath = "//textarea[@id='schedule']")
-    public WebElement CreateEventScheduleUS_77Btn;
+    //Create new Event butonuna tıklar
+    public void clickNewEvent(){
+        waitForClickablility(CreateNewEventBtn,10);
+        CreateNewEventBtn.click();
+    }
 
     @FindBy(xpath = "//textarea[@id='description']")
     public WebElement CreateEventDescriptionUS_77Btn;
