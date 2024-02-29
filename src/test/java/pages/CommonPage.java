@@ -29,6 +29,54 @@ public class CommonPage {
     private AccountOrdersPage accountOrdersPage;
     private WelcomePage welcomePage;
     private AccountRequestedProductsPage accountRequestedProductsPage;
+    private BasketPage basketPage;
+    private EventsPage eventsPage;
+    private MyEventsPage myEventsPage;
+    private NotificationPage notificationPage;
+    private AccountContactUsPage accountContactUsPage;
+    private SupportDonationPage supportDonationPage;
+
+    public SupportDonationPage getSupportDonationPage() {
+        if (supportDonationPage == null) {
+            supportDonationPage = new SupportDonationPage();
+        }
+        return supportDonationPage;
+    }
+
+    public AccountContactUsPage getAccountContactUsPage() {
+        if (accountContactUsPage == null) {
+            accountContactUsPage = new AccountContactUsPage();
+        }
+        return accountContactUsPage;
+    }
+
+    public NotificationPage getNotificationPage() {
+        if (notificationPage == null){
+            notificationPage = new NotificationPage();
+        }
+        return notificationPage;
+    }
+
+    public MyEventsPage getMyEventsPage() {
+        if (myEventsPage == null){
+            myEventsPage = new MyEventsPage();
+        }
+        return myEventsPage;
+    }
+
+    public EventsPage getEventsPage() {
+        if (eventsPage == null) {
+            eventsPage = new EventsPage();
+        }
+        return eventsPage;
+    }
+
+    public BasketPage getBasketPage() {
+        if (basketPage == null) {
+            basketPage = new BasketPage();
+        }
+        return basketPage;
+    }
 
     public AccountRequestedProductsPage getAccountRequestedProductsPage() {
         if (accountRequestedProductsPage == null) {

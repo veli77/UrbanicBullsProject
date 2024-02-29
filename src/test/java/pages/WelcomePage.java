@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,9 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = "[class='Navbar_textLink__f6_Al cursor-pointer']")
     public WebElement WelcomePage;
 
+    @FindBy(xpath = "//*[@id=\"Urban\\u0131cFarm\"][1]")
+    public WebElement Logo;
+
     @FindBy(css = "[class*='p-1'] p")
     public List<WebElement> ProductsList;
 
@@ -37,7 +41,7 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = "[class*='p-1'] [class*='ProductCard_minus']")
     public List<WebElement> DecreaseQuantityOfTheProductButton;
 
-    @FindBy(xpath = "//button[contains(@class, 'col-12 mt-2') and text()='Add to Cart']")
+    @FindBy(css = "[class*='col-12 mt-2']")
     public List<WebElement> AddToCartButton;
 
     @FindBy(css = "div[role='alert']")
@@ -157,8 +161,42 @@ public class WelcomePage extends CommonPage {
 
     @FindBy(xpath = "//*[text()='There is no local grower in this view.']")
     public WebElement NoResults;
+    @FindBy(css = "select[id='sellerRate']")
+    public WebElement sellerRateDropdown;
+    @FindBy(css = "select[id='productRate']")
+    public WebElement productRateDropdown;
+    @FindBy(css ="[href='/account/events-i-organize']")
+    public WebElement MyEventsBtnAtSideBar;
 
+
+    //Sağ barda bulunan My Events butonuna click yapar.
+    public void clickMyEvents() {
+        ReusableMethods.clickWithTimeOut(getWelcomePage().MyEventsBtnAtSideBar,10);
+    }
+
+    public void SellerRatingClickableCheck() {
+        ReusableMethods.waitForClickablility(sellerRateDropdown,5);
+        Assert.assertTrue(sellerRateDropdown.isDisplayed() && sellerRateDropdown.isEnabled());
+    }
+    public void SellerRatingSelectAnOption() {
+        Select select = new Select(sellerRateDropdown);
+        select.selectByIndex(2);
+        ReusableMethods.waitFor(1);
+        Assert.assertEquals("3", select.getFirstSelectedOption().getText());
+    }
+    public void ProductRatingClickableCheck() {
+        ReusableMethods.waitForClickablility(productRateDropdown,5);
+        Assert.assertTrue(productRateDropdown.isDisplayed() && productRateDropdown.isEnabled());
+    }
+    public void ProductRatingSelectAnOption() {
+        Select select = new Select(productRateDropdown);
+        select.selectByVisibleText("2");
+        ReusableMethods.waitFor(1);
+        Assert.assertEquals("2", select.getFirstSelectedOption().getText());
+    }
     public void ClickWelcomePage() {
+        ReusableMethods.waitForPageToLoad(10);
+        ReusableMethods.waitForClickablility(WelcomePage,10);
         WelcomePage.click();
 
         //Welcome to the UrbanicFarm pop-up inin engellenmesi icin
@@ -166,17 +204,14 @@ public class WelcomePage extends CommonPage {
         LocalStorage localStorage = ((WebStorage) driver).getLocalStorage();
         localStorage.setItem("welcome-modal-shown", "false");
     }
-
     public void ProductListAppears() {
         Assert.assertFalse(ProductsList.isEmpty());
         ProductsList.getFirst().isDisplayed();
     }
-
     public void ListOfSellersAppears() {
         Assert.assertFalse(SellersList.isEmpty());
         SellersList.getFirst().isDisplayed();
     }
-
     public void RandomSellerIsSelected() {
         // Rasgele bir indeks oluştur
         Random rand = new Random();
@@ -185,43 +220,35 @@ public class WelcomePage extends CommonPage {
         targetText = ProductsList.get(randomIndex).getText();
         System.out.println(targetText);
     }
-
     public void QuantityIconsFunctional() {
         JSUtils.clickElementByJS(IncreaseQuantityOfTheProductButton.get(randomIndex));
         JSUtils.clickElementByJS(IncreaseQuantityOfTheProductButton.get(randomIndex));
         JSUtils.clickElementByJS(IncreaseQuantityOfTheProductButton.get(randomIndex));
         JSUtils.clickElementByJS(DecreaseQuantityOfTheProductButton.get(randomIndex));
     }
-
     public void AddToCartButtonFunctional() {
         AddToCartButton.get(randomIndex).isEnabled();
     }
-
     public void RandomProductIsClicked() {
         // Rasgele seçilen indeksteki öğeyi tıkla
         AddToCartButton.get(randomIndex).click();
     }
-
     public void ProductAddedAlert() {
         AddedToYourBasketAlert.isDisplayed();
     }
-
     public boolean isProductAddedToTheBasket() {
         BasketIcon.click();
         return ProductsNamesInTheBasketList.stream()
                 .map(WebElement::getText)
                 .anyMatch(text -> text.contains(targetText));
     }
-
     public void VerifyProductIsInTHeList() {
         Assert.assertTrue(isProductAddedToTheBasket());
     }
-
     public void RemoveProductsFromTheBasket() {
         getWelcomePage().RemoveProductFromBasketButton.click();
         getWelcomePage().YesToRemoveProductFromBasketButton.click();
     }
-
     public void searchAndVerifyProductInResults() {
         // Selecting a random product from the search list
         int randomIndex = new Random().nextInt(ProductNameList.size());
@@ -246,7 +273,6 @@ public class WelcomePage extends CommonPage {
         }
         SearchByProductName.clear();
     }
-
     public void selectProductByDistance(DataTable dataTable) {
         List<String> distances = dataTable.column(0);
 
@@ -257,7 +283,6 @@ public class WelcomePage extends CommonPage {
             SearchButton.click();
         }
     }
-
     public void SelectDistanceOptions() {
         for (int i = 0; i < SearchByDistanceOptions.size(); i++) {
             SearchByDistanceOptions.get(i).click();
@@ -265,51 +290,43 @@ public class WelcomePage extends CommonPage {
             SearchButton.click();
         }
     }
-
     public void searchProductByDistance(DataTable dataTable) {
-            List<String> distances = dataTable.column(1);
-            List<Integer> integerList = new ArrayList<>();
+        List<String> distances = dataTable.column(1);
+        List<Integer> integerList = new ArrayList<>();
 
-            for (String str : distances) {
-                integerList.add(Integer.parseInt(str));
+        for (String str : distances) {
+            integerList.add(Integer.parseInt(str));
+        }
+
+        for (int i = 0; i < SearchByDistanceOptions.size(); i++) {
+            SearchByDistanceOptions.get(i).click();
+            ReusableMethods.waitFor(3);
+            getWelcomePage().SearchButton.click();
+
+            List<String> DistanceList = new ArrayList<>();
+            for (int x = 0; x < ResultsDistance.size(); x++) {
+                try {
+                    DistanceList.add(ResultsDistance.get(x).getText());
+                } catch (Exception e) {
+                    // Hata durumunda DistanceList'e 0 ekle
+                    DistanceList.add("0");
+                }
             }
-
-            for (int i = 0; i < SearchByDistanceOptions.size(); i++) {
-
-                if (WelcomeToUrbanicFarm.isDisplayed()) {
-                    WelcomeToUrbanicFarmCloseBtn.click();
-                } else {
-
-                SearchByDistanceOptions.get(i).click();
-                ReusableMethods.waitFor(3);
-                getWelcomePage().SearchButton.click();
-
-                List<String> DistanceList = new ArrayList<>();
-                for (int x = 0; x < ResultsDistance.size(); x++) {
-                    try {
-                        DistanceList.add(ResultsDistance.get(x).getText());
-                    } catch (Exception e) {
-                        // Hata durumunda DistanceList'e 0 ekle
-                        DistanceList.add("0");
-                    }
+            // Her bir sonuç metni için
+            for (String result : DistanceList) {
+                // Sadece rakamları içeren bir liste oluştur
+                List<String> mesafeler = ReusableMethods.extractNumbers(result);
+                // Her bir rakam için
+                for (String distance : mesafeler) {
+                    // 100'den küçük mü diye kontrol et
+                    int num = Integer.parseInt(distance);
+                    Assert.assertTrue(num < integerList.get(i));
                 }
-                // Her bir sonuç metni için
-                for (String result : DistanceList) {
-                    // Sadece rakamları içeren bir liste oluştur
-                    List<String> mesafeler = ReusableMethods.extractNumbers(result);
-                    // Her bir rakam için
-                    for (String distance : mesafeler) {
-                        // 100'den küçük mü diye kontrol et
-                        int num = Integer.parseInt(distance);
-                        Assert.assertTrue(num < integerList.get(i));
-                        ReusableMethods.waitFor(3);
-                    }
-                }
+            }
 
             }
         }
     }
-
     public void searchAndVerifyProductByCategories() {
         // Selecting a random product from the search list
         int randomIndex = new Random().nextInt(SearchByCategoriesOptions.size());
@@ -403,7 +420,6 @@ public class WelcomePage extends CommonPage {
         System.out.println("Highest Price Level = " + HighestPriceValue);
         Assert.assertTrue(HighestPriceValue <= randomPriceLimit2);
     }
-
     public void FilterByPriceLevel(List<Integer> prices) {
         SortByExpensive.click();
         ReusableMethods.waitFor(5);
@@ -427,14 +443,12 @@ public class WelcomePage extends CommonPage {
             }
         }
     }
-
-    public void SearchByDeliveryType() {
+    public void SearchByDeliveryType(){
         performSearchAndAssertResults(DeliveryTypeBuyerPickupOnTheVine, ResultsByDeliveryTypeBuyersPickUpOnTheVine);
         performSearchAndAssertResults(DeliveryTypeBuyerPickup, ResultsByDeliveryTypeBuyersPickUp);
         performSearchAndAssertResults(DeliveryTypeSellerDelivery, ResultsByDeliveryTypeSellerDelivers);
         performSearchAndAssertResults(DeliveryTypeSellerFlexible, ResultsByDeliveryTypeFlexibleDelivery);
     }
-
     public void performSearchAndAssertResults(WebElement deliveryType, WebElement resultsElement) {
         ReusableMethods.waitFor(5);
         JSUtils.clickElementByJS(FilterButton);
@@ -446,7 +460,8 @@ public class WelcomePage extends CommonPage {
         try {
             ReusableMethods.waitFor(5);
             Assert.assertTrue(resultsElement.isDisplayed());
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException e)
+        {
             System.out.println("Listede ürün yok.");
         }
 
