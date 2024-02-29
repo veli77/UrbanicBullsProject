@@ -1,12 +1,15 @@
 package pages;
 
+import enums.USERCREDENTIAL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
-
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -207,17 +210,37 @@ public class HomePage extends CommonPage {
         Pattern pattern= new Pattern(screenShotPath);
         try {
             screen.click(pattern);
+//    public void screenshotClick(String screenShotPath){
+//
+//        Screen screen= new Screen();
+//        Pattern pattern= new Pattern(screenShotPath);
+//        try {
+//            screen.click(pattern);
+//
+//        } catch (FindFailed e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
         } catch (FindFailed e) {
             throw new RuntimeException(e);
         }
     }
 
-     */
 
+
+    public void screenShotSendText(String screenShotPath){
+
+        Screen screen =new Screen();
+        Pattern pattern=new Pattern(screenShotPath);
+
+        screen.type(USERCREDENTIAL.USER2.getUsername());
+
+    }
 
 
     public void addZipCode(String zipCode) {
+
 
 
         ReusableMethods.sendText(inputZipCode, zipCode);
@@ -237,6 +260,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
+
 
 
     //En altta bulunan about us butonuna gider ve tıklar.
