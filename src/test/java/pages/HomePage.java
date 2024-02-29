@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -161,7 +158,6 @@ public class HomePage extends CommonPage {
     public WebElement googleChromePermissionRejectButton;
 
 
-
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
     public void goesToTestUrbanicFarmHomePage() {
         driver.get("https://test.urbanicfarm.com/");
@@ -194,15 +190,13 @@ public class HomePage extends CommonPage {
     }
 
 
-
-
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
         ReusableMethods.hover(element);
         element.click();
     }
-
+}
     /*
     public void screenshotClick(String screenShotPath){
 
@@ -270,3 +264,5 @@ public class HomePage extends CommonPage {
     }
 
 }
+
+     */
