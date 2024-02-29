@@ -216,8 +216,8 @@ public class HomePage extends CommonPage {
      */
 
 
-    public void addZipCode(String zipCode) {
 
+    public void addZipCode(String zipCode) {
 
 
         ReusableMethods.sendText(inputZipCode, zipCode);
@@ -237,7 +237,6 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
-
 
 
     //En altta bulunan about us butonuna gider ve tıklar.
