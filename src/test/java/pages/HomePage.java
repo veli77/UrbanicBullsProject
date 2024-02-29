@@ -1,5 +1,6 @@
 package pages;
 
+import enums.USERCREDENTIAL;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -198,20 +199,29 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(element);
         element.click();
     }
-/*
-    public void screenshotClick(String screenShotPath){
 
-        Screen screen= new Screen();
-        Pattern pattern= new Pattern(screenShotPath);
-        try {
-            screen.click(pattern);
+//    public void screenshotClick(String screenShotPath){
+//
+//        Screen screen= new Screen();
+//        Pattern pattern= new Pattern(screenShotPath);
+//        try {
+//            screen.click(pattern);
+//
+//        } catch (FindFailed e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-        } catch (FindFailed e) {
-            throw new RuntimeException(e);
-        }
-    }
 
- */
+
+//    public void screenShotSendText(String screenShotPath){
+//
+//        Screen screen =new Screen();
+//        Pattern pattern=new Pattern(screenShotPath);
+//
+//        screen.type(USERCREDENTIAL.USER2.getUsername());
+//
+//    }
 
 
     public void addZipCode(String zipCode) {
