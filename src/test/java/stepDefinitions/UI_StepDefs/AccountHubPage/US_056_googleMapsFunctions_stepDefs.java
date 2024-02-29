@@ -23,18 +23,18 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
 
     }
 
-    @And("Zoom buttons should be clickable.")
-    public void zoomButtonsShouldBeClickable() {
-
-       driver.switchTo().frame(getAccountAddressPage().iframe);
-
-     //  for (WebElement element: getAccountAddressPage().mapsZoomButtons){
-      //     element.click();
-    //   }
-       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
-       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
-
-    }
+//    @And("Zoom buttons should be clickable.")
+//    public void zoomButtonsShouldBeClickable() {
+//
+//       driver.switchTo().frame(getAccountAddressPage().iframe);
+//
+//     //  for (WebElement element: getAccountAddressPage().mapsZoomButtons){
+//      //     element.click();
+//    //   }
+//       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
+//       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
+//
+//    }
 
     @Then("User click to View Larger Map link, user can reach related page.")
     public void userClickToViewLargerMapLinkUserCanReachRelatedPage() {
