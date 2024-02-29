@@ -3,6 +3,8 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import utilities.JSUtils;
+import utilities.ReusableMethods;
 
 import java.util.List;
 
@@ -29,6 +31,38 @@ public class MyEventsPage extends CommonPage{
     public WebElement SubmitBtnAtAddAdress;
     @FindBy(xpath = "//div[@role='alert'][.='Your Address successfully added']")
     public WebElement ToastMessage;
+    @FindBy(xpath = "//a[text()='My Events']")
+    public WebElement MyEventsUS_77Btn;
+    @FindBy(xpath = "//button[text()='Create New Event']")
+    public WebElement CreateNewEventUS_77Btn;
+    @FindBy(xpath = "//input[@id='title']")
+    public WebElement CreateEventTitleUS_77Btn;
+    @FindBy(xpath = "//input[@id='address2']")
+    public WebElement CreateEventAddressUS_77Btn;
+    @FindBy(xpath = "//input[@id='date']")
+    public WebElement CreateEventDateUS_77Btn;
+    @FindBy(xpath = "//input[@id='time']")
+    public WebElement CreateEventTimeUS_77Btn;
+    @FindBy(xpath = "//input[@id='attendeeLimit']")
+    public WebElement CreateEventAttendeeUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='schedule']")
+    public WebElement CreateEventScheduleUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='description']")
+    public WebElement CreateEventDescriptionUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='tac']")
+    public WebElement CreateEventTermsAndConditionUS_77Btn;
+    @FindBy(xpath = "//input[@id='duration']")
+    public WebElement CreateEventDurationUS_77Btn;
+    @FindBy(xpath = "//button[text()='Submit']")
+    public WebElement CreateEventSubmitUS_77Btn;
+    @FindBy(xpath = "//div[text()='Please enter a valid title.']")
+    public WebElement CreateEventInvTitleMessageUS_77Btn;
+    @FindBy(xpath = "//div[text()='Please select an address.']")
+    public WebElement CreateEventInvAddressMessageUS_77Btn;
+    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
+    public WebElement CreateEventTimeInvUS_77Btn;
+    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
+    public WebElement CreateEventDateInvMessageUS_77Btn;
 
     //Create new Event butonuna tıklar
     public void clickNewEvent(){
@@ -66,4 +100,22 @@ public class MyEventsPage extends CommonPage{
         Assert.assertEquals(toastMessage,ToastMessage.getText());
     }
 
+    public void enterOtherDatas() {
+        ReusableMethods.sendText(getMyEventsPage().CreateEventDurationUS_77Btn,"153");
+        ReusableMethods.sendText(getMyEventsPage().CreateEventAttendeeUS_77Btn,"7");
+        ReusableMethods.waitForClickablility(getMyEventsPage().CreateEventScheduleUS_77Btn,2);
+        getMyEventsPage().CreateEventScheduleUS_77Btn.sendKeys("10:00-11:00");
+        ReusableMethods.waitAndClickElement(getMyEventsPage().CreateEventDescriptionUS_77Btn,2);
+        getMyEventsPage().CreateEventDescriptionUS_77Btn.sendKeys("Workshop");
+        ReusableMethods.sendText(getMyEventsPage().CreateEventTermsAndConditionUS_77Btn,"Terms agreed");
+        ReusableMethods.hover(getMyEventsPage().CreateEventSubmitUS_77Btn);
+        JSUtils.clickElementByJS(getMyEventsPage().CreateEventSubmitUS_77Btn);
+    }
+
+
+
 }
+
+
+
+

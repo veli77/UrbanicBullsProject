@@ -1,5 +1,5 @@
 @UI @US_039
-Feature: US_039 Login Fail
+Feature: US_039
 
   Scenario Outline: Invalid Login
     Given Users go to login page
