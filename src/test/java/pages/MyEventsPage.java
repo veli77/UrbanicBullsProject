@@ -15,7 +15,7 @@ import static utilities.ReusableMethods.waitForVisibility;
 
 import static stepDefinitions.Hooks.driver;
 
-public class MyEventsPage extends CommonPage{
+public class MyEventsPage extends CommonPage {
 
     @FindBy(xpath = "//button[.='Create New Event']")
     public WebElement CreateNewEventBtn;
@@ -79,27 +79,59 @@ public class MyEventsPage extends CommonPage{
     public List<WebElement> DeleteEvent;
     @FindBy(css = "div[style='visibility: visible;'] .mr-4")
     public WebElement YestoDeleteEventButton;
+    @FindBy(xpath = "//a[text()='My Events']")
+    public WebElement MyEventsUS_77Btn;
+    @FindBy(xpath = "//button[text()='Create New Event']")
+    public WebElement CreateNewEventUS_77Btn;
+    @FindBy(xpath = "//input[@id='title']")
+    public WebElement CreateEventTitleUS_77Btn;
+    @FindBy(xpath = "//input[@id='address2']")
+    public WebElement CreateEventAddressUS_77Btn;
+    @FindBy(xpath = "//input[@id='date']")
+    public WebElement CreateEventDateUS_77Btn;
+    @FindBy(xpath = "//input[@id='time']")
+    public WebElement CreateEventTimeUS_77Btn;
+    @FindBy(xpath = "//input[@id='attendeeLimit']")
+    public WebElement CreateEventAttendeeUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='schedule']")
+    public WebElement CreateEventScheduleUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='description']")
+    public WebElement CreateEventDescriptionUS_77Btn;
+    @FindBy(xpath = "//textarea[@id='tac']")
+    public WebElement CreateEventTermsAndConditionUS_77Btn;
+    @FindBy(xpath = "//input[@id='duration']")
+    public WebElement CreateEventDurationUS_77Btn;
+    @FindBy(xpath = "//button[text()='Submit']")
+    public WebElement CreateEventSubmitUS_77Btn;
+    @FindBy(xpath = "//div[text()='Please enter a valid title.']")
+    public WebElement CreateEventInvTitleMessageUS_77Btn;
+    @FindBy(xpath = "//div[text()='Please select an address.']")
+    public WebElement CreateEventInvAddressMessageUS_77Btn;
+    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
+    public WebElement CreateEventTimeInvUS_77Btn;
+    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
+    public WebElement CreateEventDateInvMessageUS_77Btn;
 
     //Create new Event butonuna tıklar
-    public void clickNewEvent(){
-        waitForClickablility(CreateNewEventBtn,10);
+    public void clickNewEvent() {
+        waitForClickablility(CreateNewEventBtn, 10);
         CreateNewEventBtn.click();
     }
 
     //Add butonuna tıklar yeni adress eklemek için
-    public void clickAddBtn(){
-        waitForClickablility(AddBtnAtCreateEventFrom,10);
+    public void clickAddBtn() {
+        waitForClickablility(AddBtnAtCreateEventFrom, 10);
         AddBtnAtCreateEventFrom.click();
     }
 
     //adres şablonu oluşturması için bir şehir adı yazar ve önerilerde ilk çıkanı seçer
-    public void enterCityName(String city){
-        waitForVisibility(SearchPlacesInput,10);
+    public void enterCityName(String city) {
+        waitForVisibility(SearchPlacesInput, 10);
         SearchPlacesInput.sendKeys(city);
         suggestedAddressList.getFirst().click();
     }
 
-    public void addAnAddress(String addressTitle,String address, String postal) {
+    public void addAnAddress(String addressTitle, String address, String postal) {
         AddressTitleInput.clear();
         AddressTitleInput.sendKeys(addressTitle);
         AddressInput.clear();
@@ -110,14 +142,16 @@ public class MyEventsPage extends CommonPage{
     }
 
     //Toast message kontrol eder
-    public void checkAddedAddress(String toastMessage){
-        waitForVisibility(ToastMessage,10);
-        Assert.assertEquals(toastMessage,ToastMessage.getText());
+    public void checkAddedAddress(String toastMessage) {
+        waitForVisibility(ToastMessage, 10);
+        Assert.assertEquals(toastMessage, ToastMessage.getText());
     }
+
     public void MyEventsPageButton() {
         ReusableMethods.waitFor(3);
         JSUtils.clickElementByJS(MyEventsPage);
     }
+
     public void AddNewEventAddress() {
         JSUtils.clickElementByJS(AddAddressButton);
         JSUtils.clickElementByJS(SearchAddress);
@@ -126,6 +160,7 @@ public class MyEventsPage extends CommonPage{
         JSUtils.clickElementByJS(SubmitAddressButton);
         ReusableMethods.waitFor(5);
     }
+
     public void EnterValidInformationForNewEvent(List<List<String>> listItems) {
 
         ReusableMethods.sendText(Eventtitle, listItems.get(0).get(1));
@@ -149,57 +184,24 @@ public class MyEventsPage extends CommonPage{
         AlertEventCreated.isDisplayed();
         Assert.assertEquals("New Event", CreatedEventTitle.getLast().getText());
     }
-    public void DeletingLastCreatedEvent () {
+
+    public void DeletingLastCreatedEvent() {
         JSUtils.clickElementByJS(DeleteEvent.getLast());
         YestoDeleteEventButton.click();
     }
 
-
-    //Create new Event butonuna tıklar
-    public void clickNewEvent(){
-        waitForClickablility(CreateNewEventBtn,10);
-        CreateNewEventBtn.click();
-    }
-
-    @FindBy(xpath = "//textarea[@id='description']")
-    public WebElement CreateEventDescriptionUS_77Btn;
-
-    @FindBy(xpath = "//textarea[@id='tac']")
-    public WebElement CreateEventTermsAndConditionUS_77Btn;
-
-    @FindBy(xpath = "//input[@id='duration']")
-    public WebElement CreateEventDurationUS_77Btn;
-
-    @FindBy(xpath = "//button[text()='Submit']")
-    public WebElement CreateEventSubmitUS_77Btn;
-
-    @FindBy(xpath = "//div[text()='Please enter a valid title.']")
-    public WebElement CreateEventInvTitleMessageUS_77Btn;
-
-    @FindBy(xpath = "//div[text()='Please select an address.']")
-    public WebElement CreateEventInvAddressMessageUS_77Btn;
-
-    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
-    public WebElement CreateEventTimeInvUS_77Btn;
-
-    @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
-    public WebElement CreateEventDateInvMessageUS_77Btn;
-
     public void enterOtherDatas() {
-        ReusableMethods.sendText(getMyEventsPage().CreateEventDurationUS_77Btn,"153");
-        ReusableMethods.sendText(getMyEventsPage().CreateEventAttendeeUS_77Btn,"7");
-        ReusableMethods.waitForClickablility(getMyEventsPage().CreateEventScheduleUS_77Btn,2);
+        ReusableMethods.sendText(getMyEventsPage().CreateEventDurationUS_77Btn, "153");
+        ReusableMethods.sendText(getMyEventsPage().CreateEventAttendeeUS_77Btn, "7");
+        ReusableMethods.waitForClickablility(getMyEventsPage().CreateEventScheduleUS_77Btn, 2);
         getMyEventsPage().CreateEventScheduleUS_77Btn.sendKeys("10:00-11:00");
-        ReusableMethods.waitAndClickElement(getMyEventsPage().CreateEventDescriptionUS_77Btn,2);
+        ReusableMethods.waitAndClickElement(getMyEventsPage().CreateEventDescriptionUS_77Btn, 2);
         getMyEventsPage().CreateEventDescriptionUS_77Btn.sendKeys("Workshop");
-        ReusableMethods.sendText(getMyEventsPage().CreateEventTermsAndConditionUS_77Btn,"Terms agreed");
+        ReusableMethods.sendText(getMyEventsPage().CreateEventTermsAndConditionUS_77Btn, "Terms agreed");
         ReusableMethods.hover(getMyEventsPage().CreateEventSubmitUS_77Btn);
         JSUtils.clickElementByJS(getMyEventsPage().CreateEventSubmitUS_77Btn);
     }
-
-
-    }
-
+}
 
 
 
