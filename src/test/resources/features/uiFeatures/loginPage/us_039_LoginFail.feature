@@ -1,5 +1,5 @@
-@UI @US_039 @smoke
-Feature: US_039
+@UI @US_039
+Feature: US_039 Login Fail
 
   Scenario Outline: Invalid Login
     Given Users go to login page
@@ -13,3 +13,4 @@ Feature: US_039
       |                    | abc1234  |
       | abcde123@gmail.com |          |
       | abcde123@gmail.com | abc1234  |
+

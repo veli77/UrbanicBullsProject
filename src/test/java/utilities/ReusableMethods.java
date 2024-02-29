@@ -1,4 +1,5 @@
 package utilities;
+
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
@@ -21,6 +22,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -58,7 +61,7 @@ public class ReusableMethods {
 
     //========Hover Over(ScrollDown)=====//
     public static void hover(WebElement element) {
-  //      Actions actions = new Actions(Driver.getDriver());
+        //      Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
@@ -298,31 +301,30 @@ public class ReusableMethods {
         }
     }
 
-    
 
     public static void clearValue(WebElement element, String text) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
     }
 
     public static void nullCheck(WebElement element, String text) {
-        if (text!=null) {
+        if (text != null) {
             element.sendKeys(text);
-        }else System.err.println("Null is not allowed for this method");
+        } else System.err.println("Null is not allowed for this method");
     }
 
     public static void sendText(WebElement element, String text) {
-        try{
+        try {
             waitForClickablility(element, 15).sendKeys(text);
-        }catch (ElementNotInteractableException e){
+        } catch (ElementNotInteractableException e) {
             scrollToElement(element);
-            sendText(element,text);
+            sendText(element, text);
         }
     }
 
     /*
    This method accepts a String "expectedTitle" and Asserts if it is true
     */
-    public static void verifyTitle(String expectedTitle){
+    public static void verifyTitle(String expectedTitle) {
 
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
 
@@ -344,5 +346,46 @@ public class ReusableMethods {
         return element.getText();
     }
 
+    // Metinden sadece rakamları içeren bir liste döndüren fonksiyon
+    public static List<String> extractNumbers(String text) {
+        List<String> numbers = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\d+"); // \d ifadesi bir veya daha fazla rakamı temsil eder
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            numbers.add(matcher.group()); // Eşleşen rakamları listeye ekle
+        }
+        return numbers;
+    }
+
+    public static Random random = new Random();
+    public static StringBuilder sb = new StringBuilder();
+    public  static String text = "abcdefghijklmnopqrstuvwxyz";
+
+    // Random text olusturma
+
+    public static String randomText(int textSize) {
+
+
+
+
+        for (int i = 0; i < textSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
+    }
+
+    // Random email olusturma
+
+    public static String randomEmail(int initialTextSize){
+        for (int i = 0; i < initialTextSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString()+"@gmail.com";
+
+    }
 }
 

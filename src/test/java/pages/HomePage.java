@@ -3,6 +3,12 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+//import org.sikuli.script.FindFailed;
+//import org.sikuli.script.Pattern;
+//import org.sikuli.script.Screen;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -153,11 +159,6 @@ public class HomePage extends CommonPage {
     @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]//following-sibling::span")
     public WebElement googleChromePermissionRejectButton;
 
-    @FindBy(css = "[href='/account/delivery']")
-    public WebElement deliverySettings_sidebar;
-
-    @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
-    public WebElement deliveryPickupSettings;
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -200,7 +201,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(element);
         element.click();
     }
-/*
+
     public void screenshotClick(String screenShotPath){
 
         Screen screen= new Screen();
@@ -212,8 +213,6 @@ public class HomePage extends CommonPage {
             throw new RuntimeException(e);
         }
     }
-
- */
 
 
     public void addZipCode(String zipCode) {

@@ -34,6 +34,7 @@ public class US_055_MySalesAddress_stepDefs extends CommonPage {
 
     @When("User must click on the add button that opens and enter a new address")
     public void user_must_click_on_the_add_button_that_opens_and_enter_a_new_address() throws InterruptedException {
+        Thread.sleep(2000);
         getAccountAddressPage().sendKeysAddress();
         getAccountAddressPage().addressOptions();
     }
@@ -67,7 +68,7 @@ getAccountAddressPage().MySalesAddressSubmitBtn.click();
 
     @Then("User verifies that the address details page has opened")
     public void user_verifies_that_the_address_details_page_has_opened() {
-       Assert.assertTrue(getAccountAddressPage().AddressDetailsPage.isDisplayed());
+       Assert.assertTrue(getAccountAddressPage().AddressDetailsPage.getLast().isDisplayed());
     }
 
     @When("User goes to the address page and clicks the remove button")
@@ -134,6 +135,4 @@ getAccountAddressPage().MySalesAddressSubmitBtn.click();
         Thread.sleep(2000);
         JSUtils.clickElementByJS(getAccountAddressPage().MySalesAddressEditSubmitBtn);
     }
-
-
 }
