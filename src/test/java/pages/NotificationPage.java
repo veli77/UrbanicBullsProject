@@ -10,7 +10,6 @@ import static utilities.ReusableMethods.waitForVisibility;
 public class NotificationPage extends CommonPage{
 
     //LOCATORS START
-
     @FindBy(xpath = "//div[@class='Notifications_notificationNavContent__2SCct']")
     public WebElement notificationsButton;
     @FindBy(xpath = "//span[@class='Notifications_filterButton__3COw5' and text()='Filter by unread']")
@@ -61,11 +60,6 @@ public class NotificationPage extends CommonPage{
             Assert.assertEquals("Non matched text",message,actualTextMarkAllAsReadButton);
         }
 
-        /*
-        waitForClickablility(markAllAsReadButton,10);
-        String actualTextMarkAllAsReadButton = markAllAsReadButton.getText();
-        Assert.assertEquals("Non matched text",message,actualTextMarkAllAsReadButton);
-         */
     }
     // view all mesajinin teyidi (filterByUnreadButton tiklanmali öncelikle)
     public void assertViewAll(String message){
@@ -84,7 +78,6 @@ public class NotificationPage extends CommonPage{
 
     public void unreadANotification(){
 
-
         try {
             waitForClickablility(notificationsOptionButton,10);
             notificationsOptionButton.click();
@@ -95,19 +88,11 @@ public class NotificationPage extends CommonPage{
             waitForClickablility(notificationsOptionButton,10);
             notificationsOptionButton.click();
         }
-
-        /*
-        waitForClickablility(notificationsOptionButton,10);
-        notificationsOptionButton.click();
-
-         */
-
-
-
 
     }
     // notifications read yapma
     public void readANotification(){
+
         try {
             waitForClickablility(notificationsOptionButton,10);
             notificationsOptionButton.click();
@@ -119,8 +104,5 @@ public class NotificationPage extends CommonPage{
             notificationsOptionButton.click();
         }
     }
-
-
-
 
 }
