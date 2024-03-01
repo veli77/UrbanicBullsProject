@@ -41,7 +41,7 @@ public class WelcomePage extends CommonPage {
     @FindBy(css = "[class*='p-1'] [class*='ProductCard_minus']")
     public List<WebElement> DecreaseQuantityOfTheProductButton;
 
-    @FindBy(css = "[class*='col-12 mt-2']")
+    @FindBy(xpath = "//button[contains(@class, 'mt-2') and text()='Add to Cart']")
     public List<WebElement> AddToCartButton;
 
     @FindBy(css = "div[role='alert']")
@@ -326,7 +326,6 @@ public class WelcomePage extends CommonPage {
 
             }
         }
-    }
     public void searchAndVerifyProductByCategories() {
         // Selecting a random product from the search list
         int randomIndex = new Random().nextInt(SearchByCategoriesOptions.size());
