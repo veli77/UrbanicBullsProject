@@ -11,9 +11,6 @@ public class NotificationPage extends CommonPage{
 
     //LOCATORS START
 
-    //@FindBy(xpath = "//span[@class='Notifications_notificationIconContainer__2jS5E']")
-    //public WebElement notificationsButton;
-
     @FindBy(xpath = "//div[@class='Notifications_notificationNavContent__2SCct']")
     public WebElement notificationsButton;
     @FindBy(xpath = "//span[@class='Notifications_filterButton__3COw5' and text()='Filter by unread']")
