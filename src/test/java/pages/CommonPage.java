@@ -29,8 +29,6 @@ public class CommonPage {
     private AccountOrdersPage accountOrdersPage;
     private WelcomePage welcomePage;
     private AccountRequestedProductsPage accountRequestedProductsPage;
-    private WeeklyOrderPage weeklyOrderPage;
-    private DeliveryAndPickupSettings deliveryAndPickupSettings;
 
     public AccountRequestedProductsPage getAccountRequestedProductsPage() {
         if (accountRequestedProductsPage == null) {
@@ -43,13 +41,6 @@ public class CommonPage {
             welcomePage = new WelcomePage();
         }
         return welcomePage;
-    }
-
-    public WeeklyOrderPage getWeeklyOrderPage() {
-        if (weeklyOrderPage == null) {
-            weeklyOrderPage = new WeeklyOrderPage();
-        }
-        return weeklyOrderPage;
     }
     public AccountOrdersPage getAccountOrdersPage() {
         if (accountOrdersPage == null) {
@@ -177,11 +168,5 @@ public class CommonPage {
         }
 
         return registerPage;
-    }
-    public DeliveryAndPickupSettings getDeliveryAndPickupSettings() {
-        if (deliveryAndPickupSettings == null) {
-            deliveryAndPickupSettings=new DeliveryAndPickupSettings();
-        }
-        return deliveryAndPickupSettings;
     }
 }

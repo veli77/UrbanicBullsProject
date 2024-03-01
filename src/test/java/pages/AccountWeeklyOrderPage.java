@@ -1,11 +1,13 @@
 package pages;
 
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
+import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
 public class AccountWeeklyOrderPage extends CommonPage{
@@ -19,7 +21,8 @@ public class AccountWeeklyOrderPage extends CommonPage{
     public WebElement accountAddressBtnAtTheLeftBar;
     @FindBy(css = "div[class='CheckDistrictModal_x-btn__sVOij']")
     public WebElement zipCodeBoxCloseButton;
-
+    @FindBy(css = "[name='zipcode']")
+    public WebElement zipCode;
 
     //Sayfanın sag tafında bulunan ADDRESS btn'a tıklar, öncesinde implicit wait yapar
     public void clickAddressBtnAtTheLeftBar(){
@@ -49,6 +52,10 @@ public class AccountWeeklyOrderPage extends CommonPage{
     }
 
 
-
+    public void sendZipcode(String zipcode) {
+        ReusableMethods.verifyElementDisplayed(zipCode);
+        zipCode.sendKeys(zipcode);
+        actions.sendKeys(Keys.ENTER).perform();
+    }
 
 }

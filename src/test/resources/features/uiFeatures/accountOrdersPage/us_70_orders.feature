@@ -1,3 +1,4 @@
+@kubra
 Feature: TC_001 [US_70_WElcome Page]Order statuses must be seen in mutual buyer-seller accounts
 
 	Background:
@@ -11,9 +12,10 @@ Feature: TC_001 [US_70_WElcome Page]Order statuses must be seen in mutual buyer-
 		And User adds order on cart page
 		And User completes the purchase
 		Then Order placed by the user is seen in the Orders section.
+		Then Buyer see order message
 		And Login as a seller
 		Then Seller sees buyer's orders
-		Then Seller sees the buyer's orders in the Notifications section
+
 
 
 

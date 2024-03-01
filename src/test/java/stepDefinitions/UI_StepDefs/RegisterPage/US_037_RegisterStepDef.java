@@ -14,19 +14,22 @@ public class US_037_RegisterStepDef {
     RegisterPage registerPage = new RegisterPage();
 
     @And("Click the {string} button on the main Page")
-    public void clickTheButtonOnTheMainPage(String btnName) {
+    public void clickTheButtonOnTheMainPage(String btnName) throws InterruptedException {
+        Thread.sleep(2000);
         homePage.clickMainButton(btnName);
 
     }
 
     @Then("Send valid information to register")
-    public void sendValidInformationToRegister(DataTable dataTable) {
+    public void sendValidInformationToRegister(DataTable dataTable) throws InterruptedException {
+        Thread.sleep(2000);
         List<List<String>> listItems = dataTable.asLists(String.class);
         registerPage.typeRegisterInf(listItems);
     }
 
     @Then("Verify registration completed successfully")
-    public void verifyRegistrationCompletedSuccessfully() {
+    public void verifyRegistrationCompletedSuccessfully() throws InterruptedException {
+        Thread.sleep(2000);
         registerPage.verifyAlertMessageIsAvailable();
     }
 }

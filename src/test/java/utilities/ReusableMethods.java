@@ -1,4 +1,5 @@
 package utilities;
+
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
@@ -22,6 +23,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.function.Function;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -106,12 +109,6 @@ public class ReusableMethods {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-
-//    public static void waitForVisibility(WebElement webElement) {
-//        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
-//        webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
-//    }
 
     public static WebElement waitForClickablility(WebElement element, int timeout) {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
@@ -350,6 +347,47 @@ public class ReusableMethods {
         return element.getText();
     }
 
+    // Metinden sadece rakamları içeren bir liste döndüren fonksiyon
+    public static List<String> extractNumbers(String text) {
+        List<String> numbers = new ArrayList<>();
+        Pattern pattern = Pattern.compile("\\d+"); // \d ifadesi bir veya daha fazla rakamı temsil eder
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            numbers.add(matcher.group()); // Eşleşen rakamları listeye ekle
+        }
+        return numbers;
+    }
+
+    public static Random random = new Random();
+    public static StringBuilder sb = new StringBuilder();
+    public  static String text = "abcdefghijklmnopqrstuvwxyz";
+
+    // Random text olusturma
+
+    public static String randomText(int textSize) {
+
+
+
+
+        for (int i = 0; i < textSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
+    }
+
+    // Random email olusturma
+
+    public static String randomEmail(int initialTextSize){
+        for (int i = 0; i < initialTextSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString()+"@gmail.com";
+
+    }
 
     public static void clearAndSend( WebElement webElement, String str) {
         webElement.clear();

@@ -1,4 +1,4 @@
-@UI @US_039 @smoke
+@UI @US_039
 Feature: US_039
 
   Scenario Outline: Invalid Login
@@ -13,3 +13,4 @@ Feature: US_039
       |                    | abc1234  |
       | abcde123@gmail.com |          |
       | abcde123@gmail.com | abc1234  |
+

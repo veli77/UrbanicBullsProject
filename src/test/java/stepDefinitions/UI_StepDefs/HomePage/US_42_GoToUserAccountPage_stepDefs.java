@@ -26,7 +26,9 @@ public class US_42_GoToUserAccountPage_stepDefs extends CommonPage{
 
         List<String> tabs = new ArrayList<>();
         for (int i = 0; i <getAccountHomePage().accountPageLeftsidesTabs.size(); i++) {
-
+            Thread.sleep(1000);
+            //ReusableMethods.hover(getAccountHomePage().accountPageLeftsidesTabs.get(i));
+            System.out.print(getAccountHomePage().accountPageLeftsidesTabs.get(i).getText());
             tabs.add(getAccountHomePage().accountPageLeftsidesTabs.get(i).getText());
         }
 
