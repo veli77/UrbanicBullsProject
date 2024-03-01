@@ -1,7 +1,6 @@
 package stepDefinitions.UI_StepDefs.AccountDeliveryPage;
 
 
-import enums.COLOR;
 import enums.USERCREDENTIAL;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
@@ -13,13 +12,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.LocalStorage;
 import org.openqa.selenium.html5.WebStorage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CommonPage;
-import utilities.Driver;
 import utilities.ReusableMethods;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
