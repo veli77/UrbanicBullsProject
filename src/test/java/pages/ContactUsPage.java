@@ -30,8 +30,4 @@ public class ContactUsPage extends CommonPage {
     @FindBy(css = ".Toastify__toast-body.toastr_custom-toastr__iiU37")
     public WebElement toastMessage;
 
-
-
-
-
 }
