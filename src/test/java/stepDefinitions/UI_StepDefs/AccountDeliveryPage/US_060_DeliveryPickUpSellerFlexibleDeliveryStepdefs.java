@@ -35,7 +35,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
 //        getWeeklyOrderPage().zipCode.sendKeys(zipcode);
 //        actions.sendKeys(Keys.ENTER).perform();
         // way 2
-        getWeeklyOrderPage().sendZipcode(zipcode);
+        getAccountWeeklyOrderPage().sendZipcode(zipcode);
     }
 
     @Given("User logs in with Urbanic two credential")
@@ -56,12 +56,12 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
 
     @And("unselect all checkbox")
     public void unselectAllCheckbox() {
-        getDeliveryAndPickupSettings().unCheckDeliverySettings();
+        getAccountDeliveryPage().unCheckDeliverySettings();
     }
 
     @And("user clicks on seller flexible")
     public void userClicksOnSellerFlexible() {
-        getDeliveryAndPickupSettings().seller_flexible.click();
+        getAccountDeliveryPage().seller_flexible.click();
     }
 
     @Given("user verifies web elements with following ids displays correct text")
@@ -70,7 +70,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
         List<String> labels = dataTable.column(1);
 
         for (int i = 0; i < labels.size(); i++) {
-            getDeliveryAndPickupSettings().assertLabelWithWebelement(
+            getAccountDeliveryPage().assertLabelWithWebelement(
                     labels.get(i),
                     webElementFor.get(i)
             );
@@ -87,7 +87,7 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
 
 //            assert driver.findElement(By.xpath("//input[@id='"+webElementInput+"']")).isDisplayed();
 //            ReusableMethods.verifyElementDisplayed(driver.findElement(By.xpath("//input[@id='"+webElementInput.get(i)+"']")));
-            getDeliveryAndPickupSettings().assertInputWithWebelement(webElementInput.get(i));
+            getAccountDeliveryPage().assertInputWithWebelement(webElementInput.get(i));
 //            System.out.println(webElementInput.get(i));
         }
     }
@@ -120,34 +120,34 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
     @When("user enter address fields")
     public void userEnterAddressFields() {
         // way 1
-//        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.clear();
-//        getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.sendKeys("10");
+//        getAccountDeliveryPage().freeFlexibleDeliveryRange.clear();
+//        getAccountDeliveryPage().freeFlexibleDeliveryRange.sendKeys("10");
 //        Actions actions = new Actions(driver);
 //        actions.sendKeys(Keys.ARROW_UP);
-//        String increasedValue = getDeliveryAndPickupSettings().freeFlexibleDeliveryRange.getAttribute("value");
+//        String increasedValue = getAccountDeliveryPage().freeFlexibleDeliveryRange.getAttribute("value");
 //        Assert.assertEquals("10.01",increasedValue);
         // way 2 extention
-        clearAndSend(getDeliveryAndPickupSettings().freeFlexibleDeliveryRange,"10");
-        clearAndSend(getDeliveryAndPickupSettings().minFreeFlexibleDeliveryOrder, "15");
-        clearAndSend(getDeliveryAndPickupSettings().perMileCostFlex, "1");
-        clearAndSend(getDeliveryAndPickupSettings().maxFlexibleDeliveryRange, "20");
+        clearAndSend(getAccountDeliveryPage().freeFlexibleDeliveryRange,"10");
+        clearAndSend(getAccountDeliveryPage().minFreeFlexibleDeliveryOrder, "15");
+        clearAndSend(getAccountDeliveryPage().perMileCostFlex, "1");
+        clearAndSend(getAccountDeliveryPage().maxFlexibleDeliveryRange, "20");
 
     }
 
     @And("enter some order times")
     public void enterSomeOrderTimes() {
-        getDeliveryAndPickupSettings().deliveryBeginTime.sendKeys("0205pm");
-        getDeliveryAndPickupSettings().deliveryEndTime.sendKeys("0305pm");
-        getDeliveryAndPickupSettings().orderByTime.sendKeys("0405pm");
+        getAccountDeliveryPage().deliveryBeginTime.sendKeys("0205pm");
+        getAccountDeliveryPage().deliveryEndTime.sendKeys("0305pm");
+        getAccountDeliveryPage().orderByTime.sendKeys("0405pm");
     }
 
     @Then("days should be appropriate")
     public void daysShouldBeAppropriate(DataTable table) {
 //        // way 1
-//        Select select = new Select(getDeliveryAndPickupSettings().deliveryBeginDay);
+//        Select select = new Select(getAccountDeliveryPage().deliveryBeginDay);
 //        select.selectByVisibleText("Monday");
 //        // way 2 extention
-//        getDeliveryAndPickupSettings().deliveryEndDay.selectByVisibleText("Tuesday");
+//        getAccountDeliveryPage().deliveryEndDay.selectByVisibleText("Tuesday");
 
         List<Map<String, String>> maps = table.asMaps();
         for (int i = 0; i < maps.size(); i++) {
@@ -157,11 +157,11 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
             String errorMessage = maps.get(i).get("ErrorMessage");
             boolean isOK = Boolean.parseBoolean(maps.get(i).get("isOK"));
 
-            selectByVisibleText(getDeliveryAndPickupSettings().deliveryBeginDay, orderBegin);
+            selectByVisibleText(getAccountDeliveryPage().deliveryBeginDay, orderBegin);
 
-            selectByVisibleText(getDeliveryAndPickupSettings().deliveryEndDay, orderEnd);
-            selectByVisibleText(getDeliveryAndPickupSettings().orderByDay, delivery);
-            getDeliveryAndPickupSettings().update.click();
+            selectByVisibleText(getAccountDeliveryPage().deliveryEndDay, orderEnd);
+            selectByVisibleText(getAccountDeliveryPage().orderByDay, delivery);
+            getAccountDeliveryPage().update.click();
             //waitFor(2);
             ReusableMethods.waitForVisibility(getHomePage().toastMessage, 10);
 
@@ -192,14 +192,14 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
     public void userSelectsForOrderBegin(String value) {
         // way 3 utilities
         ReusableMethods.selectByValue(
-                getDeliveryAndPickupSettings().deliveryBeginDay,
+                getAccountDeliveryPage().deliveryBeginDay,
                 value
         );
     }
 
     @And("user enters input to order begin {string}")
     public void userEntersInputToOrderBegin(String time) {
-        getDeliveryAndPickupSettings().deliveryBeginTime.sendKeys(time);
+        getAccountDeliveryPage().deliveryBeginTime.sendKeys(time);
     }
 
     @And("user selects {string} for orderEnd")
@@ -208,28 +208,28 @@ public class US_060_DeliveryPickUpSellerFlexibleDeliveryStepdefs extends CommonP
 //        Select select = new Select(webElement);
 //        select.selectByValue(value);
         // way 2 extention
-        selectByValue(getDeliveryAndPickupSettings().deliveryEndDay, value);
+        selectByValue(getAccountDeliveryPage().deliveryEndDay, value);
     }
 
     @And("user enters input to order end {string}")
     public void userEntersInputToOrderEnd(String time) {
-        getDeliveryAndPickupSettings().deliveryEndTime.sendKeys(time);
+        getAccountDeliveryPage().deliveryEndTime.sendKeys(time);
     }
 
     @And("user selects {int} for deliverBy")
     public void userSelectsDeliverByForDeliverBy(int index) {
-        selectByIndex(getDeliveryAndPickupSettings().orderByDay, index);
+        selectByIndex(getAccountDeliveryPage().orderByDay, index);
     }
 
 
     @And("user enters input to deliver by {string}")
     public void userEntersInputToDeliverBy(String time) {
-        getDeliveryAndPickupSettings().orderByTime.sendKeys(time);
+        getAccountDeliveryPage().orderByTime.sendKeys(time);
     }
 
     @And("user clicks on update button")
     public void userClicksOnUpdateButton() {
-        getDeliveryAndPickupSettings().update.click();
+        getAccountDeliveryPage().update.click();
     }
 
     @Then("user verifies the toast message is {string}")
