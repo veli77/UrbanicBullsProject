@@ -67,6 +67,11 @@ public class LoginPage extends CommonPage{
         input_password.sendKeys(usercredential.getPassword());
         submit_button.click();
         getAccountWeeklyOrderPage().zipCodeBoxCloseButton.click();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void validCredential(){
