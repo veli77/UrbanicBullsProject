@@ -38,8 +38,9 @@ public class US_083_ContactUsMenuNavBar_stepDefs extends CommonPage {
     @Then("User should be able to see Contact Us GET IN TOUCH text")
     public void user_should_be_able_to_see_Contact_Us_GET_IN_TOUCH_text() {
 //        driver.get("https://test.urbanicfarm.com/contact-us");
-        Assert.assertTrue(driver.getCurrentUrl().contains("https://test.urbanicfarm.com/contact-us"));
         ReusableMethods.waitForVisibility(getContactUsPage().getInTouchText, 5);
+        Assert.assertTrue(driver.getCurrentUrl().contains("https://test.urbanicfarm.com/contact-us"));
+
     }
 
     @Then("User click to {string}")
