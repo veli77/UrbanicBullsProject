@@ -1,6 +1,7 @@
 package pages;
 
 
+import enums.USERCREDENTIAL;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -95,7 +96,7 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "(//button[@class='col-12 mt-2 w-75 btn btn-success FeaturedProductCard_addCartBtn__2QCpK'])[1]")
     public WebElement addToCard;
     @FindBy(xpath = "//button[@class='btn btn-block font-weight-bold Basket_checkOutBtn__1946L']")
-    public WebElement proceedToCheckout;//alisverise tamamla
+    public WebElement proceedToCheckout;//alisverisi tamamla
     @FindBy(xpath = "//button[@type='button']")
     public WebElement nextButton;
     @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
@@ -165,6 +166,22 @@ public class AccountOrdersPage extends CommonPage{
 
     @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
     public WebElement closeTheRatingWindow;
+
+    // Us 072 ProceedToCheckout Page
+    @FindBy(css = "div.proceed_circle__3NRN8")
+    public List<WebElement> circleBoxUnderTagsInProceedToCheckoutPage;
+    @FindBy(css = "button.proceed_btn__vZFGE")
+    public List<WebElement> buttonsPrevNextInProceedToCheckoutPage;
+    @FindBy(css = "span.h6.text-white")
+    public WebElement rateOurServiceButton;
+    @FindBy(xpath = "(//div[@class='Notifications_notificationNumContainer__myxVE']/span)[1]")
+    public WebElement notificationQuantity;
+    @FindBy(id = "payment-submit-btn")
+    public WebElement completePurchaseButton;
+    @FindBy(id = "backToInputEmailLink")
+    public WebElement changePayPalAccountButton;
+
+
 
 
 
@@ -281,6 +298,12 @@ public void verifyCoordinate(){
     String currentURL=driver.getCurrentUrl();
 
     Assert.assertTrue(currentURL.toLowerCase().contains("maps"));
+
+}
+
+public void enterPayPalAccount(){
+    ReusableMethods.sendText(email_PAypal, USERCREDENTIAL.PAYPALACCOUNT.getUsername());
+    ReusableMethods.sendText(passwrd_Paypal, USERCREDENTIAL.PAYPALACCOUNT.getPassword());
 
 }
 
