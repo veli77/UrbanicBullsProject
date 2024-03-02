@@ -13,11 +13,15 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
 
         getAccountOrdersPage().sepeteTikla.click();
         ReusableMethods.verifyURL("basket");
+        getAccountOrdersPage().addToCardButtons.get(1).click();
 
     }
 
     @When("the user clicks on the ProceedToCheckout button, the user can reach the ProceedToCheckout page")
     public void theUserClicksOnTheProceedToCheckoutButtonTheUserCanReachTheProceedToCheckoutPage() {
+        getAccountOrdersPage().proceedToCheckout.click();
+        ReusableMethods.verifyURL("proceed");
+
     }
 
     @And("Next and Prev buttons should be functional")
