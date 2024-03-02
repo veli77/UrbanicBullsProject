@@ -6,7 +6,7 @@
       When User goes to MyEvents Page
       And User clicks Create New Event
       When User enter title
-      And User enter address
+      And User selects an address
       And User enter date
       And User enter time
       And User enter Attendee, schedule , description and terms and conditions and click submit button

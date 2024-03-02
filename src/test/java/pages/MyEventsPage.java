@@ -23,6 +23,16 @@ public class MyEventsPage extends CommonPage{
     public WebElement SearchPlacesInput;
     @FindBy(css = ".autocomplete-dropdown-container>li")
     public List<WebElement> suggestedAddressList;
+
+    /**
+     * US_080
+     */
+    @FindBy(xpath = "//div[@class='col-10']//input")
+    public WebElement createEventAddressInput;
+
+    @FindBy(xpath = "(//div[@class='col-10']//datalist//option)[1]")
+    public WebElement firstAddressOnTheList;
+
     @FindBy(xpath = "//input[@id='postal']")
     public WebElement PostalInput;
     @FindBy(xpath = "//input[@id='addressTitle']")
