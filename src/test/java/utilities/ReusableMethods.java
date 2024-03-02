@@ -330,6 +330,10 @@ public class ReusableMethods {
 
     }
 
+    public static void verifyURL(String expectedURL) {
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().toLowerCase().contains(expectedURL));
+    }
+
     public static void waitAndClickElement(WebElement element, int seconds) {
         for (int i = 0; i < seconds; i++) {
             try {

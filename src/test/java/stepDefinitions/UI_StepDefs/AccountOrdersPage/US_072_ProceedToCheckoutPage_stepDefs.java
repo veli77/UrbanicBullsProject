@@ -4,10 +4,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pages.CommonPage;
+import utilities.ReusableMethods;
 
-public class US_071_ProceedToCheckoutPage_stepDefs {
+public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
     @Given("the user goes to the GoToChart page")
     public void theUserGoesToTheGoToChartPage() {
+
+        getAccountOrdersPage().sepeteTikla.click();
+        ReusableMethods.verifyURL("basket");
+
     }
 
     @When("the user clicks on the ProceedToCheckout button, the user can reach the ProceedToCheckout page")

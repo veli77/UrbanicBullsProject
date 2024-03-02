@@ -180,6 +180,11 @@ public class AccountOrdersPage extends CommonPage{
     public WebElement completePurchaseButton;
     @FindBy(id = "backToInputEmailLink")
     public WebElement changePayPalAccountButton;
+    @FindBy(css = "div[role='alert']")
+    public WebElement afterPaymentCheckoutAlert;
+    @FindBy(css = "div[class*='active']")
+    public List<WebElement> activeOrderStatus;
+
 
 
 
