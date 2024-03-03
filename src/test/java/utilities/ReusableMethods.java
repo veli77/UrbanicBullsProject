@@ -31,6 +31,17 @@ public class ReusableMethods {
 
     private static WebDriverWait wait;
 
+    //stale Element hatası alıyorsan bunu deneyebilirsin, Ömer Hoca'nın tavsiyesi
+    public static void staleElementSolution(WebElement webElement) {
+        Duration timeout = Duration.ofSeconds(30);
+        new WebDriverWait(driver, timeout)
+                .ignoring(StaleElementReferenceException.class)
+                .until((WebDriver d) -> {
+                    webElement.click();
+                    return true;
+                });
+    }
+
     public static String getScreenshot() throws IOException {
         // naming the screenshot with the current date to avoid duplication
         String date = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
