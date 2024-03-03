@@ -1,4 +1,4 @@
-@user3token
+@user3token @US_102
 Feature: US_102 - Rate Seller
 
   Scenario: Rate Seller
