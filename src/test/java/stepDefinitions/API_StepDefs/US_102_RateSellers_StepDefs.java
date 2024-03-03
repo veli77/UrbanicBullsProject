@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.response;
 import static stepDefinitions.Hooks.token;
 
-public class US_102_RateSellers_StepDef {
+public class US_102_RateSellers_StepDefs {
 
     @When("User goes to Rate Seller page")
     public void userGoesToRateSellerPage() {
