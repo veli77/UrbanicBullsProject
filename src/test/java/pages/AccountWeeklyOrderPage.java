@@ -26,11 +26,7 @@ public class AccountWeeklyOrderPage extends CommonPage{
 
     //Sayfanın sag tafında bulunan ADDRESS btn'a tıklar, öncesinde implicit wait yapar
     public void clickAddressBtnAtTheLeftBar(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        ReusableMethods.staleElementSolution(accountAddressBtnAtTheLeftBar);
         JSUtils.clickElementByJS(accountAddressBtnAtTheLeftBar);
     }
 
