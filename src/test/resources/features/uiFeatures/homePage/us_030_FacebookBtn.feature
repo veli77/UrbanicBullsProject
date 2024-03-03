@@ -1,5 +1,5 @@
-@BU-90
-Feature: Test Execution of US030
+@BU-90 @Erdal @US-30
+Feature: TE of US030 FaceBook Btn is clickable
 
   @TEST_BU-89
   @UI

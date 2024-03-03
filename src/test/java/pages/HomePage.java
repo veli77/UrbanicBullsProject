@@ -228,8 +228,6 @@ public class HomePage extends CommonPage {
 
 
     public void addZipCode(String zipCode) {
-
-
         ReusableMethods.sendText(inputZipCode, zipCode);
         zipCodeBtn.click();
     }
