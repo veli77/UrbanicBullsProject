@@ -1,7 +1,6 @@
 @Erdal @US_100 @API
-Feature: Login
+Feature: TE of US_100 Login
 
-  @user3token
-  Scenario: Login feature
+  Scenario: TC_01 US_100 Login feature
     Given user connect to the "https://test.urbanicfarm.com/api/public/login"
     Then user verifies status code 200

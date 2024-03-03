@@ -1,5 +1,6 @@
 package pages;
 
+import com.mongodb.DBRef;
 import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -17,7 +18,7 @@ import java.util.Set;
 import static stepDefinitions.Hooks.driver;
 import static utilities.ReusableMethods.*;
 
-public class AccountAddressPage extends CommonPage{
+public class AccountAddressPage extends CommonPage {
 
     @FindBy(css = "button[name='sales']")
     public WebElement mySalesAddressBtn;
@@ -25,8 +26,10 @@ public class AccountAddressPage extends CommonPage{
     public WebElement myDeliveryAddressBtn;
     @FindBy(css = "[class='alert alert-warning ']>span")
     public WebElement mySalesAddressAlert;
-    @FindBy(css ="button[name='nonSelected']")
+    @FindBy(css = "button[name='nonSelected']")
     public WebElement othersBtn;
+    @FindBy(css = ".mr-2.btn.btn-outline-warning")
+    public List<WebElement> editBtns;
     @FindBy(css = ".mr-2.btn.btn-outline-warning")
     public WebElement editBtn;
     @FindBy(css = "h6[class='card-title']")
@@ -53,9 +56,9 @@ public class AccountAddressPage extends CommonPage{
     @FindBy(css = ".autocomplete-dropdown-container>li")
     public List<WebElement> suggestedAddressList;
     @FindBy(css = "input[type='text']")
-    public List<WebElement> addressInputList; //10 elemean var 6-10 arası lazım olanlar
+    public List<WebElement> addressInputList; //adress*5 elemean var son 5 arası lazım olanlar
     @FindBy(css = "button[type='submit']")
-    public List<WebElement> saveAddressBtns; //bana sonuncusu lazım
+    public List<WebElement> saveAddressBtns; //bana ilki lazım
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement successMsj;
     @FindBy(xpath = "//button[@name='sales']")
@@ -68,6 +71,8 @@ public class AccountAddressPage extends CommonPage{
     public WebElement PostaZipCodeInput;
     @FindBy(xpath = "//input[@id='isSellerAddress']")
     public WebElement MarkAsASalerAddressInput;
+    @FindBy(xpath = "//input[@id='isDefault']")
+    public WebElement MarkAsADeliveryAddressCheckbox;
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement MySalesAddressSubmitBtn;
     @FindBy(xpath = "//button[@type='submit']")
@@ -106,7 +111,6 @@ public class AccountAddressPage extends CommonPage{
     public WebElement DeliveryAndSalesRegisteredAddress;
     @FindBy(xpath = "//button[@name='delivery']")
     public WebElement MyDeliveryAddressBtn;
-
     @FindBy(css = "input[id='addressTitle']")
     public WebElement myAddressTitleInput;
     @FindBy(css = "input[id='address']")
@@ -121,7 +125,6 @@ public class AccountAddressPage extends CommonPage{
     public WebElement mySubmitButton;
     @FindBy(css = " [name='isDefault']")
     public WebElement myDeliveryAdressCheckBox;
-
     @FindBy(css = "h5[class = 'card-header']")
     public WebElement myCurrentAddressTitle;
     @FindBy(css = "h6[class = 'card-title']")
@@ -130,33 +133,25 @@ public class AccountAddressPage extends CommonPage{
     public WebElement myCurrentAddressOneRow;
 
 
-
-
-
-
-
-
-
-
-
-    public void clickMarkAsDeliveryAndMarkAsDelivery(String option){
-        WebElement element=driver.findElement(By.xpath("//input[@id='"+option+"']"));
-       JSUtils.clickElementByJS(element);
+    public void clickMarkAsDeliveryAndMarkAsDelivery(String option) {
+        WebElement element = driver.findElement(By.xpath("//input[@id='" + option + "']"));
+        JSUtils.clickElementByJS(element);
     }
 
-    public void sendKeysZipCode1(){
-        WebElement element=driver.findElement(By.xpath("(//input[@id='postal'])[2]"));
+    public void sendKeysZipCode1() {
+        WebElement element = driver.findElement(By.xpath("(//input[@id='postal'])[2]"));
         element.sendKeys("95170");
     }
-    public void clickAddNewAddressSubmit(){
-        WebElement element=driver.findElement(By.xpath("//button[@type='submit']"));
+
+    public void clickAddNewAddressSubmit() {
+        WebElement element = driver.findElement(By.xpath("//button[@type='submit']"));
         JSUtils.clickElementByJS(element);
     }
 
 
-    public void clickPagesBtn(String str){
-        WebElement element=driver.findElement(By.xpath("//button[@name='"+str+"']"));
-        ReusableMethods.waitAndClickElement(element,3);
+    public void clickPagesBtn(String str) {
+        WebElement element = driver.findElement(By.xpath("//button[@name='" + str + "']"));
+        ReusableMethods.waitAndClickElement(element, 3);
     }
 
     public void VerifyClickAddNewAddressAllHeaders(String header) throws InterruptedException {
@@ -168,10 +163,11 @@ public class AccountAddressPage extends CommonPage{
 //                Mark as delivery address--->isDefault
 //                Mark as sales address-->isSellerAddress
 
-        WebElement element= driver.findElement(By.xpath("//input[@id='"+header+"']"));
+        WebElement element = driver.findElement(By.xpath("//input[@id='" + header + "']"));
         JSUtils.clickElementByJS(element);
         Thread.sleep(2000);
     }
+
     public void verifyAllHeaders() throws InterruptedException {
         getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("isSellerAddress");
         getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("isDefault");
@@ -182,31 +178,14 @@ public class AccountAddressPage extends CommonPage{
         getAccountAddressPage().VerifyClickAddNewAddressAllHeaders("addressTitle");
     }
 
-    //My Sales Address a tıklar ve bu kısmında adress kayıtlı mı kontrol eder, addres varsa true yoksa false döner
-    public boolean clickMySalesAddressBtnAndControlTheAdress() {
-        waitForClickablility(mySalesAddressBtn, 10);
-        mySalesAddressBtn.click();
-        String expectedAlertMessage = "You haven't set your sales address yet. Please select one from your other addresses.";
-        hover(mySalesAddressAlert);
-        String actualAlertMessage = mySalesAddressAlert.getText();
-        boolean flag;
-        try {
-            flag = expectedAlertMessage.equals(actualAlertMessage);
-        } catch (Exception e){
-            flag = false;
-            System.out.println("msjlar farklı");
-        }
-        return !flag;
+    public void areYouSureToDeleteYESorNO(String option) {
+        WebElement element = driver.findElement(By.xpath("//button[text()='" + option + "']"));
+        JSUtils.clickElementByJS(element);
     }
 
-    public void areYouSureToDeleteYESorNO(String option){
-     WebElement element=driver.findElement(By.xpath("//button[text()='"+option+"']"));
-     JSUtils.clickElementByJS(element);
-    }
-
-    public void sendKeysAddressTitle(){
+    public void sendKeysAddressTitle() {
         getAccountAddressPage().AddressTitleInput.clear();
-        ReusableMethods.sendText(getAccountAddressPage().AddressTitleInput,"Emily's Home Office");
+        ReusableMethods.sendText(getAccountAddressPage().AddressTitleInput, "Emily's Home Office");
     }
 
     public void addressOptions() throws InterruptedException {
@@ -220,18 +199,18 @@ public class AccountAddressPage extends CommonPage{
     public void sendKeysAddress() throws InterruptedException {
         Thread.sleep(3000);
         JSUtils.clickElementByJS(getAccountAddressPage().SearchPlacesInput);
-        ReusableMethods.sendText(getAccountAddressPage().SearchPlacesInput,"California");
+        ReusableMethods.sendText(getAccountAddressPage().SearchPlacesInput, "California");
         //getAccountAddressPage().SearchPlacesInput.click();
     }
 
     public void verifyPageUrl(String expectedUrl) {
         //String expectedUrl = "https://test.urbanicfarm.com/account/address";
         String actualUrl = driver.getCurrentUrl();
-        System.out.println("actual="+actualUrl);
+        System.out.println("actual=" + actualUrl);
         Assert.assertEquals(expectedUrl, actualUrl);
     }
 
-    public void sendKeysPostaZipCode(){
+    public void sendKeysPostaZipCode() {
         getAccountAddressPage().PostaZipCodeInput.sendKeys("95170");
     }
 
@@ -246,38 +225,9 @@ public class AccountAddressPage extends CommonPage{
         myDeliveryAddressBtn.click();
     }
 
-
-    //others section da kayıtlı address yoksa address ekler ve tekrar others section a döner
-    //daha önce ekli bir adress olmamalı!!
-    public void areThereAnySavedAddressesInOdersSectionAndAdd(DataTable dataTable) {
-        boolean flag = true;
-        try {
-            flag = editBtn.isDisplayed();
-        } catch (NoSuchElementException e) {
-            System.out.println("Ekli bir adres mevcut değil.");
-            flag=false;
-        }
-        int j;
-        if (!flag) {
-            addNewAddressBtn.click();
-            searchNewPlacesInput.sendKeys(dataTable.row(0).get(5));
-            suggestedAddressList.getFirst().click();
-            for (int i = addressInputList.size()-1; i > addressInputList.size() - 6; i--) {
-                j = i - addressInputList.size() + 5;
-                if (i == addressInputList.size() - 2 || i == addressInputList.size() - 3) {
-                    continue;
-                }
-                addressInputList.get(i).clear();
-                addressInputList.get(i).sendKeys(dataTable.row(0).get(j));
-            }
-            saveAddressBtns.getLast().click();
-        } else {
-            System.out.println("Zaten bir seller adresi bulunmamaktadır.");
-        }
-    }
-
     //Edit ve Remove Btnları kontrol eder.
-    public void enableEditRemoveBtns(){
+    public void enableEditRemoveBtns() {
+        waitForClickablility(editBtn, 10);
         hover(editBtn);
         Assert.assertTrue(editBtn.isDisplayed());
         Assert.assertTrue(removeBtn.isDisplayed());
@@ -285,21 +235,21 @@ public class AccountAddressPage extends CommonPage{
         Assert.assertTrue(removeBtn.isEnabled());
     }
 
-    public void editAndRemoveBtnsCheck(){
+    public void editAndRemoveBtnsCheck() {
         boolean flag = true;
 
         try {
             flag = editBtn.isDisplayed();
         } catch (NoSuchElementException e) {
             System.out.println("adres yok");
-            flag=false;
+            flag = false;
         }
 
         if (flag) {
             hover(editBtn);
             Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
                     removeBtn.isDisplayed() && removeBtn.isEnabled());
-        }else {
+        } else {
             addNewAddressBtn.click();
             searchNewPlacesInput.sendKeys("Calif");
             suggestedAddressList.getFirst().click();
@@ -311,23 +261,22 @@ public class AccountAddressPage extends CommonPage{
                 flag = editBtn.isDisplayed();
             } catch (NoSuchElementException e) {
                 System.out.println("adres yok");
-                flag=false;
+                flag = false;
             }
-            if(flag){
+            if (flag) {
                 ReusableMethods.hover(editBtn);
                 Assert.assertTrue(editBtn.isDisplayed() && editBtn.isEnabled() &&
                         removeBtn.isDisplayed() && removeBtn.isEnabled());
 
-            }else {
+            } else {
                 Assert.assertFalse(false);
             }
-
 
 
         }
     }
 
-    public void checkAddressesBeforeAndAfterClickEdit(){
+    public void checkAddressesBeforeAndAfterClickEdit() {
         String[] originalAdress;
         String[] tryAdress;
         String[] editedAdress;
@@ -341,10 +290,11 @@ public class AccountAddressPage extends CommonPage{
         EditAddressWith(originalAdress);
         Assert.assertArrayEquals(editedAdress, tryAdress);
     }
-    public void EditAddressWith(String[] addresses){
-        waitForClickablility(editBtn,10);
+
+    public void EditAddressWith(String[] addresses) {
+        waitForClickablility(editBtn, 10);
         editBtn.click();
-        ReusableMethods.waitForClickablility(myAddressInput,5);
+        ReusableMethods.waitForClickablility(myAddressInput, 5);
         myAddressTitleInput.clear();
         myAddressTitleInput.sendKeys(addresses[0]);
         myAddressInput.clear();
@@ -356,11 +306,12 @@ public class AccountAddressPage extends CommonPage{
         myPostalCode.clear();
         myPostalCode.sendKeys(addresses[4]);
         mySubmitButton.click();
-        waitForClickablility(editBtn,10);
+        waitForClickablility(editBtn, 10);
         waitFor(1);
     }
-    public String[] TakeCongigAddress(){
-        String [] adresses;
+
+    public String[] TakeCongigAddress() {
+        String[] adresses;
         adresses = new String[5];
         adresses[0] = ConfigurationReader.getProperty("AddressLine0");
         adresses[1] = ConfigurationReader.getProperty("AddressLine1");
@@ -369,66 +320,72 @@ public class AccountAddressPage extends CommonPage{
         adresses[4] = ConfigurationReader.getProperty("AddressLine4");
         return adresses;
     }
-    public String [] TakeCurrentAddress(){
+
+    public String[] TakeCurrentAddress() {
         String[] adresses;
         adresses = new String[5];
-        adresses[0] = myCurrentAddressTitle.getText().substring(0,4);
-        adresses[1] = myCurrentAddressOneRow.getText().substring(0,myCurrentAddressOneRow.getText().lastIndexOf(","));
-        adresses[2] = myCurrentAddressStateCity.getText().substring(0,myCurrentAddressStateCity.getText().indexOf(" "));
-        adresses[3] = myCurrentAddressStateCity.getText().substring(myCurrentAddressStateCity.getText().lastIndexOf(" ")+1);
-        adresses[4] = myCurrentAddressOneRow.getText().substring(myCurrentAddressOneRow.getText().lastIndexOf(" ")+1);
+        adresses[0] = myCurrentAddressTitle.getText().substring(0, 4);
+        adresses[1] = myCurrentAddressOneRow.getText().substring(0, myCurrentAddressOneRow.getText().lastIndexOf(","));
+        adresses[2] = myCurrentAddressStateCity.getText().substring(0, myCurrentAddressStateCity.getText().indexOf(" "));
+        adresses[3] = myCurrentAddressStateCity.getText().substring(myCurrentAddressStateCity.getText().lastIndexOf(" ") + 1);
+        adresses[4] = myCurrentAddressOneRow.getText().substring(myCurrentAddressOneRow.getText().lastIndexOf(" ") + 1);
         return adresses;
 
     }
-    public void clickNoForCancel(){
-        ReusableMethods.waitForClickablility(removeNoBtn,5);
+
+    public void clickNoForCancel() {
+        ReusableMethods.waitForClickablility(removeNoBtn, 5);
         removeNoBtn.click();
-        waitForVisibility(editBtn,5);
+        waitForVisibility(editBtn, 5);
         Assert.assertTrue(editBtn.isDisplayed());
     }
 
-
-
-    //Edit işlemi yapar, Dataları datatabledan alır
-    public void editAnAddress(DataTable dataTable) {
+    //address Edit yapabilirsiniz,
+    // DataTable 5 sutünlu olmalı,
+    // address tipi sales yada delivery yazılabilir değilse ikisi de herhangi birşey yazabilirsiniz
+    public void editAnAddress(DataTable dataTable,String addressType) {
         waitForPageToLoad(10);
-        hover(editBtn);
-        waitForClickablility(editBtn,10);
-        editBtn.click();
-        int j;
-        for (int i = addressInputList.size()-1; i > addressInputList.size() - 6; i--) {
-            j = i - addressInputList.size() + 5;
-            if (i == addressInputList.size() - 2 || i == addressInputList.size() - 3) {
+        hover(editBtns.getFirst());
+        waitForClickablility(editBtns.getFirst(), 10);
+        editBtns.getFirst().click();
+        for (int i = 0; i < 5; i++) {
+            if (i == 2 || i == 3) {
                 continue;
             }
             addressInputList.get(i).clear();
-            addressInputList.get(i).sendKeys(dataTable.row(0).get(j));
+            addressInputList.get(i).sendKeys(dataTable.row(0).get(i));
         }
-        saveAddressBtns.getLast().click();
+        if(addressType=="sales"){
+            ReusableMethods.selectCheckBox(MarkAsASalerAddressInput,true);
+        } else if (addressType=="delivery") {
+            ReusableMethods.selectCheckBox(MarkAsADeliveryAddressCheckbox,true);
+        }
+        saveAddressBtns.getFirst().click();
     }
 
     //işlem yaptıktan sonra gelen Toast msjı kontrol eder
-    public void getToastMsj(){
-        waitForVisibility(successMsj,10);
+    public void getToastMsj() {
+        waitForVisibility(successMsj, 10);
         Assert.assertTrue(successMsj.isDisplayed());
     }
 
     //Remove btn a tıklar
     public void clickRemoveBtn() {
+        ReusableMethods.hover(removeBtn);
         waitForClickablility(removeBtn, 10);
         removeBtn.click();
     }
 
     //Remove yaptıktan sonra gelen yes no btnları kontrol eder
-    public void controlYesNoOptions(){
-        waitForClickablility(removeYesBtn,10);
+    public void controlYesNoOptions() {
+        waitForClickablility(removeYesBtn, 10);
         Assert.assertTrue(removeYesBtn.isDisplayed());
         Assert.assertTrue(removeNoBtn.isDisplayed());
     }
 
     //Remove yaptıktan sonra sadece yes no 2 btn çıkmalı
-    public void controlOnly2Btns(){
-        Assert.assertEquals(2,removeApprovalBtns.size());
+    public void controlOnly2Btns() {
+        Assert.assertEquals(2, removeApprovalBtns.size());
     }
 
     //Remove btn a tıklar
@@ -438,20 +395,84 @@ public class AccountAddressPage extends CommonPage{
     }
 
     public void goToMapPage() {
-
-        if (!googleMapsLink.isEnabled()){
-        driver.switchTo().frame(iframe);}
+        if (!googleMapsLink.isEnabled()) {
+            driver.switchTo().frame(iframe);
+        }
         JSUtils.scrollIntoViewJS(googleMapsLink);
         JSUtils.clickElementByJS(googleMapsLink);
-        Set<String> windowsList=driver.getWindowHandles();
-        for (String window : windowsList){driver.switchTo().window(window);}
+        Set<String> windowsList = driver.getWindowHandles();
+        for (String window : windowsList) {
+            driver.switchTo().window(window);
+        }
         ReusableMethods.hover(getHomePage().googleChromePermissionRejectButton);
         getHomePage().googleChromePermissionRejectButton.click();
-
     }
 
+    //My Sales Address butonuna tıklar
+    public void clickMySalesAddressBtn() {
+        JSUtils.scrollAllUpByJS();
+        ReusableMethods.waitForVisibility(mySalesAddressBtn,10);
+        mySalesAddressBtn.click();
+    }
 
+    //Eğer ekli bir Sales Address'i yoksa Other'a gider edit yapar
+    //Edit yapacak address yoksa da yeni address oluşturur
+    public void addOrEditAnAddressIfThereIsNot(DataTable dataTable) {
+        clickMySalesAddressBtn();
+        String expectedAlertMessage = "You haven't set your sales address yet. Please select one from your other addresses.";
+        boolean flag;
+        try {
+            String actualAlertMessage = mySalesAddressAlert.getText();
+            flag = expectedAlertMessage.equals(actualAlertMessage);
+            hover(mySalesAddressAlert);
+        } catch (Exception e) {
+            flag = false;
+            System.out.println("msjlar farklı");
+        }
 
+        if (flag) {
+            clickOthersSection();
+            boolean dummy = false;
+            try {
+                ReusableMethods.waitForVisibility(editBtn, 10);
+                dummy = editBtn.isDisplayed();
+            } catch (NoSuchElementException e) {
+                System.out.println("Ekli bir adres mevcut değil.");
+            }
+            if (!dummy) {
+                addAnAddress(dataTable,"sales");
+            } else {
+                editAnAddress(dataTable,"sales");
+            }
+        } else {
+            editAnAddress(dataTable,"sales");
+        }
+    }
+
+    //address add yapabilirsiniz,
+    // DataTable 5 sutünlu olmalı,
+    // address tipi sales yada delivery yazılabilir değilse ikisi de herhangi birşey yazabilirsiniz
+    public void addAnAddress(DataTable dataTable,String addressType) {
+        
+        int j;
+        addNewAddressBtn.click();
+        searchNewPlacesInput.sendKeys(dataTable.row(0).get(5));
+        suggestedAddressList.getFirst().click();
+        for (int i = addressInputList.size() - 1; i > addressInputList.size() - 6; i--) {
+            j = i - addressInputList.size() + 5;
+            if (i == addressInputList.size() - 2 || i == addressInputList.size() - 3) {
+                continue;
+            }
+            addressInputList.get(i).clear();
+            addressInputList.get(i).sendKeys(dataTable.row(0).get(j));
+        }
+        if(addressType=="sales"){
+            ReusableMethods.selectCheckBox(MarkAsASalerAddressInput,true);
+        } else if (addressType=="delivery") {
+            ReusableMethods.selectCheckBox(MarkAsADeliveryAddressCheckbox,true);
+        }
+        saveAddressBtns.getLast().click();
+    }
 
 }
 
