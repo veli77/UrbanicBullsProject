@@ -24,10 +24,12 @@ public class MyEventsPage extends CommonPage{
      */
     @FindBy(xpath = "//div[@class='col-10']//input")
     public WebElement createEventAddressInput;
-
-    @FindBy(xpath = "(//div[@class='col-10']//datalist//option)[1]")
+    @FindBy(id = "fee")
+    public WebElement feeInput;
+    @FindBy(xpath = "//div[@class='modal-body ']//input[@type='search']")
+    public WebElement addAddressSearchPlacesInput;
+    @FindBy(xpath = "//datalist[@id='address3']//option")
     public WebElement firstAddressOnTheList;
-
     @FindBy(xpath = "//input[@id='postal']")
     public WebElement PostalInput;
     @FindBy(xpath = "//input[@id='addressTitle']")
