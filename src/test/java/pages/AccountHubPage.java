@@ -1,10 +1,12 @@
 package pages;
 
+import enums.URL_LINKS;
+import enums.USERCREDENTIAL;
+import org.apache.poi.ss.formula.atp.Switch;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.Driver;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
@@ -82,7 +84,18 @@ public class AccountHubPage extends CommonPage{
     public WebElement deleteAlert;
     @FindBy(xpath = "//h3")
     public WebElement lastApprovedProduct;
-
+    @FindBy(css = ".font-weight-bold:first-child")
+    public List<WebElement> productName;
+    @FindBy(xpath = "//span[@class='text-muted d-block']")
+    public List<WebElement> productPrice;
+    @FindBy(xpath = "//span[@class='text-muted']")
+    public List<WebElement> productStock;
+    @FindBy(css = ".HubManagement_badge__2jPOb.text-success")
+    public List<WebElement> productStatus;
+    @FindBy(xpath = "//input[@name='stock']")
+    public WebElement productStockInfo;
+    @FindBy(xpath = "//input[@name='isTrade']")
+    public WebElement isTrade;
     public void VerifyYourProducts_ServicesPageUrl() throws InterruptedException {
         Thread.sleep(3000);
         String expectedUrl = "https://test.urbanicfarm.com/account/hub";
@@ -191,5 +204,44 @@ public class AccountHubPage extends CommonPage{
             System.out.println("No approved product found!");
         }
     }
+    public void assertProductGroup(){
+        for (int i = 0; i <allhubs.size() ; i++) {
+            Assert.assertTrue(allhubs.get(i).isDisplayed());
+        }
+    }
+    public void assertProductInformation(){
+        ReusableMethods.waitForVisibility(getAccountHubPage().productName.getFirst(),5);
+        for (int i = 0; i <productName.size() ; i++) {
+            Assert.assertTrue(productName.get(i).isDisplayed());
+            Assert.assertTrue(productPrice.get(i).isDisplayed());
+            Assert.assertTrue(productStock.get(i).isDisplayed());
+        }
+    }
+    public void assertProductStatus() {
+        for (int i = 0; i < productStatus.size(); i++) {
+            String status = productStatus.get(i).getText();
+            switch (status) {
+                case "APPROVED":
+                    Assert.assertEquals(status, "APPROVED");
+                    break;
+                case "IN_REVIEW":
+                    Assert.assertEquals(status, "IN_REVIEW");
+                    break;
+                case "REJECTED":
+                    Assert.assertEquals(status, "REJECTED");
+                    break;
+                default:
+                    Assert.assertEquals(status, "ALL");
+                    break;
 
+            }
+        }
+    }
+    public void productStockUpdate(){
+        ReusableMethods.waitForVisibility(productStockInfo,5);
+        productStockInfo.clear();
+        productStockInfo.sendKeys("150");
+
+    }
 }
+
