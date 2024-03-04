@@ -1,4 +1,5 @@
 package utilities;
+
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
@@ -7,7 +8,6 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
-
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -30,6 +30,17 @@ import static org.junit.Assert.assertTrue;
 public class ReusableMethods {
 
     private static WebDriverWait wait;
+
+    //stale Element hatası alıyorsan bunu deneyebilirsin, Ömer Hoca'nın tavsiyesi
+    public static void staleElementSolution(WebElement webElement) {
+        Duration timeout = Duration.ofSeconds(30);
+        new WebDriverWait(driver, timeout)
+                .ignoring(StaleElementReferenceException.class)
+                .until((WebDriver d) -> {
+                    webElement.click();
+                    return true;
+                });
+    }
 
     public static String getScreenshot() throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -60,7 +71,7 @@ public class ReusableMethods {
 
     //========Hover Over(ScrollDown)=====//
     public static void hover(WebElement element) {
-  //      Actions actions = new Actions(Driver.getDriver());
+        //      Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(element).perform();
     }
 
@@ -300,31 +311,30 @@ public class ReusableMethods {
         }
     }
 
-    
 
     public static void clearValue(WebElement element, String text) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value','" + text + "')", element);
     }
 
     public static void nullCheck(WebElement element, String text) {
-        if (text!=null) {
+        if (text != null) {
             element.sendKeys(text);
-        }else System.err.println("Null is not allowed for this method");
+        } else System.err.println("Null is not allowed for this method");
     }
 
     public static void sendText(WebElement element, String text) {
-        try{
+        try {
             waitForClickablility(element, 15).sendKeys(text);
-        }catch (ElementNotInteractableException e){
+        } catch (ElementNotInteractableException e) {
             scrollToElement(element);
-            sendText(element,text);
+            sendText(element, text);
         }
     }
 
     /*
    This method accepts a String "expectedTitle" and Asserts if it is true
     */
-    public static void verifyTitle(String expectedTitle){
+    public static void verifyTitle(String expectedTitle) {
 
         Assert.assertEquals(Driver.getDriver().getTitle(), expectedTitle);
 
@@ -355,6 +365,58 @@ public class ReusableMethods {
             numbers.add(matcher.group()); // Eşleşen rakamları listeye ekle
         }
         return numbers;
+    }
+
+    public static Random random = new Random();
+    public static StringBuilder sb = new StringBuilder();
+    public static String text = "abcdefghijklmnopqrstuvwxyz";
+
+    // Random text olusturma
+
+    public static String randomText(int textSize) {
+
+
+        for (int i = 0; i < textSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
+    }
+
+    // Random email olusturma
+
+    public static String randomEmail(int initialTextSize) {
+        for (int i = 0; i < initialTextSize; i++) {
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+        }
+
+        return sb.toString() + "@gmail.com";
+
+    }
+
+    public static void clearAndSend(WebElement webElement, String str) {
+        webElement.clear();
+        webElement.sendKeys(str);
+
+    }
+
+    public static void selectByVisibleText(WebElement webElement, String text) {
+        Select select = new Select(webElement);
+        select.selectByVisibleText(text);
+    }
+
+    public static void selectByValue(WebElement webElement, String value) {
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+
+    }
+
+    public static void selectByIndex(WebElement webElement, int index) {
+        Select select = new Select(webElement);
+        select.selectByIndex(index);
+
     }
 }
 

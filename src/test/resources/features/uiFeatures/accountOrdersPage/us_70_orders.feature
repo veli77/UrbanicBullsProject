@@ -1,3 +1,4 @@
+@kubra
 Feature: TC_001 [US_70_WElcome Page]Order statuses must be seen in mutual buyer-seller accounts
 
 	Background:
