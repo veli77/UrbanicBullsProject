@@ -218,11 +218,4 @@ public class CommonPage {
 
         return registerPage;
     }
-
-    public DeliveryAndPickupSettings getDeliveryAndPickupSettings() {
-        if (deliveryAndPickupSettings == null) {
-            deliveryAndPickupSettings=new DeliveryAndPickupSettings();
-        }
-        return deliveryAndPickupSettings;
-    }
 }

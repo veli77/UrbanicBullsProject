@@ -20,7 +20,7 @@ Feature:TE of US_062 Actions In Selected Product
   @TEST_BU-249 @TESTSET_BU-188
   @UI @DB
   Scenario:TC_01 US_062 Actions In Selected Product
-    Given  user logs in as a Buyer
+    Given User login as User Erdal
     Then user goes to Your products-services
     When user click on random Hubs
     And user verifies that Product Name, Price, Stock, Unit information  is displayed.
