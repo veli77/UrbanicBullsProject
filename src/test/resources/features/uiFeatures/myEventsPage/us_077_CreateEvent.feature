@@ -1,23 +1,3 @@
-#US_077 As a user, should not able to add an address successfully by providing with invalid data
-#
-#*Create Event
-#*title should be at least two character and can not be blank if so user will see warning message "Please enter a valid title."
-#*address should be at least one character and can not be blank if so user will see warning message "Please enter a valid address."
-#*User should be able to add date. can not be blank if so user will see warning message "Please fill in this field."
-#*User should be able to add time. can not be blank if so user will see warning message "Please fill in this field."
-#*After adding Attendee, schedule , description and terms and conditions
-#*If user not provide valid data to the reqired field and clicks submit button should not able to create an event by seeing warnig message.
-
-
-#US_077 Kullanıcı olarak, geçersiz veriler sağlayarak başarıyla adres ekleyememelisiniz
-#*Etkinlik oluşturmak
-#*başlık en az iki karakter olmalı ve boş bırakılmamalıdır, boş bırakılmaması durumunda kullanıcı "Lütfen geçerli bir başlık giriniz" uyarı mesajını görecektir.
-#*adres en az bir karakter olmalı ve boş bırakılmamalıdır, boş bırakılmaması durumunda kullanıcı "Lütfen geçerli bir adres giriniz" uyarı mesajını görecektir.
-#*Kullanıcı tarih ekleyebilmelidir. Boş bırakılamazsa kullanıcı "Lütfen bu alanı doldurunuz" uyarı mesajını görecektir.
-#*Kullanıcı saat ekleyebilmelidir. Boş bırakılamazsa kullanıcı "Lütfen bu alanı doldurunuz" uyarı mesajını görecektir.
-#*Katılımcı, program, açıklama ve şartlar ve koşullar eklendikten sonra
-#*Kullanıcı gerekli alana geçerli veri sağlamaz ve gönder butonuna basarsa uyarı mesajını görerek etkinlik oluşturamayacaktır.
-@wip5
 @UI
 @Login2
 Feature: As a user, should not able to add an address successfully by providing with invalid data
