@@ -202,14 +202,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(element);
         element.click();
     }
-}
-    /*
-    public void screenshotClick(String screenShotPath){
 
-        Screen screen= new Screen();
-        Pattern pattern= new Pattern(screenShotPath);
-        try {
-            screen.click(pattern);
 //    public void screenshotClick(String screenShotPath){
 //
 //        Screen screen= new Screen();
@@ -222,21 +215,16 @@ public class HomePage extends CommonPage {
 //        }
 //    }
 
-        } catch (FindFailed e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
-
-    public void screenShotSendText(String screenShotPath){
-
-        Screen screen =new Screen();
-        Pattern pattern=new Pattern(screenShotPath);
-
-        screen.type(USERCREDENTIAL.USER2.getUsername());
-
-    }
+//    public void screenShotSendText(String screenShotPath){
+//
+//        Screen screen =new Screen();
+//        Pattern pattern=new Pattern(screenShotPath);
+//
+//        screen.type(USERCREDENTIAL.USER2.getUsername());
+//
+//    }
 
 
     public void addZipCode(String zipCode) {
@@ -266,5 +254,3 @@ public class HomePage extends CommonPage {
     }
 
 }
-
-     */

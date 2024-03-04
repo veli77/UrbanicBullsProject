@@ -9,7 +9,7 @@ import java.util.List;
 
 import static stepDefinitions.Hooks.driver;
 
-public class AccountDeliveryPage extends CommonPage{
+public class AccountDeliveryPage extends CommonPage {
 
     @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
     public WebElement DeliveryPageButton;
@@ -68,6 +68,21 @@ public class AccountDeliveryPage extends CommonPage{
     public List<WebElement> checkBoxList;
 
 
+    @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
+    public WebElement deliveryPickupSettings;
+
+    @FindBy(css = "#BUYER_PICKUP")
+    public WebElement buyerPicksUp;
+
+    @FindBy(xpath = "//*[@id='availability']/span")
+    public WebElement YourAvailableHours_BuyerPicksUp;
+
+    @FindBy(css = "#startTime")
+    public WebElement StartTimeBuyerPicksUp;
+
+    @FindBy(css = "#endTime")
+    public WebElement EndTimeBuyerPicksUp;
+
     public void assertLabelWithWebelement(String expectedLabel, String webElementFor) {
         String actualLabel = driver.findElement(By.xpath("//label[@for='" + webElementFor + "']")).getText();
         Assert.assertTrue("actual : " + actualLabel + " , expected " + expectedLabel, actualLabel.contains(expectedLabel));
@@ -87,7 +102,6 @@ public class AccountDeliveryPage extends CommonPage{
                     }
                 });
     }
-
 
 
 }

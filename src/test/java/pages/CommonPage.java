@@ -29,7 +29,6 @@ public class CommonPage {
     private AccountOrdersPage accountOrdersPage;
     private WelcomePage welcomePage;
     private AccountRequestedProductsPage accountRequestedProductsPage;
-    private DeliveryAndPickupSettings deliveryAndPickupSettings;
     private BasketPage basketPage;
     private EventsPage eventsPage;
     private MyEventsPage myEventsPage;
