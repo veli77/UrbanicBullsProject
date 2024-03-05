@@ -8,7 +8,7 @@ Feature: TE of US_076 As a user, should able to add an address successfully by p
     And User click Add Button for new Address adding
     And User enter "Ingolstadt" as a city name
 
-  Scenario Outline: TC_001 As a user, should able to add an address successfully by providing with valid data
+  Scenario Outline: TC_001 US_076 As a user, should able to add an address successfully by providing with valid data
     When user enters the informations in relateds input "<Address Title>" "<Address>" "<Postal>" and click Submit
     Then user should be able to see added address "<Toast Message>"
     Examples: Positive and negative some senarios

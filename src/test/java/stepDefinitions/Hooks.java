@@ -93,7 +93,7 @@ public void recordStart(){
     @Before(value = "@Login2")
     public void login2() {
         //loginPage=new LoginPage();
-        System.out.println("Login2 metodu calıstı");
+        //System.out.println("Login2 metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USER3.getUsername());
         getLoginPage().input_password.sendKeys(USER3.getPassword());
@@ -105,7 +105,7 @@ public void recordStart(){
     public void login3() {
         //loginPage=new LoginPage();
 
-        System.out.println("Login metodu calıstı");
+        //System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
