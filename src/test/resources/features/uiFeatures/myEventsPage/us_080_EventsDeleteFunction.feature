@@ -5,8 +5,8 @@
       Given User logs in as Vedat
       When User goes to MyEvents Page
       And User clicks Create New Event
-      And User enter title
-      And User selects the address
+      And User enters title
+      And User adds an address for the event
       And User enters the date
       And User enters the time
       And User sets the fee

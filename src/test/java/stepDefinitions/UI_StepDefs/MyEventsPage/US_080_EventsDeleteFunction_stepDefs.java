@@ -44,4 +44,10 @@ public class US_080_EventsDeleteFunction_stepDefs extends CommonPage {
 
 
     }
+
+    @And("User enters title")
+    public void userEntersTitle() {
+        ReusableMethods.waitForPageToLoad(5);
+        getMyEventsPage().CreateEventTitleUS_77Btn.sendKeys("Emily Shop");
+    }
 }
