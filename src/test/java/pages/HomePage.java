@@ -20,6 +20,8 @@ import java.util.List;
 import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
+    @FindBy(css = "button#W0wltc")
+    public WebElement reddet;
 
     @FindBy(xpath = "//a[text()='Register']")
     public WebElement RegisterButton;

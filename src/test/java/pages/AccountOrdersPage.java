@@ -86,7 +86,7 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "(//div[@class='d-flex justify-content-center align-items-center'])[2]")
     public WebElement card;//buyer sepet secenegi
 
-    @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
+    @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']/div")
     public WebElement sepeteTikla;
   
     @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[1]")
@@ -167,23 +167,7 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
     public WebElement closeTheRatingWindow;
 
-    // Us 072 ProceedToCheckout Page
-    @FindBy(css = "div.proceed_circle__3NRN8")
-    public List<WebElement> circleBoxUnderTagsInProceedToCheckoutPage;
-    @FindBy(css = "button.proceed_btn__vZFGE")
-    public List<WebElement> buttonsPrevNextInProceedToCheckoutPage;
-    @FindBy(css = "span.h6.text-white")
-    public WebElement rateOurServiceButton;
-    @FindBy(xpath = "(//div[@class='Notifications_notificationNumContainer__myxVE']/span)[1]")
-    public WebElement notificationQuantity;
-    @FindBy(id = "payment-submit-btn")
-    public WebElement completePurchaseButton;
-    @FindBy(id = "backToInputEmailLink")
-    public WebElement changePayPalAccountButton;
-    @FindBy(css = "div[role='alert']")
-    public WebElement afterPaymentCheckoutAlert;
-    @FindBy(css = "div[class*='active']")
-    public List<WebElement> activeOrderStatus;
+
 
 
 
