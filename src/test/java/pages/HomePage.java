@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -20,6 +17,8 @@ import java.util.List;
 import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
+    @FindBy(css = "button#W0wltc")
+    public WebElement reddet;
 
     @FindBy(xpath = "//a[text()='Register']")
     public WebElement RegisterButton;
@@ -156,10 +155,15 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
-
+    @FindBy(css = "nav>a[href^='/account/home']")
+    public WebElement accountName_navbar;
+    @FindBy(css = "[href='/account/delivery']")
+    public WebElement deliverySettings_sidebar;
+    //    @FindBy(xpath = "//div[@class='Toastify__toast Toastify__toast--error']")
+    @FindBy(xpath = "//div[@role='alert'][@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
+    public WebElement toastMessage;
     @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]//following-sibling::span")
     public WebElement googleChromePermissionRejectButton;
-
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -194,8 +198,6 @@ public class HomePage extends CommonPage {
     }
 
 
-
-
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
@@ -203,34 +205,31 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
-    public void screenshotClick(String screenShotPath){
+//    public void screenshotClick(String screenShotPath){
+//
+//        Screen screen= new Screen();
+//        Pattern pattern= new Pattern(screenShotPath);
+//        try {
+//            screen.click(pattern);
+//
+//        } catch (FindFailed e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-        Screen screen= new Screen();
-        Pattern pattern= new Pattern(screenShotPath);
-        try {
-            screen.click(pattern);
-
-        } catch (FindFailed e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
-
-    public void screenShotSendText(String screenShotPath){
-
-        Screen screen =new Screen();
-        Pattern pattern=new Pattern(screenShotPath);
-
-        screen.type(USERCREDENTIAL.USER2.getUsername());
-
-    }
+//    public void screenShotSendText(String screenShotPath){
+//
+//        Screen screen =new Screen();
+//        Pattern pattern=new Pattern(screenShotPath);
+//
+//        screen.type(USERCREDENTIAL.USER2.getUsername());
+//
+//    }
 
 
     public void addZipCode(String zipCode) {
-
-
-
         ReusableMethods.sendText(inputZipCode, zipCode);
         zipCodeBtn.click();
     }
@@ -248,7 +247,6 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
-
 
 
     //En altta bulunan about us butonuna gider ve tıklar.

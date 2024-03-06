@@ -1,3 +1,4 @@
+@kubra
 Feature: TC_002[US_70_Orders] Seller, order status should be updated in cart
 
 	Background:
