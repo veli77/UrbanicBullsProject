@@ -1,13 +1,9 @@
 package stepDefinitions.UI_StepDefs.HomePage;
-
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.CommonPage;
-
 public class US_030_FacebookBtn_stepDefs extends CommonPage {
-
-
 
     @When("User click the FacebookBtn")
     public void userClickTheFacebookBtn() {
@@ -18,7 +14,4 @@ public class US_030_FacebookBtn_stepDefs extends CommonPage {
     public void userShouldBeAbleToClickFacebookIcon() {
         Assert.assertTrue(getHomePage().amIinRightPage("UrbanicFarm | San Francisco CA"));
     }
-
-
-
 }
