@@ -82,40 +82,28 @@ public class MyEventsPage extends CommonPage {
     public WebElement CreateEventTitleUS_77Btn;
     @FindBy(xpath = "//input[@id='address2']")
     public WebElement CreateEventAddressUS_77Btn;
-
     @FindBy(xpath = "//input[@id='date']")
     public WebElement CreateEventDateUS_77Btn;
-
     @FindBy(xpath = "//input[@id='time']")
     public WebElement CreateEventTimeUS_77Btn;
-
     @FindBy(xpath = "//input[@id='attendeeLimit']")
     public WebElement CreateEventAttendeeUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='schedule']")
     public WebElement CreateEventScheduleUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='description']")
     public WebElement CreateEventDescriptionUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='tac']")
     public WebElement CreateEventTermsAndConditionUS_77Btn;
-
     @FindBy(xpath = "//input[@id='duration']")
     public WebElement CreateEventDurationUS_77Btn;
-
     @FindBy(xpath = "//button[text()='Submit']")
     public WebElement CreateEventSubmitUS_77Btn;
-
     @FindBy(xpath = "//div[text()='Please enter a valid title.']")
     public WebElement CreateEventInvTitleMessageUS_77Btn;
-
     @FindBy(xpath = "//div[text()='Please select an address.']")
     public WebElement CreateEventInvAddressMessageUS_77Btn;
-
     @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
     public WebElement CreateEventTimeInvUS_77Btn;
-
     @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
     public WebElement CreateEventDateInvMessageUS_77Btn;
 
