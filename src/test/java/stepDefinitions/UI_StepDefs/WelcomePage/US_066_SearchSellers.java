@@ -44,6 +44,7 @@ public class US_066_SearchSellers extends CommonPage {
 
     @Then("User is able to filter the search by unit type")
     public void userIsAbleToFilterTheSearchByUnitType() {
-        getWelcomePage().SearchByUnitType();
+        getWelcomePage().SearchByUnitTypeRandomWay();
+       // getWelcomePage().SearchByUnitType();
     }
 }
