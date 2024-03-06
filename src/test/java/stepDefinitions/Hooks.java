@@ -205,7 +205,7 @@ public class Hooks extends CommonPage {
 
     @Before("@tokencanli")
     public void tokenCanli() {
-        getToken(USER3);
+        getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
 
     }
 }
