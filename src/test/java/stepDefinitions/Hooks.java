@@ -77,7 +77,6 @@ public class Hooks extends CommonPage {
 
     @Before(value = "@Login")
     public void login() {
-        //loginPage=new LoginPage();
 
         System.out.println("Login metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
@@ -92,7 +91,7 @@ public class Hooks extends CommonPage {
 
     @Before(value = "@Login2")
     public void login2() {
-        //loginPage=new LoginPage();
+
         System.out.println("Login2 metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USER3.getUsername());
@@ -104,13 +103,28 @@ public class Hooks extends CommonPage {
 
     @Before(value = "@Login3")
     public void login3() {
-        //loginPage=new LoginPage();
 
         System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+
+    }
+
+    // Ana web sitesinden Test icin Login
+    @Before(value = "@LoginBase")
+    public void loginWithBaseWebsiteCredential() {
+        //loginPage=new LoginPage();
+
+        System.out.println("Login metodu calıstı");
+
+        driver.get(URL_LINKS.BASEPAGELOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERBASEWEBSITE.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERBASEWEBSITE.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
