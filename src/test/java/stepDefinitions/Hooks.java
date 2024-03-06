@@ -19,7 +19,7 @@ import static enums.USERCREDENTIAL.USER3;
 import static io.restassured.RestAssured.given;
 
 
-public class Hooks extends CommonPage{
+public class Hooks extends CommonPage {
 
 
     public static WebDriver driver;
@@ -36,16 +36,16 @@ public class Hooks extends CommonPage{
     public static int width;
     public static int height;
 
-@Before(value="@VideoRecorder")
-public void recordStart(){
+    @Before(value = "@VideoRecorder")
+    public void recordStart() {
 
-    System.out.println("Kayıt basladı");
-    try {
-        MyScreenRecorder.startRecording("VideoRecord");
-    } catch (Exception e) {
-        throw new RuntimeException(e);
+        System.out.println("Kayıt basladı");
+        try {
+            MyScreenRecorder.startRecording("VideoRecord");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
-}
 
 
     @Before(value = "@headless", order = 0)
@@ -82,8 +82,8 @@ public void recordStart(){
         System.out.println("Login metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
-       // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
-       // getHomePage().screenShotSendText("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
+        // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
+        // getHomePage().screenShotSendText("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
@@ -101,6 +101,7 @@ public void recordStart(){
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
     }
+
     @Before(value = "@Login3")
     public void login3() {
         //loginPage=new LoginPage();
@@ -108,13 +109,14 @@ public void recordStart(){
         System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-       getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
+
     @After(value = "@VideoRecorder")
     public void stopRecording() {
 
@@ -138,13 +140,13 @@ public void recordStart(){
 
     @Before("@DB")
     public void setupDatabase() {
-            DBUtilities.createConnection();
+        DBUtilities.createConnection();
 
     }
 
     @After("@DB")
     public void closeDatabase() {
-         //  DatabaseUtilities.closeConnection();
+        //  DatabaseUtilities.closeConnection();
 
     }
 
@@ -156,12 +158,25 @@ public void recordStart(){
         );
     }
 
-    public String getToken(USERCREDENTIAL usercredential){
-    response = given()
-            .contentType(ContentType.JSON)
-            .body("{\"email\": \""+usercredential.getUsername()+"\",\"password\": \""+usercredential.getPassword()+"\"}")
-            .when()
-            .post("https://test.urbanicfarm.com/api/public/login");
+    public String getToken(USERCREDENTIAL usercredential) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
+                .when()
+                .post("https://test.urbanicfarm.com/api/public/login");
+
+        JsonPath jsonPath = response.jsonPath();
+        token = jsonPath.getString("token");
+
+        return token;
+    }
+
+    public String getToken(USERCREDENTIAL usercredential, URL_LINKS url_links) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
+                .when()
+                .post(String.valueOf(url_links));
 
         JsonPath jsonPath = response.jsonPath();
         token = jsonPath.getString("token");
@@ -170,8 +185,13 @@ public void recordStart(){
     }
 
     @Before("@user3token")
-    public void user3Token(){
-    getToken(USER3);
+    public void user3Token() {
+        getToken(USER3);
+    }
+
+    @Before("@tokencanli")
+    public void tokenCanli() {
+        getToken(USER3);
 
     }
 }
