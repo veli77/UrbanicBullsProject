@@ -10,8 +10,6 @@ public enum URL_LINKS {
     ADDADDRESSPAGE_URL("https://test.urbanicfarm.com/api/account/address/addAddress");
 
 
-
-
     private final String getLink;
 
   URL_LINKS(String getLink) {
