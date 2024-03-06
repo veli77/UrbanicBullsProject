@@ -34,7 +34,7 @@ public class US_105_AddAddress_stepDefs {
 
     }
 
-    @Then("User verifies success message")
+    @Then("User verifies success message.")
     public void user_verifies_success_message() {
         int actualstatusCode = response.getStatusCode();
         Assert.assertEquals( actualstatusCode,200);
