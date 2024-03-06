@@ -94,6 +94,17 @@ public void recordStart(){
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
     }
+    @Before(value = "@Login4")
+    public void login4() {
+        //loginPage=new LoginPage();
+        System.out.println("Login2 metodu calıstı");
+        driver.get(URL_LINKS.LOGIN_URL1.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER5.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER5.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+    }
     @Before(value = "@Login3")
     public void login3() {
         //loginPage=new LoginPage();

@@ -1,4 +1,4 @@
-@Login2
+@Login4
 @UI
   Feature: TE of US_079 As a user, should not able to attend the someone's event(s)
 
