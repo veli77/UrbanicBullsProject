@@ -5,9 +5,17 @@
       Given User logs in as Vedat
       When User goes to MyEvents Page
       And User clicks Create New Event
-      And User enters title
       And User adds an address for the event
-      And User enters the date
-      And User enters the time
-      And User sets the fee
-      And User enter Attendee, schedule , description and terms and conditions and click submit button
+      And User enters valid information to create a new event
+
+        | Title                | New Event             |
+        | Date                 | 0020241230            |
+        | Time                 | 15:30                 |
+        | Fee                  | 100                   |
+        | Duration             | 10                    |
+        | Attendee Limit       | 5                     |
+        | Schedule             | Afternoon Events      |
+        | Description          | Online Meeting        |
+        | Terms and Conditions | Attendance Compulsory |
+
+      When User clicks on the submit button
