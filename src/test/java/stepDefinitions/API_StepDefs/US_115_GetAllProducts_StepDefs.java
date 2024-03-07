@@ -22,7 +22,7 @@ public class US_115_GetAllProducts_StepDefs {
     public void userGetsAllProductsDetails() {
             response =  given()
                     .when()
-                    .post("https://urbanicfarm.com/api/public/product/getAllProducts");
+                    .post("https://test.urbanicfarm.com/api/public/product/getAllProducts");
 
         }
 

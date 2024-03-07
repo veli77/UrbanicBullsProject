@@ -24,7 +24,7 @@ public class US_114_GetHubInformation_StepDefs {
     public void user_connect_to_the(String endpoint) {
         response = given()
                 .contentType(ContentType.JSON)
-                .body("{\"email\": \"test_seller@mailsac.com\",\"password\": \"e976S2rhtySNTdk\"}")
+                .body("{\"email\": \"seller_urban@mailsac.com\",\"password\": \"VHt*zzt*wQNu6XS\"}")
                 .when()
                 .post(endpoint);
 
@@ -40,7 +40,7 @@ public class US_114_GetHubInformation_StepDefs {
                 .auth()
                 .oauth2(tokencanli)
                 .when()
-                .post("https://urbanicfarm.com/api/account/hub/getMyHubs");
+                .post("https://test.urbanicfarm.com/api/account/hub/getMyHubs");
 
     }
     @Then("User verifies status code and hub information details")
@@ -70,7 +70,7 @@ public class US_114_GetHubInformation_StepDefs {
                 .auth()
                 .oauth2(tokencanli)
                 .when()
-                .post("https://urbanicfarm.com/api/account/hub/getHubDetails/"+ hubName);
+                .post("https://test.urbanicfarm.com/api/account/hub/getHubDetails/"+ hubName);
 
 
         int actualStatusCode = response.getStatusCode();
