@@ -190,7 +190,7 @@ public class Hooks extends CommonPage {
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
                 .when()
-                .post(String.valueOf(url_links));
+                .post(url_links.getLink());
 
         JsonPath jsonPath = response.jsonPath();
         token = jsonPath.getString("token");
