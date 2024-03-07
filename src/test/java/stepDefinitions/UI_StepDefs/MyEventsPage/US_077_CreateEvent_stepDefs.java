@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs;
+package stepDefinitions.UI_StepDefs.MyEventsPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

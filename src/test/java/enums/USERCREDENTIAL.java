@@ -7,7 +7,9 @@ public enum USERCREDENTIAL {
     USER4("buyer_urban@mailsac.com","VHt*zzt*wQNu6XS"),
     USERERDAL("erdal@yopmail.com","nPfXAzs656Jw6*w"),
     USERVEDAT("testuser@deneme.com","Testuser1/."),
-    USERBUYER("peummonnemane-5141@yopmail.com","e*y7G2xhsTVAi5u");
+    USERBUYER("peummonnemane-5141@yopmail.com","e*y7G2xhsTVAi5u"),
+    PAYPALACCOUNT("sandbox@personal.example.com","NvR29+Ww"),
+    USERBASEWEBSITE(" test_seller@mailsac.com","e976S2rhtySNTdk");
 
     private final String getUsername;
     private final String getPassword;

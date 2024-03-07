@@ -9,7 +9,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
-
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -31,6 +30,17 @@ import static org.junit.Assert.assertTrue;
 public class ReusableMethods {
 
     private static WebDriverWait wait;
+
+    //stale Element hatası alıyorsan bunu deneyebilirsin, Ömer Hoca'nın tavsiyesi
+    public static void staleElementSolution(WebElement webElement) {
+        Duration timeout = Duration.ofSeconds(30);
+        new WebDriverWait(driver, timeout)
+                .ignoring(StaleElementReferenceException.class)
+                .until((WebDriver d) -> {
+                    webElement.click();
+                    return true;
+                });
+    }
 
     public static String getScreenshot() throws IOException {
         // naming the screenshot with the current date to avoid duplication
@@ -330,6 +340,10 @@ public class ReusableMethods {
 
     }
 
+    public static void verifyURL(String expectedURL) {
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().toLowerCase().contains(expectedURL));
+    }
+
     public static void waitAndClickElement(WebElement element, int seconds) {
         for (int i = 0; i < seconds; i++) {
             try {
@@ -359,13 +373,11 @@ public class ReusableMethods {
 
     public static Random random = new Random();
     public static StringBuilder sb = new StringBuilder();
-    public  static String text = "abcdefghijklmnopqrstuvwxyz";
+    public static String text = "abcdefghijklmnopqrstuvwxyz";
 
     // Random text olusturma
 
     public static String randomText(int textSize) {
-
-
 
 
         for (int i = 0; i < textSize; i++) {
@@ -378,13 +390,36 @@ public class ReusableMethods {
 
     // Random email olusturma
 
-    public static String randomEmail(int initialTextSize){
+    public static String randomEmail(int initialTextSize) {
         for (int i = 0; i < initialTextSize; i++) {
             char randomChar = text.charAt(random.nextInt(text.length()));
             sb.append(randomChar);
         }
 
-        return sb.toString()+"@gmail.com";
+        return sb.toString() + "@gmail.com";
+
+    }
+
+    public static void clearAndSend(WebElement webElement, String str) {
+        webElement.clear();
+        webElement.sendKeys(str);
+
+    }
+
+    public static void selectByVisibleText(WebElement webElement, String text) {
+        Select select = new Select(webElement);
+        select.selectByVisibleText(text);
+    }
+
+    public static void selectByValue(WebElement webElement, String value) {
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+
+    }
+
+    public static void selectByIndex(WebElement webElement, int index) {
+        Select select = new Select(webElement);
+        select.selectByIndex(index);
 
     }
 }

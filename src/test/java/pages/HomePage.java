@@ -17,6 +17,8 @@ import java.util.List;
 import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
+    @FindBy(css = "button#W0wltc")
+    public WebElement reddet;
 
     @FindBy(xpath = "//a[text()='Register']")
     public WebElement RegisterButton;
@@ -153,10 +155,15 @@ public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//a[@href='/account/weekly-order'][.='Scheduled delivery']")
     public WebElement ScheduledDelivery;
-
+    @FindBy(css = "nav>a[href^='/account/home']")
+    public WebElement accountName_navbar;
+    @FindBy(css = "[href='/account/delivery']")
+    public WebElement deliverySettings_sidebar;
+    //    @FindBy(xpath = "//div[@class='Toastify__toast Toastify__toast--error']")
+    @FindBy(xpath = "//div[@role='alert'][@class='Toastify__toast-body toastr_custom-toastr__iiU37']")
+    public WebElement toastMessage;
     @FindBy(xpath = "(//button[contains(@class,'AjY5Oe DuMIQc LQeN7 XWZjwc')]/div[@class='VfPpkd-Jh9lGc'])[1]//following-sibling::span")
     public WebElement googleChromePermissionRejectButton;
-
 
 
     //Test Urbanic Farm sitesine gider ve sayfa yüklenene kadar bekler.
@@ -191,8 +198,6 @@ public class HomePage extends CommonPage {
     }
 
 
-
-
     public void clickMainButton(String btnName) {
         WebElement element = Driver.getDriver().findElement(By.xpath("//div/a[contains(text(), '" +
                 btnName + "')]"));
@@ -225,9 +230,6 @@ public class HomePage extends CommonPage {
 
 
     public void addZipCode(String zipCode) {
-
-
-
         ReusableMethods.sendText(inputZipCode, zipCode);
         zipCodeBtn.click();
     }
@@ -245,7 +247,6 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(registerNowButtonUnderContributiontotheEnvironmentandSociety);
         JSUtils.clickElementByJS(registerNowButtonUnderContributiontotheEnvironmentandSociety);
     }
-
 
 
     //En altta bulunan about us butonuna gider ve tıklar.
