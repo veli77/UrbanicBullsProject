@@ -120,9 +120,7 @@ public class MyEventsPage extends CommonPage {
 
     @FindBy(css = ".CreateEvents_inlineErrormsg__2AiUS")
     public WebElement errorMessage;
-    @FindBy(xpath = "//div[@role='alert']")
-    public WebElement alertEventCreated;
-        @FindBy(css = "button.events-i-organize_btnCreate__2AWbt")
+    @FindBy(css = "button.events-i-organize_btnCreate__2AWbt")
     public WebElement goBackButton;
 
 
