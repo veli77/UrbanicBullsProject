@@ -8,7 +8,6 @@ import java.util.List;
 
 import static utilities.ReusableMethods.waitForClickablility;
 import static utilities.ReusableMethods.waitForVisibility;
-import static stepDefinitions.Hooks.driver;
 
 public class MyEventsPage extends CommonPage {
 
@@ -119,6 +118,15 @@ public class MyEventsPage extends CommonPage {
     @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
     public WebElement CreateEventDateInvMessageUS_77Btn;
 
+    @FindBy(css = ".CreateEvents_inlineErrormsg__2AiUS")
+    public WebElement errorMessage;
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement alertEventCreated;
+        @FindBy(css = "button.events-i-organize_btnCreate__2AWbt")
+    public WebElement goBackButton;
+
+
+
     //Create new Event butonuna tıklar
     public void clickNewEvent() {
         waitForClickablility(CreateNewEventBtn, 10);
@@ -207,6 +215,107 @@ public class MyEventsPage extends CommonPage {
         ReusableMethods.sendText(getMyEventsPage().CreateEventTermsAndConditionUS_77Btn, "Terms agreed");
         ReusableMethods.hover(getMyEventsPage().CreateEventSubmitUS_77Btn);
         JSUtils.clickElementByJS(getMyEventsPage().CreateEventSubmitUS_77Btn);
+    }
+    public void enterInvalidData(List<List<String>> invalidData) {
+
+        for (int i = 0; i <8 ; i++) {
+
+            Eventtitle.clear();
+            ReusableMethods.sendText(Eventtitle, invalidData.get(i).get(1));
+            CreateEventAddressUS_77Btn.clear();
+            ReusableMethods.sendText(CreateEventAddressUS_77Btn,invalidData.get(i).get(2));
+            EventDate.clear();
+            ReusableMethods.sendText(EventDate, invalidData.get(i).get(3));
+            EventTime.clear();
+            ReusableMethods.sendText(EventTime, invalidData.get(i).get(4));
+            EventFee.clear();
+            ReusableMethods.sendText(EventFee, invalidData.get(i).get(5));
+            EventDuration.clear();
+            ReusableMethods.sendText(EventDuration, invalidData.get(i).get(6));
+            EventAttendeeLimit.clear();
+            ReusableMethods.sendText(EventAttendeeLimit, invalidData.get(i).get(7));
+            EventSchedule.clear();
+            ReusableMethods.sendText(EventTermsOfReference, invalidData.get(i).get(8));
+            ReusableMethods.waitFor(3);
+
+            CreateEventSubmitUS_77Btn.click();
+            switch (i){
+                case 1:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+                case 2:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+                case 3:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+
+
+                case 4:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+
+                case 5:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+
+
+
+                case 6:
+                    Assert.assertEquals(invalidData.get(i).get(9),errorMessage.getText());
+                    break;
+
+            }
+        }
+    }
+
+    public void enterInvalidData2(String arg0, String arg1, String arg2, String arg3, String arg4, String arg5, String arg6, String arg7) {
+        ReusableMethods.waitFor(3);
+        ReusableMethods.sendText(Eventtitle, arg0);
+        ReusableMethods.sendText(CreateEventAddressUS_77Btn, arg1);
+        ReusableMethods.sendText(EventDate, arg2);
+        ReusableMethods.sendText(EventTime, arg3);
+        EventFee.clear();
+        ReusableMethods.sendText(EventFee, arg4);
+        ReusableMethods.sendText(EventDuration, arg5);
+        ReusableMethods.sendText(EventAttendeeLimit, arg6);
+        ReusableMethods.sendText(EventTermsOfReference, arg7);
+        ReusableMethods.waitFor(3);
+    }
+
+    public void enterInvalidData3(String string, String string2, String string3, String string4, String string5, String string6, String string7,String string8) {
+        ReusableMethods.waitForVisibility(getMyEventsPage().Eventtitle,10);
+        ReusableMethods.sendText(Eventtitle, string);
+        ReusableMethods.sendText(CreateEventAddressUS_77Btn, string2);
+        ReusableMethods.sendText(EventDate, string3);
+        ReusableMethods.sendText(EventTime, string4);
+        EventFee.clear();
+        ReusableMethods.sendText(EventFee, string5);
+        ReusableMethods.sendText(EventDuration, string6);
+        ReusableMethods.sendText(EventAttendeeLimit, string7);
+        ReusableMethods.sendText(EventTermsOfReference, string8);
+        ReusableMethods.waitFor(3);
+
+    }
+
+    public void clickGoBackButton() {
+        ReusableMethods.waitForClickablility(goBackButton,5);
+        goBackButton.click();
+    }
+
+    public void verifyMessage(String string9) {
+        String alertMessage="Address is required";
+        try {
+            Assert.assertEquals(string9,getMyEventsPage().errorMessage.getText());
+        } catch (Exception e) {
+            Assert.assertEquals(alertMessage,getMyEventsPage().AlertEventCreated.getText());
+        }
+    }
+
+    public void verifyBackToThePreviousPage() {
+        String buttonStatus="Create New Event";
+        ReusableMethods.waitForPageToLoad(5);
+        Assert.assertEquals(buttonStatus,getMyEventsPage().CreateNewEvent.getText());
     }
 }
 

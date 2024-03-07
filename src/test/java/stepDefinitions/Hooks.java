@@ -115,6 +115,25 @@ public void recordStart(){
         getAccountHomePage().zipCodeBoxCloseButton.click();
 
     }
+
+    @Before(value = "@Login4")
+    public void login4() {
+        driver.get("https://urbanicfarm.com/auth/login");
+        getLoginPage().LoginEmail.sendKeys("test_seller@mailsac.com");
+        getLoginPage().input_password.sendKeys("e976S2rhtySNTdk");
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+        }
+    @Before(value = "@Login5")
+    public void login5() {
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER4.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER4.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+    }
     @After(value = "@VideoRecorder")
     public void stopRecording() {
 

@@ -1,6 +1,4 @@
-@UI
-@umit @US_061
-@Login3
+@UI @umit @US_061 @Login5
 Feature: Your Products/Services Section
 
     Background:
@@ -34,8 +32,3 @@ Feature: Your Products/Services Section
     Then the user makes necessary corrections and clicks the Update button
     And an alert should display confirming the update
 
-#  Scenario: TC_05_Updating Product Information
-#    Given the user clicks on  any group
-#    When the user click on the product name to view details
-#    Given the user is viewing product information
-#

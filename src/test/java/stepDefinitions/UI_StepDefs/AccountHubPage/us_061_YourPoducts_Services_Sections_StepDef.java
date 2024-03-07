@@ -42,9 +42,6 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
     @Then("the user should be able to change product information on this page")
     public void theUserShouldBeAbleToChangeProductInformationOnThisPage() {
         getAccountHubPage().productStockUpdate();
-        ReusableMethods.waitForVisibility(getAccountHubPage().productStockInfo,5);
-        String value = null;
-        Assert.assertEquals(getAccountHubPage().productStockInfo.getAttribute(value),"150");
     }
 
     @Then("the organic and Trade buttons should be functional")
@@ -67,9 +64,8 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
     @When("the user clicks the Trade button If the trade description entry is not visible")
     public void theUserClicksTheTradeButton() {
-        JSUtils.scrollDownByJS();
         if(!getAccountHubPage().isTrade.isSelected()){
-          getAccountHubPage().isTrade.click();
+            JSUtils.clickElementByJS(getAccountHubPage().isTrade);
         }
 
     }
@@ -91,10 +87,10 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
     @Then("an alert should display confirming the update")
     public void anAlertShouldDisplayConfirmingTheUpdate() {
-        String updateAlertMessage="Cilantro Seed has been successfully updated";
+        String updateAlertMessage="American Slicin Cucumber Seed has been successfully updated";
         ReusableMethods.waitForVisibility(getAccountHubPage().updatedAlert, 5);
-        System.out.println(getAccountHubPage().updatedAlert);
-        Assert.assertEquals(updateAlertMessage,getAccountHubPage().updatedAlert);
+        System.out.println(getAccountHubPage().updatedAlert.getText());
+        Assert.assertEquals(updateAlertMessage,getAccountHubPage().updatedAlert.getText());
 
        }
 }

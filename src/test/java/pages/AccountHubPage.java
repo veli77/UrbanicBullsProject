@@ -13,6 +13,7 @@ import utilities.ReusableMethods;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.driver;
 
 public class AccountHubPage extends CommonPage{
@@ -92,16 +93,16 @@ public class AccountHubPage extends CommonPage{
     public List<WebElement> productStock;
     @FindBy(css = ".HubManagement_badge__2jPOb.text-success")
     public List<WebElement> productStatus;
-    @FindBy(xpath = "//input[@name='stock']")
+    @FindBy(css = "#stock")
     public WebElement productStockInfo;
-    @FindBy(xpath = "//input[@name='isTrade']")
+    @FindBy(css = "#isTrade")
     public WebElement isTrade;
     public void VerifyYourProducts_ServicesPageUrl() throws InterruptedException {
         Thread.sleep(3000);
         String expectedUrl = "https://test.urbanicfarm.com/account/hub";
         String actualUrl = driver.getCurrentUrl();
         System.out.println("actual="+actualUrl);
-        Assert.assertEquals(expectedUrl,actualUrl);
+        assertEquals(expectedUrl,actualUrl);
     }
 
     public void goToPreviousPage()  {
@@ -222,16 +223,16 @@ public class AccountHubPage extends CommonPage{
             String status = productStatus.get(i).getText();
             switch (status) {
                 case "APPROVED":
-                    Assert.assertEquals(status, "APPROVED");
+                    assertEquals(status, "APPROVED");
                     break;
                 case "IN_REVIEW":
-                    Assert.assertEquals(status, "IN_REVIEW");
+                    assertEquals(status, "IN_REVIEW");
                     break;
                 case "REJECTED":
-                    Assert.assertEquals(status, "REJECTED");
+                    assertEquals(status, "REJECTED");
                     break;
                 default:
-                    Assert.assertEquals(status, "ALL");
+                    assertEquals(status, "ALL");
                     break;
 
             }
@@ -239,9 +240,12 @@ public class AccountHubPage extends CommonPage{
     }
     public void productStockUpdate(){
         ReusableMethods.waitForVisibility(productStockInfo,5);
+        String updateValue= "100";
+        productStockInfo.click();
         productStockInfo.clear();
-        productStockInfo.sendKeys("150");
-
+        productStockInfo.sendKeys(updateValue);
+        String value = productStockInfo.getAttribute("value");
+        Assert.assertEquals(updateValue,value);
     }
 }
 
