@@ -67,6 +67,16 @@ public class LoginPage extends CommonPage{
         getAccountWeeklyOrderPage().zipCodeBoxCloseButton.click();
     }
 
+    //Enum classlarindan Url ve Credentiallar alinarak login olabilirsiniz
+    public void login(USERCREDENTIAL usercredential, URL_LINKS url_links ){
+        driver.get(url_links.getLink());
+        waitForPageToLoad(10);
+        input_email.sendKeys(usercredential.getUsername());
+        input_password.sendKeys(usercredential.getPassword());
+        submit_button.click();
+        getAccountWeeklyOrderPage().zipCodeBoxCloseButton.click();
+    }
+
     public void validCredential(){
         driver.get(LOGIN_URL.getLink());
         LoginEmail.sendKeys(USERCREDENTIAL.USER1.getUsername());
