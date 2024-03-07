@@ -51,13 +51,13 @@ public class US_114_GetHubInformation_StepDefs {
 
         JsonPath jsonPath = response.jsonPath();
 
-        List<Object> myList = new ArrayList<>();
+        List<Object> myList;
         myList = jsonPath.getList("hubs");
         System.out.println(myList.size());
         System.out.println(myList.getFirst());
         assertFalse(myList.isEmpty());
 
-        List<Object> myListId = new ArrayList<>();
+        List<Object> myListId;
         myListId = jsonPath.getList("hubs.uniqueName");
         hubName = (String) myListId.get(0);
         System.out.println(hubName);
