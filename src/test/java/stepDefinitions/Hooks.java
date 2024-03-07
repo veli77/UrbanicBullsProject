@@ -88,8 +88,6 @@ public class Hooks extends CommonPage {
 
     @Before(value = "@Login2")
     public void login2() {
-
-        System.out.println("Login2 metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USER3.getUsername());
         getLoginPage().input_password.sendKeys(USER3.getPassword());
@@ -101,7 +99,7 @@ public class Hooks extends CommonPage {
     @Before(value = "@Login3")
     public void login3() {
 
-        System.out.println("Login metodu calıstı");
+        //System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
         getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
