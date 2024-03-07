@@ -5,6 +5,9 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.token;
@@ -32,7 +35,7 @@ public class US_104_Adress_StepDefs {
         JsonPath jsonPath = response.jsonPath();
 
         System.out.println("jsonPath.getString(\"addresses.address\") = " + jsonPath.getString("addresses[0].address"));
-
+        Map<String ,Object> expectedData = new HashMap<>();
 
     }
 
