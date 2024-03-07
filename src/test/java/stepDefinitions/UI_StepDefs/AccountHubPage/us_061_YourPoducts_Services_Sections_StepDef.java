@@ -1,16 +1,12 @@
 package stepDefinitions.UI_StepDefs.AccountHubPage;
 
-import enums.USERCREDENTIAL;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import pages.AccountHubPage;
+
 import pages.CommonPage;
-import utilities.JSUtils;
-import utilities.ReusableMethods;
+
 
 public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
@@ -36,6 +32,7 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
     @When("the user click on the product name to view details")
     public void theUserClickOnTheProductNameToViewDetails() {
+
         getAccountHubPage().productName.getFirst().click();
     }
 
@@ -46,17 +43,17 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
     @Then("the organic and Trade buttons should be functional")
     public void theOrganicAndTradeButtonsShouldBeFunctional() {
-        Assert.assertTrue(getAccountHubPage().isTrade.isEnabled());
+     getAccountHubPage().tradeButtonIsFuntional();
     }
 
 
     @And("the Update buttons should be visible")
     public void theUpdateButtonsShouldBeVisible() {
-        Assert.assertTrue(getAccountHubPage().update.isDisplayed());
+        getAccountHubPage().updateButtonVisible();
     }
     @And("the Delete buttons should be visible")
     public void theDeleteButtonsShouldBeVisible() {
-        Assert.assertTrue(getAccountHubPage().delete.isDisplayed());
+        getAccountHubPage().deleteButtonVisible();
     }
     @Given("the user is viewing product information")
     public void theUserIsViewingProductInformation() {
@@ -64,33 +61,21 @@ public class us_061_YourPoducts_Services_Sections_StepDef extends CommonPage {
 
     @When("the user clicks the Trade button If the trade description entry is not visible")
     public void theUserClicksTheTradeButton() {
-        if(!getAccountHubPage().isTrade.isSelected()){
-            JSUtils.clickElementByJS(getAccountHubPage().isTrade);
-        }
-
+        getAccountHubPage().clicksTradeButton();
     }
 
     @Then("the Trade description input should be visible")
     public void theTradeDescriptionInputShouldBeVisible() {
-        ReusableMethods.verifyElementDisplayed(getAccountHubPage().tradeDescription);
+        getAccountHubPage().tradeDescriptionVisible();
     }
-
-//    @And("the user should be able to add information to the trade description")
-//    public void theUserShouldBeAbleToAddInformationToTheTradeDescription() {
-//    }
 
     @When("the user makes necessary corrections and clicks the Update button")
     public void theUserMakesNecessaryCorrectionsAndClicksTheUpdateButton() {
-        JSUtils.clickElementByJS(getAccountHubPage().update);
-        ReusableMethods.waitFor(3);
+        getAccountHubPage().clicksUpdateButton();
     }
 
     @Then("an alert should display confirming the update")
     public void anAlertShouldDisplayConfirmingTheUpdate() {
-        String updateAlertMessage="American Slicin Cucumber Seed has been successfully updated";
-        ReusableMethods.waitForVisibility(getAccountHubPage().updatedAlert, 5);
-        System.out.println(getAccountHubPage().updatedAlert.getText());
-        Assert.assertEquals(updateAlertMessage,getAccountHubPage().updatedAlert.getText());
-
-       }
+        getAccountHubPage().verifyUpdateMesage();
+    }
 }

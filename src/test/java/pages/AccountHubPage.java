@@ -1,8 +1,6 @@
 package pages;
 
-import enums.URL_LINKS;
-import enums.USERCREDENTIAL;
-import org.apache.poi.ss.formula.atp.Switch;
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -246,6 +244,42 @@ public class AccountHubPage extends CommonPage{
         productStockInfo.sendKeys(updateValue);
         String value = productStockInfo.getAttribute("value");
         Assert.assertEquals(updateValue,value);
+    }
+
+    public void verifyUpdateMesage() {
+        String updateAlertMessage="American Slicin Cucumber Seed has been successfully updated";
+        ReusableMethods.waitForVisibility(updatedAlert, 5);
+        System.out.println(updatedAlert.getText());
+        Assert.assertEquals(updateAlertMessage,updatedAlert.getText());
+    }
+
+    public void clicksUpdateButton() {
+        JSUtils.clickElementByJS(update);
+        ReusableMethods.waitFor(3);
+    }
+
+    public void clicksTradeButton() {
+        if(!isTrade.isSelected()){
+            JSUtils.clickElementByJS(isTrade);
+        }
+    }
+
+    public void tradeDescriptionVisible() {
+        ReusableMethods.verifyElementDisplayed(tradeDescription);
+    }
+
+    public void updateButtonVisible() {
+        Assert.assertTrue(update.isDisplayed());
+
+    }
+
+    public void deleteButtonVisible() {
+        Assert.assertTrue(delete.isDisplayed());
+
+    }
+
+    public void tradeButtonIsFuntional() {
+        Assert.assertTrue(isTrade.isEnabled());
     }
 }
 
