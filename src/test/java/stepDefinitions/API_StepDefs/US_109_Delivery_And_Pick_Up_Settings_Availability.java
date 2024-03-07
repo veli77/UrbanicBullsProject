@@ -14,19 +14,15 @@ public class US_109_Delivery_And_Pick_Up_Settings_Availability {
     @Given("User connect to the {string} and change availability for buyer picks up")
     public void user_connect_to_the_and_change_availability_for_buyer_picks_up(String url) {
         String jsonBody = """
-                         {
-                                              "availability": "",
-                                              "availabilityBranch": "08:00-17:00",
-                                              "deliveryType": [
-                                                  "BUYER_PICKUP_FROM_BRANCH"
-                                              ],
-                                              "estimatedDeliveryTime": [],
-                                              "flexibleDeliveryOptions": [],
-                                              "freeDeliveryRange": "",
-                                              "maxDeliveryRange": "",
-                                              "minFreeDeliveryOrder": "",
-                                              "perMileCost": ""
-                                          }
+                         {"availability":"10:00-12:00",
+                         "availabilityBranch":"",
+                         "deliveryType":["BUYER_PICKUP"],
+                         "estimatedDeliveryTime":[],
+                         "flexibleDeliveryOptions":[],
+                         "freeDeliveryRange":"",
+                         "maxDeliveryRange":"",
+                         "minFreeDeliveryOrder":"",
+                         "perMileCost":""}
                 """;
         response = given()
                 .contentType(ContentType.JSON)
