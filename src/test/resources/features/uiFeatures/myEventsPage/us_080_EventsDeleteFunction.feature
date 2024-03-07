@@ -9,7 +9,7 @@
       And User enters valid information to create a new event
 
         | Title                | New Event             |
-        | Date                 | 0020241230            |
+        | Date                 | 30/12/2025            |
         | Time                 | 15:30                 |
         | Fee                  | 100                   |
         | Duration             | 10                    |
@@ -19,3 +19,4 @@
         | Terms and Conditions | Attendance Compulsory |
 
       When User clicks on the submit button
+      And User verifies that a new event is created and deleted

@@ -50,4 +50,11 @@ public class US_080_EventsDeleteFunction_stepDefs extends CommonPage {
         ReusableMethods.waitForPageToLoad(5);
         getMyEventsPage().CreateEventTitleUS_77Btn.sendKeys("Emily Shop");
     }
+
+    @And("User verifies that a new event is created and deleted")
+    public void userVerifiesThatANewEventIsCreatedAndDeleted() {
+        ReusableMethods.waitForPageToLoad(5);
+        getMyEventsPage().VerifyingNewEventIsCreated();
+        getMyEventsPage().DeletingLastCreatedEvent();
+    }
 }
