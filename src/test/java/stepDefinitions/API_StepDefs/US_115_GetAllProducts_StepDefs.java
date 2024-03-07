@@ -1,4 +1,4 @@
-package stepDefinitions.UI_StepDefs.HomePage;
+package stepDefinitions.API_StepDefs;
 
 import com.aventstack.extentreports.util.Assert;
 import io.cucumber.java.en.Then;
