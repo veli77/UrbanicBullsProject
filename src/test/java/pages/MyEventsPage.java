@@ -30,6 +30,21 @@ public class MyEventsPage extends CommonPage{
     @FindBy(xpath = "//div[@role='alert'][.='Your Address successfully added']")
     public WebElement ToastMessage;
 
+    @FindBy(xpath = "//a[text()='My Events']")
+    public WebElement MyEventsButton;
+
+    @FindBy(xpath = "//button[.='My Completed Events']")
+    public WebElement MyCompletedEventsButton;
+
+    @FindBy(xpath = "//button[.='Copy Link']")
+    public WebElement CopyLinkButton;
+
+    @FindBy(xpath = "//div[@role='alert'][.='Event Link Copied to Clipboard']")
+    public WebElement CopyToastMessage;
+
+
+
+
     //Create new Event butonuna tıklar
     public void clickNewEvent(){
         waitForClickablility(CreateNewEventBtn,10);

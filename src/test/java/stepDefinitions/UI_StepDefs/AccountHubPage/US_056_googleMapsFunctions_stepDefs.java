@@ -31,8 +31,8 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
      //  for (WebElement element: getAccountAddressPage().mapsZoomButtons){
       //     element.click();
     //   }
-       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
-       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
+      // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
+     //  getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
 
     }
 
