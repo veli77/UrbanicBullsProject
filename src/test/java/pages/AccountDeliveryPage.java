@@ -9,7 +9,7 @@ import java.util.List;
 
 import static stepDefinitions.Hooks.driver;
 
-public class AccountDeliveryPage extends CommonPage {
+public class AccountDeliveryPage extends CommonPage{
 
     @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
     public WebElement DeliveryPageButton;
@@ -66,7 +66,6 @@ public class AccountDeliveryPage extends CommonPage {
     public WebElement orderByTime;
     @FindBy(css = ".custom-checkbox input[type='checkbox']")
     public List<WebElement> checkBoxList;
-
 
     @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
     public WebElement deliveryPickupSettings;

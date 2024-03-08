@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
-
 import java.util.List;
 
 import static utilities.ReusableMethods.waitForClickablility;
 import static utilities.ReusableMethods.waitForVisibility;
+import static stepDefinitions.Hooks.driver;
 
 public class MyEventsPage extends CommonPage {
 
