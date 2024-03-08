@@ -102,5 +102,4 @@ public class AccountDeliveryPage extends CommonPage{
                 });
     }
 
-
 }

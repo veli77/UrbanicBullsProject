@@ -14,6 +14,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.driver;
 
+
 public class RegisterPage extends CommonPage{
 
     //Gecersiz renk, first name, last name, password vs icin
