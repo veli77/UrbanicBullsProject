@@ -67,6 +67,20 @@ public class AccountDeliveryPage extends CommonPage{
     @FindBy(css = ".custom-checkbox input[type='checkbox']")
     public List<WebElement> checkBoxList;
 
+    @FindBy(xpath = "//a[text()='Delivery & Pick up settings']")
+    public WebElement deliveryPickupSettings;
+
+    @FindBy(css = "#BUYER_PICKUP")
+    public WebElement buyerPicksUp;
+
+    @FindBy(xpath = "//*[@id='availability']/span")
+    public WebElement YourAvailableHours_BuyerPicksUp;
+
+    @FindBy(css = "#startTime")
+    public WebElement StartTimeBuyerPicksUp;
+
+    @FindBy(css = "#endTime")
+    public WebElement EndTimeBuyerPicksUp;
 
     public void assertLabelWithWebelement(String expectedLabel, String webElementFor) {
         String actualLabel = driver.findElement(By.xpath("//label[@for='" + webElementFor + "']")).getText();
@@ -87,7 +101,5 @@ public class AccountDeliveryPage extends CommonPage{
                     }
                 });
     }
-
-
 
 }
