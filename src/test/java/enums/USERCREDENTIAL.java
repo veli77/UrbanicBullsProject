@@ -10,6 +10,7 @@ public enum USERCREDENTIAL {
     USERBUYER("peummonnemane-5141@yopmail.com","e*y7G2xhsTVAi5u"),
     PAYPALACCOUNT("sandbox@personal.example.com","NvR29+Ww"),
     USERBASEWEBSITE("test_seller@mailsac.com","e976S2rhtySNTdk");
+
     private final String getUsername;
     private final String getPassword;
     USERCREDENTIAL(String username, String password) {
