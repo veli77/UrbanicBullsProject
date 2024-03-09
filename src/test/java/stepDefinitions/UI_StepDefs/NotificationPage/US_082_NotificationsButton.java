@@ -14,25 +14,40 @@ public class US_082_NotificationsButton extends CommonPage {
         getLoginPage().login(USERCREDENTIAL.USER2);
     }
 
-    /*@Then("User clicks notification button")
+    @Then("User clicks notification button")
     public void userClicksNotificationButton() {
+        getNotificationPage().clickNotificationsButton();
     }
 
-    @When("User should be able to see {string}")
-    public void userShouldBeAbleToSee(String arg0) {
+    @When("User should be able to see {}")
+    public void userShouldBeAbleToSeeFilterByUnread(String message) {
+        getNotificationPage().assertFilterByUnreadButton(message);
     }
 
-    @And("User should be able to see {string} after clicking View all button")
-    public void userShouldBeAbleToSeeAfterClickingViewAllButton(String arg0) {
+    @And("User secondly should be able to see {}")
+    public void userShouldBeAbleToSeeMarkAllAsRead(String message) {
+        getNotificationPage().assertMarkAllAsRead(message);
+    }
+
+    @Then("User thirdly should be able to see {}")
+    public void userShouldBeAbleToSeeViewAll(String message) {
+        getNotificationPage().assertViewAll(message);
+    }
+
+    @And("After clicking View all button, user should be able to see {string}")
+    public void userShouldBeAbleToSeeAfterClickingViewAllButton(String message) {
+        getNotificationPage().assertNotificationsTitle(message);
     }
 
     @Then("User should be able to make notifications Unread")
     public void userShouldBeAbleToMakeNotificationsUnread() {
+        getNotificationPage().unreadANotification();
     }
+
 
     @Then("User should be able to make notifications Read")
     public void userShouldBeAbleToMakeNotificationsRead() {
+        getNotificationPage().readANotification();
     }
 
-     */
 }

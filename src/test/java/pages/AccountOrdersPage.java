@@ -1,6 +1,7 @@
 package pages;
 
 
+import enums.USERCREDENTIAL;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -25,7 +26,7 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//article[@class='row']//a")
     public List<WebElement> viewOrderDetailsButtons;
 
-    @FindBy(linkText = "View order details")
+    @FindBy(partialLinkText = "View order detail")
     public WebElement viewOrderDetailsLink;
 
     @FindBy(xpath = "//div[@class='mr-3']//span")
@@ -85,17 +86,17 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "(//div[@class='d-flex justify-content-center align-items-center'])[2]")
     public WebElement card;//buyer sepet secenegi
 
-    @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']")
+    @FindBy(xpath = "//div[@class='BasketDropdown_container__15BpD']/div")
     public WebElement sepeteTikla;
   
     @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[1]")
     public WebElement plus; //siparis sayfasinda urun sayisini artirmak icin
     @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[19]")
     public WebElement plus2; //siparis sayfasinda urun sayisini artirmak icin
-    @FindBy(xpath = "(//button[@class='col-12 mt-2 w-75 btn btn-success FeaturedProductCard_addCartBtn__2QCpK'])[1]")
-    public WebElement addToCard;
+    @FindBy(css = "button[class*='col-12 mt-2 w-75']")
+    public List<WebElement> addToCardButtons;
     @FindBy(xpath = "//button[@class='btn btn-block font-weight-bold Basket_checkOutBtn__1946L']")
-    public WebElement proceedToCheckout;//alisverise tamamla
+    public WebElement proceedToCheckout;//alisverisi tamamla
     @FindBy(xpath = "//button[@type='button']")
     public WebElement nextButton;
     @FindBy(xpath = "(//button[@class='proceed_btn__vZFGE'])[2]")
@@ -165,6 +166,11 @@ public class AccountOrdersPage extends CommonPage{
 
     @FindBy(xpath = "(//div[@class='modal-content']//span)[1]")
     public WebElement closeTheRatingWindow;
+
+
+
+
+
 
 
 
@@ -281,6 +287,12 @@ public void verifyCoordinate(){
     String currentURL=driver.getCurrentUrl();
 
     Assert.assertTrue(currentURL.toLowerCase().contains("maps"));
+
+}
+
+public void enterPayPalAccount(){
+    ReusableMethods.sendText(email_PAypal, USERCREDENTIAL.PAYPALACCOUNT.getUsername());
+    ReusableMethods.sendText(passwrd_Paypal, USERCREDENTIAL.PAYPALACCOUNT.getPassword());
 
 }
 
