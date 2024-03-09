@@ -7,6 +7,9 @@ import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -17,6 +20,9 @@ import java.util.List;
 import static stepDefinitions.Hooks.driver;
 
 public class HomePage extends CommonPage {
+    @FindBy(css = "div[role='alert']")
+    public WebElement alert;
+
     @FindBy(css = "button#W0wltc")
     public WebElement reddet;
 
@@ -205,17 +211,17 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
-//    public void screenshotClick(String screenShotPath){
-//
-//        Screen screen= new Screen();
-//        Pattern pattern= new Pattern(screenShotPath);
-//        try {
-//            screen.click(pattern);
-//
-//        } catch (FindFailed e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public void screenshotClick(String screenShotPath){
+
+        Screen screen= new Screen();
+        Pattern pattern= new Pattern(screenShotPath);
+        try {
+            screen.click(pattern);
+
+        } catch (FindFailed e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

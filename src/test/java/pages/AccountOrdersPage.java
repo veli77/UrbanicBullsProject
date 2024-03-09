@@ -26,7 +26,7 @@ public class AccountOrdersPage extends CommonPage{
     @FindBy(xpath = "//article[@class='row']//a")
     public List<WebElement> viewOrderDetailsButtons;
 
-    @FindBy(linkText = "View order details")
+    @FindBy(partialLinkText = "View order detail")
     public WebElement viewOrderDetailsLink;
 
     @FindBy(xpath = "//div[@class='mr-3']//span")

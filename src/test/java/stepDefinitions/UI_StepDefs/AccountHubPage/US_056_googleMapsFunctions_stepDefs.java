@@ -17,9 +17,9 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     @When("User click to Address button, user can see related page")
     public void userClickToAddressButtonUserCanSeeRelatedPage() {
 
-       getAccountHubPage().goToAddressPage();
-       ReusableMethods.waitForPageToLoad(5);
-       Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
+        getAccountHubPage().goToAddressPage();
+        ReusableMethods.waitForPageToLoad(5);
+        Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
 
     }
 
@@ -53,13 +53,13 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     }
 
     @Then("User click to park or forest area name, user can see a label related area.")
-    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea()  {
+    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea() {
 
         ReusableMethods.hover(getAccountAddressPage().cursorOverTheMapNatureZones);
-     // Robot robot=new Robot();
-     //  robot.mouseMove(getAccountAddressPage().cursorOverTheMapNatureZones);
+        // Robot robot=new Robot();
+        //  robot.mouseMove(getAccountAddressPage().cursorOverTheMapNatureZones);
 
-     //  Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
+        //  Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
 
 
     }
