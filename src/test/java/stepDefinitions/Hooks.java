@@ -167,7 +167,7 @@ public class Hooks extends CommonPage {
         );
     }
 
-    public String getToken(USERCREDENTIAL usercredential) {
+   /* public String getToken(USERCREDENTIAL usercredential) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
@@ -178,11 +178,11 @@ public class Hooks extends CommonPage {
         token = jsonPath.getString("token");
 
         return token;
-    }
+    }*/
 
-    @Before("@user3token")
+   /* @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
 
-    }
+    }*/
 }

@@ -167,11 +167,16 @@ public class WelcomePage extends CommonPage {
     public WebElement productRateDropdown;
     @FindBy(css ="[href='/account/events-i-organize']")
     public WebElement MyEventsBtnAtSideBar;
+    @FindBy(css ="[href='/account/events']")
+    public WebElement EventsBtnAtSideBar;
 
 
     //Sağ barda bulunan My Events butonuna click yapar.
     public void clickMyEvents() {
         ReusableMethods.clickWithTimeOut(getWelcomePage().MyEventsBtnAtSideBar,10);
+    }
+    public void clickEvents() {
+        ReusableMethods.clickWithTimeOut(getWelcomePage().EventsBtnAtSideBar,10);
     }
 
     public void SellerRatingClickableCheck() {
