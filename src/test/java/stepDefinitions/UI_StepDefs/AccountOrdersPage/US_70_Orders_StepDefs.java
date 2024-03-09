@@ -37,7 +37,7 @@ public class US_70_Orders_StepDefs extends CommonPage {
             getAccountOrdersPage().plus.click();
             Thread.sleep(3000);
         }
-        getAccountOrdersPage().addToCard.click();
+        getAccountOrdersPage().addToCardButtons.get(0).click();
 
     }
     @Given("User completes the purchase")
@@ -114,7 +114,7 @@ public class US_70_Orders_StepDefs extends CommonPage {
             getAccountOrdersPage().decrease.click();
         }
         Thread.sleep(2000);
-        getAccountOrdersPage().addToCard.click();
+        getAccountOrdersPage().addToCardButtons.get(0).click();
 
 
     }

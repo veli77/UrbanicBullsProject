@@ -18,11 +18,6 @@ import static stepDefinitions.Hooks.driver;
 public class US_062_ActionsInSelectedProduct_StepDef extends CommonPage {
     int eskiBoyut;
 
-    @Given("user logs in as a Buyer")
-    public void userLogsInAsABuyer() {
-        getLoginPage().login(USERCREDENTIAL.USERBUYER);
-    }
-
     @And("user goes to Your products-services")
     public void userGoesToYourProductsServices() {
         ReusableMethods.clickWithTimeOut(getAccountHubPage().yourProductService_navbar,5);

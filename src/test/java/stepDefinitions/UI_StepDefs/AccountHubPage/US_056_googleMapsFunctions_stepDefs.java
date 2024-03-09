@@ -17,24 +17,24 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     @When("User click to Address button, user can see related page")
     public void userClickToAddressButtonUserCanSeeRelatedPage() {
 
-       getAccountHubPage().goToAddressPage();
-       ReusableMethods.waitForPageToLoad(5);
-       Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
+        getAccountHubPage().goToAddressPage();
+        ReusableMethods.waitForPageToLoad(5);
+        Assert.assertTrue(getAccountAddressPage().iframe.isDisplayed());
 
     }
 
-    @And("Zoom buttons should be clickable.")
-    public void zoomButtonsShouldBeClickable() {
-
-       driver.switchTo().frame(getAccountAddressPage().iframe);
-
-     //  for (WebElement element: getAccountAddressPage().mapsZoomButtons){
-      //     element.click();
-    //   }
-      // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
-     //  getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
-
-    }
+//    @And("Zoom buttons should be clickable.")
+//    public void zoomButtonsShouldBeClickable() {
+//
+//       driver.switchTo().frame(getAccountAddressPage().iframe);
+//
+//     //  for (WebElement element: getAccountAddressPage().mapsZoomButtons){
+//      //     element.click();
+//    //   }
+//       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_up_button.jpg");
+//       getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\googleMap_zoom_IN_button.jpg");
+//
+//    }
 
     @Then("User click to View Larger Map link, user can reach related page.")
     public void userClickToViewLargerMapLinkUserCanReachRelatedPage() {
@@ -53,13 +53,13 @@ public class US_056_googleMapsFunctions_stepDefs extends CommonPage {
     }
 
     @Then("User click to park or forest area name, user can see a label related area.")
-    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea()  {
+    public void userClickToParkOrForestAreaNameUserCanSeeALabelRelatedArea() {
 
         ReusableMethods.hover(getAccountAddressPage().cursorOverTheMapNatureZones);
-     // Robot robot=new Robot();
-     //  robot.mouseMove(getAccountAddressPage().cursorOverTheMapNatureZones);
+        // Robot robot=new Robot();
+        //  robot.mouseMove(getAccountAddressPage().cursorOverTheMapNatureZones);
 
-     //  Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
+        //  Assert.assertTrue(getAccountAddressPage().cursorOverTheMapNatureZones.getAttribute("cursor").contains("pointer"));
 
 
     }
