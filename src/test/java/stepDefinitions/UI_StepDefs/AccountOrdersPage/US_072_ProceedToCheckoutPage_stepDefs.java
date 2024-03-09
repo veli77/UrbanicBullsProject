@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.stringtemplate.v4.ST;
 import pages.CommonPage;
+import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.util.ArrayList;
@@ -22,18 +23,17 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
         ReusableMethods.waitForPageToLoad(10);
         ReusableMethods.hover(getAccountOrdersPage().sepeteTikla);
         getAccountOrdersPage().sepeteTikla.click();
-        ReusableMethods.waitForPageToLoad(5);
+        ReusableMethods.waitForPageToLoad(10);
         ReusableMethods.verifyURL("basket");
         ReusableMethods.hover(getAccountOrdersPage().addToCardButtons.get(0));
         getAccountOrdersPage().addToCardButtons.get(0).click();
 
-     //   ReusableMethods.hover(getBasketPage().goToCartQuantity);
-//
-     //   ReusableMethods.waitForVisibility(getBasketPage().goToCartQuantity,5);
-     //   System.out.println(getBasketPage().goToCartQuantity.getText());
+       ReusableMethods.hover(getBasketPage().goToCartQuantity);
+       ReusableMethods.waitForVisibility(getBasketPage().goToCartQuantity,5);
+       System.out.println("goToCart quantity= "+getBasketPage().goToCartQuantity.getText());
     }
 
-    //int notificationFirstQuantity=Integer.parseInt(getBasketPage().notificationQuantity.getText());
+    int notificationFirstQuantity=Integer.parseInt(getBasketPage().notificationQuantity.getText());
 
     @When("the user clicks on the ProceedToCheckout button, the user can reach the ProceedToCheckout page")
     public void theUserClicksOnTheProceedToCheckoutButtonTheUserCanReachTheProceedToCheckoutPage() {
@@ -49,19 +49,9 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
 
 
 
-     //   getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\alertCloseIconjpg.jpg");
+      // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\alertCloseIconjpg.jpg");
 
-
-
-        ReusableMethods.hover(getBasketPage().alertCloseIcon);
-        getBasketPage().alertCloseIcon.click();
-
-
-
-      //  System.out.println(getBasketPage().buttonsPrevNextInProceedToCheckoutPage.get(1).getText());
-
-        ReusableMethods.hover(getBasketPage().buttonNext);
-        getBasketPage().buttonNext.click();
+        JSUtils.clickElementByJS(getBasketPage().buttonsPrevNextInProceedToCheckoutPage.get(1));
         Assert.assertTrue(getBasketPage().selectedPageInProceedToCheckoutPage.getText().contains("Address"));
         getBasketPage().buttonsPrevNextInProceedToCheckoutPage.getFirst().click();
         Assert.assertTrue(getBasketPage().selectedPageInProceedToCheckoutPage.getText().contains("Information"));
@@ -121,7 +111,13 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
         int j=0;
         for (String status:arrayList){
 
-            dataTable.row(j).getFirst().equals(status);
+            if(dataTable.row(j).getFirst().contains(status)){
+                continue;
+            }
+            else {
+                System.out.println("Order Status is not correct");
+                break;
+            }
         }
 
 
@@ -133,13 +129,15 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
     @And("Order statuses must be seen in mutual buyer-seller accounts")
     public void orderStatusesMustBeSeenInMutualBuyerSellerAccounts() {
 
+
+
     }
 
     @Then("As a result of orders, the number in the notifications button should increase")
     public void asAResultOfOrdersTheNumberInTheNotificationsButtonShouldIncrease() {
         int currentNotificationQuantity=Integer.parseInt(getBasketPage().notificationQuantity.getText());
 
-    //   Assert.assertTrue(currentNotificationQuantity>notificationFirstQuantity);
+        Assert.assertTrue(currentNotificationQuantity>notificationFirstQuantity);
 
     }
 

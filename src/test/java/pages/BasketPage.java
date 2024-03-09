@@ -9,7 +9,7 @@ public class BasketPage extends CommonPage{
     // Us 072 ProceedToCheckout Page
     @FindBy(css = "div.proceed_circle__3NRN8")
     public List<WebElement> circleBoxUnderTagsInProceedToCheckoutPage;
-    @FindBy(xpath = "//button[@class='proceed_btn__vZFGE']")
+    @FindBy(css = "button[class='proceed_btn__vZFGE']")
     public List<WebElement> buttonsPrevNextInProceedToCheckoutPage;
     @FindBy(css = "button[type='button']")
     public WebElement buttonNext;
