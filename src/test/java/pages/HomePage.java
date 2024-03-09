@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 //import org.sikuli.script.FindFailed;
 //import org.sikuli.script.Pattern;
 //import org.sikuli.script.Screen;
-import org.sikuli.script.FindFailed;
-import org.sikuli.script.Pattern;
-import org.sikuli.script.Screen;
 import utilities.Driver;
 import utilities.JSUtils;
 
@@ -211,7 +208,7 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
-    public void screenshotClick(String screenShotPath){
+/*    public void screenshotClick(String screenShotPath){
 
         Screen screen= new Screen();
         Pattern pattern= new Pattern(screenShotPath);
@@ -222,6 +219,8 @@ public class HomePage extends CommonPage {
             throw new RuntimeException(e);
         }
     }
+
+ */
 
 
 
