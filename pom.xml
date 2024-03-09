@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.urbanicFarms</groupId>
-    <artifactId>UrbanicBulls</artifactId>
+    <artifactId>UrbanicBullsProject</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
