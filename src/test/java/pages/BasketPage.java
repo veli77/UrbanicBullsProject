@@ -20,6 +20,12 @@ public class BasketPage extends CommonPage {
     public WebElement subTotal;
     @FindBy(xpath = "(//button[@class='btn btn-primary mr-4'])[1]")
     public WebElement yesButtonorderSilmekIcin;
+    @FindBy(xpath = "(//p[@class='FeaturedProductCard_productTitle__2rzUT'])[19]")
+    public WebElement redWorm;//5 e luk urun, promocode ile esitlemek icin, equals hatasi almak icin
+    @FindBy(xpath = "(//button[@class='FeaturedProductCard_plus__3NnKq'])[19]")
+    public WebElement redWormPlus;
+
+
 
 
 
