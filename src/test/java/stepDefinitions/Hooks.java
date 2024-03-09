@@ -86,6 +86,7 @@ public class Hooks extends CommonPage {
         getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
+        ReusableMethods.hover(getAccountHomePage().zipCodeBoxCloseButton);
         getAccountHomePage().zipCodeBoxCloseButton.click();
     }
 
@@ -149,7 +150,7 @@ public class Hooks extends CommonPage {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-        Driver.closeDriver();
+       // Driver.closeDriver();
     }
 
     @Before("@DB")
