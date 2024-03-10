@@ -19,6 +19,18 @@ public class MyEventsPage extends CommonPage {
     public WebElement SearchPlacesInput;
     @FindBy(css = ".autocomplete-dropdown-container>li")
     public List<WebElement> suggestedAddressList;
+
+    /**
+     * US_080
+     */
+    @FindBy(xpath = "//div[@class='col-10']//input")
+    public WebElement createEventAddressInput;
+    @FindBy(id = "fee")
+    public WebElement feeInput;
+    @FindBy(xpath = "//div[@class='modal-body ']//input[@type='search']")
+    public WebElement addAddressSearchPlacesInput;
+    @FindBy(xpath = "//datalist[@id='address3']//option")
+    public WebElement firstAddressOnTheList;
     @FindBy(xpath = "//input[@id='postal']")
     public WebElement PostalInput;
     @FindBy(xpath = "//input[@id='addressTitle']")
@@ -81,40 +93,28 @@ public class MyEventsPage extends CommonPage {
     public WebElement CreateEventTitleUS_77Btn;
     @FindBy(xpath = "//input[@id='address2']")
     public WebElement CreateEventAddressUS_77Btn;
-
     @FindBy(xpath = "//input[@id='date']")
     public WebElement CreateEventDateUS_77Btn;
-
     @FindBy(xpath = "//input[@id='time']")
     public WebElement CreateEventTimeUS_77Btn;
-
     @FindBy(xpath = "//input[@id='attendeeLimit']")
     public WebElement CreateEventAttendeeUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='schedule']")
     public WebElement CreateEventScheduleUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='description']")
     public WebElement CreateEventDescriptionUS_77Btn;
-
     @FindBy(xpath = "//textarea[@id='tac']")
     public WebElement CreateEventTermsAndConditionUS_77Btn;
-
     @FindBy(xpath = "//input[@id='duration']")
     public WebElement CreateEventDurationUS_77Btn;
-
     @FindBy(xpath = "//button[text()='Submit']")
     public WebElement CreateEventSubmitUS_77Btn;
-
     @FindBy(xpath = "//div[text()='Please enter a valid title.']")
     public WebElement CreateEventInvTitleMessageUS_77Btn;
-
     @FindBy(xpath = "//div[text()='Please select an address.']")
     public WebElement CreateEventInvAddressMessageUS_77Btn;
-
     @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
     public WebElement CreateEventTimeInvUS_77Btn;
-
     @FindBy(xpath = "(//div[text()='Please fill this field'])[1]")
     public WebElement CreateEventDateInvMessageUS_77Btn;
 

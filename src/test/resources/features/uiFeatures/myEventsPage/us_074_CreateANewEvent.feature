@@ -1,4 +1,4 @@
-@UI @Login
+@UI @Login @US_074
 Feature: US_074 - Create a New Event
 
 
