@@ -5,6 +5,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import pages.CommonPage;
 
 import java.util.List;
@@ -56,7 +57,7 @@ public class US_079_NotAbleToAttendTheSomeonesEvents_StepDefs extends CommonPage
 
     }
 
-    @And("user see so box will be red")
+    @Given("user see so box will be red")
     public void userSeeSoBoxWillBeRed() {
 
 
@@ -110,10 +111,12 @@ public class US_079_NotAbleToAttendTheSomeonesEvents_StepDefs extends CommonPage
 
     @When("user leaves the conditions box blank")
     public void userLeavesTheConditionsBoxBlank() {
+        getEventsPage().CheckboxImEvents.isDisplayed();
     }
 
     @And("user see the checkout page")
     public void userSeeTheCheckoutPage(){
+        Assert.assertTrue(driver.getTitle().contains("paymentUrl"));
 
     }
     @And("user see the Checkbox message {string}")
