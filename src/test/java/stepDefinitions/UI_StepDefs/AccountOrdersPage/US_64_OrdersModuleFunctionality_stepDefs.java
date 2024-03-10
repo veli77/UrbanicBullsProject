@@ -6,7 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-import pages.AccountOrdersPage;
 import pages.CommonPage;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
@@ -16,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class US_64_OrdersModuleFunctionality_stepDefs extends CommonPage {
     @When("User logs in as Vedat")
     public void UserLogsInAsVedat() {
-        getLoginPage().login(USERCREDENTIAL.USERVEDAT);
+        getLoginPage().login(USERCREDENTIAL.USER4);
     }
 
 
