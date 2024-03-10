@@ -1,5 +1,6 @@
 @UI
-@Login2
+@Login2 @wip7
+
 Feature: As a user, should not able to add an address successfully by providing with invalid data
 
   Background:
