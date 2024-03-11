@@ -46,7 +46,7 @@ public class US71_StepDefs extends CommonPage {
         for (int i = 0; i < 3; i++) {
             getAccountOrdersPage().plus.click();
             Thread.sleep(2000);
-            getAccountOrdersPage().addToCard.click();
+            getAccountOrdersPage().addToCardButtons.getFirst().click();
         }
         String subtotalSansProcode = getBasketPage().subTotal.getText();
         Thread.sleep(1000);
@@ -72,7 +72,7 @@ public class US71_StepDefs extends CommonPage {
                 getAccountOrdersPage().plus.click();
                 Thread.sleep(2000);
             }
-            getAccountOrdersPage().addToCard.click();
+            getAccountOrdersPage().addToCardButtons.getFirst().click();
         }
         Thread.sleep(2000);
     }
@@ -85,7 +85,7 @@ public class US71_StepDefs extends CommonPage {
 
 
         }
-        getAccountOrdersPage().addToCard.click();
+        getAccountOrdersPage().addToCardButtons.getFirst().click();
         String subtotalSansProcode = getBasketPage().subTotal.getText();
         Thread.sleep(1000);
         getBasketPage().enterPromocode.click();
@@ -110,7 +110,7 @@ public class US71_StepDefs extends CommonPage {
             getAccountOrdersPage().plus.click();
 
         }
-        getAccountOrdersPage().addToCard.click();
+        getAccountOrdersPage().addToCardButtons.getFirst().click();
         String subtotalSansProcode = getBasketPage().subTotal.getText();
         Thread.sleep(1000);
         getBasketPage().enterPromocode.click();
