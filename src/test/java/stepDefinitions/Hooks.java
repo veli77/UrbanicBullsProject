@@ -202,9 +202,27 @@ public class Hooks extends CommonPage {
         return token;
     }
 
+    public String getToken(USERCREDENTIAL usercredential, URL_LINKS url_links) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
+                .when()
+                .post(url_links.getLink());
+
+        JsonPath jsonPath = response.jsonPath();
+        token = jsonPath.getString("token");
+
+        return token;
+    }
+
     @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
+    }
+
+    @Before("@tokencanli")
+    public void tokenCanli() {
+        getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
 
     }
 }
