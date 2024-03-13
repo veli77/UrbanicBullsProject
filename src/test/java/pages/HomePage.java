@@ -211,20 +211,17 @@ public class HomePage extends CommonPage {
         element.click();
     }
 
-    /*
-    public void screenshotClick(String screenShotPath){
-
-        Screen screen= new Screen();
-        Pattern pattern= new Pattern(screenShotPath);
-        try {
-            screen.click(pattern);
-
-        } catch (FindFailed e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-     */
+//    public void screenshotClick(String screenShotPath){
+//
+//        Screen screen= new Screen();
+//        Pattern pattern= new Pattern(screenShotPath);
+//        try {
+//            screen.click(pattern);
+//
+//        } catch (FindFailed e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
 
 

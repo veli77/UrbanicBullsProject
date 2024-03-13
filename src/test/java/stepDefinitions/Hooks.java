@@ -111,7 +111,26 @@ public class Hooks extends CommonPage {
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
-
+    }
+  
+    @Before(value = "@Login4")
+    public void login4() {
+        driver.get("https://urbanicfarm.com/auth/login");
+        getLoginPage().LoginEmail.sendKeys("test_seller@mailsac.com");
+        getLoginPage().input_password.sendKeys("e976S2rhtySNTdk");
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
+        }
+  
+    @Before(value = "@Login5")
+    public void login5() {
+        driver.get(URL_LINKS.LOGIN_URL.getLink());
+        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER4.getUsername());
+        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER4.getPassword());
+        getLoginPage().submit_button.click();
+        ReusableMethods.waitForPageToLoad(5);
+        getAccountHomePage().zipCodeBoxCloseButton.click();
     }
 
     // Ana web sitesinden Test icin Login
@@ -127,7 +146,6 @@ public class Hooks extends CommonPage {
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
-
     }
 
     @After(value = "@VideoRecorder")
@@ -148,7 +166,7 @@ public class Hooks extends CommonPage {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-    // Driver.closeDriver();
+     Driver.closeDriver();
     }
 
     @Before("@DB")
@@ -184,9 +202,27 @@ public class Hooks extends CommonPage {
         return token;
     }
 
+    public String getToken(USERCREDENTIAL usercredential, URL_LINKS url_links) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
+                .when()
+                .post(url_links.getLink());
+
+        JsonPath jsonPath = response.jsonPath();
+        token = jsonPath.getString("token");
+
+        return token;
+    }
+
     @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
+    }
+
+    @Before("@tokencanli")
+    public void tokenCanli() {
+        getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
 
     }
 }

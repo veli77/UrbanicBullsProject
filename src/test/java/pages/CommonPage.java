@@ -57,7 +57,7 @@ public class CommonPage {
         return notificationPage;
     }
 
-    public MyEventsPage getMyEventsPage() {
+    public  MyEventsPage getMyEventsPage() {
         if (myEventsPage == null){
             myEventsPage = new MyEventsPage();
         }
