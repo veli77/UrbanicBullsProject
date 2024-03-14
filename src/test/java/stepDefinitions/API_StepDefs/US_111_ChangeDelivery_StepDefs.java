@@ -12,13 +12,9 @@ public class US_111_ChangeDelivery_StepDefs {
     @Given("User goes to {string}")
     public void userGoesTo(String url) {
 
-        String jsonBody ="{\"availability\":\"10:00-12:00\",\"availabilityBranch\"" +
-                ":\"\",\"deliveryType\":[\"BUYER_PICKUP\",\"SELLER_FLEXIBLE\"]," +
-                "\"estimatedDeliveryTime\":[],\"flexibleDeliveryOptions\":" +
-                "[{\"deliveryBy\":3066,\"orderBegin\":4445,\"orderEnd\":8826}]," +
-                "\"freeDeliveryRange\":\"100\",\"maxDeliveryRange\":200,\"minFreeDeliveryOrder\"" +
-                ":15,\"perMileCost\":\"1\"}";
-
+        String jsonBody = """
+                {"availability":"10:00-12:00","availabilityBranch":"","deliveryType":["BUYER_PICKUP","SELLER_FLEXIBLE"],"estimatedDeliveryTime":[],"flexibleDeliveryOptions":[{"deliveryBy":3066,"orderBegin":4445,"orderEnd":8826}],"freeDeliveryRange":"100","maxDeliveryRange":200,"minFreeDeliveryOrder":15,"perMileCost":"1"}
+                """;
 
         response = given()
                 .contentType(ContentType.JSON)

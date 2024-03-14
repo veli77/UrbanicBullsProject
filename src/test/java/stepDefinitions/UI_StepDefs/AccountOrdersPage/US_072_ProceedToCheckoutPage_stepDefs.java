@@ -6,11 +6,12 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+//import org.stringtemplate.v4.ST;
 import pages.CommonPage;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 import static stepDefinitions.Hooks.driver;
 

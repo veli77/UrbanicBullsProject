@@ -1,16 +1,17 @@
 package pages;
 
+
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utilities.Driver;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.driver;
 
 public class AccountHubPage extends CommonPage{
@@ -82,13 +83,24 @@ public class AccountHubPage extends CommonPage{
     public WebElement deleteAlert;
     @FindBy(xpath = "//h3")
     public WebElement lastApprovedProduct;
-
+    @FindBy(css = ".font-weight-bold:first-child")
+    public List<WebElement> productName;
+    @FindBy(xpath = "//span[@class='text-muted d-block']")
+    public List<WebElement> productPrice;
+    @FindBy(xpath = "//span[@class='text-muted']")
+    public List<WebElement> productStock;
+    @FindBy(css = ".HubManagement_badge__2jPOb.text-success")
+    public List<WebElement> productStatus;
+    @FindBy(css = "#stock")
+    public WebElement productStockInfo;
+    @FindBy(css = "#isTrade")
+    public WebElement isTrade;
     public void VerifyYourProducts_ServicesPageUrl() throws InterruptedException {
         Thread.sleep(3000);
         String expectedUrl = "https://test.urbanicfarm.com/account/hub";
         String actualUrl = driver.getCurrentUrl();
         System.out.println("actual="+actualUrl);
-        Assert.assertEquals(expectedUrl,actualUrl);
+        assertEquals(expectedUrl,actualUrl);
     }
 
     public void goToPreviousPage()  {
@@ -191,5 +203,83 @@ public class AccountHubPage extends CommonPage{
             System.out.println("No approved product found!");
         }
     }
+    public void assertProductGroup(){
+        for (int i = 0; i <allhubs.size() ; i++) {
+            Assert.assertTrue(allhubs.get(i).isDisplayed());
+        }
+    }
+    public void assertProductInformation(){
+        ReusableMethods.waitForVisibility(getAccountHubPage().productName.getFirst(),5);
+        for (int i = 0; i <productName.size() ; i++) {
+            Assert.assertTrue(productName.get(i).isDisplayed());
+            Assert.assertTrue(productPrice.get(i).isDisplayed());
+            Assert.assertTrue(productStock.get(i).isDisplayed());
+        }
+    }
+    public void assertProductStatus() {
+        for (int i = 0; i < productStatus.size(); i++) {
+            String status = productStatus.get(i).getText();
+            switch (status) {
+                case "APPROVED":
+                    assertEquals(status, "APPROVED");
+                    break;
+                case "IN_REVIEW":
+                    assertEquals(status, "IN_REVIEW");
+                    break;
+                case "REJECTED":
+                    assertEquals(status, "REJECTED");
+                    break;
+                default:
+                    assertEquals(status, "ALL");
+                    break;
 
+            }
+        }
+    }
+    public void productStockUpdate(){
+        ReusableMethods.waitForVisibility(productStockInfo,5);
+        String updateValue= "100";
+        productStockInfo.click();
+        productStockInfo.clear();
+        productStockInfo.sendKeys(updateValue);
+        String value = productStockInfo.getAttribute("value");
+        Assert.assertEquals(updateValue,value);
+    }
+
+    public void verifyUpdateMesage() {
+        String updateAlertMessage="American Slicin Cucumber Seed has been successfully updated";
+        ReusableMethods.waitForVisibility(updatedAlert, 5);
+        System.out.println(updatedAlert.getText());
+        Assert.assertEquals(updateAlertMessage,updatedAlert.getText());
+    }
+
+    public void clicksUpdateButton() {
+        JSUtils.clickElementByJS(update);
+        ReusableMethods.waitFor(3);
+    }
+
+    public void clicksTradeButton() {
+        if(!isTrade.isSelected()){
+            JSUtils.clickElementByJS(isTrade);
+        }
+    }
+
+    public void tradeDescriptionVisible() {
+        ReusableMethods.verifyElementDisplayed(tradeDescription);
+    }
+
+    public void updateButtonVisible() {
+        Assert.assertTrue(update.isDisplayed());
+
+    }
+
+    public void deleteButtonVisible() {
+        Assert.assertTrue(delete.isDisplayed());
+
+    }
+
+    public void tradeButtonIsFuntional() {
+        Assert.assertTrue(isTrade.isEnabled());
+    }
 }
+

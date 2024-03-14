@@ -17,7 +17,7 @@ import static stepDefinitions.Hooks.response;
 
 public class US_114_GetHubInformation_StepDefs {
 
-    String tokencanli;
+    String token1;
     String hubName;
     @Given("User connects to the {string}")
     public void user_connect_to_the(String endpoint) {
@@ -28,7 +28,7 @@ public class US_114_GetHubInformation_StepDefs {
                 .post(endpoint);
 
         JsonPath jsonPath = response.jsonPath();
-        tokencanli = jsonPath.getString("token");
+        token1 = jsonPath.getString("token");
     }
 
     @When("User gets hub information details")
@@ -37,7 +37,7 @@ public class US_114_GetHubInformation_StepDefs {
         response =  given()
                 .contentType(ContentType.JSON)
                 .auth()
-                .oauth2(tokencanli)
+                .oauth2(token1)
                 .when()
                 .post("https://test.urbanicfarm.com/api/account/hub/getMyHubs");
 
@@ -67,7 +67,7 @@ public class US_114_GetHubInformation_StepDefs {
         response =  given()
                 .contentType(ContentType.JSON)
                 .auth()
-                .oauth2(tokencanli)
+                .oauth2(token1)
                 .when()
                 .post("https://test.urbanicfarm.com/api/account/hub/getHubDetails/"+ hubName);
 
