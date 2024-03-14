@@ -51,7 +51,7 @@ public class US_107_DeleteAddress_StepDefs {
                 "    \"addressId\": "+addedAddress +
                 "\n}";
 
-        Response response1 = given()
+        response = given()
                 .contentType(ContentType.JSON)
                 .auth()
                 .oauth2(token)
