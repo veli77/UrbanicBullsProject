@@ -16,6 +16,7 @@ import pages.CommonPage;
 import utilities.*;
 
 import static enums.USERCREDENTIAL.USER3;
+import static enums.USERCREDENTIAL.USER5;
 import static io.restassured.RestAssured.given;
 
 
@@ -218,6 +219,11 @@ public class Hooks extends CommonPage {
     @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
+    }
+
+    @Before("@user5token")
+    public void user5Token() {
+        getToken(USER5);
     }
 
     @Before("@tokencanli")
