@@ -18,7 +18,7 @@ public class BasketPage extends CommonPage{
     public WebElement rateOurServiceButton;
     @FindBy(xpath = "(//div[@class='Notifications_notificationNumContainer__myxVE']/span)[1]")
     public WebElement notificationQuantity;
-    @FindBy(className = "Navbar_cartText__1jkrK")
+    @FindBy(xpath = "/html[1]/body[1]/div[1]/div[4]/div[1]/nav[1]/div[3]/div[1]/div[1]/div[1]/span[1]")
     public WebElement goToCartQuantity;
     @FindBy(id = "payment-submit-btn")
     public WebElement completePurchaseButton;
