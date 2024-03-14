@@ -16,6 +16,7 @@ import pages.CommonPage;
 import utilities.*;
 
 import static enums.USERCREDENTIAL.USER3;
+import static enums.USERCREDENTIAL.USERVEDAT;
 import static enums.USERCREDENTIAL.USER5;
 import static io.restassured.RestAssured.given;
 
@@ -107,8 +108,8 @@ public class Hooks extends CommonPage {
         //System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERVEDAT.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
@@ -221,6 +222,10 @@ public class Hooks extends CommonPage {
         getToken(USER3);
     }
 
+    @Before("@userVedatToken")
+    public void userVedatToken() {
+        getToken(USERVEDAT);
+      
     @Before("@user5token")
     public void user5Token() {
         getToken(USER5);
