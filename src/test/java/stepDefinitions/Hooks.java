@@ -17,6 +17,7 @@ import utilities.*;
 
 import static enums.USERCREDENTIAL.USER3;
 import static enums.USERCREDENTIAL.USERVEDAT;
+import static enums.USERCREDENTIAL.USER5;
 import static io.restassured.RestAssured.given;
 
 
@@ -224,6 +225,10 @@ public class Hooks extends CommonPage {
     @Before("@userVedatToken")
     public void userVedatToken() {
         getToken(USERVEDAT);
+      
+    @Before("@user5token")
+    public void user5Token() {
+        getToken(USER5);
     }
 
     @Before("@tokencanli")
