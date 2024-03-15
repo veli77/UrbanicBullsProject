@@ -174,13 +174,11 @@ public class Hooks extends CommonPage {
     @Before("@DB")
     public void setupDatabase() {
         DBUtilities.createConnection();
-
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //  DatabaseUtilities.closeConnection();
-
+        DBUtilities.closeConnection();
     }
 
     @Before("@user1")
@@ -191,7 +189,7 @@ public class Hooks extends CommonPage {
         );
     }
 
-    public String getToken(USERCREDENTIAL usercredential) {
+    public static String getToken(USERCREDENTIAL usercredential) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
