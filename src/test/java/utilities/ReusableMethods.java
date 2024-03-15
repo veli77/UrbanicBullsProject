@@ -3,9 +3,11 @@ package utilities;
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
@@ -16,10 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -422,5 +422,27 @@ public class ReusableMethods {
         select.selectByIndex(index);
 
     }
+
+    //bir isim oluşturur Faker classını kullanarak
+    public static String createName() {
+        Faker faker = new Faker();
+        String name = faker.funnyName().name();
+
+        return name;
+    }
+
+    //şimdiki tarihi ve saati oluşturur parametre olarak ileri geri ayarlayabilirsin
+    //        format: "2025-01-01 00:00:00"
+    public static String createDateWithTime(int plusDay, int plusHour) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, plusDay);
+        calendar.add(Calendar.HOUR, plusHour);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return simpleDateFormat.format(calendar.getTime());
+    }
+
+
 }
 
