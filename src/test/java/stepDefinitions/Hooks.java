@@ -189,7 +189,7 @@ public class Hooks extends CommonPage {
         );
     }
 
-    public String getToken(USERCREDENTIAL usercredential) {
+    public static String getToken(USERCREDENTIAL usercredential) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
