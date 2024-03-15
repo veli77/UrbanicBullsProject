@@ -1,4 +1,4 @@
-@Vedat @API @US_107
+@Vedat @API @US_134
 
 Feature: TE of US_134
   @userVedatToken
