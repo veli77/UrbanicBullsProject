@@ -5,6 +5,8 @@ import enums.USERCREDENTIAL;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -14,6 +16,8 @@ import pages.CommonPage;
 import utilities.*;
 
 import static enums.USERCREDENTIAL.USER3;
+import static enums.USERCREDENTIAL.USERVEDAT;
+import static enums.USERCREDENTIAL.USER5;
 import static io.restassured.RestAssured.given;
 
 
@@ -24,6 +28,7 @@ public class Hooks extends CommonPage {
     public static CommonPage commonPage;
     public static Actions actions;
     public static Response response;
+    public static String token;
 
 
     public static boolean isHeadless = false;
@@ -103,8 +108,8 @@ public class Hooks extends CommonPage {
         //System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERVEDAT.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
@@ -163,7 +168,7 @@ public class Hooks extends CommonPage {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-    // Driver.closeDriver();
+     Driver.closeDriver();
     }
 
     @Before("@DB")
@@ -186,7 +191,7 @@ public class Hooks extends CommonPage {
         );
     }
 
-   /* public String getToken(USERCREDENTIAL usercredential) {
+    public String getToken(USERCREDENTIAL usercredential) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
@@ -197,11 +202,39 @@ public class Hooks extends CommonPage {
         token = jsonPath.getString("token");
 
         return token;
-    }*/
+    }
 
-   /* @Before("@user3token")
+    public String getToken(USERCREDENTIAL usercredential, URL_LINKS url_links) {
+        response = given()
+                .contentType(ContentType.JSON)
+                .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
+                .when()
+                .post(url_links.getLink());
+
+        JsonPath jsonPath = response.jsonPath();
+        token = jsonPath.getString("token");
+
+        return token;
+    }
+
+    @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
+    }
 
-    }*/
+    @Before("@userVedatToken")
+    public void userVedatToken() {
+        getToken(USERVEDAT);
+    }
+      
+    @Before("@user5token")
+    public void user5Token() {
+        getToken(USER5);
+    }
+
+    @Before("@tokencanli")
+    public void tokenCanli() {
+        getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
+
+    }
 }
