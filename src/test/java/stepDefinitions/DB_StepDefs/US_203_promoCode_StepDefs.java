@@ -9,6 +9,7 @@ import pojo.PromoCode.PPromoCode;
 import utilities.DBUtilities;
 import utilities.ReusableMethods;
 
+import java.io.*;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,8 @@ import java.util.Map;
 public class US_203_promoCode_StepDefs {
 
     String promoCodeName = ReusableMethods.createName();
+    String promoCodeID;
+    String path = System.getProperty("user.dir") + "/src/test/resources/dummy.txt";
     @When("User create Promo Code")
     public void user_create_promo_code() {
 
@@ -25,8 +28,8 @@ public class US_203_promoCode_StepDefs {
         DBUtilities.createPromoCode(promoCodeName,startDate,endDate);
     }
 
-    @Then("User should be able to see Promo Code information in the correct schema and columns in DB")
-    public void user_should_be_able_to_see_promo_code_information_in_the_correct_schema_and_columns_in_db() throws SQLException {
+    @Then("User should be able to reach Promo Code information in the correct schema and columns in DB")
+    public void userShouldBeAbleToReachPromoCodeInformationInTheCorrectSchemaAndColumnsInDB() throws SQLException {
 
 //        List<Map<String, Object>> promocode = DBUtilities.getList("promo_code");
 //        for (int i = 0; i < promocode.size(); i++) {
@@ -45,13 +48,46 @@ public class US_203_promoCode_StepDefs {
         pPromoCodes.stream().forEach(t-> System.out.println(t.getId()+" "+t.getCode()+" "+t.getDiscount()));
     }
 
+
+    @Then("User should be able to get added Promo Code ID")
+    public void userShouldBeAbleToGetAddedPromoCodeID() throws IOException, SQLException {
+
+        List<PPromoCode> promoCodeListPojo = DBUtilities.getPromoCodeList_pojo();
+        String promoCodeID = String.valueOf(promoCodeListPojo.getLast().getId());
+
+
+        //dosyadaki datayı günceller
+        FileWriter file = new FileWriter(path);
+        file.write(promoCodeID);
+        file.close();
+    }
+
     @And("User update Promo Code")
-    public void userUpdatePromoCode() {
-        //DBUtilities.updatePromoCode(promoCodeName,13);
+    public void userUpdatePromoCode() throws IOException {
+
+        //güncel datayı okur
+        FileReader reader = new FileReader(path);
+        BufferedReader file2 = new BufferedReader(reader);
+        promoCodeID = file2.readLine();
+        file2.close();
+
+        String columnName = "code";
+        String columnValue = "updatedPromoCode";
+
+
+        DBUtilities.updatePromoCode(columnName,columnValue, Integer.parseInt(promoCodeID));
     }
 
     @And("User delete Promo Code")
-    public void userDeletePromoCode() {
-        DBUtilities.deletePromoCode(13);
+    public void userDeletePromoCode() throws IOException {
+
+        //güncel datayı okur
+        FileReader reader = new FileReader(path);
+        BufferedReader file2 = new BufferedReader(reader);
+        promoCodeID = file2.readLine();
+        file2.close();
+
+        DBUtilities.deletePromoCode(Integer.parseInt(promoCodeID));
     }
+
 }

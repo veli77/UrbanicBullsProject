@@ -108,7 +108,7 @@ public class DBUtilities {
 
     //prommo Code Update etmek için kullanabilirsiniz
     public static void updatePromoCode(String columnName, String columnValue, int id) {
-        String query = "UPDATE 'promo_code' SET '" + columnName + "' = '" + columnValue + "' WHERE 'promo_code'.'id' = " + id + "; ";
+        String query = "update promo_code set "+columnName+" = '"+columnValue+"' where promo_code.id = "+id+";";
         executeQueryStatement(query);
     }
 
@@ -153,7 +153,7 @@ public class DBUtilities {
 
         statement = connection.createStatement();
 
-        resultSet = statement.executeQuery("SELECT * FROM 'promo_code' ");
+        resultSet = statement.executeQuery("select * from promo_code;");
 
         List<PPromoCode> list = new ArrayList<>();
 
@@ -163,7 +163,7 @@ public class DBUtilities {
                     resultSet.getInt("id"),
                     resultSet.getString("code"),
                     resultSet.getString("starts_at"),
-                    resultSet.getString("end_at"),
+                    resultSet.getString("ends_at"),
                     resultSet.getInt("number_of_users"),
                     resultSet.getInt("discount"),
                     resultSet.getString("discount_type")
