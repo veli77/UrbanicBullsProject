@@ -225,6 +225,7 @@ public class Hooks extends CommonPage {
     @Before("@userVedatToken")
     public void userVedatToken() {
         getToken(USERVEDAT);
+    }
       
     @Before("@user5token")
     public void user5Token() {
