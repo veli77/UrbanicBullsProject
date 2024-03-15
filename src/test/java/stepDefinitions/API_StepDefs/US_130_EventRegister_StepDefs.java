@@ -12,7 +12,6 @@ import static stepDefinitions.Hooks.token;
 
 public class US_130_EventRegister_StepDefs {
 
-
     @Given("user connect to  {string}")
     public void userConnectTo(String url) {
         response = given()
