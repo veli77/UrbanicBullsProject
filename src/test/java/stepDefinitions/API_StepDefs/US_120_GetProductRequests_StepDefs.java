@@ -17,7 +17,7 @@ import static org.hamcrest.Matchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static stepDefinitions.Hooks.token;
 
-public class US_200_GetProductRequests_StepDefs {
+public class US_120_GetProductRequests_StepDefs {
 
     Response response;
     Random random = new Random();
