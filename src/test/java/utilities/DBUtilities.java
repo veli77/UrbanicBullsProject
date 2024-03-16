@@ -152,7 +152,6 @@ public class DBUtilities {
     public static List<PPromoCode> getPromoCodeList_pojo() throws SQLException {
 
         statement = connection.createStatement();
-
         resultSet = statement.executeQuery("select * from promo_code;");
 
         List<PPromoCode> list = new ArrayList<>();
