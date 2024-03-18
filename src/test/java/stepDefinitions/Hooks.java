@@ -15,6 +15,7 @@ import org.openqa.selenium.interactions.Actions;
 import pages.CommonPage;
 import utilities.*;
 
+import static enums.USERCREDENTIAL.USER2;
 import static enums.USERCREDENTIAL.USER3;
 import static enums.USERCREDENTIAL.USERVEDAT;
 import static enums.USERCREDENTIAL.USER5;
@@ -82,10 +83,10 @@ public class Hooks extends CommonPage {
 
         System.out.println("Login metodu calıstı");
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USER2.getUsername());
+        getLoginPage().LoginEmail.sendKeys(USER2.getUsername());
         // getHomePage().screenshotClick("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
         // getHomePage().screenShotSendText("C:\\Users\\ersin\\IdeaProjects\\UrbanicBullsProject\\src\\test\\java\\utilities\\sikuliX_ScreenShots\\loginEmailBox.jpg");
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USER2.getPassword());
+        getLoginPage().input_password.sendKeys(USER2.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         ReusableMethods.hover(getAccountHomePage().zipCodeBoxCloseButton);
@@ -233,6 +234,9 @@ public class Hooks extends CommonPage {
     @Before("@tokencanli")
     public void tokenCanli() {
         getToken(USERCREDENTIAL.USERBASEWEBSITE,URL_LINKS.CANLILOGINAPIURL);
-
+    }
+    @Before("@userUrbanic2Token")
+    public void userUrbanic2Token() {
+        getToken(USER2);
     }
 }
