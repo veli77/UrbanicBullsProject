@@ -464,7 +464,7 @@ public class ReusableMethods {
         }
     }
 
-    //bir dosyaya birşeyler yazdırmak için kullanabilirisiniz
+    //dolu bir dosyaya ulaşıp veri kullanmak için kullanabilirisiniz
     // parametre olarak dosyanın path'ini girmelisiniz, int olarak datayı döner
     //String path = System.getProperty("user.dir") + "/src/test/resources/dummy.txt";
     public static int readTxt(String path) {
