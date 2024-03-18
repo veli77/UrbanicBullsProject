@@ -207,7 +207,7 @@ public class HomePage extends CommonPage {
         ReusableMethods.hover(element);
         element.click();
     }
-
+/*
     public void screenshotClick(String screenShotPath){
 
         Screen screen= new Screen();
@@ -219,6 +219,8 @@ public class HomePage extends CommonPage {
             throw new RuntimeException(e);
         }
     }
+
+ */
 
 
 

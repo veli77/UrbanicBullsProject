@@ -131,6 +131,20 @@ public class MyEventsPage extends CommonPage {
     @FindBy(xpath = "//div[@role='alert'][.='Event Link Copied to Clipboard']")
     public WebElement CopyToastMessage;
 
+    @FindBy(xpath = "//h5[text()='New My Event']")
+    public WebElement TitleOfCreatedNewMyEvent;
+
+    @FindBy(xpath = "(//h5[@class='text-center text-warning mt-3'])[last()]")
+    public WebElement LastNewEvent;
+
+    @FindBy(xpath = "(//button[text()='Cancel'])[last()]")
+    public WebElement LastCancelButton;
+
+    @FindBy(xpath = "(//button[text()='Copy Link'])[last()]")
+    public WebElement LastCopyLinkButton;
+
+    @FindBy(xpath = "(//button[text()='Mark as Completed'])[last()]")
+    public WebElement LastMarkAsCompletedButton;
 
 
 
@@ -206,6 +220,11 @@ public class MyEventsPage extends CommonPage {
         AlertEventCreated.isDisplayed();
         Assert.assertEquals("New Event", CreatedEventTitle.getLast().getText());
     }
+    public void VerifyingNewMYEventIsCreated() {
+        //AlertEventCreated.isDisplayed();
+        String actual = ReusableMethods.waitForVisibility(LastNewEvent,3).getText();
+        Assert.assertEquals("New My Event", actual);
+    }
 
     public void DeletingLastCreatedEvent() {
         JSUtils.clickElementByJS(DeleteEvent.getLast());
@@ -224,9 +243,3 @@ public class MyEventsPage extends CommonPage {
         JSUtils.clickElementByJS(getMyEventsPage().CreateEventSubmitUS_77Btn);
     }
 }
-
-
-
-
-
-
