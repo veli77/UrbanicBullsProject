@@ -1,4 +1,3 @@
-@US_130 @API
 Feature: TE of US_130  As a user I should be able to register an existing event
 
   @userUrbanic2Token

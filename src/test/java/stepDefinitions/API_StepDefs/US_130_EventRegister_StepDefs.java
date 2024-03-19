@@ -6,7 +6,6 @@ import io.restassured.http.ContentType;
 import org.junit.Assert;
 
 import static stepDefinitions.Hooks.response;
-
 import static io.restassured.RestAssured.given;
 import static stepDefinitions.Hooks.token;
 
