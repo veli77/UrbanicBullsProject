@@ -1,5 +1,6 @@
 package utilities;
 
+import pojo.HubProduct.PProduct;
 import pojo.PromoCode.PPromoCode;
 
 import java.sql.*;
@@ -171,4 +172,43 @@ public class DBUtilities {
         }
         return list;
     }
+
+    // create product icin kullanilir.
+    public static void creatNewProduct(String productUnicName) {
+
+        String query = "insert into hub_product (is_active,is_organic,is_trade,stock,unique_name,unit)" +
+                "values(1,0,0,33,'"+productUnicName+"','UNIT_SERVICE');";
+        executeQueryStatement(query);
+    }
+
+    // produkt table da list elde etmek icin kullanilir
+    // unicname konumuna ait deger girilmeli
+    public static List<PProduct> getProductList(String UnicName) throws SQLException {
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("select * from hub_product where unique_name='"+ UnicName +"';");
+        List<PProduct> productList = new ArrayList<>();
+        while(resultSet.next()){
+            PProduct pProduct = new PProduct(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("is_active"),
+                    resultSet.getInt("is_organic"),
+                    resultSet.getInt("is_trade"),
+                    resultSet.getInt("stock"),
+                    resultSet.getString("unique_name"),
+                    resultSet.getString("unit")
+            );
+            productList.add(pProduct);
+        }
+        return productList;
+
+    }
+
+    // delete product icin kullanilir.
+    public static void deleteNewProduct(int productId) {
+
+        String query = "delete from hub_product where hub_product.id = "+ productId +";";
+        executeQueryStatement(query);
+    }
+
 }
