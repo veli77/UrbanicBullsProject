@@ -10,8 +10,8 @@ import static stepDefinitions.Hooks.response;
 import static stepDefinitions.Hooks.token;
 
 public class US_129_GetEventsDetails_StepDefs {
-    @Given("User connect to the {string} get my events")
-    public void userConnectToTheGetMyEvents(String url) {
+    @Given("User connect to the {string} and {int} get my events")
+    public void user_connect_to_the_and_get_my_events(String url, int EventID) {
         String jsonBody = """
                 {
                   "cancelToken": {
@@ -25,7 +25,7 @@ public class US_129_GetEventsDetails_StepDefs {
                 .oauth2(token)
                 .body(jsonBody)
                 .when()
-                .post(url)
+                .post(url+EventID)
                 .prettyPeek();
     }
 

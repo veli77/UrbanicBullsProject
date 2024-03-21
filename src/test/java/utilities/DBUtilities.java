@@ -1,5 +1,6 @@
 package utilities;
 
+import org.junit.Assert;
 import pojo.PromoCode.PPromoCode;
 
 import java.sql.*;
@@ -81,7 +82,7 @@ public class DBUtilities {
     public static void createPromoCode(String promoCodeName, String startDate, String endDate) {
 
         String query = "INSERT INTO promo_code (code,discount,discount_type,ends_at,starts_at)"
-                + " VALUES('"+promoCodeName+"',30,'percentage','"+startDate+".000000','"+endDate+"');";
+                + " VALUES('" + promoCodeName + "',30,'percentage','" + startDate + ".000000','" + endDate + "');";
 
         executeQueryStatement(query);
     }
@@ -108,13 +109,13 @@ public class DBUtilities {
 
     //prommo Code Update etmek için kullanabilirsiniz
     public static void updatePromoCode(String columnName, String columnValue, int id) {
-        String query = "update promo_code set "+columnName+" = '"+columnValue+"' where promo_code.id = "+id+";";
+        String query = "update promo_code set " + columnName + " = '" + columnValue + "' where promo_code.id = " + id + ";";
         executeQueryStatement(query);
     }
 
     //prommo Code Delete etmek için kullanabilirsiniz
     public static void deletePromoCode(int id) {
-        String query = "DELETE FROM promo_code WHERE promo_code.id = "+id+";";
+        String query = "DELETE FROM promo_code WHERE promo_code.id = " + id + ";";
         executeQueryStatement(query);
     }
 
@@ -170,5 +171,84 @@ public class DBUtilities {
             list.add(promoCode);
         }
         return list;
+    }
+
+    //Event create etmek için kullanabilirsiniz
+    public static void createEvent(String title, int attendee_limit) {
+
+        String query = "insert into event (address_id,attendee_limit,date,duration,fee,is_active,is_refundable,owner_id,status,tac,title)" +
+                " values (45," + attendee_limit + ",'2024-01-01 00:00:00.000000',45,0,0,0,1486,'NEW','only one person can be invited','" + title + "');";
+
+        executeQueryStatement(query);
+    }
+
+    //istenen listesiyi okumak için kullanabilirsiniz, List<Map<String, Object>> bir liste dönecek
+    public static void verifyEvent() throws SQLException {
+
+        executeQueryStatement("select * from event where address_id=45;");
+        while (resultSet.next()) {
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            Assert.assertTrue(resultSet.getString("title").contains("Turgut"));
+        }
+    }
+
+    //Event update etmek için kullanabilirsiniz
+    public static void updateEvent(String title) throws SQLException {
+
+        List<Map<String, Object>> eventsList = getEventsList();
+        Object eventID = eventsList.getLast().get("id");
+        String query = "update event set title='" + title + "' where id=" + eventID + ";";
+
+        executeQueryStatement(query);
+    }
+
+    public static List<Map<String, Object>> getEventsList() throws SQLException {
+
+        executeQueryStatement("select * from event where address_id=45;");
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+
+        while (resultSet.next()) {
+
+
+            Map<String, Object> map = new HashMap<>();
+
+            for (int i = 1; i <= columnCount; i++) {
+                map.put(metaData.getColumnName(i), resultSet.getObject(i));
+            }
+            list.add(map);
+
+        }
+        return list;
+    }
+
+    public static void verifyUpdateEvent() throws SQLException {
+
+        executeQueryStatement("select * from event where address_id=45;");
+        while (resultSet.next()) {
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            Assert.assertTrue(resultSet.getString("title").contains("Turgut updated"));
+        }
+    }
+
+    //Event delete etmek için kullanabilirsiniz
+    public static void deleteEvent() throws SQLException {
+
+        List<Map<String, Object>> eventsList = getEventsList();
+        Object eventID = eventsList.getLast().get("id");
+        String query = "delete from event where id=" + eventID + ";";
+
+        executeQueryStatement(query);
+    }
+
+    public static void verifyDeleteEvent() throws SQLException {
+
+        executeQueryStatement("select * from event where address_id=45;");
+        while (resultSet.next()) {
+            ResultSetMetaData rsmd = resultSet.getMetaData();
+            Assert.assertFalse(resultSet.getString("title").contains("Turgut updated"));
+        }
     }
 }
