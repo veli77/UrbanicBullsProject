@@ -1,4 +1,4 @@
-@US_114
+@US_114 @API
 Feature: US_114 - Get Hub Information
 
   Scenario: Get Hub Information
