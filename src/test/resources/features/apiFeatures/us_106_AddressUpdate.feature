@@ -1,4 +1,4 @@
-@wip7
+@wip7 @API
 Feature: US_106-As a user, I should be able to update an existing address.
   @user3token
   Scenario: User should be able to update an existing address.

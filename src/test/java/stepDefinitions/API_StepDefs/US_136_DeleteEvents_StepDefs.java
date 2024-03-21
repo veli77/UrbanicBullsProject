@@ -1,5 +1,6 @@
 package stepDefinitions.API_StepDefs;
 
+import com.github.javafaker.Faker;
 import enums.USERCREDENTIAL;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
@@ -16,11 +17,12 @@ import static utilities.API_Utils.response;
 
 public class US_136_DeleteEvents_StepDefs {
 
+    Faker faker = new Faker();
     RequestSpecification requestSpecification = API_Utils.preSetUp(USERCREDENTIAL.USER3).contentType(ContentType.JSON);
     @When("user can add a event at {string}")
     public void user_can_add_a_event_at(String pathParam) {
         Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("title", "Harika EVENT");
+        parameters.put("title", faker.name().title());
         parameters.put("date", "2023-10-20T23:59");
         parameters.put("fee ", 123);
         parameters.put("duration", 60);

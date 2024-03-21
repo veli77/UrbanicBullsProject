@@ -1,5 +1,7 @@
 package utilities;
 
+
+import pojo.PromoCode.PPromoCode;
 import pojo.PPromoCode;
 import pojo.User;
 
@@ -15,7 +17,7 @@ public class DBUtilities {
     private static PreparedStatement preparedStatement;
     public static ResultSet resultSet;
 
-    //@SneakyThrows annotation kullanamadık, manifold ve Lombok kütüphaneleri çakışıyor
+    //@SneakyThrows annotation kullanamadık, manifold ve Lombok kütüphaneleri çalıkışıyor
     //DB bağlanmak için kullanıyoruz
     public static void createConnection() {
         try {
