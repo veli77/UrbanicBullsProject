@@ -1,4 +1,4 @@
-@US_103
+@US_103 @API
 Feature: US_103 Changing Phone Number of the User
 
   Scenario: User should be able to change phone number associated with the account

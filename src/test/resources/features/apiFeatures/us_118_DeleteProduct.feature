@@ -1,5 +1,5 @@
 Feature: Test Execution of US118 Add and Delete Product
-
+  @API @US_118
   Scenario: TC_001 US_118 Add and Delete Product
     When user can add a product at "/account/hub/product/add"
     Then the user should be able to add a product
