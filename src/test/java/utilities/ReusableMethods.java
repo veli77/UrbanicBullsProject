@@ -399,6 +399,21 @@ public class ReusableMethods {
 
     }
 
+    public static String randomPassword(int textSize) {
+
+
+        for (int i = 0; i < textSize; i++) {
+            int randomInt=random.nextInt(textSize);
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+            sb.append(randomInt);
+        }
+
+        return sb.toString();
+    }
+
+
+
     public static void clearAndSend(WebElement webElement, String str) {
         webElement.clear();
         webElement.sendKeys(str);
