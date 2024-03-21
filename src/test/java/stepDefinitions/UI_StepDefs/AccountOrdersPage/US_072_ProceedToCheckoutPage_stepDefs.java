@@ -6,17 +6,17 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.stringtemplate.v4.ST;
+//import org.stringtemplate.v4.ST;
 import pages.CommonPage;
 import utilities.JSUtils;
 import utilities.ReusableMethods;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import static stepDefinitions.Hooks.driver;
 
 public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
+    int notificationFirstQuantity;
     @Given("the user goes to the GoToChart page")
     public void theUserGoesToTheGoToChartPage() {
 
@@ -24,16 +24,22 @@ public class US_072_ProceedToCheckoutPage_stepDefs extends CommonPage {
         ReusableMethods.hover(getAccountOrdersPage().sepeteTikla);
         getAccountOrdersPage().sepeteTikla.click();
         ReusableMethods.waitForPageToLoad(10);
+        ReusableMethods.waitFor(5);
         ReusableMethods.verifyURL("basket");
         ReusableMethods.hover(getAccountOrdersPage().addToCardButtons.get(0));
         getAccountOrdersPage().addToCardButtons.get(0).click();
 
-       ReusableMethods.hover(getBasketPage().goToCartQuantity);
-       ReusableMethods.waitForVisibility(getBasketPage().goToCartQuantity,5);
-       System.out.println("goToCart quantity= "+getBasketPage().goToCartQuantity.getText());
+
+        ReusableMethods.waitFor(5);
+
+
+      // ReusableMethods.hover(getBasketPage().goToCartQuantity);
+      // ReusableMethods.waitForVisibility(getBasketPage().goToCartQuantity,5);
+       System.out.println("goToCart quantity= "+getBasketPage().goToCartQuantity.getAttribute("textContent"));
+       notificationFirstQuantity=Integer.parseInt(getBasketPage().goToCartQuantity.getText());
     }
 
-    int notificationFirstQuantity=Integer.parseInt(getBasketPage().notificationQuantity.getText());
+
 
     @When("the user clicks on the ProceedToCheckout button, the user can reach the ProceedToCheckout page")
     public void theUserClicksOnTheProceedToCheckoutButtonTheUserCanReachTheProceedToCheckoutPage() {

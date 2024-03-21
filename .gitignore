@@ -15,6 +15,7 @@ src/test/java/utilities/lib
 .idea
 test-output/
 recordings/
+resources/dummy.txt
 
 
 

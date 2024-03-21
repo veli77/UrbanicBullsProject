@@ -17,6 +17,8 @@ import utilities.*;
 
 import static enums.USERCREDENTIAL.USER2;
 import static enums.USERCREDENTIAL.USER3;
+import static enums.USERCREDENTIAL.USERVEDAT;
+import static enums.USERCREDENTIAL.USER5;
 import static io.restassured.RestAssured.given;
 
 
@@ -107,8 +109,8 @@ public class Hooks extends CommonPage {
         //System.out.println("Login metodu calıstı");
 
         driver.get(URL_LINKS.LOGIN_URL.getLink());
-        getLoginPage().LoginEmail.sendKeys(USERCREDENTIAL.USERVEDAT.getUsername());
-        getLoginPage().input_password.sendKeys(USERCREDENTIAL.USERVEDAT.getPassword());
+        getLoginPage().LoginEmail.sendKeys(USERVEDAT.getUsername());
+        getLoginPage().input_password.sendKeys(USERVEDAT.getPassword());
         getLoginPage().submit_button.click();
         ReusableMethods.waitForPageToLoad(5);
         getAccountHomePage().zipCodeBoxCloseButton.click();
@@ -167,19 +169,17 @@ public class Hooks extends CommonPage {
             final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "screenshots");
         }
-    // Driver.closeDriver();
+     Driver.closeDriver();
     }
 
     @Before("@DB")
     public void setupDatabase() {
         DBUtilities.createConnection();
-
     }
 
     @After("@DB")
     public void closeDatabase() {
-        //  DatabaseUtilities.closeConnection();
-
+        DBUtilities.closeConnection();
     }
 
     @Before("@user1")
@@ -190,7 +190,7 @@ public class Hooks extends CommonPage {
         );
     }
 
-    public String getToken(USERCREDENTIAL usercredential) {
+    public static String getToken(USERCREDENTIAL usercredential) {
         response = given()
                 .contentType(ContentType.JSON)
                 .body("{\"email\": \"" + usercredential.getUsername() + "\",\"password\": \"" + usercredential.getPassword() + "\"}")
@@ -219,6 +219,16 @@ public class Hooks extends CommonPage {
     @Before("@user3token")
     public void user3Token() {
         getToken(USER3);
+    }
+
+    @Before("@userVedatToken")
+    public void userVedatToken() {
+        getToken(USERVEDAT);
+    }
+      
+    @Before("@user5token")
+    public void user5Token() {
+        getToken(USER5);
     }
 
     @Before("@tokencanli")

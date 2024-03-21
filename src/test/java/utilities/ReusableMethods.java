@@ -3,23 +3,22 @@ package utilities;
 import static stepDefinitions.Hooks.actions;
 import static stepDefinitions.Hooks.driver;
 
+import com.github.javafaker.Faker;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -422,5 +421,76 @@ public class ReusableMethods {
         select.selectByIndex(index);
 
     }
+
+    //bir isim oluşturur Faker classını kullanarak
+    public static String createName() {
+        Faker faker = new Faker();
+        String name = faker.funnyName().name();
+
+        return name;
+    }
+
+    //şimdiki tarihi ve saati oluşturur parametre olarak ileri geri ayarlayabilirsin
+    //        format: "2025-01-01 00:00:00"
+    public static String createDateWithTime(int plusDay, int plusHour) {
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, plusDay);
+        calendar.add(Calendar.HOUR, plusHour);
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        return simpleDateFormat.format(calendar.getTime());
+    }
+
+    // bir dosyaya birşeyler yazdırmak için kullanabilirisiniz
+    // parametre olarak dosyanın path'ini ve yazılacak data adını girmelisiniz
+    // String path = System.getProperty("user.dir") + "/src/test/resources/dummy.txt";
+    public static void writeOverTxt(String path, int keepData) {
+        FileWriter file = null;
+        try {
+            file = new FileWriter(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            file.write(keepData);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            file.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //bir dosyaya birşeyler yazdırmak için kullanabilirisiniz
+    // parametre olarak dosyanın path'ini girmelisiniz, int olarak datayı döner
+    //String path = System.getProperty("user.dir") + "/src/test/resources/dummy.txt";
+    public static int readTxt(String path) {
+        //güncel datayı okur
+        FileReader reader = null;
+        try {
+            reader = new FileReader(path);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BufferedReader file2 = new BufferedReader(reader);
+        int keepedData;
+        try {
+            keepedData = Integer.parseInt(file2.readLine());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            file2.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return keepedData;
+    }
+
+
 }
 

@@ -1,3 +1,4 @@
+@wip7 @API
 Feature:US_113-As a user, I should be able to create a hub.
   @user3token
   Scenario: User should be able to create a hub information.
