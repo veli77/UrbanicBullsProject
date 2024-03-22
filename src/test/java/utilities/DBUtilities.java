@@ -147,7 +147,6 @@ public class DBUtilities {
 
         while (resultSet.next()) {
 
-
             Map<String, Object> map = new HashMap<>();
 
             for (int i = 1; i <= columnCount; i++) {
