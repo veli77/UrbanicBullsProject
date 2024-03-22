@@ -1,7 +1,6 @@
 package utilities;
 
 
-import pojo.PromoCode.PPromoCode;
 import pojo.PPromoCode;
 import pojo.User;
 
