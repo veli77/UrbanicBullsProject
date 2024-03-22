@@ -1,4 +1,4 @@
-package pojo.PromoCode;
+package pojo;
 
 public class PPromoCode {
 
