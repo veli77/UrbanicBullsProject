@@ -1,3 +1,5 @@
+
+@API
 Feature: Test Execution of US116 Add and Delete Product
 
   Scenario: TC_001 US_116 Add and Delete Product
