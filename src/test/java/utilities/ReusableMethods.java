@@ -399,6 +399,21 @@ public class ReusableMethods {
 
     }
 
+    public static String randomPassword(int textSize) {
+
+
+        for (int i = 0; i < textSize; i++) {
+            int randomInt=random.nextInt(textSize);
+            char randomChar = text.charAt(random.nextInt(text.length()));
+            sb.append(randomChar);
+            sb.append(randomInt);
+        }
+
+        return sb.toString();
+    }
+
+
+
     public static void clearAndSend(WebElement webElement, String str) {
         webElement.clear();
         webElement.sendKeys(str);
@@ -464,7 +479,7 @@ public class ReusableMethods {
         }
     }
 
-    //bir dosyaya birşeyler yazdırmak için kullanabilirisiniz
+    //dolu bir dosyaya ulaşıp veri kullanmak için kullanabilirisiniz
     // parametre olarak dosyanın path'ini girmelisiniz, int olarak datayı döner
     //String path = System.getProperty("user.dir") + "/src/test/resources/dummy.txt";
     public static int readTxt(String path) {

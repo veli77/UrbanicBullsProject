@@ -1,4 +1,4 @@
-@US_115
+@US_115 @API
 Feature: US_115 - Get All Products
 
   Scenario: Get All Products

@@ -1,4 +1,4 @@
-@US_108
+@US_108 @API
 Feature: US_108 Changing Delivery Modalities for Pick Up From Branch
 
   @user3token

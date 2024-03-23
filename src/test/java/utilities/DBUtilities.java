@@ -1,6 +1,8 @@
 package utilities;
 
-import pojo.PromoCode.PPromoCode;
+
+import pojo.PPromoCode;
+import pojo.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -118,6 +120,19 @@ public class DBUtilities {
         executeQueryStatement(query);
     }
 
+    //istenen listedeki elementi Update etmek için kullanabilirsiniz
+    public static void updateElement(String columnName, String columnValue, int id, String listName) {
+        String query = "update"+ listName +" "+columnName+" = '"+columnValue+"' where"+ listName+".id = "+id+";";
+        executeQueryStatement(query);
+    }
+
+    // istenen listeden Delete islemi yapmak icin
+    public static void deleteElementFromRelatedList(int id, String listName){
+        String query = "DELETE FROM "+ listName+" WHERE "+listName+".id= "+id+";";
+        executeQueryStatement(query);
+
+    }
+
     //istenen listesiyi okumak için kullanabilirsiniz, List<Map<String, Object>> bir liste dönecek
     public static List<Map<String, Object>> getList(String listName) throws SQLException {
 
@@ -131,7 +146,6 @@ public class DBUtilities {
         int columnCount = metaData.getColumnCount();
 
         while (resultSet.next()) {
-
 
             Map<String, Object> map = new HashMap<>();
 
@@ -171,4 +185,45 @@ public class DBUtilities {
         }
         return list;
     }
+
+
+    public static void createUser(int allow_anonymous_chat, int browser_notifications,int is_verified,
+                                  Object delivery_type,String email,String first_name,
+                                  String password,Object roles){
+
+        String query = "insert into user (allow_anonymous_chat,browser_notifications,delivery_type,email,first_name,is_verified,password,roles)"
+                  +"values("+allow_anonymous_chat+","+browser_notifications+","+delivery_type+","+email+","+first_name+","+is_verified+", "+password+","+roles+"')";
+
+        executeQueryStatement(query);
+
+    }
+
+
+    //user listesini okumak için kullanabilirsiniz, List<User> bir liste dönecek
+    public static List<User> getUserList_pojo() throws SQLException {
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("select * from user;");
+
+        List<User> list = new ArrayList<>();
+
+        while (resultSet.next()) {
+
+            User user=new User(
+                   resultSet.getInt("allow_anonymous_chat"),
+                   resultSet.getInt("browser_notifications"),
+                    resultSet.getInt("is_verified"),
+                    resultSet.getString("delivery_type"),
+                    resultSet.getString("email"),
+                    resultSet.getString("first_name"),
+                    resultSet.getString("password"),
+                    resultSet.getString("roles")
+
+
+            );
+            list.add(user);
+        }
+        return list;
+    }
+
 }
