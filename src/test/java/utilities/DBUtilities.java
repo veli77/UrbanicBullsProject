@@ -79,6 +79,14 @@ public class DBUtilities {
         executeQueryStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC;");
     }
 
+    //address create etmek için kullanabilirsiniz
+    public static void createNewAddress(Integer owner_id, String AddressTitle, Integer is_default) {
+
+        String query = "INSERT INTO address (owner_id,title,address,city, state,postal, is_default)"
+                + " VALUES('"+owner_id+"','"+AddressTitle+"','San Jose, CA 95109, USA','San Jose','Santa Clara County', 95109, '"+is_default+"');";
+
+        executeQueryStatement(query);
+    }
     //prommo Code create etmek için kullanabilirsiniz
     public static void createPromoCode(String promoCodeName, String startDate, String endDate) {
 
@@ -136,9 +144,12 @@ public class DBUtilities {
     //istenen listesiyi okumak için kullanabilirsiniz, List<Map<String, Object>> bir liste dönecek
     public static List<Map<String, Object>> getList(String listName) throws SQLException {
 
-        statement = connection.createStatement();
+        //statement = connection.createStatement();
+        //resultSet = statement.executeQuery("SELECT * FROM + listName" );
 
-        resultSet = statement.executeQuery("SELECT * FROM '" + listName + "' ");
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + listName);
+        resultSet = statement.executeQuery();
+
 
         List<Map<String, Object>> list = new ArrayList<>();
 
