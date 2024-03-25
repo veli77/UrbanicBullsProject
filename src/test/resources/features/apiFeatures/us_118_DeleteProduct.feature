@@ -1,3 +1,5 @@
+
+@API
 Feature: Test Execution of US118 Add and Delete Product
   @US_118
   Scenario: TC_001 US_118 Add and Delete Product
