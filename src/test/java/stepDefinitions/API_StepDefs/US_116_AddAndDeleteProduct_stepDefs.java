@@ -49,7 +49,7 @@ public class US_116_AddAndDeleteProduct_stepDefs {
         JsonPath jpath = response.jsonPath();
 
         String actualData = jpath.getString("descr");
-        String expectedData = "Product added.";
+        String expectedData = "You already have this product";
         Assert.assertEquals(expectedData,actualData);
 
 
