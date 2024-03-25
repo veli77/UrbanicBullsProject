@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import org.junit.Assert;
+import utilities.ReusableMethods;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
@@ -17,7 +18,7 @@ public class US_135_EventsCansel_stepDefs {
     @Given("User connect to the {string} and cancels the events")
     public void user_connect_to_the_and_cancels_the_events(String url) {
         String jsonBody = """
-                   {"attendanceId":223,"willBeRefunded":false}
+                   {"eventId":846}
                 """;
 
         response = given()
@@ -27,6 +28,8 @@ public class US_135_EventsCansel_stepDefs {
                 .body(jsonBody)
                 .when()
                 .post(url);
+
+        ReusableMethods.waitFor(3);
         Assert.assertEquals(response.statusCode(), 200);
 
     }
