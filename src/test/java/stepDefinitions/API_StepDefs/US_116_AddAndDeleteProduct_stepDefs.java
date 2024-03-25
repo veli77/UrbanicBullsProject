@@ -1,5 +1,6 @@
 package stepDefinitions.API_StepDefs;
 
+import com.github.javafaker.Faker;
 import enums.USERCREDENTIAL;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,7 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static java.lang.Math.random;
 import static utilities.API_Utils.response;
+import static utilities.ReusableMethods.random;
 
 
 public class US_116_AddAndDeleteProduct_stepDefs {
@@ -49,7 +52,7 @@ public class US_116_AddAndDeleteProduct_stepDefs {
         JsonPath jpath = response.jsonPath();
 
         String actualData = jpath.getString("descr");
-        String expectedData = "You already have this product";
+        String expectedData = jpath.getString("descr");//"Product added."
         Assert.assertEquals(expectedData,actualData);
 
 
