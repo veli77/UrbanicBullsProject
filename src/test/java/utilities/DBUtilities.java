@@ -76,13 +76,12 @@ public class DBUtilities {
     public static void readQueryStatement(String query) {
         try {
             statement = connection.createStatement();
-            statement.executeQuery(query);
+            resultSet = statement.executeQuery(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
-
 
 
     //Hub Product'da product_listing_state'i approved yapacak query
@@ -237,7 +236,6 @@ public class DBUtilities {
     }
 
     public static void verifyUpdateEvent() throws SQLException {
-
         readQueryStatement("select * from event where address_id=45;");
         while (resultSet.next()) {
             ResultSetMetaData rsmd = resultSet.getMetaData();
