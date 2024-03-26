@@ -64,7 +64,7 @@ public class DBUtilities {
 
     //Statement'i execute etmek için kullanıyoruz; query'i parametre olarak girmelisiniz
     //C U D işlemleri için kullanılır (create,update, delete)
-    public static void executeQueryStatement(String query) { // insert update delete
+    public static void updateQueryStatement(String query) { // insert update delete
         try {
             statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -73,9 +73,21 @@ public class DBUtilities {
         }
     }
 
+    public static void readQueryStatement(String query) {
+        try {
+            statement = connection.createStatement();
+            statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
     //Hub Product'da product_listing_state'i approved yapacak query
     public static void approvedLastProduct() {
-        executeQueryStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC;");
+        updateQueryStatement("UPDATE `hub_product` SET `product_listing_state` = 'APPROVED' WHERE `product_listing_state` LIKE 'IN_REVIEW' order BY id DESC;");
     }
 
     //prommo Code create etmek için kullanabilirsiniz
@@ -84,7 +96,7 @@ public class DBUtilities {
         String query = "INSERT INTO promo_code (code,discount,discount_type,ends_at,starts_at)"
                 + " VALUES('" + promoCodeName + "',30,'percentage','" + startDate + ".000000','" + endDate + "');";
 
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     //prommo Code create etmek için kullanabilirsiniz /prestatement kullanımı için örnek/
@@ -110,13 +122,13 @@ public class DBUtilities {
     //prommo Code Update etmek için kullanabilirsiniz
     public static void updatePromoCode(String columnName, String columnValue, int id) {
         String query = "update promo_code set " + columnName + " = '" + columnValue + "' where promo_code.id = " + id + ";";
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     //prommo Code Delete etmek için kullanabilirsiniz
     public static void deletePromoCode(int id) {
         String query = "DELETE FROM promo_code WHERE promo_code.id = " + id + ";";
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     //istenen listesiyi okumak için kullanabilirsiniz, List<Map<String, Object>> bir liste dönecek
@@ -179,13 +191,13 @@ public class DBUtilities {
         String query = "insert into event (address_id,attendee_limit,date,duration,fee,is_active,is_refundable,owner_id,status,tac,title)" +
                 " values (45," + attendee_limit + ",'2024-01-01 00:00:00.000000',45,0,0,0,1486,'NEW','only one person can be invited','" + title + "');";
 
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     //istenen listesiyi okumak için kullanabilirsiniz, List<Map<String, Object>> bir liste dönecek
     public static void verifyEvent() throws SQLException {
 
-        executeQueryStatement("select * from event where address_id=45;");
+        readQueryStatement("select * from event where address_id=45;");
         while (resultSet.next()) {
             ResultSetMetaData rsmd = resultSet.getMetaData();
             Assert.assertTrue(resultSet.getString("title").contains("Turgut"));
@@ -199,12 +211,12 @@ public class DBUtilities {
         Object eventID = eventsList.getLast().get("id");
         String query = "update event set title='" + title + "' where id=" + eventID + ";";
 
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     public static List<Map<String, Object>> getEventsList() throws SQLException {
 
-        executeQueryStatement("select * from event where address_id=45;");
+        readQueryStatement("select * from event where address_id=45;");
         List<Map<String, Object>> list = new ArrayList<>();
 
         ResultSetMetaData metaData = resultSet.getMetaData();
@@ -226,7 +238,7 @@ public class DBUtilities {
 
     public static void verifyUpdateEvent() throws SQLException {
 
-        executeQueryStatement("select * from event where address_id=45;");
+        readQueryStatement("select * from event where address_id=45;");
         while (resultSet.next()) {
             ResultSetMetaData rsmd = resultSet.getMetaData();
             Assert.assertTrue(resultSet.getString("title").contains("Turgut updated"));
@@ -240,12 +252,12 @@ public class DBUtilities {
         Object eventID = eventsList.getLast().get("id");
         String query = "delete from event where id=" + eventID + ";";
 
-        executeQueryStatement(query);
+        updateQueryStatement(query);
     }
 
     public static void verifyDeleteEvent() throws SQLException {
 
-        executeQueryStatement("select * from event where address_id=45;");
+        readQueryStatement("select * from event where address_id=45;");
         while (resultSet.next()) {
             ResultSetMetaData rsmd = resultSet.getMetaData();
             Assert.assertFalse(resultSet.getString("title").contains("Turgut updated"));
