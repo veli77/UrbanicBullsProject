@@ -1,4 +1,4 @@
-@Ersin
+@Ersin @API
   Feature: ContactUs
 
     Scenario: ContactUs feature

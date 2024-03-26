@@ -1,4 +1,4 @@
-@US_138
+@US_138 @API
 Feature: US_138 - Get Weekly Order List
   @user3token
 
